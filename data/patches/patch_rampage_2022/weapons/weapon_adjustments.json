@@ -1,0 +1,56 @@
+{
+  "patch_version": "RAMPAGE_2022_05",
+  "new_weapon": {
+    "M24": {
+      "category": "Sniper Rifle",
+      "base_damage": 88,
+      "rate_of_fire": 0.8,
+      "magazine_capacity": 15,
+      "mobility_tier": "High"
+    }
+  },
+  "weapon_modifications": {
+    "FAMAS": {
+      "range_pct": -10.0
+    },
+    "M14": {
+      "damage_pct": -3.0,
+      "range_pct": -4.0
+    },
+    "M4A1-Z": {
+      "rate_of_fire_pct": -3.0
+    },
+    "SCAR": {
+      "armor_penetration_pct": +8.0
+    },
+    "GROZA": {
+      "armor_penetration_pct": -8.0
+    },
+    "VSS": {
+      "rate_of_fire_pct": -10.0
+    },
+    "UMP": {
+      "minimum_damage_pct": -15.0
+    },
+    "Kar98K": {
+      "rate_of_fire_pct": -10.0
+    },
+    "Kar98K-I": {
+      "gun_switch_time_seconds": {
+        "old": 0.4,
+        "new": 0.6
+      }
+    },
+    "Treatment Sniper": {
+      "overheat_cooling_speed_pct": +8.0,
+      "magazine_capacity_pct": +50.0
+    },
+    "AC80": {
+      "rate_of_fire_pct": -10.0
+    },
+    "M79": {
+      "damage_pct": -15.0,
+      "explosion_range_pct": -10.0
+    }
+  }
+}
