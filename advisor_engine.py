@@ -1,10 +1,19 @@
 import sys
+import os
 from core.ttk_calculator import MechanicsEngine
 from interface.prompt_parser import TacticalParser
+from patch_loader import PatchDataLoader
 
 class AdvisorEngine:
-    def __init__(self, patch_version="patch_v1"):
-        self.parser = TacticalParser(patch_version)
+    def __init__(self, patch_version="patch_v33_heroes_arise"):
+        self.patch_version = patch_version
+        self.patch_path = os.path.join("data", "patches", self.patch_version)
+        
+        # Load raw JSON patch data dynamically
+        self.loader = PatchDataLoader(self.patch_path)
+        
+        # Pass loaded patch version to parser engine
+        self.parser = TacticalParser(self.patch_version)
         
     def process_query(self, query):
         parsed = self.parser.query_system(query)
@@ -45,7 +54,8 @@ class AdvisorEngine:
             print("[INFO]: No direct patch adjustments found for this specific query.")
 
 if __name__ == "__main__":
-    engine = AdvisorEngine("patch_v1")
+    # Pointing to the active OB33 patch directory
+    engine = AdvisorEngine("patch_v33_heroes_arise")
     
     # Test execution queries
     engine.process_query("Clock tower me kya map change hua?")
