@@ -1,0 +1,39 @@
+{
+  "patch_version": "OB33_Heroes_Arise",
+  "range_mechanics": {
+    "effective_range_rules": "Damage reduces linearly after base range limit until minimum damage threshold is reached.",
+    "min_damage_floor_pct": 40.0
+  },
+  "weapon_decay_profiles": [
+    {
+      "weapon_id": "g36_assault",
+      "effective_range_meters": 35.0,
+      "max_range_meters": 60.0,
+      "damage_decay_per_meter_pct": 1.5
+    },
+    {
+      "weapon_id": "g36_range",
+      "effective_range_meters": 50.0,
+      "max_range_meters": 80.0,
+      "damage_decay_per_meter_pct": 1.0
+    },
+    {
+      "weapon_id": "mp5",
+      "effective_range_meters": 22.0,
+      "max_range_meters": 45.0,
+      "damage_decay_per_meter_pct": 2.2
+    },
+    {
+      "weapon_id": "m1887",
+      "effective_range_meters": 12.0,
+      "max_range_meters": 25.0,
+      "damage_decay_per_meter_pct": 4.0
+    },
+    {
+      "weapon_id": "kar98k",
+      "effective_range_meters": 90.0,
+      "max_range_meters": 150.0,
+      "damage_decay_per_meter_pct": 0.5
+    }
+  ]
+}
