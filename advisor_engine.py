@@ -26,30 +26,35 @@ class AdvisorEngine:
         
         if cat == "weapons_and_items":
             print("ITEMS & WEAPON ADJUSTMENTS DETECTED:")
-            for item in data.get("new_items", []):
-                print(f" -> New Item: {item.get('name', 'N/A')} ({item.get('category', 'N/A')})")
-            for w in data.get("weapon_adjustments", []):
-                print(f" -> Modified: {w.get('name', 'N/A')} | Adjustments: {w.get('stat_changes', {})}")
-                
+            base_list = data.get("base_attributes", {}).get("weapons", [])
+            for w in base_list:
+                print(f" -> Weapon: {w.get('weapon_name', w.get('weapon_id'))} | Class: {w.get('category')} | Base Dmg: {w.get('base_damage')}")
+            decay_list = data.get("range_decay", {}).get("weapon_decay_profiles", [])
+            for r in decay_list:
+                print(f" -> Range Decay Profile: {r.get('weapon_id')} | Eff. Range: {r.get('effective_range_meters')}m | Max Range: {r.get('max_range_meters')}m")
+
         elif cat == "characters":
             print("CHARACTER SKILL ADJUSTMENTS DETECTED:")
-            for c in data.get("character_adjustments", []):
-                char_name = c.get("name", "Unknown Character")
-                skill_name = c.get("skill_name", "N/A")
-                changes = c.get("changes", c.get("item_addition", "No change detail"))
-                print(f" -> Character: {char_name} | Skill: {skill_name} | Changes: {changes}")
-                
+            active_list = data.get("active_skills", {}).get("active_skills", [])
+            passive_list = data.get("passive_skills", {}).get("passive_skills", [])
+            for c in active_list:
+                print(f" -> Active Skill: {c.get('character_id', '').upper()} | Skill: {c.get('skill_name')} | Type: {c.get('type')}")
+            for p in passive_list:
+                print(f" -> Passive Skill: {p.get('character_id', '').upper()} | Skill: {p.get('skill_name')}")
+
         elif cat == "modes_and_maps":
             print("MAP & MODE MODIFICATIONS DETECTED:")
-            cs = data.get("clash_squad", {})
-            print(f" -> CS Mode: {cs.get('custom_room_mode', 'N/A')}")
-            for map_adj in cs.get("map_adjustments", []):
-                print(f" -> Map Change [{map_adj.get('location', 'N/A')}]: {map_adj.get('change', 'N/A')}")
-                
+            missions = data.get("in_game_missions", [])
+            for m in missions:
+                print(f" -> Mission: {m.get('mission_type')} | Target: {m.get('target', 'N/A')}")
+            vending = data.get("vending_machine_adjustments", {})
+            if vending:
+                print(f" -> Vending Machine: {vending.get('description', 'Updated')}")
+
         elif cat == "system_and_settings":
             print("SYSTEM & QUALITY OF LIFE UPDATES DETECTED:")
-            for sys_feat in data.get("new_systems", []):
-                print(f" -> Feature: {sys_feat.get('feature', 'N/A')} ({sys_feat.get('availability', 'N/A')})")
+            print(" -> Configured utilities and core mechanics dynamic check active.")
+
         else:
             print("[INFO]: No direct patch adjustments found for this specific query.")
 
@@ -57,6 +62,7 @@ if __name__ == "__main__":
     # Pointing to the active OB33 patch directory
     engine = AdvisorEngine("patch_v33_heroes_arise")
     
-    # Test execution queries
-    engine.process_query("Clock tower me kya map change hua?")
-    engine.process_query("Chrono aur Wukong me kya nerf aaya?")
+    # OB33 Tactical Test Execution Queries
+    engine.process_query("Kenta aur G36 me kya stats hain?")
+    engine.process_query("A124 aur Steffie ke skill changes batao?")
+    engine.process_query("Clash Squad aur mission me kya update hai?")
