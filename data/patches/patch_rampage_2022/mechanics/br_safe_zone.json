@@ -1,48 +1,24 @@
 {
   "patch_version": "RAMPAGE_2022_05",
-  "safe_zone_outside_damage": [
-    {
-      "shrink_phase": 1,
-      "time_outside_seconds_threshold": 170,
+  "br_safe_zone_damage": {
+    "shrink_1": {
+      "outside_time_threshold_seconds": 170,
       "damage_per_tick": 3
     },
-    {
-      "shrink_phase": 2,
-      "time_outside_seconds_threshold": 270,
+    "shrink_2": {
+      "outside_time_threshold_seconds": 270,
       "damage_per_tick": 6
     },
-    {
-      "shrink_phase": 3,
-      "time_outside_seconds_threshold": 360,
+    "shrink_3": {
+      "outside_time_threshold_seconds": 360,
       "damage_per_tick": 12
     },
-    {
-      "shrink_phase": 4,
-      "time_outside_seconds_threshold": 20,
+    "shrink_4": {
+      "outside_time_threshold_seconds": 20,
       "damage_per_tick": 24
     }
-  ],
-  "loot_spawn_modifiers": {
-    "med_kits_spawn_rate_boost_pct": 15.0,
-    "gloo_walls_ground_spawn_reduction_pct": -10.0,
-    "charge_buster_ground_spawn": false,
-    "vss_ultimate_ground_spawn": false,
-    "kar98k_ultimate_ground_spawn": false
   },
-  "loot_visual_glow_ranks": {
-    "gold": ["Level I Ultimate Weapons"],
-    "gold_plus": [
-      "Level II Ultimate Weapons",
-      "Regular Airdrop Weapons",
-      "Upgrade Chips",
-      "Lv. 4 Vest",
-      "Lv. 4 Helmet",
-      "FF Coins > 500"
-    ],
-    "red": ["Level III Ultimate Weapons", "Upgraded Airdrop Weapons"]
-  },
-  "clash_squad_economy": {
-    "armor_upgrade_lv2_to_lv3_cost": 600,
-    "helmet_max_upgradable_level": 3
+  "revival_system": {
+    "revival_point_active_duration_seconds": 620
   }
 }
