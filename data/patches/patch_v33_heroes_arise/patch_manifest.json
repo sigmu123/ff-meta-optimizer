@@ -5,7 +5,9 @@
   "files": {
     "active_skills": "characters/active_skills.json",
     "passive_skills": "characters/passive_skills.json",
+    "synergies": "characters/synergies.json",
     "base_attributes": "weapons/base_attributes.json",
+    "range_decay": "weapons/range_decay.json",
     "utilities": "mechanics/utilities.json"
   }
 }
