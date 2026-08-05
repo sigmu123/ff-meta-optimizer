@@ -1,0 +1,53 @@
+{
+  "patch_version": "patch_v2",
+  "patch_name": "New Age",
+  "character_adjustments": [
+    {
+      "name": "Chrono",
+      "skill_name": "Time Turner",
+      "type": "Active",
+      "changes": {
+        "shield_hp": 800,
+        "two_way_protection": true,
+        "allow_inside_shooting": false,
+        "movement_speed_pct": 0,
+        "skill_duration_sec_by_level": [4, 4, 5, 5, 6, 6],
+        "cooldown_sec_by_level": [188, 164, 150, 138, 128, 120]
+      }
+    },
+    {
+      "name": "Maxim",
+      "skill_name": "Gluttony",
+      "type": "Passive",
+      "changes": {
+        "medkit_speed_reduction_pct_by_level": [5, 8, 12, 17, 23, 30]
+      }
+    },
+    {
+      "name": "K",
+      "skill_name": "Master of All",
+      "type": "Active",
+      "changes": {
+        "psychology_ep_recovery": 3,
+        "interval_sec_by_level": [2.2, 2.0, 1.8, 1.6, 1.4, 1.0],
+        "max_ep_by_level": [150, 170, 190, 210, 230, 250]
+      }
+    },
+    {
+      "name": "D-Bee",
+      "skill_name": "Bullet Beats",
+      "type": "Passive",
+      "changes": {
+        "accuracy_buff_pct_by_level": [20, 23, 27, 32, 38, 45]
+      }
+    },
+    {
+      "name": "Thiva",
+      "skill_name": "Vital Vibes",
+      "type": "Passive",
+      "changes": {
+        "help_up_speed_pct_by_level": [10, 13, 16, 19, 22, 25]
+      }
+    }
+  ]
+}
