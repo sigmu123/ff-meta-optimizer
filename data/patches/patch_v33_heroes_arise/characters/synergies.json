@@ -1,0 +1,26 @@
+{
+  "patch_version": "OB33_Heroes_Arise",
+  "synergy_combos": [
+    {
+      "combo_name": "Frontline Rusher",
+      "active_skill": "kenta",
+      "passive_skills": ["nikita", "caroline", "hayato"],
+      "tactical_role": "Aggressive Rush / Shield Push",
+      "description": "Kenta shield reduces incoming damage while Nikita & Caroline buff SMG/Shotgun mobility and end-clip damage."
+    },
+    {
+      "combo_name": "Anti-Skill Disrupter",
+      "active_skill": "a124",
+      "passive_skills": ["otho", "rafael", "thiva"],
+      "tactical_role": "Support / Squad Wipe Interrupt",
+      "description": "A124 disables active skills, Otho reveals surrounding enemies on knock, and Rafael speeds up enemy bleed-out."
+    },
+    {
+      "combo_name": "Zone Anchor",
+      "active_skill": "steffie",
+      "passive_skills": ["thiva", "rafael", "maro"],
+      "tactical_role": "Defense / Revive Hold",
+      "description": "Steffie neutralizes throwables while Thiva ensures instant revives with extra HP."
+    }
+  ]
+}
