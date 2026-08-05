@@ -1,0 +1,116 @@
+{
+  "patch_version": "RAMPAGE_2022_05",
+  "characters": {
+    "wolfrahh": {
+      "skill_name": "Limelight",
+      "type": "passive",
+      "trigger_condition": "spectators_count",
+      "spectator_gain_on_elimination": 1,
+      "spectators_decay": false,
+      "scaling_per_spectator": {
+        "headshot_damage_reduction_pct": [2, 3, 4, 6, 8, 10],
+        "headshot_damage_boost_pct": [2, 3, 4, 6, 8, 10]
+      },
+      "max_cap": {
+        "headshot_damage_reduction_pct": [20, 22, 24, 26, 28, 30],
+        "headshot_damage_boost_pct": [20, 22, 24, 26, 28, 30]
+      }
+    },
+    "dimitri": {
+      "skill_name": "Healing Heartbeat",
+      "type": "active",
+      "self_recover_movement_enabled": true,
+      "self_recover_hp_decay_stopped": true
+    },
+    "d_bee": {
+      "skill_name": "Bullet Beats",
+      "type": "passive",
+      "firing_movement_speed_boost_pct": [10, 12, 14, 16, 18, 20],
+      "firing_accuracy_boost_pct": [20, 23, 27, 32, 38, 45],
+      "weapon_dependent_speed_fixed": true
+    },
+    "a124": {
+      "skill_name": "Thrill of Battle",
+      "type": "active",
+      "aura_radius_meters": 5,
+      "movement_speed_boost_pct": [10, 11, 12, 13, 14, 15],
+      "hp_regen_per_second": 5,
+      "duration_seconds": [5, 6, 7, 8, 9, 10],
+      "cooldown_seconds": [70, 66, 62, 58, 54, 50]
+    },
+    "skyler": {
+      "skill_name": "Riptide Rhythm",
+      "type": "active",
+      "sonic_wave_range_meters": [50, 58, 67, 77, 88, 100],
+      "max_gloo_walls_targeted": 5,
+      "hp_recovery_per_gloo_wall": [4, 5, 6, 7, 8, 9],
+      "cooldown_seconds": [85, 88, 75, 70, 65, 60]
+    },
+    "steffie": {
+      "skill_name": "Painted Refuge",
+      "type": "active",
+      "area_radius_meters": 4,
+      "blocks_throwables": true,
+      "ally_armor_durability_restore_rate_pct": 10,
+      "ammo_damage_reduction_pct": [10, 12, 14, 16, 18, 20],
+      "duration_seconds": [10, 11, 12, 13, 14, 15],
+      "cooldown_seconds": [85, 80, 75, 78, 65, 60]
+    },
+    "chrono": {
+      "skill_name": "Time Turner",
+      "type": "active",
+      "force_field_durability": 888,
+      "duration_seconds": [4, 4, 5, 5, 6, 6],
+      "cooldown_seconds": [160, 150, 140, 130, 120, 118]
+    },
+    "kenta": {
+      "skill_name": "Swordsman's Wrath",
+      "type": "active",
+      "shield_width_meters": 5,
+      "frontal_damage_reduction_pct": 65,
+      "duration_seconds": 5,
+      "reset_on_shot": true,
+      "cooldown_seconds": [120, 110, 100, 90, 80, 70]
+    },
+    "xayne": {
+      "skill_name": "Xtreme Encounter",
+      "type": "active",
+      "temporary_hp": 120,
+      "hp_decay_over_time": true,
+      "gloo_wall_damage_boost_pct": [100, 120, 140, 160, 180, 200],
+      "duration_seconds": 6,
+      "cooldown_seconds": [150, 140, 130, 120, 118, 100]
+    },
+    "clu": {
+      "skill_name": "Tracing Steps",
+      "type": "active",
+      "detection_range_meters": [50, 55, 60, 65, 70, 75],
+      "duration_seconds": [5, 6, 7, 8, 9, 10],
+      "cooldown_seconds": [75, 78, 65, 60, 55, 50],
+      "share_with_teammates": true,
+      "ignores_crouched_or_prone": true
+    },
+    "wukong": {
+      "skill_name": "Camouflage",
+      "type": "active",
+      "transformation": "bush",
+      "movement_speed_penalty_pct": -10,
+      "duration_seconds": 15,
+      "cooldown_seconds": 200,
+      "cooldown_reset_on_kill": true
+    },
+    "misha": {
+      "skill_name": "Afterburner",
+      "type": "passive",
+      "driving_speed_boost_pct": [2, 3, 4, 6, 8, 10],
+      "in_vehicle_damage_reduction_pct": [5, 6, 8, 11, 15, 28],
+      "target_difficulty_increased": true
+    },
+    "nairi": {
+      "skill_name": "Ice Iron",
+      "type": "passive",
+      "gloo_wall_regen_per_sec_pct": [20, 22, 24, 26, 28, 30],
+      "ar_gloo_wall_damage_boost_pct": [30, 31, 32, 33, 34, 35]
+    }
+  }
+}
