@@ -1,0 +1,36 @@
+{
+  "patch_version": "RAMPAGE_2022_05",
+  "passives": {
+    "wolfrahh": {
+      "skill_name": "Limelight",
+      "type": "passive",
+      "trigger_condition": "spectators_count",
+      "spectator_gain_per_kill": 1,
+      "spectators_decay": false,
+      "headshot_damage_reduction_per_spectator_pct": [2, 3, 4, 6, 8, 10],
+      "headshot_damage_reduction_max_cap_pct": [20, 22, 24, 26, 28, 30],
+      "headshot_damage_to_enemy_per_spectator_pct": [2, 3, 4, 6, 8, 10],
+      "headshot_damage_to_enemy_max_cap_pct": [20, 22, 24, 26, 28, 30]
+    },
+    "d_bee": {
+      "skill_name": "Bullet Beats",
+      "type": "passive",
+      "firing_movement_speed_boost_pct": [10, 12, 14, 16, 18, 20],
+      "firing_accuracy_boost_pct": [20, 23, 27, 32, 38, 45],
+      "weapon_dependent_speed_boost_fixed": true
+    },
+    "misha": {
+      "skill_name": "Afterburner",
+      "type": "passive",
+      "driving_speed_boost_pct": [2, 3, 4, 6, 8, 10],
+      "in_vehicle_damage_reduction_pct": [5, 6, 8, 11, 15, 20],
+      "target_acquisition_difficulty": "increased"
+    },
+    "nairi": {
+      "skill_name": "Ice Iron",
+      "type": "passive",
+      "gloo_wall_regen_per_second_pct": [20, 22, 24, 26, 28, 30],
+      "ar_gloo_wall_damage_boost_pct": [30, 31, 32, 33, 34, 35]
+    }
+  }
+}
