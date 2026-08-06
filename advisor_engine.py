@@ -22,14 +22,12 @@ class AdvisorEngine:
             print("ITEMS & WEAPON ADJUSTMENTS DETECTED:")
             weapons_data = self.loader.weapons
             
-            # Dictionary Format Handling
             if isinstance(weapons_data, dict):
                 base_attrs = weapons_data.get("base_attributes", weapons_data)
                 if isinstance(base_attrs, dict):
                     for w_name, w_info in base_attrs.items():
                         if isinstance(w_info, dict):
                             print(f" -> Weapon: {w_name} | Class: {w_info.get('category', 'N/A')} | Base Dmg: {w_info.get('base_damage', 'N/A')}")
-            # List Format Handling
             elif isinstance(weapons_data, list):
                 for w in weapons_data:
                     if isinstance(w, dict):
@@ -41,23 +39,30 @@ class AdvisorEngine:
         elif cat == "characters":
             print("CHARACTER SKILL ADJUSTMENTS DETECTED:")
             
-            # Direct Attributes Check from Loader
             active = self.loader.active_skills
             passive = self.loader.passive_skills
             chars = self.loader.characters
 
-            # Scenario A: Dict format with active/passive keys
+            # 1. Unpack Direct Dictionary JSON Format (like patch_rampage & patch_v33)
             if isinstance(active, dict) and active:
-                for c_id, c_info in active.items():
-                    if isinstance(c_info, dict):
-                        print(f" -> Active Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', 'N/A')} | Type: {c_info.get('type', 'active')}")
+                # Handle nested dict if wrapped inside active_skills key
+                skills_dict = active.get("active_skills", active)
+                if isinstance(skills_dict, dict):
+                    for char_id, info in skills_dict.items():
+                        if isinstance(info, dict):
+                            s_name = info.get("skill_name", "N/A")
+                            s_type = info.get("type", "active")
+                            print(f" -> Active Skill: {char_id.upper()} | Skill: {s_name} | Type: {s_type}")
             
             if isinstance(passive, dict) and passive:
-                for c_id, c_info in passive.items():
-                    if isinstance(c_info, dict):
-                        print(f" -> Passive Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', 'N/A')}")
+                pass_dict = passive.get("passive_skills", passive)
+                if isinstance(pass_dict, dict):
+                    for char_id, info in pass_dict.items():
+                        if isinstance(info, dict):
+                            s_name = info.get("skill_name", "N/A")
+                            print(f" -> Passive Skill: {char_id.upper()} | Skill: {s_name}")
 
-            # Scenario B: List format (patch_v1, patch_v2, etc.)
+            # 2. Unpack List JSON Format (like patch_v1 & patch_v2)
             raw_list = chars if isinstance(chars, list) else (active if isinstance(active, list) else [])
             if raw_list:
                 for item in raw_list:
