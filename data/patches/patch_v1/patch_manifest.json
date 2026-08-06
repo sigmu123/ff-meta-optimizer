@@ -1,0 +1,17 @@
+{
+  "patch_version": "patch_v1",
+  "patch_name": "BOOYAH Day",
+  "release_date": "2021-09-28",
+  "data_files": {
+    "characters": [
+      "characters.json"
+    ],
+    "weapons": [
+      "weapons/base_attributes.json"
+    ],
+    "mechanics": [
+      "modes_and_maps.json",
+      "system_and_settings.json"
+    ]
+  }
+}
