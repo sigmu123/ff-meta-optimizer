@@ -1,0 +1,67 @@
+{
+  "patch_id": "patch_5th_anniv",
+  "category": "mechanics_and_modes",
+  "clash_squad": {
+    "map_balancing": {
+      "kalahari": {
+        "locations_affected": ["The Maze", "Council Hall"],
+        "adjustment": "shifted_spawn_points_horizontally_for_equal_high_ground_distance"
+      }
+    },
+    "scoreboard_updates": [
+      "display_teammates_active_skills_and_cooldown",
+      "display_opponents_active_skills"
+    ],
+    "custom_room_random_buffs": [
+      {
+        "buff_name": "Constant HP Gain",
+        "effect": "restores_15_hp_per_second_when_not_under_attack"
+      },
+      {
+        "buff_name": "Constant HP Loss",
+        "effect": "lose_2_hp_per_second"
+      },
+      {
+        "buff_name": "MAX. HP Booster",
+        "effect": "increases_max_hp_to_325"
+      }
+    ],
+    "cs_ranked_rules": {
+      "force_quit_from_settings": false,
+      "extended_reconnection_timeframe": true
+    }
+  },
+  "battle_royale": {
+    "war_chests": {
+      "max_level": 3,
+      "mechanics": "level_up_over_time_and_refreshable",
+      "lv1_first_loot_cost": 0,
+      "subsequent_refresh_cost_ff_coins": 100,
+      "subsequent_loot_cost_ff_coins": 300,
+      "high_level_loot_pool": [
+        "Super Med",
+        "Horizaline",
+        "UAV",
+        "Upgrade Chip",
+        "Airdrop Weapons"
+      ]
+    },
+    "safe_zone": {
+      "final_zone_logic": "enhanced_randomness",
+      "out_of_zone_damage": "reduced_time_before_damage_scales_up"
+    },
+    "vending_machines": {
+      "airdrop_vending_machine_locations": "increased",
+      "free_items_ui": "labeled_as_free"
+    }
+  },
+  "items": [
+    {
+      "item_name": "Super Med",
+      "cast_time_seconds": 4,
+      "hp_restored": 200,
+      "restore_duration_seconds": 4,
+      "availability": ["Airdrops", "High Level War Chests"]
+    }
+  ]
+}
