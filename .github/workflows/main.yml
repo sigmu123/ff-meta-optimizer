@@ -7,7 +7,10 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10']
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -15,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: ${{ matrix.python-version }}
 
       - name: Run Engine Script
         run: python advisor_engine.py
