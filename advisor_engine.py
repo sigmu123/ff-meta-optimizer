@@ -22,20 +22,24 @@ class AdvisorEngine:
             print("ITEMS & WEAPON ADJUSTMENTS DETECTED:")
             weapons_data = self.loader.weapons
             
+            # Extract list/dict from loader
+            w_items = []
             if isinstance(weapons_data, dict):
-                base_attrs = weapons_data.get("base_attributes", weapons_data.get("weapon_adjustments", weapons_data))
-                if isinstance(base_attrs, dict):
-                    for w_name, w_info in base_attrs.items():
-                        if isinstance(w_info, dict):
-                            print(f" -> Weapon: {w_name} | Class: {w_info.get('category', 'N/A')} | Base Dmg: {w_info.get('base_damage', 'N/A')}")
-                elif isinstance(base_attrs, list):
-                    for w in base_attrs:
-                        if isinstance(w, dict):
-                            print(f" -> Weapon: {w.get('name', w.get('weapon_name', 'N/A'))} | Class: {w.get('category', 'N/A')}")
+                w_items = weapons_data.get("base_attributes", weapons_data.get("weapon_adjustments", weapons_data.get("updates", [])))
+                if isinstance(weapons_data, dict) and not w_items:
+                    w_items = weapons_data
             elif isinstance(weapons_data, list):
-                for w in weapons_data:
+                w_items = weapons_data
+
+            if isinstance(w_items, dict):
+                for w_name, w_info in w_items.items():
+                    if isinstance(w_info, dict):
+                        print(f" -> Weapon: {w_name} | Class: {w_info.get('category', 'N/A')}")
+            elif isinstance(w_items, list):
+                for w in w_items:
                     if isinstance(w, dict):
-                        print(f" -> Weapon: {w.get('weapon_name', w.get('name', 'N/A'))} | Class: {w.get('category', 'N/A')}")
+                        w_name = w.get("weapon_name", w.get("name", w.get("id", "N/A")))
+                        print(f" -> Weapon: {w_name} | Type/Change: {w.get('change_type', w.get('category', 'N/A'))}")
 
         elif cat == "characters":
             print("CHARACTER SKILL ADJUSTMENTS DETECTED:")
@@ -46,55 +50,56 @@ class AdvisorEngine:
             
             printed = False
 
-            # Format A: character_adjustments List (patch_v1, patch_v2)
-            if isinstance(chars, dict) and "character_adjustments" in chars:
-                for item in chars["character_adjustments"]:
-                    if isinstance(item, dict):
-                        c_name = item.get("name", item.get("id", "UNKNOWN")).upper()
-                        s_name = item.get("skill_name", "N/A")
-                        print(f" -> Skill Adjust: {c_name} | Skill: {s_name} | Status: Modified")
-                        printed = True
+            # Unified search list across all loaded character objects
+            data_sources = [chars, active, passive]
 
-            # Format B: Key-Value Dictionary (patch_rampage, patch_v33)
-            if not printed:
-                # Direct Dict Iteration for Actives
-                if isinstance(active, dict) and active:
-                    skills = active.get("active_skills", active)
-                    if isinstance(skills, dict):
-                        for char_id, info in skills.items():
-                            if isinstance(info, dict) and "skill_name" in info:
-                                print(f" -> Active Skill: {char_id.upper()} | Skill: {info.get('skill_name')} | Type: {info.get('type', 'active')}")
-                                printed = True
-
-                # Direct Dict Iteration for Passives
-                if isinstance(passive, dict) and passive:
-                    skills = passive.get("passive_skills", passive)
-                    if isinstance(skills, dict):
-                        for char_id, info in skills.items():
-                            if isinstance(info, dict) and "skill_name" in info:
-                                print(f" -> Passive Skill: {char_id.upper()} | Skill: {info.get('skill_name')}")
-                                printed = True
-
-            # Format C: Loose Dict or Loose List (patch_5th_anniv or fallback)
-            if not printed:
-                target_obj = chars or active or passive
-                if isinstance(target_obj, list):
-                    for item in target_obj:
+            for src in data_sources:
+                if not src:
+                    continue
+                
+                # Check for "updates" list (patch_5th_anniv format)
+                if isinstance(src, dict) and "updates" in src and isinstance(src["updates"], list):
+                    for item in src["updates"]:
                         if isinstance(item, dict):
-                            c_name = item.get("name", item.get("character_id", item.get("id", "UNKNOWN"))).upper()
+                            c_name = item.get("character_name", item.get("name", "UNKNOWN")).upper()
+                            s_name = item.get("skill_name", "N/A")
+                            c_type = item.get("change_type", "Modified")
+                            print(f" -> Skill Adjust: {c_name} | Skill: {s_name} | Type: {c_type}")
+                            printed = True
+                
+                # Check for "character_adjustments" list (patch_v1 / patch_v2 format)
+                elif isinstance(src, dict) and "character_adjustments" in src and isinstance(src["character_adjustments"], list):
+                    for item in src["character_adjustments"]:
+                        if isinstance(item, dict):
+                            c_name = item.get("name", item.get("id", "UNKNOWN")).upper()
+                            s_name = item.get("skill_name", "N/A")
+                            print(f" -> Skill Adjust: {c_name} | Skill: {s_name} | Status: Modified")
+                            printed = True
+
+                # Check Direct Dict Iteration (patch_rampage active_skills / passive_skills)
+                elif isinstance(src, dict):
+                    skills_dict = src.get("active_skills", src.get("passive_skills", src))
+                    if isinstance(skills_dict, dict):
+                        for char_id, info in skills_dict.items():
+                            if isinstance(info, dict) and ("skill_name" in info or "name" in info):
+                                s_name = info.get("skill_name", info.get("name", "N/A"))
+                                s_type = info.get("type", "Adjustment")
+                                print(f" -> Skill Adjust: {char_id.upper()} | Skill: {s_name} | Type: {s_type}")
+                                printed = True
+                                
+                # Check Direct List Iteration
+                elif isinstance(src, list):
+                    for item in src:
+                        if isinstance(item, dict):
+                            c_name = item.get("character_name", item.get("name", item.get("id", "UNKNOWN"))).upper()
                             s_name = item.get("skill_name", item.get("ability", "N/A"))
                             print(f" -> Skill Adjust: {c_name} | Skill: {s_name}")
-                elif isinstance(target_obj, dict):
-                    for c_id, info in target_obj.items():
-                        if isinstance(info, dict):
-                            s_name = info.get("skill_name", info.get("name", "N/A"))
-                            print(f" -> Skill Adjust: {c_id.upper()} | Skill: {s_name}")
+                            printed = True
 
         elif cat == "modes_and_maps":
             print("MAP & MODE MODIFICATIONS DETECTED:")
-            utilities = getattr(self.loader, "modes_and_maps", self.loader.utilities)
-            if utilities:
-                print(f" -> Map & Utility Updates Loaded.")
+            utilities = getattr(self.loader, "modes_and_maps", getattr(self.loader, "utilities", None))
+            print(f" -> Map & Utility Updates Loaded Successfully.")
 
 if __name__ == "__main__":
     patches_dir = os.path.join("data", "patches")
