@@ -4,6 +4,8 @@
         "type": "passive",
         "trigger_condition": "per_elimination_spectator",
         "spectators_do_not_decrease": true,
+        "limb_damage_bonus": "removed",
+        "replaced_with": "headshot_damage_boost",
         "headshot_damage_taken_reduction_per_spec": [0.02, 0.03, 0.04, 0.06, 0.08, 0.10],
         "max_headshot_damage_taken_reduction": [0.20, 0.22, 0.24, 0.26, 0.28, 0.30],
         "headshot_damage_dealt_bonus_per_spec": [0.02, 0.03, 0.04, 0.06, 0.08, 0.10],
