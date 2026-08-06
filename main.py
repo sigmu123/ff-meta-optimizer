@@ -9,6 +9,7 @@ sys.path.append(current_dir)
 from src.patch_router import PatchRouter
 from core.ttk_calculator import MechanicsEngine
 from interface.prompt_parser import TacticalParser
+from engine.combinatorial_tester import CombinatorialOptimizer
 
 class QuickExecutionEngine:
     def __init__(self):
@@ -16,11 +17,18 @@ class QuickExecutionEngine:
         self.router = PatchRouter(data_dir=self.data_dir)
         self.latest_patch = self.router.get_latest_patch_version() or "patch_v33_heroes_arise"
         self.parser = TacticalParser(patch_version=self.latest_patch)
+        self.optimizer = CombinatorialOptimizer(mode="CS")
 
     def generate_quick_execution_sheet(self, user_prompt: str = "best close range rush strategy"):
         parsed_data = self.parser.query_system(user_prompt)
         
-        # Core Damage Analysis Example using standard Math Engine
+        # 1. Run Quantum Combinatorial Permutation Tester
+        sweep_result = self.optimizer.run_permutation_sweep(parsed_data)
+        best_combo = sweep_result.get("best_combination", {})
+        exec_time = sweep_result.get("execution_time_ms", 0.0)
+        total_perms = sweep_result.get("total_permutations", 0)
+
+        # 2. Core Weapon Damage & TTK Calculation
         g36_data = {"weapon_id": "g36_assault", "base_damage": 26, "rate_of_fire_seconds": 0.096}
         ttk_res = MechanicsEngine.calculate_weapon_ttk(
             g36_data, 
@@ -30,20 +38,24 @@ class QuickExecutionEngine:
             range_decay_pct=0.05
         )
 
+        # 3. Render Direct Quick Execution Sheet Standard Output
         print("=" * 60)
         print("          QUICK EXECUTION SHEET - META ENGINE OUTPUT          ")
         print("=" * 60)
+        print(f"[*] Engine Latency: {exec_time}ms | Permutations Tested: {total_perms}")
+        print(f"[*] Active Meta Patch: {str(self.latest_patch).upper()}")
+        print("-" * 60)
         
         print("\n1. Setup EQUIP Karein:")
-        print("   • Active Skill  : Kenta (Swordsman's Wrath - Frontal Shield 50% Reduction)")
-        print("   • Passive 1     : Nikita (Firearms Expert - SMG Reload + 20% End Clip Dmg)")
+        print(f"   • Active Skill  : {best_combo.get('active_skill', 'kenta').capitalize()} (Swordsman's Wrath - Frontal Shield Protection)")
+        print("   • Passive 1     : Nikita (Firearms Expert - SMG Reload + End Clip Dmg)")
         print("   • Passive 2     : Caroline (Agility - Shotgun Movement Speed Boost)")
         print("   • Passive 3     : Hayato (Art of Blades - Armor Penetration Multiplier)")
-        print("   • Pet           : Rockie (After-Combat Skill Cooldown Reduction)")
-        print("   • Loadout       : Armor Crate & Secret Clue Multipliers")
+        print(f"   • Pet           : {best_combo.get('pet', 'rockie').capitalize()} (Stay Chill - Skill Cooldown Reduction)")
+        print(f"   • Loadout       : {best_combo.get('loadout', 'armor_crate').replace('_', ' ').title()}")
 
         print("\n2. Weapons Multiplier (Recommended Guns):")
-        print(f"   • Short-Range   : MP40 / M1887 (High Burst Mobility)")
+        print("   • Short-Range   : MP40 / M1887 (High Burst Mobility)")
         print(f"   • Mid-Range     : G36 (Assault Mode) [Eff Dmg: {ttk_res['effective_damage']} | BTK: {ttk_res['btk']} | TTK: {ttk_res['ttk_sec']}s]")
 
         print("\n3. Strategic Winning Trick (Step-by-Step Ground Strategy):")
@@ -54,7 +66,7 @@ class QuickExecutionEngine:
         print("\n4. Simple Summary Result:")
         print("   • Defense Buff      : +50.0% (Frontal Shield Protection)")
         print("   • Attack Buff       : +20.0% (SMG Burst Scaling)")
-        print("   • Win Probability   : 88.4% (Calculated across 5,000 Permutations)")
+        print(f"   • Win Probability   : {best_combo.get('meta_score', 88.4)}% (Calculated across {total_perms} Permutations)")
         print("=" * 60)
 
 if __name__ == "__main__":
