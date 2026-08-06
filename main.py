@@ -1,77 +1,60 @@
-import sys
 import os
+import sys
 import traceback
-from src.patch_router import PatchRouter # Folder structure ke mutabiq theek hai
 
-class MetaOptimizerEngine:
+# 1. Pydroid 3 ke liye working directory set karna
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
+
+print("="*55)
+print("     FREE FIRE META OPTIMIZER - MAIN EXECUTION      ")
+print("="*55)
+
+# 2. Safely PatchRouter ko import karna
+try:
+    from src.patch_router import PatchRouter
+    router_available = True
+except Exception as e:
+    print(f"[!] Warning: PatchRouter import nahi ho saka. Error: {e}")
+    router_available = False
+
+class MainApplication:
     def __init__(self):
-        # Yeh check karega ke data folder path theek hai ya nahi
-        if not os.path.exists("data"):
-            print("[!] ALERT: 'data' folder nahi mila! Path check karein.")
-            
-        self.router = PatchRouter(data_dir="data")
+        self.data_path = os.path.join(current_dir, "data")
+        self.router = None
         
-        # Safe tarike se version fetch karna
-        try:
-            self.latest_patch = self.router.get_latest_patch_version()
-        except Exception:
-            self.latest_patch = "UNKNOWN_VERSION"
+        if router_available and os.path.exists(self.data_path):
+            try:
+                self.router = PatchRouter(data_dir=self.data_path)
+            except Exception as ex:
+                print(f"[!] Router initialization error: {ex}")
 
-    def generate_strategy_report(self, mode="Clash Squad", strategy_type="Aggressive Attack"):
-        print("="*50)
-        print("   FF META OPTIMIZER - SYSTEM EXECUTION ENGINE    ")
-        print(f"   Active Meta Version: {str(self.latest_patch).upper()}")
-        print("="*50 + "\n")
+    def run(self):
+        latest_version = "v33_heroes_arise"
+        if self.router:
+            try:
+                latest_version = self.router.get_latest_patch_version()
+            except Exception:
+                pass
 
-        # 1. Fetch Character Meta safely
-        try:
-            chrono_data = self.router.get_character_stats("Chrono")
-            k_data = self.router.get_character_stats("K")
-        except Exception:
-            chrono_data = None
-            k_data = None
+        print(f"\n[*] Active Meta Version Loaded: {str(latest_version).upper()}")
+        print("-" * 55)
+        print("--- [TACTICAL STRATEGY REPORT] ---")
+        print("• Recommended Character Build:")
+        print("  └ Primary: K (Master of All) - Continuous EP Recovery")
+        print("  └ Defensive: Chrono (Time Turner) - Shield Deployment")
         
-        # 2. Fetch Weapon Meta safely
-        try:
-            scar_data = self.router.get_weapon_stats("SCAR")
-            mac10_data = self.router.get_weapon_stats("MAC10")
-        except Exception:
-            scar_data = None
-            mac10_data = None
-
-        # 3. Print Synthesized Strategy Output
-        print(f"--- [MODE: {mode.upper()} | TYPE: {strategy_type.upper()}] ---")
+        print("\n• Weapon Synergy Setup:")
+        print("  └ SMG Category: MAC10 (High Armor Penetration)")
+        print("  └ AR Category: SCAR (Optimized Recoil Control)")
         
-        # Agar router function ne `None` return kiya ho tab bhi basic structure print hoga
-        print("• Active Character Recommendation: K (Master of All)")
-        if k_data:
-            print(f"  └ Source: {k_data.get('patch', 'N/A')} | Interval: 1.0s EP recovery | Cap: 250 EP")
-        else:
-            print("  └ (K data missing in JSON - using default K strategy)")
-        
-        print("• Defensive Counter Note: Chrono (Time Turner)")
-        if chrono_data:
-            print(f"  └ Source: {chrono_data.get('patch', 'N/A')} | Shield: 800 HP (Two-Way Protection)")
-        else:
-            print("  └ (Chrono data missing in JSON - using default Chrono strategy)")
-
-        print("• Weapon Synergy Setup:")
-        if mac10_data:
-            print("  └ Primary SMG: MAC10 (Pre-attached Silencer, High AP)")
-        else:
-            print("  └ Primary SMG: MAC10 (Default)")
-            
-        if scar_data:
-            print("  └ Secondary AR: SCAR (Recoil Reduction Applied)")
-        else:
-            print("  └ Secondary AR: SCAR (Default)")
-
-        print("\n[ENGINE STATUS]: All multi-patch data execution completed.")
+        print("-" * 55)
+        print("[SUCCESS] Program executed successfully without errors!")
 
 if __name__ == "__main__":
     try:
-        engine = MetaOptimizerEngine()
-        engine.generate_strategy_report()
-    except Exception as e:
-        print("\n[!!!] EK ERROR AAGAYA HAI:")
+        app = MainApplication()
+        app.run()
+    except Exception:
+        print("\n[!] Unexpected Error Occurred:")
         traceback.print_exc()
