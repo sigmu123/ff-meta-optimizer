@@ -2,8 +2,10 @@
     "safe_zone_shrink_damage": {
         "shrink_1": {"time_threshold_sec": 170, "damage_per_sec": 3},
         "shrink_2": {"time_threshold_sec": 270, "damage_per_sec": 6},
-        "shrink_3": {"time_threshold_sec": 360, "damage_per_sec": 12, "prev_damage": 4, "growth_rate": "slowed"},
-        "shrink_4": {"time_threshold_sec": 20, "damage_per_sec": 24, "prev_damage": 8, "growth_rate": "slowed"}
+        "shrink_3": {"time_threshold_sec": 360, "damage_per_sec": 12, "prev_damage": 4},
+        "shrink_4": {"time_threshold_sec": 20, "damage_per_sec": 24, "prev_damage": 8},
+        "shrink_5": {"time_threshold_sec": 10, "damage_per_sec": 32},
+        "final_shrink": {"time_threshold_sec": 0, "damage_per_sec": 40}
     },
     "loot_and_economy": {
         "vending_machine_removed": ["PLASMA", "FAMAS", "M60", "M4A1"],
@@ -20,6 +22,14 @@
         "armor_upgrades": {
             "lv2_to_lv3_cost_cs_cash": 600,
             "helmet_upgradable_to_lv3": true
+        },
+        "loss_streak_cash_scaling": [1000, 1200, 1500, 1800]
+    },
+    "system_engine": {
+        "anti_cheat_victim_protection": true,
+        "gold_to_memory_fragments_conversion": {
+            "cost_gold": 250,
+            "fragments": 20
         }
     }
 }
