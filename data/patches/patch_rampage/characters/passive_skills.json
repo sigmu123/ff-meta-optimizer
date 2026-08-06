@@ -1,0 +1,32 @@
+{
+    "wolfrahh": {
+        "skill_name": "Limelight",
+        "type": "passive",
+        "trigger_condition": "per_elimination_spectator",
+        "spectators_do_not_decrease": true,
+        "headshot_damage_taken_reduction_per_spec": [0.02, 0.03, 0.04, 0.06, 0.08, 0.10],
+        "max_headshot_damage_taken_reduction": [0.20, 0.22, 0.24, 0.26, 0.28, 0.30],
+        "headshot_damage_dealt_bonus_per_spec": [0.02, 0.03, 0.04, 0.06, 0.08, 0.10],
+        "max_headshot_damage_dealt_bonus": [0.20, 0.22, 0.24, 0.26, 0.28, 0.30]
+    },
+    "misha": {
+        "skill_name": "Afterburner",
+        "type": "passive",
+        "driving_speed_boost": [0.02, 0.03, 0.04, 0.06, 0.08, 0.10],
+        "in_vehicle_hard_to_target": true,
+        "in_vehicle_damage_reduction": [0.05, 0.06, 0.08, 0.11, 0.15, 0.28]
+    },
+    "nairi": {
+        "skill_name": "Ice Iron",
+        "type": "passive",
+        "gloo_wall_regen_per_sec": [0.20, 0.22, 0.24, 0.26, 0.28, 0.30],
+        "ar_damage_to_gloo_walls_boost": [0.30, 0.31, 0.32, 0.33, 0.34, 0.35]
+    },
+    "d_bee": {
+        "skill_name": "Bullet Beats",
+        "type": "passive",
+        "firing_movement_speed_boost": [0.10, 0.12, 0.14, 0.16, 0.18, 0.20],
+        "firing_accuracy_boost": [0.20, 0.23, 0.27, 0.32, 0.38, 0.45],
+        "calculation_type": "weapon_independent_smooth"
+    }
+}
