@@ -4,15 +4,29 @@
         "base_damage": 88,
         "rate_of_fire": 0.8,
         "magazine": 15,
-        "mobility": "High"
+        "effective_range_m": 80,
+        "holding_movement_penalty_pct": 10,
+        "arm_armor_penetration_pct": 20
     },
     "famas": {"effective_range_modifier": -0.10},
     "m14": {"base_damage_modifier": -0.03, "effective_range_modifier": -0.04},
-    "vss": {"rate_of_fire_modifier": -0.10},
+    "vss": {
+        "rate_of_fire_modifier": -0.10,
+        "bleeding_damage_per_sec": 7,
+        "bleeding_duration_sec": 3
+    },
     "ump": {"min_damage_decay_modifier": -0.15},
     "kar98k": {"rate_of_fire_modifier": -0.10},
     "kar98k_i": {"weapon_switch_delay_sec": 0.6, "prev_switch_delay_sec": 0.4},
-    "treatment_sniper": {"overheat_cooling_speed_modifier": 0.08, "magazine_modifier": 0.50},
+    "treatment_sniper": {
+        "overheat_cooling_speed_modifier": 0.08, 
+        "magazine_modifier": 0.50,
+        "teammate_heal_hp": 50
+    },
     "ac80": {"rate_of_fire_modifier": -0.10},
-    "m79": {"base_damage_modifier": -0.15, "explosion_radius_modifier": -0.10}
+    "m79": {"base_damage_modifier": -0.15, "explosion_radius_modifier": -0.10},
+    "charge_buster": {
+        "max_charge_time_sec": 1.2,
+        "heat_build_rate": 0.8
+    }
 }
