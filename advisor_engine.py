@@ -5,7 +5,7 @@ from interface.prompt_parser import TacticalParser
 from patch_loader import PatchDataLoader
 
 class AdvisorEngine:
-    def __init__(self, patch_version="patch_rampage_2022"):
+    def __init__(self, patch_version="patch_rampage"):
         self.patch_version = patch_version
         self.patch_path = os.path.join("data", "patches", self.patch_version)
         
@@ -89,10 +89,10 @@ class AdvisorEngine:
             print("[INFO]: No direct patch adjustments found for this specific query.")
 
 if __name__ == "__main__":
-    # Pointing to the active Rampage 2022 patch directory
-    engine = AdvisorEngine("patch_rampage_2022")
+    # Pointing to the active Rampage patch directory
+    engine = AdvisorEngine("patch_rampage")
     
-    # Rampage 2022 Tactical Test Queries
+    # Rampage Tactical Test Queries
     engine.process_query("Kenta aur M24 me kya stats hain?")
     engine.process_query("A124 aur Steffie ke skill changes batao?")
     engine.process_query("Clash Squad aur vending machine me kya update hai?")
