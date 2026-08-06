@@ -89,10 +89,29 @@ class AdvisorEngine:
             print("[INFO]: No direct patch adjustments found for this specific query.")
 
 if __name__ == "__main__":
-    # Pointing to the active Rampage patch directory
-    engine = AdvisorEngine("patch_rampage")
+    patches_dir = os.path.join("data", "patches")
     
-    # Rampage Tactical Test Queries
-    engine.process_query("Kenta aur M24 me kya stats hain?")
-    engine.process_query("A124 aur Steffie ke skill changes batao?")
-    engine.process_query("Clash Squad aur vending machine me kya update hai?")
+    if os.path.exists(patches_dir):
+        # Scan all patch folders inside data/patches automatically
+        available_patches = [
+            f for f in os.listdir(patches_dir) 
+            if os.path.isdir(os.path.join(patches_dir, f))
+        ]
+        
+        print(f"FOUND {len(available_patches)} PATCHES IN REPO: {available_patches}\n")
+        
+        # Test each patch dynamically
+        for patch in available_patches:
+            print("=" * 60)
+            print(f"TESTING PATCH: {patch}")
+            print("=" * 60)
+            try:
+                engine = AdvisorEngine(patch)
+                engine.process_query("Kenta aur M24 me kya stats hain?")
+                engine.process_query("A124 aur Steffie ke skill changes batao?")
+                engine.process_query("Clash Squad aur vending machine me kya update hai?")
+                print(f"\n[SUCCESS]: '{patch}' successfully loaded and verified!")
+            except Exception as e:
+                print(f"\n[ERROR IN {patch}]: {e}")
+    else:
+        print(f"[ERROR]: Directory '{patches_dir}' not found.")
