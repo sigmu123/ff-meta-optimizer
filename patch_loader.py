@@ -13,6 +13,7 @@ class PatchDataLoader:
         self.range_decay = {}
         self.utilities = {}
         self.characters = {}
+        self.modes_and_maps = {}
         
         self._load_all_data()
 
@@ -26,7 +27,7 @@ class PatchDataLoader:
             return {}
 
     def _load_all_data(self):
-        # 1. Manifest specific files check
+        # 1. Manifest Specific Files Check
         files = self.manifest.get("files", {}) if isinstance(self.manifest, dict) else {}
         
         if "active_skills" in files:
@@ -38,20 +39,31 @@ class PatchDataLoader:
         if "range_decay" in files:
             self.range_decay = self._load_json_safe(os.path.join(self.patch_dir, files["range_decay"]))
 
-        # 2. Universal File Scanner (for patches having characters.json, modes_and_maps.json, etc.)
+        # 2. Recursive Sub-folder Scanner (os.walk for nested directories like characters/, weapons/, etc.)
         if os.path.exists(self.patch_dir):
-            for file_name in os.listdir(self.patch_dir):
-                if file_name.endswith(".json"):
-                    file_path = os.path.join(self.patch_dir, file_name)
-                    content = self._load_json_safe(file_path)
-                    
-                    if file_name == "characters.json":
-                        self.characters = content
-                        if not self.active_skills:
-                            self.active_skills = content
-                        if not self.passive_skills:
-                            self.passive_skills = content
-                    elif file_name == "weapons.json" and not self.weapons:
-                        self.weapons = content
-                    elif file_name == "modes_and_maps.json":
-                        setattr(self, "modes_and_maps", content)
+            for root, _, files_in_dir in os.walk(self.patch_dir):
+                for file_name in files_in_dir:
+                    if file_name.endswith(".json") and file_name != "patch_manifest.json":
+                        file_path = os.path.join(root, file_name)
+                        content = self._load_json_safe(file_path)
+                        
+                        # Characters Data Mapping
+                        if file_name in ["characters.json", "skills_rework.json", "active_skills.json", "passive_skills.json"]:
+                            if not self.characters:
+                                self.characters = content
+                            if "active" in file_name and not self.active_skills:
+                                self.active_skills = content
+                            elif "passive" in file_name and not self.passive_skills:
+                                self.passive_skills = content
+                                
+                        # Weapons Data Mapping
+                        elif file_name in ["weapons.json", "weapon_balance.json", "base_attributes.json"]:
+                            if not self.weapons:
+                                self.weapons = content
+                                
+                        # Mechanics / Modes & Maps Mapping
+                        elif file_name in ["modes_and_maps.json", "mode_adjustments.json", "gameplay_rules.json", "system_updates.json"]:
+                            if not self.modes_and_maps:
+                                self.modes_and_maps = content
+                            if not self.utilities:
+                                self.utilities = content
