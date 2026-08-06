@@ -1,0 +1,13 @@
+{
+  "patch_id": "patch_5th_anniv",
+  "patch_name": "5th Anniversary",
+  "release_date": "2022-07-20",
+  "version": "OB35",
+  "categories_included": [
+    "characters",
+    "weapons",
+    "mechanics",
+    "gameplay_settings",
+    "craftland"
+  ]
+}
