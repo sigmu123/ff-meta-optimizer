@@ -23,18 +23,19 @@ class AdvisorEngine:
             weapons_data = self.loader.weapons
             
             if isinstance(weapons_data, dict):
-                base_attrs = weapons_data.get("base_attributes", weapons_data)
+                base_attrs = weapons_data.get("base_attributes", weapons_data.get("weapon_adjustments", weapons_data))
                 if isinstance(base_attrs, dict):
                     for w_name, w_info in base_attrs.items():
                         if isinstance(w_info, dict):
                             print(f" -> Weapon: {w_name} | Class: {w_info.get('category', 'N/A')} | Base Dmg: {w_info.get('base_damage', 'N/A')}")
+                elif isinstance(base_attrs, list):
+                    for w in base_attrs:
+                        if isinstance(w, dict):
+                            print(f" -> Weapon: {w.get('name', w.get('weapon_name', 'N/A'))} | Class: {w.get('category', 'N/A')}")
             elif isinstance(weapons_data, list):
                 for w in weapons_data:
                     if isinstance(w, dict):
-                        w_name = w.get("weapon_name", w.get("name", "N/A"))
-                        w_cat = w.get("category", "N/A")
-                        w_dmg = w.get("base_damage", w.get("damage", "N/A"))
-                        print(f" -> Weapon: {w_name} | Class: {w_cat} | Base Dmg: {w_dmg}")
+                        print(f" -> Weapon: {w.get('weapon_name', w.get('name', 'N/A'))} | Class: {w.get('category', 'N/A')}")
 
         elif cat == "characters":
             print("CHARACTER SKILL ADJUSTMENTS DETECTED:")
@@ -43,34 +44,42 @@ class AdvisorEngine:
             passive = self.loader.passive_skills
             chars = self.loader.characters
 
-            # 1. Unpack Direct Dictionary JSON Format (like patch_rampage & patch_v33)
-            if isinstance(active, dict) and active:
-                # Handle nested dict if wrapped inside active_skills key
+            # 1. Inspect Wrapped Dict Format (e.g. {"character_adjustments": [...]})
+            if isinstance(chars, dict) and "character_adjustments" in chars:
+                for item in chars["character_adjustments"]:
+                    if isinstance(item, dict):
+                        c_name = item.get("name", item.get("id", "UNKNOWN")).upper()
+                        s_name = item.get("skill_name", "N/A")
+                        print(f" -> Skill Adjust: {c_name} | Skill: {s_name} | Status: Modified")
+
+            # 2. Inspect Direct Key-Value Dictionary Format (e.g. {"alok": {"skill_name": ...}})
+            elif isinstance(active, dict) and active:
                 skills_dict = active.get("active_skills", active)
                 if isinstance(skills_dict, dict):
                     for char_id, info in skills_dict.items():
-                        if isinstance(info, dict):
+                        if isinstance(info, dict) and "skill_name" in info:
                             s_name = info.get("skill_name", "N/A")
                             s_type = info.get("type", "active")
                             print(f" -> Active Skill: {char_id.upper()} | Skill: {s_name} | Type: {s_type}")
-            
-            if isinstance(passive, dict) and passive:
-                pass_dict = passive.get("passive_skills", passive)
-                if isinstance(pass_dict, dict):
-                    for char_id, info in pass_dict.items():
-                        if isinstance(info, dict):
-                            s_name = info.get("skill_name", "N/A")
-                            print(f" -> Passive Skill: {char_id.upper()} | Skill: {s_name}")
 
-            # 2. Unpack List JSON Format (like patch_v1 & patch_v2)
-            raw_list = chars if isinstance(chars, list) else (active if isinstance(active, list) else [])
-            if raw_list:
-                for item in raw_list:
-                    if isinstance(item, dict):
-                        c_name = item.get("character_id", item.get("name", item.get("character", "UNKNOWN"))).upper()
-                        s_name = item.get("skill_name", item.get("ability", "N/A"))
-                        s_type = item.get("type", "Adjustment")
-                        print(f" -> Skill Adjust: {c_name} | Skill: {s_name} | Type: {s_type}")
+                if isinstance(passive, dict) and passive:
+                    pass_dict = passive.get("passive_skills", passive)
+                    if isinstance(pass_dict, dict):
+                        for char_id, info in pass_dict.items():
+                            if isinstance(info, dict) and "skill_name" in info:
+                                s_name = info.get("skill_name", "N/A")
+                                print(f" -> Passive Skill: {char_id.upper()} | Skill: {s_name}")
+
+            # 3. Direct Flat List Format (e.g. [ {"name": ...}, ... ])
+            else:
+                raw_list = chars if isinstance(chars, list) else (active if isinstance(active, list) else [])
+                if raw_list:
+                    for item in raw_list:
+                        if isinstance(item, dict):
+                            c_name = item.get("name", item.get("character_id", item.get("id", "UNKNOWN"))).upper()
+                            s_name = item.get("skill_name", item.get("ability", "N/A"))
+                            s_type = item.get("type", "Adjustment")
+                            print(f" -> Skill Adjust: {c_name} | Skill: {s_name} | Type: {s_type}")
 
         elif cat == "modes_and_maps":
             print("MAP & MODE MODIFICATIONS DETECTED:")
