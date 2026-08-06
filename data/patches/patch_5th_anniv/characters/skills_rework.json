@@ -1,0 +1,67 @@
+{
+  "patch_id": "patch_5th_anniv",
+  "category": "character_skills",
+  "updates": [
+    {
+      "character_name": "Miguel",
+      "skill_name": "Crazy Slayer",
+      "change_type": "rework",
+      "trigger_condition": "knockdown",
+      "effect": "Gain EP for each knockdown",
+      "scaling": {
+        "level_1": 30,
+        "level_2": 40,
+        "level_3": 50,
+        "level_4": 60,
+        "level_5": 70,
+        "level_6": 80
+      }
+    },
+    {
+      "character_name": "Andrew",
+      "skill_name": "Wolf Pack",
+      "change_type": "buff",
+      "stat_affected": "vest_durability_loss_reduction",
+      "scaling_before": [2, 4, 6, 8, 10, 12],
+      "scaling_after": [10, 12, 14, 16, 18, 20],
+      "unit": "percent"
+    },
+    {
+      "character_name": "Hayato",
+      "skill_name": "Art of Blades",
+      "change_type": "nerf",
+      "stat_affected": "armor_penetration",
+      "scaling_before": [7.5, 8.0, 8.5, 9.0, 9.5, 10.0],
+      "scaling_after": [4.5, 5.0, 5.5, 6.0, 6.5, 7.0],
+      "unit": "percent"
+    },
+    {
+      "character_name": "Antonio",
+      "skill_name": "Gangster's Spirit",
+      "change_type": "buff",
+      "stat_affected": "starting_extra_hp",
+      "scaling_before": [10, 15, 20, 25, 30, 35],
+      "scaling_after": [15, 20, 25, 30, 35, 40],
+      "unit": "hp"
+    },
+    {
+      "character_name": "Nikita",
+      "skill_name": "Firearms Expert",
+      "change_type": "buff",
+      "reload_speed_increase": [14, 16, 18, 20, 22, 24],
+      "trigger_bullets": "final_6_to_10_smg_bullets",
+      "damage_boost_before": [10, 12, 14, 16, 18, 20],
+      "damage_boost_after": [15, 18, 21, 24, 27, 30],
+      "unit": "percent"
+    },
+    {
+      "character_name": "Joseph",
+      "skill_name": "Nutty Movement",
+      "change_type": "nerf",
+      "stat_affected": "moving_and_sprinting_speed_boost",
+      "scaling_before": [10, 12, 14, 16, 18, 20],
+      "scaling_after": [6, 8, 10, 12, 14, 16],
+      "unit": "percent"
+    }
+  ]
+}
