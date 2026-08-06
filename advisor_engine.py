@@ -52,34 +52,59 @@ class AdvisorEngine:
         elif cat == "characters":
             print("CHARACTER SKILL ADJUSTMENTS DETECTED:")
             
-            # Actives Parsing
-            actives = data.get("active_skills", {}).get("actives", data.get("active_skills", {}).get("active_skills", {}))
+            # 1. Direct characters.json root extraction (Fallback for patch_v1, patch_rampage, etc.)
+            char_root = data.get("characters", data)
+            
+            # Actives Parsing with multi-level Fallbacks
+            actives = (
+                char_root.get("active_skills", {}) if isinstance(char_root, dict) else {}
+            )
             if isinstance(actives, dict):
+                actives = actives.get("actives", actives.get("active_skills", actives))
+            
+            if isinstance(actives, dict) and actives:
                 for c_id, c_info in actives.items():
-                    print(f" -> Active Skill: {c_id.upper()} | Skill: {c_info.get('skill_name')} | Type: {c_info.get('type')}")
+                    if isinstance(c_info, dict):
+                        print(f" -> Active Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', 'N/A')} | Type: {c_info.get('type', 'N/A')}")
             elif isinstance(actives, list):
                 for c in actives:
-                    print(f" -> Active Skill: {c.get('character_id', '').upper()} | Skill: {c.get('skill_name')} | Type: {c.get('type')}")
+                    print(f" -> Active Skill: {c.get('character_id', c.get('name', '')).upper()} | Skill: {c.get('skill_name', 'N/A')} | Type: {c.get('type', 'N/A')}")
 
-            # Passives Parsing
-            passives = data.get("passive_skills", {}).get("passives", data.get("passive_skills", {}).get("passive_skills", {}))
+            # Passives Parsing with multi-level Fallbacks
+            passives = (
+                char_root.get("passive_skills", {}) if isinstance(char_root, dict) else {}
+            )
             if isinstance(passives, dict):
+                passives = passives.get("passives", passives.get("passive_skills", passives))
+            
+            if isinstance(passives, dict) and passives:
                 for c_id, c_info in passives.items():
-                    print(f" -> Passive Skill: {c_id.upper()} | Skill: {c_info.get('skill_name')}")
+                    if isinstance(c_info, dict):
+                        print(f" -> Passive Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', 'N/A')}")
             elif isinstance(passives, list):
                 for p in passives:
-                    print(f" -> Passive Skill: {p.get('character_id', '').upper()} | Skill: {p.get('skill_name')}")
+                    print(f" -> Passive Skill: {p.get('character_id', p.get('name', '')).upper()} | Skill: {p.get('skill_name', 'N/A')}")
+
+            # General Character List Fallback (agar actives/passives direct list me ho)
+            char_list = char_root.get("character_adjustments", char_root.get("character_list", []))
+            if isinstance(char_list, list) and char_list:
+                for c in char_list:
+                    print(f" -> Character: {c.get('name', c.get('character_id', '')).upper()} | Skill: {c.get('skill_name', 'N/A')}")
 
         elif cat == "modes_and_maps":
             print("MAP & MODE MODIFICATIONS DETECTED:")
             
-            cs_econ = data.get("clash_squad_economy", {})
+            # Flexible root detection for modes_and_maps.json
+            mm_root = data.get("modes_and_maps", data)
+            
+            cs_econ = mm_root.get("clash_squad_economy", mm_root.get("clash_squad", {}))
             if cs_econ:
                 print(f" -> CS Economy Updated: Armor/Helmet Upgrades Configured.")
                 
-            vending = data.get("loot_and_vending", {}).get("vending_machine", {})
-            if vending:
-                print(f" -> Vending Machine: Added {vending.get('added_items')} | Removed {vending.get('removed_items')}")
+            vending = mm_root.get("loot_and_vending", mm_root.get("vending_machine", {}))
+            if isinstance(vending, dict) and vending:
+                v_info = vending.get("vending_machine", vending)
+                print(f" -> Vending Machine: Added {v_info.get('added_items', 'N/A')} | Removed {v_info.get('removed_items', 'N/A')}")
 
         elif cat == "system_and_settings":
             print("SYSTEM & QUALITY OF LIFE UPDATES DETECTED:")
