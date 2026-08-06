@@ -52,49 +52,60 @@ class AdvisorEngine:
         elif cat == "characters":
             print("CHARACTER SKILL ADJUSTMENTS DETECTED:")
             
-            # 1. Direct characters.json root extraction (Fallback for patch_v1, patch_rampage, etc.)
+            # Smart root extraction for all patch variants
             char_root = data.get("characters", data)
+            if isinstance(char_root, dict) and "character_adjustments" in char_root:
+                char_root = char_root["character_adjustments"]
+                
+            found_any = False
             
-            # Actives Parsing with multi-level Fallbacks
-            actives = (
-                char_root.get("active_skills", {}) if isinstance(char_root, dict) else {}
-            )
-            if isinstance(actives, dict):
-                actives = actives.get("actives", actives.get("active_skills", actives))
-            
+            # 1. Actives Check
+            actives = char_root.get("active_skills", char_root.get("actives", {}))
+            if isinstance(actives, dict) and "active_skills" in actives:
+                actives = actives["active_skills"]
+            if isinstance(actives, dict) and "actives" in actives:
+                actives = actives["actives"]
+                
             if isinstance(actives, dict) and actives:
                 for c_id, c_info in actives.items():
                     if isinstance(c_info, dict):
-                        print(f" -> Active Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', 'N/A')} | Type: {c_info.get('type', 'N/A')}")
-            elif isinstance(actives, list):
+                        print(f" -> Active Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', c_info.get('name', 'N/A'))} | Type: {c_info.get('type', 'active')}")
+                        found_any = True
+            elif isinstance(actives, list) and actives:
                 for c in actives:
-                    print(f" -> Active Skill: {c.get('character_id', c.get('name', '')).upper()} | Skill: {c.get('skill_name', 'N/A')} | Type: {c.get('type', 'N/A')}")
+                    if isinstance(c, dict):
+                        print(f" -> Active Skill: {c.get('character_id', c.get('name', '')).upper()} | Skill: {c.get('skill_name', 'N/A')} | Type: {c.get('type', 'active')}")
+                        found_any = True
 
-            # Passives Parsing with multi-level Fallbacks
-            passives = (
-                char_root.get("passive_skills", {}) if isinstance(char_root, dict) else {}
-            )
-            if isinstance(passives, dict):
-                passives = passives.get("passives", passives.get("passive_skills", passives))
-            
+            # 2. Passives Check
+            passives = char_root.get("passive_skills", char_root.get("passives", {}))
+            if isinstance(passives, dict) and "passive_skills" in passives:
+                passives = passives["passive_skills"]
+            if isinstance(passives, dict) and "passives" in passives:
+                passives = passives["passives"]
+                
             if isinstance(passives, dict) and passives:
                 for c_id, c_info in passives.items():
                     if isinstance(c_info, dict):
-                        print(f" -> Passive Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', 'N/A')}")
-            elif isinstance(passives, list):
+                        print(f" -> Passive Skill: {c_id.upper()} | Skill: {c_info.get('skill_name', c_info.get('name', 'N/A'))}")
+                        found_any = True
+            elif isinstance(passives, list) and passives:
                 for p in passives:
-                    print(f" -> Passive Skill: {p.get('character_id', p.get('name', '')).upper()} | Skill: {p.get('skill_name', 'N/A')}")
+                    if isinstance(p, dict):
+                        print(f" -> Passive Skill: {p.get('character_id', p.get('name', '')).upper()} | Skill: {p.get('skill_name', 'N/A')}")
+                        found_any = True
 
-            # General Character List Fallback (agar actives/passives direct list me ho)
-            char_list = char_root.get("character_adjustments", char_root.get("character_list", []))
-            if isinstance(char_list, list) and char_list:
-                for c in char_list:
-                    print(f" -> Character: {c.get('name', c.get('character_id', '')).upper()} | Skill: {c.get('skill_name', 'N/A')}")
+            # 3. Direct Character Array Fallback (agar data normal list array me ho)
+            if not found_any:
+                char_list = char_root if isinstance(char_root, list) else char_root.get("characters", char_root.get("character_list", []))
+                if isinstance(char_list, list):
+                    for c in char_list:
+                        if isinstance(c, dict):
+                            print(f" -> Character: {c.get('name', c.get('character_id', 'N/A')).upper()} | Skill: {c.get('skill_name', c.get('ability', 'N/A'))}")
 
         elif cat == "modes_and_maps":
             print("MAP & MODE MODIFICATIONS DETECTED:")
             
-            # Flexible root detection for modes_and_maps.json
             mm_root = data.get("modes_and_maps", data)
             
             cs_econ = mm_root.get("clash_squad_economy", mm_root.get("clash_squad", {}))
