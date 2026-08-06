@@ -1,0 +1,25 @@
+{
+    "safe_zone_shrink_damage": {
+        "shrink_1": {"time_threshold_sec": 170, "damage_per_sec": 3},
+        "shrink_2": {"time_threshold_sec": 270, "damage_per_sec": 6},
+        "shrink_3": {"time_threshold_sec": 360, "damage_per_sec": 12, "prev_damage": 4, "growth_rate": "slowed"},
+        "shrink_4": {"time_threshold_sec": 20, "damage_per_sec": 24, "prev_damage": 8, "growth_rate": "slowed"}
+    },
+    "loot_and_economy": {
+        "vending_machine_removed": ["PLASMA", "FAMAS", "M60", "M4A1"],
+        "vending_machine_added": ["M24", "UMP", "M1014", "Sniper Ammo (1 stack)"],
+        "ground_loot_adjustments": {
+            "med_kits": 0.15,
+            "gloo_walls": -0.10,
+            "removed_from_ground": ["VSS-III", "Kar98k-III", "Charge Buster"]
+        },
+        "airdrop_exclusives": ["Charge Buster"],
+        "free_vending_machine_guns": ["M14", "MP5"]
+    },
+    "cs_mode": {
+        "armor_upgrades": {
+            "lv2_to_lv3_cost_cs_cash": 600,
+            "helmet_upgradable_to_lv3": true
+        }
+    }
+}
