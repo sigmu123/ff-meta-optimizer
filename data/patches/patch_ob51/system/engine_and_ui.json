@@ -1,0 +1,37 @@
+{
+  "patch_version": "OB51",
+  "camera_system": {
+    "in_match": "Portrait mode and portrait templates added",
+    "out_match": "Options to hide backpack, weapons, pets, and emote playback feature added"
+  },
+  "tournament_system": {
+    "esports_tab": "Access via bottom-left lobby button",
+    "features": ["Squad/Duo recruitment", "In-game friend invitations", "Team code sharing on social media"],
+    "restrictions": "Cannot enter overlapping tournament schedules",
+    "rewards_delivery": "In-game mail 24 hours after official review"
+  },
+  "hud_and_v_badge": {
+    "extra_hud_preset": true,
+    "v_badge_presets": "Filter by mode/role or search pro players/creators by name"
+  },
+  "social_island": {
+    "custom_room_support": true,
+    "max_players": 48,
+    "mode": "Solo participants",
+    "restrictions": "No spectating by friends, no inviting after match start, chat disabled upon start",
+    "recruitment": "Host-only channel recruitment button"
+  },
+  "fairgame_system": {
+    "ui": "Accessible via bottom-left corner button",
+    "integrated_sections": ["Honor Score", "Report Feedback", "Original Webpage Tab"]
+  },
+  "miscellaneous": {
+    "ranked_year": "2026 Theme, rewards, and achievements",
+    "br_result_page": "Added player rating",
+    "vault": "Added rarity filter",
+    "graphics": "Max graphics quality & HD material settings",
+    "matchmaking": "Request to join/accept invitations active during matchmaking",
+    "guild_wars": "Grand prize validity period display",
+    "guild_optimizations": ["Offline messages", "Reduced search refresh time", "Full guilds hidden from recommendations"]
+  }
+}
