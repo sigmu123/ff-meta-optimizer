@@ -1,0 +1,19 @@
+{
+  "hud_and_tactical_feedback": [
+    { "feature": "Damage Breakdown", "description": "Match summary page displays individual squad mates' damage output" },
+    { "feature": "Friendly Fire Safety", "description": "Teammate grenade warning indicators removed from screen" },
+    { "feature": "Treatment Gun Feedback", "description": "Displays exact healing numerical value per shot" },
+    { "feature": "Item Ping System", "description": "Players can ping ground loot items to signal squad mates" },
+    { "feature": "Situation Alerts", "description": "Supportive contextual messages trigger during combat, healing, or zone damage" },
+    { "feature": "Landmine Indicator", "description": "Enhanced self/friendly landmine visibility" },
+    { "feature": "Loot Box Visibility", "description": "Loot box scale increased by 120%" },
+    { "feature": "Gunsight UI", "description": "Gunsight UI visual alignment adjustments" }
+  ],
+  "map_and_loot_updates": [
+    { "feature": "Air Drops", "addition": "Level 4 Helmet added to drop table" },
+    { "feature": "Dynamic Weather", "map": "Bermuda - Classic" }
+  ],
+  "profile_and_naming": [
+    { "feature": "Pet Naming", "rule": "Supports names up to 2 characters minimum" }
+  ]
+}
