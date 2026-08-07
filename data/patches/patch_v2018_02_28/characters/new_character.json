@@ -1,0 +1,9 @@
+{
+  "character_system_revamp": {
+    "total_playable_characters": 4,
+    "character_progression": {
+      "leveling_currency": "Gold",
+      "level_up_benefit": "Unlocks minor passive survival skill progressively per character"
+    }
+  }
+}
