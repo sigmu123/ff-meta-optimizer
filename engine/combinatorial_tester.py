@@ -168,3 +168,7 @@ class CombinatorialOptimizer:
             },
             "best_combination": best_combo
         }
+
+# Aliases to prevent ImportError in main.py and test suites
+PermutationTester = CombinatorialOptimizer
+CombinatorialTester = CombinatorialOptimizer
