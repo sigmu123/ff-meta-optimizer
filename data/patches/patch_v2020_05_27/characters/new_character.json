@@ -1,0 +1,19 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Wolfrahh",
+      "profession": "Streamer",
+      "skill_name": "Limelight",
+      "skill_type": "Passive",
+      "skill_mechanics": "Scales per additional observer or kill acquired (up to cap)",
+      "headshot_damage_reduction_percentage": {
+        "per_stack_by_level": [10, 11, 12, 13, 14, 15],
+        "max_cap_percentage": 25
+      },
+      "limb_damage_increase_percentage": {
+        "per_stack_by_level": [15, 16, 17, 18, 19, 20],
+        "max_cap_percentage": 25
+      }
+    }
+  ]
+}
