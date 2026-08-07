@@ -1,0 +1,26 @@
+{
+  "map_expansions": [
+    {
+      "location_name": "Sentosa Island",
+      "map_type": "Island Expansion",
+      "access_methods": [
+        "Swimming"
+      ]
+    }
+  ],
+  "game_modes": [
+    {
+      "mode_name": "Ranked Mode",
+      "status": "Newly Introduced",
+      "competitive": true,
+      "rewards": "Exclusive Seasonal Rank Rewards"
+    }
+  ],
+  "water_mechanics": {
+    "swimming": {
+      "enabled": true,
+      "traversal": "Swim across water bodies to access Sentosa Island",
+      "tactical_use": "Submerge / hide in sea for cover"
+    }
+  }
+}
