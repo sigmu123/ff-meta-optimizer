@@ -28,18 +28,18 @@ class PermutationTester:
         short_range_raw = weapons_dict.get("mp40", {"weapon_id": "mp40", "name": "MP40", "base_damage": 26, "rate_of_fire_seconds": 0.08})
         mid_range_raw = weapons_dict.get("parafal", {"weapon_id": "parafal", "name": "PARAFAL", "base_damage": 48, "rate_of_fire_seconds": 0.18})
 
-        # Calculate combat metrics (Fix: parameters streamlined for calculate_weapon_ttk)
+        # Calculate combat metrics (Fix: weapon object passed positional-first)
         short_ttk = MechanicsEngine.calculate_weapon_ttk(
-            weapon=short_range_raw,
-            hp=200,
-            armor_level=2,
-            distance=10
+            short_range_raw,
+            200,
+            2,
+            10
         )
         mid_ttk = MechanicsEngine.calculate_weapon_ttk(
-            weapon=mid_range_raw,
-            hp=200,
-            armor_level=2,
-            distance=30
+            mid_range_raw,
+            200,
+            2,
+            30
         )
 
         exec_time_ms = (time.perf_counter() - start_time) * 1000.0
