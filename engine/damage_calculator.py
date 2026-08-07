@@ -1,6 +1,3 @@
-================================================
-FILE: engine/damage_calculator.py
-================================================
 from core.ttk_calculator import MechanicsEngine
 
 class DamageCalculatorWrapper:
