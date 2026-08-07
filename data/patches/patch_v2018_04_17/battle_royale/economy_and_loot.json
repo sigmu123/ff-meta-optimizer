@@ -1,0 +1,9 @@
+{
+  "energy_and_healing_mechanics": {
+    "food_and_energy_system": {
+      "consumable_item": "Mushrooms",
+      "spawn_locations": "Scattered across the map terrain",
+      "effect": "Grants Energy Points (EP) which passively converts into Health Points (HP) recovery over time"
+    }
+  }
+}
