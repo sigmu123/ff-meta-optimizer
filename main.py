@@ -12,15 +12,15 @@ from interface.prompt_parser import PromptParser
 
 
 def main():
-    # Initialize System Router & Load Active Patch Data (Fallback default patch_ob54)
+    # Initialize System Router & Load Active Patch Data
     router = PatchRouter(data_dir=os.path.join(current_dir, "data"))
     latest_patch = router.get_latest_patch_version() or "patch_ob54"
-    loader = PatchLoader(patch_name=latest_patch)
+    loader = PatchLoader(patch_name=latest_patch, base_dir=current_dir)
 
-    # Parse Scenario Parameters
+    # Parse User Intent Prompt
     parsed_intent = PromptParser.parse("OB54 CS Ranked rush build with high damage")
 
-    # Run Permutation Search Engine Across Patch Matrices
+    # Run Combinatorial Matrix Search Engine
     tester = PermutationTester(patch_data=loader)
     optimization_results = tester.run_matrix_search(
         mode=parsed_intent.get("mode", "clash_squad"),
@@ -32,6 +32,7 @@ def main():
     total_permutations = optimization_results["permutations_tested"]
     latency = optimization_results["latency_ms"]
 
+    # Quick Execution Sheet Output Format
     print("=" * 60)
     print("          QUICK EXECUTION SHEET - META ENGINE OUTPUT          ")
     print("=" * 60)
