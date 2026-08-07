@@ -1,0 +1,23 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Notora",
+      "profession": "Driving Enthusiast",
+      "skill_name": "Racer's Blessing",
+      "skill_type": "Passive",
+      "combat_niche": "Mobile Squad Healing / Vehicle Support",
+      "mechanics": "Restores HP of all members inside the vehicle while driving. Stacking is disabled.",
+      "hp_recovery_values": {
+        "heal_amount": 5,
+        "interval_seconds_per_level": {
+          "level_1": 4.5,
+          "level_2": 4.0,
+          "level_3": 3.5,
+          "level_4": 3.0,
+          "level_5": 2.5,
+          "level_6": 2.0
+        }
+      }
+    }
+  ]
+}
