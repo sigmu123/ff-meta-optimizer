@@ -1,0 +1,18 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Shani",
+      "profession": "Engineer / Mechanic",
+      "skill_name": "Gear Recycle",
+      "skill_type": "Passive",
+      "description": "Restores armor durability after securing a kill. Automatically upgrades armor level when durability exceeds 100% (Up to Level 3)"
+    }
+  ],
+  "pets": [
+    {
+      "pet_name": "Silver Fox",
+      "skill_name": "Well Fed",
+      "skill_effect": "Increases HP restored by Medkits by 4 / 7 / 10"
+    }
+  ]
+}
