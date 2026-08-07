@@ -1,0 +1,80 @@
+{
+  "patch_version": "OB54",
+  "patch_date": "2026-06-23",
+  "category": "map_tactics_and_mode_mechanics",
+  "battle_royale_mechanics": {
+    "anniversary_quests": {
+      "quest_types": [
+        "Collect Fragments (Assemble Anniversary Crystal)",
+        "Reforge the Sword (Defend & Capture Knight's Sword)",
+        "Coins in the Air (Use Jump Pads)"
+      ],
+      "rewards": [
+        "Teamwide Buff",
+        "Coin Jar (Creates dance circle for FF Coins)",
+        "High-Value Ground Loot",
+        "Coin Machines Reset",
+        "Vending Machine Discounts",
+        "Advanced Revival Points Upgrade (Refreshed CD + Faster Capture)"
+      ]
+    },
+    "on_the_spot_revival": {
+      "revival_duration_seconds": 18,
+      "max_limit_per_player": 1,
+      "available_until_safe_zone": 4,
+      "loot_retrieval": "Automatically retrieves unlooted items from own death box"
+    },
+    "area_loot_tier_display": {
+      "colors": {
+        "red": "Ultra High-Tier Loot",
+        "gold": "High-Tier Loot",
+        "purple": "Mid-Tier Loot"
+      }
+    },
+    "arsenal_updates": {
+      "basic_arsenal": {
+        "armor": "2x Lv.2 Vests/Helmets + 2x Lv.3 Vests/Helmets",
+        "weapons_removed": ["Thompson", "Groza", "AWM"],
+        "weapons_added": ["PARAFAL", "MP40", "M590", "M82B"]
+      },
+      "upgraded_arsenal": {
+        "armor": "4x Lv.3 Vests/Helmets",
+        "weapons_removed": ["FAMAS", "Charge Buster", "Kar98k"],
+        "special_loot": "Weapon Awakener Chips"
+      }
+    },
+    "revival_system": {
+      "revival_card_purchase_window_seconds": 355,
+      "previous_revival_card_window_seconds": 420,
+      "spectator_revive_discount_disabled": true
+    },
+    "gloo_wall_economy": {
+      "gloo_wall_capacity_increase_per_maker_lvl": 1,
+      "unified_loot_gloo_wall_count": 1
+    }
+  },
+  "clash_squad_mechanics": {
+    "cs_perk_points_system": {
+      "replaces": "Cyber Points",
+      "acquisition": ["Capturing Cyber Airdrops", "Specific Round Bonuses"],
+      "upgrade_tiers": {
+        "level_1": "Skill Boost or Skill Buffs",
+        "level_2": "Special Buffs",
+        "level_3": "Special Buffs",
+        "level_4": "Awakened Weapon Unlock"
+      }
+    },
+    "economy_adjustments": {
+      "ep_refund_overflow": "Extra CS Cash refunded based on teammate Mushroom purchases",
+      "purchase_shortcut": "Double-tap slot to buy directly",
+      "super_bonfire_buff": "Covers entire spawn area with range outline effect"
+    }
+  },
+  "map_adjustments": {
+    "removed_maps": ["Bermuda 2.0", "Alpine"],
+    "building_optimizations": [
+      "Smooth window jumping across buildings",
+      "Disabled standing/floating on building outer edges (Nurek Dam bridge, Grav Labs stairs)"
+    ]
+  }
+}
