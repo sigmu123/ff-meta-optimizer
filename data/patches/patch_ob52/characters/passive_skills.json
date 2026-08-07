@@ -1,0 +1,78 @@
+{
+  "patch_version": "OB52",
+  "passive_skills": [
+    {
+      "character_id": "maro",
+      "character_name": "Maro",
+      "skill_name": "Falcon Fervor",
+      "type": "Passive",
+      "max_distance_damage_boost": "20%",
+      "previous_max_distance_damage_boost": "25%",
+      "marked_enemy_damage_boost": "3.5%",
+      "previous_marked_enemy_damage_boost": "3.5%",
+      "adjustment_type": "Adjustment"
+    },
+    {
+      "character_id": "kairos",
+      "character_name": "Kairos",
+      "skill_name": "Defense Breaker",
+      "type": "Passive",
+      "ep_recovery_speed": "+100%",
+      "previous_ep_recovery_speed": "+50%",
+      "ep_drain_rate": "1 EP per second",
+      "previous_ep_drain_rate": "10 EP per second",
+      "armor_penetration_boost": "+15%",
+      "adjustment_type": "Buff"
+    },
+    {
+      "character_id": "ford",
+      "character_name": "Ford",
+      "skill_name": "Iron Will",
+      "type": "Passive",
+      "hp_recovery_rate": "10 HP/s for 3s upon taking damage",
+      "cooldown_seconds": 20,
+      "previous_cooldown_seconds": 20,
+      "adjustment_type": "Buff"
+    },
+    {
+      "character_id": "thiva",
+      "character_name": "Thiva",
+      "skill_name": "Vital Vibes",
+      "type": "Passive",
+      "revive_speed_boost": "70%",
+      "hp_restored_on_revive": 100,
+      "cooldown_seconds": 60,
+      "previous_cooldown_seconds": 90,
+      "adjustment_type": "Buff"
+    },
+    {
+      "character_id": "jota",
+      "character_name": "Jota",
+      "skill_name": "Sustained Raids",
+      "type": "Passive",
+      "hp_recovery_on_hit": "10% of damage dealt",
+      "hp_recovery_on_knockdown": "20% max HP",
+      "adjustment_type": "Buff"
+    },
+    {
+      "character_id": "shani",
+      "character_name": "Shani",
+      "skill_name": "Gear Recycle",
+      "type": "Passive",
+      "shield_points_grant": 50,
+      "shield_radius_meters": 10,
+      "cooldown_seconds": 10,
+      "previous_cooldown_seconds": 10,
+      "adjustment_type": "Buff"
+    },
+    {
+      "character_id": "luqueta",
+      "character_name": "Luqueta",
+      "skill_name": "Hat-Trick",
+      "type": "Passive",
+      "max_hp_increase_per_kill": 25,
+      "max_hp_cap": 50,
+      "adjustment_type": "Adjustment"
+    }
+  ]
+}
