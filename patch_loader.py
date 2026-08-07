@@ -52,7 +52,8 @@ class PatchLoader:
                                 self.active_skills[str(s_id).lower()] = skill
                     elif isinstance(data, dict):
                         for k, v in data.items():
-                            self.active_skills[str(k).lower()] = v
+                            if isinstance(v, dict):
+                                self.active_skills[str(k).lower()] = v
 
                 elif file_name == "passive_skills.json":
                     skill_list = data.get("passive_skills", []) if isinstance(data, dict) else data
@@ -63,7 +64,8 @@ class PatchLoader:
                                 self.passive_skills[str(s_id).lower()] = skill
                     elif isinstance(data, dict):
                         for k, v in data.items():
-                            self.passive_skills[str(k).lower()] = v
+                            if isinstance(v, dict):
+                                self.passive_skills[str(k).lower()] = v
 
                 elif file_name in ["characters.json", "skills_rework.json"]:
                     if isinstance(data, dict):
@@ -76,17 +78,19 @@ class PatchLoader:
                         else:
                             self.characters.update(data)
 
-                elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json"]:
+                elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json", "weapon_adjustments.json"]:
                     w_list = data.get("weapons", []) if isinstance(data, dict) else []
                     if isinstance(w_list, list) and len(w_list) > 0:
                         for w in w_list:
-                            w_id = w.get("weapon_id") or w.get("name")
-                            if w_id:
-                                self.weapons[str(w_id).lower()] = w
+                            if isinstance(w, dict):
+                                w_id = w.get("weapon_id") or w.get("name") or w.get("weapon_name")
+                                if w_id:
+                                    self.weapons[str(w_id).lower()] = w
                     elif isinstance(data, dict):
                         for k, v in data.items():
-                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics", "global_weapon_mechanics", "weapon_tier_system"]:
-                                self.weapons[str(k).lower()] = v
+                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics", "global_weapon_mechanics", "weapon_tier_system", "global_weapon_mechanics"]:
+                                if isinstance(v, dict):
+                                    self.weapons[str(k).lower()] = v
 
                 elif file_name == "range_decay.json":
                     if isinstance(data, dict):
