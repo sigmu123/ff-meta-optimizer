@@ -1,0 +1,13 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Misha",
+      "callsign": "Racequeen",
+      "status": "Added to character roster"
+    }
+  ],
+  "character_progression": {
+    "max_level_cap": 7,
+    "description": "Characters can now be upgraded up to Level 7"
+  }
+}
