@@ -5,6 +5,19 @@ class CombinatorialOptimizer:
     def __init__(self, mode: str = "CS"):
         self.mode = mode.upper()
 
+    def run_permutation_sweep(self, parsed_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Executes a permutation sweep against parsed patch data. Wrapper around
+        run_global_cross_patch_sweep to handle single-patch or multi-patch payloads.
+        """
+        # If payload is a single patch data object rather than a dictionary of patches, wrap it
+        if "characters" in parsed_data or "weapons" in parsed_data:
+            all_patches = {"patch_data": parsed_data}
+        else:
+            all_patches = parsed_data
+
+        return self.run_global_cross_patch_sweep(all_patches)
+
     def run_global_cross_patch_sweep(self, all_patches_data: Dict[str, Any]) -> Dict[str, Any]:
         """
         Dynamically extracts all entities from JSON files and performs a full
@@ -21,6 +34,9 @@ class CombinatorialOptimizer:
 
         # 1. Dynamic Extraction from Ingested JSON Files
         for patch_name, patch_content in all_patches_data.items():
+            if not isinstance(patch_content, dict):
+                continue
+
             # Extract Characters (Active vs Passive)
             chars = patch_content.get("characters", [])
             for c in chars:
@@ -45,22 +61,23 @@ class CombinatorialOptimizer:
 
             # Extract Pets & Loadouts
             pets_loadout = patch_content.get("pets_loadout", {})
-            for key, val in pets_loadout.items():
-                if isinstance(val, dict):
-                    if "pets" in key or "pets" in val:
-                        p_list = val.get("pets", [val]) if isinstance(val.get("pets"), list) else [val]
-                        for p in p_list:
-                            if isinstance(p, dict):
-                                p_id = str(p.get("pet_id", p.get("pet_name", p.get("name", "")))).lower()
-                                if p_id:
-                                    merged_pets[p_id] = p
-                    elif "loadouts" in key or "loadouts" in val:
-                        l_list = val.get("loadouts", [val]) if isinstance(val.get("loadouts"), list) else [val]
-                        for l in l_list:
-                            if isinstance(l, dict):
-                                l_id = str(l.get("loadout_id", l.get("loadout_name", l.get("name", "")))).lower()
-                                if l_id:
-                                    merged_loadouts[l_id] = l
+            if isinstance(pets_loadout, dict):
+                for key, val in pets_loadout.items():
+                    if isinstance(val, dict):
+                        if "pets" in key or "pets" in val:
+                            p_list = val.get("pets", [val]) if isinstance(val.get("pets"), list) else [val]
+                            for p in p_list:
+                                if isinstance(p, dict):
+                                    p_id = str(p.get("pet_id", p.get("pet_name", p.get("name", "")))).lower()
+                                    if p_id:
+                                        merged_pets[p_id] = p
+                        elif "loadouts" in key or "loadouts" in val:
+                            l_list = val.get("loadouts", [val]) if isinstance(val.get("loadouts"), list) else [val]
+                            for l in l_list:
+                                if isinstance(l, dict):
+                                    l_id = str(l.get("loadout_id", l.get("loadout_name", l.get("name", "")))).lower()
+                                    if l_id:
+                                        merged_loadouts[l_id] = l
 
         active_keys = list(merged_actives.keys())
         passive_keys = list(merged_passives.keys())
@@ -79,8 +96,8 @@ class CombinatorialOptimizer:
         w_util = 0.15 if self.mode == "CS" else 0.25
 
         # 2. Pure Combinatorial Matrix Evaluation
-        for active in active_keys:
-            a_data = merged_actives[active]
+        for active in (active_keys if active_keys else ["standard_active"]):
+            a_data = merged_actives.get(active, {})
             
             # Active Skill Score Calculation
             a_score = 80.0
@@ -96,8 +113,8 @@ class CombinatorialOptimizer:
                 pet_score = 90.0 if "cooldown_reduction" in str(pet_data) or "rockie" in pet else 75.0
 
                 for loadout in (loadout_keys if loadout_keys else ["standard_loadout"]):
-                    for weap in weapon_keys:
-                        w_data = merged_weapons[weap]
+                    for weap in (weapon_keys if weapon_keys else ["standard_weapon"]):
+                        w_data = merged_weapons.get(weap, {})
                         total_tested += 1
 
                         # Weapon Dynamic Scoring
