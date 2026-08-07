@@ -1,0 +1,12 @@
+{
+  "ammo_stack_adjustments": [
+    {
+      "ammo_type": "Sniper Rifle (SR) Ammo",
+      "stack_size": { "previous": 30, "new": 20 }
+    },
+    {
+      "ammo_type": "Shotgun (SG) Ammo",
+      "stack_size": { "previous": 30, "new": 20 }
+    }
+  ]
+}
