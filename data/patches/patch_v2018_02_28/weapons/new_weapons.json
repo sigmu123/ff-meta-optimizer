@@ -1,0 +1,27 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "M249",
+      "category": "Machine Gun",
+      "clip_size": 100,
+      "obtainable_via": [
+        "Airdrops Only"
+      ],
+      "specialization": "High vehicle destruction capability"
+    },
+    {
+      "weapon_name": "Grenade",
+      "category": "Throwable / Explosive",
+      "obtainable_via": [
+        "Ground Loot"
+      ]
+    }
+  ],
+  "new_vehicles": [
+    {
+      "vehicle_name": "Tuk-Tuk",
+      "category": "Taxi / Light Transport",
+      "capacity": 3
+    }
+  ]
+}
