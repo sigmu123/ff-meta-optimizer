@@ -1,0 +1,30 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Kapella",
+      "profession": "K-pop Lead Singer",
+      "skill_name": "Healing Song",
+      "skill_type": "Passive",
+      "stackable": false,
+      "skill_attributes": {
+        "healing_items_effect_increase_percentage": {
+          "level_1": 10,
+          "level_2": 12,
+          "level_3": 14,
+          "level_4": 16,
+          "level_5": 18,
+          "level_6": 20
+        },
+        "healing_skills_effect_increase_percentage": 10,
+        "downed_ally_hp_loss_reduction_percentage": {
+          "level_1": 20,
+          "level_2": 22,
+          "level_3": 24,
+          "level_4": 26,
+          "level_5": 28,
+          "level_6": 30
+        }
+      }
+    }
+  ]
+}
