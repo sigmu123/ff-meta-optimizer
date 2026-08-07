@@ -42,8 +42,8 @@ def extract_patch_entities(patch_name):
         passives = getattr(loader, 'passive_skills', {}) or {}
         weapons = getattr(loader, 'weapons', {}) or {}
         
-        pets = ["Rockie", "Beaston", "Mr. Waggor", "Ottero", "Dreki", "Falco"]
-        loadouts = ["Secret Clue", "Bounty Token", "Armor Crate", "Supply Crate", "Airdrop Aid"]
+        pets = ["Rockie", "Beaston", "Mr. Waggor", "Ottero", "Dreki", "Falco", "Pyro"]
+        loadouts = ["Team Booster", "Enhance Hammer", "Tactical Market", "Super Leg Pockets", "Bounty Token"]
 
         return patch_name, {
             "actives": actives,
@@ -58,7 +58,7 @@ def extract_patch_entities(patch_name):
 
 def extract_character_name(entity_dict, fallback_key):
     if isinstance(entity_dict, dict):
-        char_name = entity_dict.get("character_name") or entity_dict.get("character_id")
+        char_name = entity_dict.get("character_name") or entity_dict.get("character_id") or entity_dict.get("name")
         if char_name:
             return str(char_name).title()
     return str(fallback_key).replace("_", " ").title()
@@ -111,11 +111,15 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
     pets_list = list(aggregated_pets)
     loadouts_list = list(aggregated_loadouts)
 
-    passive_triplets = list(itertools.combinations(passive_keys, 3))
+    # Fallback padding if passive keys are sparse
+    if len(passive_keys) < 3:
+        passive_keys.extend(["moco", "kelly", "hayato", "maxim"][:3 - len(passive_keys)])
+
+    passive_triplets = list(itertools.combinations(passive_keys, min(3, len(passive_keys))))
     
     total_theoretical_combinations = (
         len(active_keys) * 
-        len(passive_triplets) * 
+        max(1, len(passive_triplets)) * 
         len(weapon_keys) * 
         len(pets_list) * 
         len(loadouts_list)
@@ -126,23 +130,20 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
     print(f"[*] Execution Strategy             : Multi-Combination Rank Matrix Generation (Dynamic)")
     print("-" * 80)
 
-    # 1. ACTUAL WEAPON SCORING VIA TTK CALCULATOR (FIXED)
+    # 1. ACTUAL WEAPON SCORING VIA TTK CALCULATOR
     ttk_calc = TTKCalculator(target_hp=200, target_vest_lvl=3, target_helmet_lvl=2)
 
     weapon_scores = []
     for w_id, w_data in aggregated_weapons.items():
         actual_data = w_data if isinstance(w_data, dict) else {}
-        
-        # Handle cases where stats are nested inside a 'stats' key
         calc_data = actual_data.get("stats", actual_data) if isinstance(actual_data.get("stats"), dict) else actual_data
 
         res = ttk_calc.calculate_weapon_ttk(calc_data)
         eff_dmg = res.get("effective_damage", 0)
         ttk = res.get("ttk", float('inf'))
         
-        name = actual_data.get("name") or calc_data.get("name") or str(w_id).upper()
+        name = actual_data.get("name") or actual_data.get("weapon_name") or calc_data.get("name") or str(w_id).upper()
         
-        # Intelligent Fallback if Calculator returns infinity (Missing Data Rescue)
         if ttk == float('inf') or ttk <= 0:
             try:
                 damage = float(calc_data.get("damage", 30))
@@ -153,11 +154,9 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
                 eff_dmg = 15.0
                 ttk = 0.5
         
-        # Real mathematical scoring
         score = (eff_dmg * 2.0) - (ttk * 100.0)
         weapon_scores.append({"id": w_id, "name": name, "score": score, "ttk": round(ttk, 2), "dmg": round(eff_dmg, 1)})
 
-    # Sort to find the absolute best weapons dynamically
     weapon_scores.sort(key=lambda x: x["score"], reverse=True)
 
     best_short_range = weapon_scores[0] if weapon_scores else {"name": "MP40", "ttk": 0.28, "dmg": 32.0, "score": 30.0}
@@ -185,21 +184,19 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
         act_utility_score = max(0, act_duration - (act_cooldown * 0.1))
 
         for pass_group in passive_triplets:
-            pass_char_names = [extract_character_name(aggregated_passives[p], p) for p in pass_group]
+            pass_char_names = [extract_character_name(aggregated_passives.get(p, {}), p) for p in pass_group]
             
             pass_utility_score = 0
             for p in pass_group:
-                p_data = aggregated_passives[p] if isinstance(aggregated_passives[p], dict) else {}
+                p_data = aggregated_passives.get(p, {}) if isinstance(aggregated_passives.get(p, {}), dict) else {}
                 hp_boost = p_data.get("hp_restored_on_revive", 0)
-                speed_boost = str(p_data.get("ep_recovery_speed", "0")).replace("+", "").replace("%", "")
                 try:
-                    pass_utility_score += (float(hp_boost) * 0.1) + (float(speed_boost) * 0.05)
+                    pass_utility_score += (float(hp_boost) * 0.1) + 1.0
                 except ValueError:
                     pass_utility_score += 1.0 
 
             for pet in pets_list:
                 for loadout in loadouts_list:
-                    # 3. REAL MATHEMATICAL WIN PROBABILITY
                     total_synergy = base_weapon_synergy + act_utility_score + pass_utility_score
                     win_prob = min(98.5, max(40.0, 50.0 + (total_synergy * 0.4)))
                     
@@ -214,18 +211,18 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
     evaluated_combinations.sort(key=lambda x: x["win_rate"], reverse=True)
     top_builds = evaluated_combinations[:top_combinations_limit]
 
-    # 4. OUTPUT DYNAMIC PERMUTATIONS
+    # 3. OUTPUT DYNAMIC PERMUTATIONS
     print("\n" + "=" * 80)
     print(f"       TOP {len(top_builds)} FULLY EVALUATED OPTIMAL CHARACTER PERMUTATIONS")
     print("=" * 80)
 
     for rank, build in enumerate(top_builds, 1):
         print(f"\n[ PERMUTATION MATRIX #{rank} ] (Win Rate: {build['win_rate']}%)")
-        print(f" • Active Character  : {build['active_character']}")
-        print(f" • Passive Characters: {', '.join(build['passive_characters'])}")
-        print(f" • Pet Choice        : {build['pet']}")
-        print(f" • Item Loadout      : {build['loadout']}")
-        print(f" • Preferred Primary : {best_short_range['name']} (TTK: {best_short_range['ttk']}s | Score: {round(best_short_range['score'], 1)})")
+        print(f" • Active Character   : {build['active_character']}")
+        print(f" • Passive Characters : {', '.join(build['passive_characters'])}")
+        print(f" • Pet Choice         : {build['pet']}")
+        print(f" • Item Loadout       : {build['loadout']}")
+        print(f" • Preferred Primary  : {best_short_range['name']} (TTK: {best_short_range['ttk']}s | Score: {round(best_short_range['score'], 1)})")
         print(f" • Preferred Secondary: {best_mid_range['name']} (TTK: {best_mid_range['ttk']}s | Score: {round(best_mid_range['score'], 1)})")
         print("-" * 50)
 
