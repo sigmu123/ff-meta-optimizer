@@ -1,0 +1,36 @@
+{
+  "advanced_attachments": [
+    {
+      "attachment_name": "Ripper Bullet",
+      "compatible_weapon": "VSS",
+      "availability": "Classic Mode",
+      "effects": {
+        "damage_over_time": {
+          "damage_per_tick": 7,
+          "ticks_per_application": 3,
+          "max_stacks": 5
+        }
+      },
+      "tactical_impact": "Adds DoT tracking effect to track down enemies at range"
+    },
+    {
+      "attachment_name": "Rage Core",
+      "compatible_weapon": "M14",
+      "availability": "Classic Mode",
+      "effects": {
+        "fire_mode_change": "Fully Automatic",
+        "rate_of_fire_increase_percentage": 26
+      },
+      "tactical_impact": "Allows high single-shot damage to scale into high suppressive DPS"
+    },
+    {
+      "attachment_name": "Biometric Scope",
+      "compatible_weapon": "Kar98k",
+      "availability": "Classic Mode",
+      "effects": {
+        "aim_assist_enabled": true
+      },
+      "tactical_impact": "Guarantees high-probability initial shot connection before weapon swap"
+    }
+  ]
+}
