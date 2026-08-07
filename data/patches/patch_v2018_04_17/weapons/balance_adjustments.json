@@ -1,0 +1,13 @@
+{
+  "quality_of_life_swapping": {
+    "auto_attachment_transfer": {
+      "enabled": true,
+      "description": "When picking up a new weapon, compatible attachments from the previously held weapon are automatically transferred and equipped onto the new weapon"
+    }
+  },
+  "equipment_mechanics": {
+    "zero_durability_behavior": {
+      "effect": "Equipment (Vests/Helmets) reaching zero durability disintegrate completely upon breaking"
+    }
+  }
+}
