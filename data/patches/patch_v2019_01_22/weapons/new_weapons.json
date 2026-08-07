@@ -1,0 +1,14 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "AN94",
+      "category": "Assault Rifle (AR)",
+      "specialization": "Long-range high-damage rifle combat"
+    },
+    {
+      "weapon_name": "Treatment Gun",
+      "category": "Pistol / Healing Utility Weapon",
+      "specialization": "Heals teammates when shot at them and deals damage to enemies"
+    }
+  ]
+}
