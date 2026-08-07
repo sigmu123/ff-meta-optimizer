@@ -1,0 +1,19 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "M79",
+      "category": "Grenade Launcher",
+      "ammo_type": "40mm Grenades",
+      "obtainable_via": [
+        "Airdrops / Ground Loot"
+      ]
+    }
+  ],
+  "new_vehicles": [
+    {
+      "vehicle_name": "Amphibious Motorcycle",
+      "category": "Marine / Land Dual Vehicle",
+      "specialization": "Traverses both land and water surfaces seamlessly"
+    }
+  ]
+}
