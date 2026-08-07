@@ -1,0 +1,27 @@
+{
+  "attachment_restriction_adjustments": [
+    {
+      "weapons": [
+        "VSS",
+        "G18",
+        "M1014"
+      ],
+      "restricted_slot": "Muzzle",
+      "can_equip_muzzle": false
+    },
+    {
+      "weapons": [
+        "Desert Eagle"
+      ],
+      "restricted_slot": "Magazine",
+      "can_equip_magazine": false
+    }
+  ],
+  "weapon_stealth_buffs": [
+    {
+      "weapon_name": "VSS",
+      "feature": "Built-in Silencer",
+      "stealth_enhancement": "Reduced detection range and audio footprint on enemies"
+    }
+  ]
+}
