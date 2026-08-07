@@ -1,0 +1,28 @@
+{
+  "ranked_mode_loot_additions": [
+    {
+      "feature": "Hot Zone",
+      "availability": "Added to Rank Mode",
+      "description": "High-tier loot combat area previously exclusive to Purgatory casual mode"
+    },
+    {
+      "item_name": "Repair Kit",
+      "availability": "Added to Rank Mode",
+      "description": "Utility item allowing players to repair damaged armor and helmets in-field"
+    }
+  ],
+  "auto_pickup_enhancements": [
+    {
+      "item_category": "Vests and Helmets",
+      "logic": "Auto pick up gear with higher remaining durability"
+    },
+    {
+      "item_category": "Backpack Accessories",
+      "logic": "Auto equip compatible attachments already present in player backpack"
+    },
+    {
+      "item_category": "Event Items",
+      "logic": "Added dedicated toggle option to auto pick up event items"
+    }
+  ]
+}
