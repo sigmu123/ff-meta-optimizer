@@ -1,0 +1,36 @@
+{
+  "patch_version": "OB51",
+  "character_balances": [
+    {
+      "character_id": "ford",
+      "name": "Ford",
+      "skill_name": "Iron Will",
+      "status": "nerfed",
+      "hp_recovery_rate": "18 HP/s",
+      "duration_seconds_old": 4,
+      "duration_seconds_new": 3,
+      "cooldown_seconds": 20,
+      "reset_trigger": "Releasing an active skill"
+    },
+    {
+      "character_id": "kairos",
+      "name": "Kairos",
+      "skill_name": "Defense Breaker",
+      "status": "nerfed",
+      "defense_mode": "Continuously recovers 2 EP/s",
+      "breaker_mode": "Consumes 20 EP/s",
+      "shield_armor_damage_percentage_old": 120.0,
+      "shield_armor_damage_percentage_new": 98.0
+    },
+    {
+      "character_id": "rin",
+      "name": "Rin",
+      "skill_name": "Gale of Kunai",
+      "status": "buffed",
+      "kunai_spawn_interval_seconds": 8,
+      "max_kunai": 3,
+      "max_damage": 12,
+      "buff_notes": "Increased launch speed and mid-to-short range damage"
+    }
+  ]
+}

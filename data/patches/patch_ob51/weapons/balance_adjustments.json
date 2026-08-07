@@ -1,0 +1,50 @@
+{
+  "patch_version": "OB51",
+  "weapon_balances": [
+    {
+      "weapon_id": "parafal",
+      "status": "buffed",
+      "buffs": { "armor_penetration": "+5%", "damage": "+3%", "accuracy": "+5%" }
+    },
+    {
+      "weapon_id": "thompson",
+      "status": "buffed_and_moved_to_airdrop",
+      "buffs": { "damage": "+3%", "armor_penetration": "+5%", "range": "+10%", "accuracy": "+5%", "scope": "2x Scope available" }
+    },
+    {
+      "weapon_id": "scar_series",
+      "status": "buffed",
+      "buffs": { "damage": "+3%", "rate_of_fire": "+3%" }
+    },
+    {
+      "weapon_id": "m4a1_series",
+      "status": "buffed",
+      "buffs": { "rate_of_fire": "+3%" }
+    },
+    {
+      "weapon_id": "m60_series",
+      "status": "buffed",
+      "buffs": { "damage": "+3%", "crouch_rate_of_fire": "+5%" }
+    },
+    {
+      "weapon_id": "m14_series",
+      "status": "buffed",
+      "buffs": { "rate_of_fire": "+10%" }
+    },
+    {
+      "weapon_id": "kar98k_series",
+      "status": "buffed",
+      "buffs": { "rate_of_fire": "+5%" }
+    },
+    {
+      "weapon_id": "famas_series",
+      "status": "buffed",
+      "buffs": { "consecutive_hits_damage_bonus": "+15%" }
+    },
+    {
+      "weapon_id": "mini_uzi",
+      "status": "nerfed",
+      "nerfs": { "magazine_capacity_old": 20, "magazine_capacity_new": 16 }
+    }
+  ]
+}

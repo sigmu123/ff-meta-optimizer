@@ -1,0 +1,15 @@
+{
+  "patch_version": "1.9.0_2018_01_09",
+  "weapon_mechanics_adjustments": [
+    {
+      "weapon_type": "AWM",
+      "control_scheme": "LEGACY_HOLD_TO_AIM",
+      "description": "Re-introduced legacy AWM firing and hold-to-aim controls based on player demand."
+    },
+    {
+      "category": "SCOPING_UI",
+      "applied_to": "ALL_SCOPES",
+      "description": "Revised scoping overlay UI. Crosshair dynamic color change added when target is acquired on enemy."
+    }
+  ]
+}

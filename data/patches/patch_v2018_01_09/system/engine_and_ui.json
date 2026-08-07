@@ -1,0 +1,27 @@
+{
+  "patch_version": "1.9.0_2018_01_09",
+  "hud_and_customization": {
+    "hud_customizer": "Full HUD Layout Customization enabled in Settings (element resizing supported).",
+    "looting_hud_overhaul": "Enlarged weapon, backpack, and ground loot icons for higher click precision."
+  },
+  "minimap_mechanics": {
+    "teammate_indicators": [
+      "KNOCKED_DOWN",
+      "FIRING",
+      "DRIVING",
+      "ELIMINATED"
+    ],
+    "enemy_vehicle_detection": "Visual minimap indicators for nearby moving vehicles."
+  },
+  "social_and_competitive_systems": {
+    "guild_system": "Guild creation and direct online squad invitation system.",
+    "event_system": "Time-limited challenge and reward event module.",
+    "leaderboards": "Seasonally resetting leaderboards sorted by Score, Kills, and Wins.",
+    "friend_invite": "Direct invites via Facebook and LINE integration."
+  },
+  "vehicle_physics_and_audio": {
+    "acceleration_nerf": "Vehicles acceleration slightly reduced.",
+    "terrain_impact": "Vehicle handling and speed heavily impacted by uneven map terrain.",
+    "engine_audio_level": "Surrounding vehicle sound decibels reduced."
+  }
+}

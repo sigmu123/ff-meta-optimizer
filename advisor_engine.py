@@ -8,7 +8,6 @@ if current_dir not in sys.path:
     sys.path.append(current_dir)
 
 from src.patch_router import PatchRouter
-from core.ttk_calculator import MechanicsEngine
 from patch_loader import PatchLoader
 from engine.combinatorial_tester import PermutationTester
 
@@ -19,37 +18,59 @@ class AdvisorEngine:
         self.active_patch_name = self.router.get_latest_patch_version() or "patch_ob54"
         self.loader = PatchLoader(patch_name=self.active_patch_name, base_dir=current_dir)
 
+    def extract_character_name(self, raw_id_or_data):
+        if isinstance(raw_id_or_data, dict):
+            return raw_id_or_data.get("character_name") or raw_id_or_data.get("character_id", "").title()
+        return str(raw_id_or_data).replace("_", " ").title()
+
     def run_isolated_advisor(self):
         start_time = time.time()
 
         tester = PermutationTester(patch_data=self.loader)
         results = tester.run_matrix_search(mode="clash_squad", playstyle="rush", top_k=1)
         
+        if not results or "top_build" not in results or not results["top_build"]:
+            print(f"[-] Error: No valid build options found for patch {self.active_patch_name}")
+            return
+
         best_build = results["top_build"]
         exec_time = round((time.time() - start_time) * 1000, 3)
 
         print("=" * 70)
-        print("    ISOLATED META ADVISOR ENGINE - SINGLE PATCH MODE")
+        print("    ISOLATED META ADVISOR ENGINE - CHARACTER MODE")
         print("=" * 70)
-        print(f"[*] Engine Latency: {exec_time}ms | Permutations Evaluated: {results['permutations_tested']}")
+        print(f"[*] Engine Latency: {exec_time}ms | Permutations Evaluated: {results.get('permutations_tested', 0)}")
         print(f"[*] Isolated Active Patch Target: {self.active_patch_name.upper()}")
         print("-" * 70)
         
-        print("\n1. Dynamic Optimal Setup (Evaluated Mathematically):")
-        print(f"   • Active Skill  : {best_build['character_loadout']['active_skill']}")
-        for idx, p in enumerate(best_build['character_loadout']['passives'], 1):
-            print(f"   • Passive {idx}     : {p}")
-        print(f"   • Pet           : {best_build['pet']}")
-        print(f"   • Loadout       : {best_build['item_loadout']}")
+        loadout = best_build.get('character_loadout', {})
+        
+        # Character Name Extraction
+        raw_active = loadout.get('active_skill', 'N/A')
+        active_char_name = self.extract_character_name(self.loader.active_skills.get(raw_active.lower(), raw_active))
+
+        passive_char_names = []
+        for p in loadout.get('passives', []):
+            p_data = self.loader.passive_skills.get(p.lower(), p)
+            passive_char_names.append(self.extract_character_name(p_data))
+
+        print("\n1. Dynamic Optimal Setup (Character Names Matched):")
+        print(f"   • Active Character  : {active_char_name}")
+        for idx, p_name in enumerate(passive_char_names, 1):
+            print(f"   • Passive {idx}         : {p_name}")
+        print(f"   • Pet Choice        : {best_build.get('pet', 'N/A')}")
+        print(f"   • Loadout           : {best_build.get('item_loadout', 'N/A')}")
 
         print("\n2. Weapon Analysis (Calculated Real Stats):")
-        sr = best_build['weapons']['short_range']
-        mr = best_build['weapons']['mid_range']
-        print(f"   • Primary (Close) : {sr['name']} | Eff Dmg: {sr['effective_dmg']} HP | BTK: {sr['btk']} | TTK: {sr['ttk']}s")
-        print(f"   • Secondary (Mid) : {mr['name']} | Eff Dmg: {mr['effective_dmg']} HP | BTK: {mr['btk']} | TTK: {mr['ttk']}s")
+        weapons = best_build.get('weapons', {})
+        sr = weapons.get('short_range', {})
+        mr = weapons.get('mid_range', {})
+        print(f"   • Primary (Close) : {sr.get('name', 'N/A')} | Eff Dmg: {sr.get('effective_dmg', 0)} HP | BTK: {sr.get('btk', 0)} | TTK: {sr.get('ttk', 0)}s")
+        print(f"   • Secondary (Mid) : {mr.get('name', 'N/A')} | Eff Dmg: {mr.get('effective_dmg', 0)} HP | BTK: {mr.get('btk', 0)} | TTK: {mr.get('ttk', 0)}s")
 
         print("\n3. Calculated Meta Decision:")
-        print(f"   • Projected Win Rate : {best_build['summary']['win_probability_pct']}%")
+        summary = best_build.get('summary', {})
+        print(f"   • Projected Win Rate : {summary.get('win_probability_pct', 'N/A')}%")
         print(f"   • Status             : Validated under active parameters of {self.active_patch_name.upper()}")
         print("=" * 70)
 

@@ -1,0 +1,16 @@
+{
+  "patch_version": "1.8.x_2017_12_19",
+  "airdrops": {
+    "enabled": true,
+    "deliveries": "Delivers rare weapons and elite equipment",
+    "exclusive_loot": [
+      "Groza"
+    ]
+  },
+  "environmental_hazards": {
+    "airstrikes": {
+      "enabled": true,
+      "description": "Red zone bombardment areas added to map"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "patch_version": "1.6.5",
+  "release_date": "2017-11-17",
+  "patch_title": "Closed Beta Map Expansion & Bug Fixes",
+  "global_metadata": {
+    "engine_version": "1.6.5",
+    "phase": "Closed Beta",
+    "critical_fixes": [
+      "Vehicle collision and stuck physics resolution",
+      "Map boundary expansion"
+    ]
+  },
+  "active_submodules": [
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json"
+  ]
+}

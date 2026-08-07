@@ -1,0 +1,32 @@
+{
+  "patch_version": "1.9.0_2018_01_09",
+  "new_weapons": [
+    {
+      "weapon_name": "SKS",
+      "weapon_type": "SNIPER_RIFLE / MARKSAMAN",
+      "acquisition_method": "GROUND_LOOT",
+      "pre_attached_attachment": "4x Scope",
+      "description": "Semi-automatic sniper rifle with pre-equipped 4x scope."
+    },
+    {
+      "weapon_name": "Pan",
+      "weapon_type": "MELEE",
+      "acquisition_method": "GROUND_LOOT",
+      "effective_range": "VERY_SHORT",
+      "special_mechanics": {
+        "bullet_deflection": true,
+        "description": "Short range melee weapon capable of blocking incoming bullets."
+      }
+    },
+    {
+      "weapon_name": "Parang",
+      "weapon_type": "MELEE",
+      "acquisition_method": "GROUND_LOOT",
+      "effective_range": "MEDIUM_MELEE",
+      "special_mechanics": {
+        "bullet_deflection": true,
+        "description": "Longer reach than Pan, capable of blocking incoming bullets."
+      }
+    }
+  ]
+}

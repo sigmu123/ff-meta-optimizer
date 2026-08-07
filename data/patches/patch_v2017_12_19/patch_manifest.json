@@ -1,0 +1,17 @@
+{
+  "patch_version": "1.8.x_2017_12_19",
+  "release_date": "2017-12-19",
+  "patch_title": "Full Island Release & Groza Update",
+  "global_metadata": {
+    "maintenance_window": "6:00 AM to 1:30 PM (UTC+8) Dec 19",
+    "max_player_capacity": 50,
+    "app_store_url": "https://goo.gl/2RHaaF"
+  },
+  "active_submodules": [
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "battle_royale/economy_and_loot.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json"
+  ]
+}

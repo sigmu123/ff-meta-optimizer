@@ -1,0 +1,17 @@
+{
+  "patch_version": "1.6.5",
+  "engine_bug_fixes": [
+    {
+      "category": "VEHICLE_PHYSICS",
+      "issue": "Players getting stuck inside vehicles",
+      "status": "RESOLVED",
+      "description": "Fixed vehicle collision box and player ejection clipping issues."
+    }
+  ],
+  "features": [
+    {
+      "feature_type": "GENERAL",
+      "description": "Minor quality of life features added during Closed Beta."
+    }
+  ]
+}

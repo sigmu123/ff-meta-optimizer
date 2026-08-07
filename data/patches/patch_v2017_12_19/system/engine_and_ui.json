@@ -1,0 +1,23 @@
+{
+  "patch_version": "1.8.x_2017_12_19",
+  "ui_overhaul": {
+    "user_interface": "Complete facelift and new UI design",
+    "account_progression": "Level-up rewards system integrated"
+  },
+  "qol_and_audio": {
+    "sound_enhancements": "Improved footsteps, gunshots, and environmental sound effects",
+    "animation_enhancements": "Updated player movement and action animations"
+  },
+  "bug_fixes": [
+    {
+      "system": "VOICE_CHAT",
+      "issue": "Voice chat failure in auto-matching lobby games",
+      "status": "FIXED"
+    },
+    {
+      "system": "VEHICLE_PHYSICS",
+      "issue": "Players unable to exit/get out of cars",
+      "status": "FIXED"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "patch_version": "OB51",
+  "new_weapons": [
+    {
+      "weapon_id": "winchester",
+      "name": "Winchester",
+      "class": "Marksman Rifle",
+      "fire_mode": "2-round burst",
+      "reload_mechanism": "Partial reload",
+      "tiers": [
+        { "tier": "Base", "reload": "2 bullets at a time", "rof": "Base" },
+        { "tier": "Winchester-I", "reload": "4 bullets at a time", "rof": "+" },
+        { "tier": "Winchester-II", "reload": "4 bullets at a time", "rof": "++" },
+        { "tier": "Winchester-III", "reload": "6 bullets at a time", "rof": "+++" }
+      ],
+      "sources": { "br": ["Ground loot", "Vending Machines"], "cs": ["CS Store"] }
+    },
+    {
+      "weapon_id": "thompson_x",
+      "name": "Thompson-X",
+      "class": "SMG (Airdrop/CS Exclusive Variant)",
+      "attributes": {
+        "damage_buff": "+3%",
+        "rate_of_fire_buff": "+8%",
+        "armor_penetration_buff": "+18%",
+        "range_buff": "+15%",
+        "reload_speed_buff": "+15%",
+        "accuracy_buff": "+5%",
+        "attachment": "2x Scope pre-equipped"
+      }
+    }
+  ]
+}
