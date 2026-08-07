@@ -1,0 +1,9 @@
+{
+  "loadouts": [
+    {
+      "loadout_name": "Resupply Map",
+      "category": "Survival Loadout",
+      "utility": "Marks a specific resupply point location on the map for players to visit and collect additional loot"
+    }
+  ]
+}
