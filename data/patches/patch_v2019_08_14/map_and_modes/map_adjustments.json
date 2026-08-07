@@ -1,0 +1,49 @@
+{
+  "new_modes": [
+    {
+      "mode_name": "Clash Squad",
+      "format": "4v4 Round-Based Squad Combat",
+      "mechanics": "Economy management and round purchasing system on designated Bermuda zones"
+    },
+    {
+      "mode_name": "Death Uprising",
+      "updates": "Added a new Zombie variant type"
+    }
+  ],
+  "map_geographical_adjustments": [
+    {
+      "map_name": "Bermuda",
+      "structural_changes": [
+        {
+          "location": "Factory",
+          "modifications": [
+            "Added a skywindow/skylight opening on the Factory roof",
+            "Added additional structural platforms inside Factory"
+          ]
+        },
+        {
+          "location": "Bullseye",
+          "modifications": [
+            "Optimized item and vehicle collision geometry in the Bullseye hallway"
+          ]
+        },
+        {
+          "location": "Bermuda General",
+          "modifications": [
+            "Mysterious walls introduced across map terrain",
+            "Building texture optimization for frame-rate performance",
+            "Indoor lighting and brightness adjustments for enhanced visibility"
+          ]
+        }
+      ]
+    }
+  ],
+  "hazardous_zones": [
+    {
+      "zone_name": "Toxic Zone",
+      "adjustment_type": "Nerf / Damage Reduction",
+      "damage_interval": "Damage tick frequency slowed down from every 1 second to every 2 seconds",
+      "impact": "Increases player survival time and reaction window when caught inside"
+    }
+  ]
+}
