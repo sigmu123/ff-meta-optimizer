@@ -1,0 +1,21 @@
+{
+  "patch_version": "1.9.0_2018_01_09",
+  "release_date": "2018-01-09",
+  "patch_title": "Diamonds Currency, Melee Weapons & Guild System Update",
+  "global_metadata": {
+    "announcement_date": "2018-01-08",
+    "maintenance_window": "6:00 AM to 2:30 PM (UTC+8) Jan 9",
+    "app_store_url": "https://goo.gl/2RHaaF",
+    "social_integrations": [
+      "Facebook",
+      "LINE"
+    ]
+  },
+  "active_submodules": [
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json",
+    "loadouts/loadout_system.json"
+  ]
+}
