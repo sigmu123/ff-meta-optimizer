@@ -1,0 +1,15 @@
+{
+  "patch_id": "patch_ob51",
+  "patch_name": "Patch OB51 Update",
+  "version": "51.0",
+  "release_date": "2025-11-01",
+  "meta_period": "Late-2025",
+  "is_active": true,
+  "summary": "OB51 Patch update featuring character balances, weapon tweaks, and map mechanics.",
+  "files_included": [
+    "characters/active_skills.json",
+    "characters/passive_skills.json",
+    "weapons/base_attributes.json",
+    "mechanics/map_tactics.json"
+  ]
+}
