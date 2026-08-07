@@ -1,0 +1,73 @@
+{
+  "patch_version": "OB53",
+  "patch_date": "2026-04-02",
+  "category": "passive_skills_and_rebalances",
+  "passive_skills": [
+    {
+      "character_id": "dasha",
+      "character_name": "Dasha",
+      "skill_name": "Partying On",
+      "type": "Elimination Streak / Buff",
+      "status": "buffed",
+      "trigger": "knockdown_enemy",
+      "highlight_mode": {
+        "base_rate_of_fire_boost_pct": 18.0,
+        "base_movement_speed_boost_pct": 12.0,
+        "duration_seconds": 10.0,
+        "previous_duration_seconds": 6.0,
+        "consecutive_knockdown_bonus": {
+          "resets_duration": true,
+          "additional_rate_of_fire_boost_pct": 4.0,
+          "additional_movement_speed_boost_pct": 3.0
+        }
+      }
+    },
+    {
+      "character_id": "shani",
+      "character_name": "Shani",
+      "skill_name": "Gear Recycle",
+      "type": "Support / Shield Protection",
+      "status": "buffed",
+      "trigger": "active_skill_use",
+      "shield_points_given": 30,
+      "affect_radius_meters": 10.0,
+      "shield_decay_duration_seconds": 16.0,
+      "previous_shield_decay_duration_seconds": 5.0,
+      "cooldown_seconds": 10
+    },
+    {
+      "character_id": "jota",
+      "character_name": "Jota",
+      "skill_name": "Sustained Raids",
+      "type": "HP Recovery / Combat",
+      "status": "buffed",
+      "gun_hit_hp_recovery": "enabled",
+      "knockdown_hp_recovery_pct": 20.0,
+      "knockdown_condition": "any_method (previously restricted to guns only)"
+    },
+    {
+      "character_id": "moco",
+      "character_name": "Moco",
+      "skill_name": "Enigma's Eve",
+      "type": "Information / Tracking",
+      "status": "nerfed",
+      "base_mark_duration_seconds": 3.0,
+      "previous_base_mark_duration_seconds": 4.0,
+      "moving_enemy_max_mark_duration_seconds": 4.0,
+      "previous_moving_enemy_max_mark_duration_seconds": 5.5,
+      "shares_info_with_teammates": true
+    },
+    {
+      "character_id": "otho",
+      "character_name": "Otho",
+      "skill_name": "Memory Mist",
+      "type": "Information / Slow Debuff",
+      "status": "nerfed",
+      "knockdown_mark_radius_meters": 20.0,
+      "movement_speed_slow_pct": 25.0,
+      "mark_duration_seconds": 3.0,
+      "previous_mark_duration_seconds": 4.0,
+      "retaliation_mark_on_self_knockdown": true
+    }
+  ]
+}
