@@ -1,0 +1,12 @@
+{
+  "version": "v2018_04_17",
+  "publish_date": "2018-04-17",
+  "active_submodules": [
+    "characters/new_character.json",
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "battle_royale/economy_and_loot.json",
+    "system/engine_and_ui.json"
+  ]
+}
