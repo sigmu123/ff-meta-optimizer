@@ -1,0 +1,11 @@
+{
+  "version": "v2019_01_22",
+  "publish_date": "2019-01-22",
+  "active_submodules": [
+    "characters/new_character.json",
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json"
+  ]
+}
