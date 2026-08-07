@@ -1,0 +1,28 @@
+{
+  "weapon_balance_and_optimizations": [
+    {
+      "weapon_name": "Crossbow",
+      "adjustment_type": "Buff",
+      "changes": [
+        {
+          "attribute": "Damage",
+          "adjustment": "Increased damage output"
+        },
+        {
+          "attribute": "Projectile Velocity",
+          "adjustment": "Increased arrow flight speed"
+        }
+      ]
+    },
+    {
+      "weapon_category": "Melee Weapons",
+      "adjustment_type": "Optimization",
+      "changes": [
+        {
+          "attribute": "Melee Mechanics",
+          "adjustment": "General melee weapon handling and hit detection optimization"
+        }
+      ]
+    }
+  ]
+}
