@@ -1,0 +1,11 @@
+{
+  "version": "v2020_02_25",
+  "patch_name": "Kalahari",
+  "publish_date": "2020-02-25",
+  "active_submodules": [
+    "characters.json",
+    "weapons.json",
+    "modes_and_economy.json",
+    "gameplay_mechanics.json"
+  ]
+}
