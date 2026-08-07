@@ -1,0 +1,8 @@
+{
+  "character_system_updates": {
+    "skill_slot_system": {
+      "enabled": true,
+      "description": "Allows affixing an additional extra skill slot onto characters"
+    }
+  }
+}
