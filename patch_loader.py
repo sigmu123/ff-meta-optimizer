@@ -45,6 +45,7 @@ class PatchLoader:
                 if not data:
                     continue
 
+                # Unified Active Skills Ingestion
                 if file_name == "active_skills.json":
                     skill_list = data.get("active_skills", []) if isinstance(data, dict) else data
                     if isinstance(skill_list, list):
@@ -58,6 +59,7 @@ class PatchLoader:
                             if isinstance(v, dict):
                                 self.active_skills[str(k).lower()] = v
 
+                # Unified Passive Skills Ingestion
                 elif file_name == "passive_skills.json":
                     skill_list = data.get("passive_skills", []) if isinstance(data, dict) else data
                     if isinstance(skill_list, list):
@@ -71,31 +73,37 @@ class PatchLoader:
                             if isinstance(v, dict):
                                 self.passive_skills[str(k).lower()] = v
 
-                elif file_name in ["characters.json", "skills_rework.json"]:
+                # Legacy & Rework Character Files Ingestion
+                elif file_name in ["characters.json", "skills_rework.json", "balance_adjustments.json", "new_character.json"]:
                     if isinstance(data, dict):
-                        char_list = data.get("character_adjustments", []) or data.get("updates", [])
+                        char_list = data.get("character_adjustments", []) or data.get("updates", []) or data.get("character_balances", [])
                         if isinstance(char_list, list):
                             for c in char_list:
                                 if isinstance(c, dict):
                                     c_id = c.get("character_id") or c.get("character_name") or c.get("id") or c.get("name")
                                     if c_id:
-                                        self.characters[str(c_id).lower()] = c
+                                        # Distribute based on type or general storage
+                                        if c.get("type", "").lower() == "active" or "active" in file_name:
+                                            self.active_skills[str(c_id).lower()] = c
+                                        else:
+                                            self.passive_skills[str(c_id).lower()] = c
                         else:
                             for k, v in data.items():
                                 if isinstance(v, dict):
                                     self.characters[str(k).lower()] = v
 
-                elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json", "weapon_adjustments.json"]:
-                    w_list = data.get("weapons", []) if isinstance(data, dict) else []
+                # Unified Weapon Attributes Ingestion
+                elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json", "new_weapons.json"]:
+                    w_list = data.get("weapons", []) or data.get("new_weapons", []) or data.get("weapon_balances", []) or data.get("weapon_adjustments", [])
                     if isinstance(w_list, list) and len(w_list) > 0:
                         for w in w_list:
                             if isinstance(w, dict):
-                                w_id = w.get("weapon_id") or w.get("name") or w.get("weapon_name")
+                                w_id = w.get("weapon_id") or w.get("name") or w.get("weapon_name") or w.get("weapon")
                                 if w_id:
                                     self.weapons[str(w_id).lower()] = w
                     elif isinstance(data, dict):
                         for k, v in data.items():
-                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics", "global_weapon_mechanics", "weapon_tier_system"]:
+                            if k not in ["patch_version", "patch_date", "category", "weapon_tier_system", "global_weapon_mechanics"]:
                                 if isinstance(v, dict):
                                     self.weapons[str(k).lower()] = v
 
