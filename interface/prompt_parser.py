@@ -2,29 +2,56 @@ import re
 from typing import Dict, Any
 
 class PromptParser:
-    """
-    Parses natural language query input into structured parameters for the execution engine.
-    """
     @staticmethod
-    def parse(prompt_string: str) -> Dict[str, Any]:
-        prompt_lower = prompt_string.lower()
-        
-        mode = "clash_squad"
-        if "br" in prompt_lower or "battle royale" in prompt_lower:
+    def parse(prompt_text: str) -> Dict[str, Any]:
+        """
+        Parses raw Roman Urdu or English user prompts into structured parameters.
+        Extracts patch version, game mode, playstyle, and primary stat intent.
+        """
+        text = prompt_text.lower().strip()
+
+        # 1. Extract Patch Version (e.g., ob34, ob54, patch_ob52)
+        patch_match = re.search(r'(ob\d+|patch_[a-z0-9_]+|v\d+)', text)
+        patch_version = patch_match.group(1) if patch_match else "patch_ob54"
+        if not patch_version.startswith("patch_") and patch_version.startswith("ob"):
+            patch_version = f"patch_{patch_version}"
+
+        # 2. Extract Game Mode (CS vs BR)
+        if any(term in text for term in ["cs", "clash squad", "round"]):
+            mode = "clash_squad"
+        elif any(term in text for term in ["br", "battle royale", "map", "zone"]):
             mode = "battle_royale"
-        elif "cs" in prompt_lower or "clash squad" in prompt_lower:
+        else:
             mode = "clash_squad"
 
-        playstyle = "balanced"
-        if "rush" in prompt_lower or "aggro" in prompt_lower or "close" in prompt_lower:
+        # 3. Extract Playstyle Intent
+        if any(term in text for term in ["rush", "fast", "speed", "close range"]):
             playstyle = "rush"
-        elif "sniper" in prompt_lower or "long" in prompt_lower or "defense" in prompt_lower:
-            playstyle = "sniper"
-        elif "support" in prompt_lower or "heal" in prompt_lower:
+        elif any(term in text for term in ["defense", "hold", "camp", "shield", "cover"]):
+            playstyle = "defense"
+        elif any(term in text for term in ["sniper", "long range", "support"]):
             playstyle = "support"
+        else:
+            playstyle = "balanced"
+
+        # 4. Extract Damage / Stat Preference
+        if any(term in text for term in ["high damage", "heavy dmg", "dps", "kill"]):
+            focus = "damage"
+        elif any(term in text for term in ["heal", "hp", "survival"]):
+            focus = "survival"
+        else:
+            focus = "balanced"
 
         return {
+            "patch_version": patch_version,
             "mode": mode,
             "playstyle": playstyle,
-            "raw_prompt": prompt_string
+            "focus": focus,
+            "raw_prompt": prompt_text
         }
+
+
+if __name__ == "__main__":
+    test_prompt = "OB54 CS Ranked rush build with high damage"
+    parsed = PromptParser.parse(test_prompt)
+    print("[PARSER UNIT TEST]:", parsed)
