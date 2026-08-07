@@ -1,0 +1,76 @@
+{
+  "patch_version": "OB52",
+  "active_skills": [
+    {
+      "character_id": "morse",
+      "character_name": "Morse",
+      "skill_name": "Stealth Bytes",
+      "type": "Active",
+      "cooldown_seconds": 45,
+      "duration_seconds": 15,
+      "speed_boost": "20%",
+      "stealth_range_meters": 16,
+      "aim_assist_trigger_range_meters": 4,
+      "exit_delay_seconds": 1,
+      "firing_allowed": false,
+      "description": "Enters Stealth mode: hard to be seen beyond 16m, cannot be detected by enemies, gains 20% speed boost. Aim assist triggers within 4m. Cannot fire while stealthed. 1s exit delay."
+    },
+    {
+      "character_id": "tatsuya",
+      "character_name": "Tatsuya",
+      "skill_name": "Rebel Rush",
+      "type": "Active",
+      "cooldown_seconds": 98,
+      "duration_seconds": 0.3,
+      "previous_cooldown_seconds": 128,
+      "reset_condition": "Knocking down an enemy within 19s after skill release resets cooldown."
+    },
+    {
+      "character_id": "wukong",
+      "character_name": "Wukong",
+      "skill_name": "Camouflage",
+      "type": "Active",
+      "cooldown_seconds": 98,
+      "duration_seconds": 10,
+      "previous_cooldown_seconds": 120,
+      "speed_reduction": "10%",
+      "reset_condition": "CD resets when taking down an enemy within 10s after skill release."
+    },
+    {
+      "character_id": "xayne",
+      "character_name": "Xayne",
+      "skill_name": "Xtreme Encounter",
+      "type": "Active",
+      "cooldown_seconds": 75,
+      "duration_seconds": 15,
+      "previous_duration_seconds": 12,
+      "shield_points": 70,
+      "previous_shield_points": 50,
+      "reset_condition": "Knockdown restores temporary Shield Points back to 70 and resets state duration."
+    },
+    {
+      "character_id": "nero",
+      "character_name": "Nero",
+      "skill_name": "Plushie Control",
+      "type": "Active",
+      "adjustment": "Plushie can now pass through all cover including ground, building floors, and ceilings. Fixed issue where skill accidentally disabled own Gloo Walls."
+    },
+    {
+      "character_id": "santino",
+      "character_name": "Santino",
+      "skill_name": "Mannequin Teleport",
+      "type": "Active",
+      "adjustment": "Mannequin can now be placed and used on trains and rails in the Studio area of Solara."
+    },
+    {
+      "character_id": "alok",
+      "character_name": "Alok",
+      "skill_name": "Drop the Beat",
+      "type": "Active",
+      "bug_fixes": [
+        "Fixed effective skill range mismatch with VFX range.",
+        "Fixed movement speed boost failing to apply."
+      ]
+    }
+  ]
+}
