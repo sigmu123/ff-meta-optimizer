@@ -1,0 +1,23 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "Landmine",
+      "adjustments": {
+        "maximum_damage": 205,
+        "previous_maximum_damage": 300,
+        "minimum_damage": 120,
+        "previous_minimum_damage": 100,
+        "detonation_delay_increase_percentage": 18
+      },
+      "tactical_intent": "Prevents single-hit instant kills while standardizing minimum damage impact"
+    }
+  ],
+  "rank_mode_pool_additions": [
+    "M60 - Spiral Charger",
+    "MP5 - Electrical Booster",
+    "M1887",
+    "Hand Cannon",
+    "Plasma Gun",
+    "Level 4 Helmet"
+  ]
+}
