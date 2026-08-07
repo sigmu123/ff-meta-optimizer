@@ -1,0 +1,13 @@
+{
+  "patch_id": "patch_ob52",
+  "patch_name": "OB52 Patch Update",
+  "version": "52.0",
+  "release_date": "2026-01-14",
+  "is_active": true,
+  "files": {
+    "active_skills": "characters/active_skills.json",
+    "passive_skills": "characters/passive_skills.json",
+    "base_attributes": "weapons/base_attributes.json",
+    "map_tactics": "mechanics/map_tactics.json"
+  }
+}
