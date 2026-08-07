@@ -1,0 +1,21 @@
+{
+  "new_maps": [
+    {
+      "map_name": "Purgatory",
+      "status": "Newly Introduced Map",
+      "exclusive_traversal_mechanics": [
+        {
+          "feature": "Ziplines",
+          "utility": "Rapid aerial cable travel between designated high-ground and terrain locations across Purgatory"
+        }
+      ]
+    }
+  ],
+  "environmental_objects": [
+    {
+      "object_type": "Tyres",
+      "function": "Jump pads / high-bounce movement elements placed across terrain",
+      "change": "Increased quantity deployed around map locations"
+    }
+  ]
+}
