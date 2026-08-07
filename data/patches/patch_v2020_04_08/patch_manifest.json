@@ -1,0 +1,14 @@
+{
+  "version": "v2020_04_08",
+  "patch_name": "Clash Squad Goes Ranked!",
+  "publish_date": "2020-04-08",
+  "active_submodules": [
+    "characters/new_character.json",
+    "characters/pets.json",
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/cs_store.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json"
+  ]
+}
