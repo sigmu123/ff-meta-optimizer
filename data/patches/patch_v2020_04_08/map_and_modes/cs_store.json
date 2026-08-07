@@ -1,0 +1,32 @@
+{
+  "clash_squad_updates": {
+    "ranked_mode": {
+      "status": "Launched",
+      "pre_season_start_date": "2020-04-09 15:00 SGT",
+      "ranking_system": "Separate and independent mechanism from Battle Royale Rank Mode"
+    },
+    "new_items": [
+      {
+        "item_name": "Smoke Grenade",
+        "availability": "Clash Squad Store ONLY",
+        "price": 300,
+        "max_carry_limit_per_player": 1,
+        "smoke_duration_seconds": 25
+      }
+    ],
+    "store_adjustments": [
+      {
+        "item_name": "Kar98k",
+        "change": "Pre-equipped with Biometric Scope attachment by default"
+      },
+      {
+        "item_name": "XM8",
+        "change": "Price Increased"
+      },
+      {
+        "item_name": "M1014",
+        "change": "Price Increased"
+      }
+    ]
+  }
+}
