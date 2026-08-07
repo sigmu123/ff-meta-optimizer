@@ -1,0 +1,9 @@
+{
+  "loadouts": [
+    {
+      "loadout_name": "Scanner",
+      "category": "Pre-game Survival Gadget / Loadout",
+      "utility": "Reveals enemy counts and positions inside the transport plane and during initial parachuting phase"
+    }
+  ]
+}
