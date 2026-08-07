@@ -1,0 +1,15 @@
+{
+  "melee_hitbox_adjustments": [
+    {
+      "weapon_name": "Pan",
+      "adjustment": "Slightly reduced physical size / collision model"
+    },
+    {
+      "weapon_name": "Parang",
+      "adjustment": "Slightly reduced physical size / collision model"
+    }
+  ],
+  "equipment_durability_adjustments": {
+    "durability_balance": "Minor tweaks applied to armor/equipment durability"
+  }
+}
