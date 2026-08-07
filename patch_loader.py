@@ -88,7 +88,7 @@ class PatchLoader:
                                     self.weapons[str(w_id).lower()] = w
                     elif isinstance(data, dict):
                         for k, v in data.items():
-                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics", "global_weapon_mechanics", "weapon_tier_system", "global_weapon_mechanics"]:
+                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics", "global_weapon_mechanics", "weapon_tier_system"]:
                                 if isinstance(v, dict):
                                     self.weapons[str(k).lower()] = v
 
