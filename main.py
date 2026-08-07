@@ -15,7 +15,10 @@ from interface.prompt_parser import PromptParser
 
 
 def get_patch_timestamp(patch_dir, patch_name):
-    """Metadata/Manifest ya System File time se patch ki freshness check karta hai."""
+    """
+    Metadata/Manifest ya System File time se patch ki freshness check karta hai.
+    Hamesha Numeric Float return karta hai taakay sorting mein TypeError na aaye.
+    """
     full_path = os.path.join(patch_dir, patch_name)
     for meta_file in ["patch_manifest.json", "metadata.json", "patch.json"]:
         json_path = os.path.join(full_path, meta_file)
@@ -23,14 +26,18 @@ def get_patch_timestamp(patch_dir, patch_name):
             try:
                 with open(json_path, 'r', encoding='utf-8') as f:
                     data = json.load(f)
-                    if "release_date" in data or "release_timestamp" in data:
-                        return str(data.get("release_date") or data.get("release_timestamp"))
+                    val = data.get("release_date") or data.get("release_timestamp")
+                    if val is not None:
+                        try:
+                            return float(val)
+                        except (ValueError, TypeError):
+                            return float(os.path.getmtime(json_path))
             except Exception:
                 pass
     try:
-        return os.path.getmtime(full_path)
+        return float(os.path.getmtime(full_path))
     except Exception:
-        return 0
+        return 0.0
 
 
 def extract_patch_entities(patch_name):
@@ -103,7 +110,6 @@ def run_cross_patch_optimizer():
         return
 
     # 2. INFINITE COMBINATIONS CONTROL (Smart Pruning Engine)
-    # Billions tak jaane se rokne ke liye har category ke top performers filter kiye jaate hain
     active_keys = list(aggregated_actives.keys())
     passive_keys = list(aggregated_passives.keys())
     weapon_keys = list(aggregated_weapons.keys())
