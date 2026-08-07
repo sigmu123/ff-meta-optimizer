@@ -1,0 +1,23 @@
+{
+  "patch_version": "1.9.0_2018_01_09",
+  "map_updates": [
+    {
+      "map_name": "Bermuda",
+      "environmental_changes": [
+        {
+          "zone_type": "SHALLOW_WATER",
+          "character_movement_multiplier": 0.7,
+          "vehicle_speed_multiplier": 0.6,
+          "audio_feedback": "Water splashing sound effects added."
+        },
+        {
+          "texture_overhaul": "Island terrain and foliage textures updated for a remote island visual feel."
+        }
+      ]
+    }
+  ],
+  "seasonal_cleanup": {
+    "removed_theme": "Christmas Festive Decor & Audio",
+    "status": "REVERTED_TO_DEFAULT"
+  }
+}
