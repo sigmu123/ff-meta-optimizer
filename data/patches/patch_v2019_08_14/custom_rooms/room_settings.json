@@ -1,0 +1,20 @@
+{
+  "custom_room_configuration_options": [
+    {
+      "parameter": "Vehicles Spawn",
+      "configurable": true
+    },
+    {
+      "parameter": "Movement Speed",
+      "configurable": true
+    },
+    {
+      "parameter": "Jumping Height",
+      "configurable": true
+    },
+    {
+      "parameter": "Unlimited Ammo",
+      "status": "Fixed bug where setting failed to function during matches"
+    }
+  ]
+}
