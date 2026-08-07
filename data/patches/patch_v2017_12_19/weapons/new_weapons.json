@@ -1,0 +1,18 @@
+{
+  "patch_version": "1.8.x_2017_12_19",
+  "new_weapons": [
+    {
+      "weapon_name": "Groza",
+      "weapon_type": "AR",
+      "acquisition_method": "AIRDROP_EXCLUSIVE",
+      "aim_assist_enabled": true,
+      "supported_attachments": [
+        "red_dot",
+        "scopes",
+        "muzzle",
+        "foregrip",
+        "magazine"
+      ]
+    }
+  ]
+}
