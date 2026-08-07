@@ -1,0 +1,11 @@
+{
+  "clash_squad_updates": {
+    "availability": "Permanent Mode",
+    "combat_and_economics": [
+      { "feature": "First Blood Bonus", "gold_reward": 100 },
+      { "feature": "Progressive Economy", "effect": "Additional passive gold given to both teams each round as match progresses" },
+      { "feature": "Bleed Out Penalty", "effect": "Players bleed out faster on consecutive downs" },
+      { "feature": "Kill Feedback", "effect": "Added first blood and multi-kill visual/audio effects" }
+    ]
+  }
+}
