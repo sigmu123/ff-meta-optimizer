@@ -1,6 +1,3 @@
-================================================
-FILE: interface/prompt_parser.py
-================================================
 import re
 from typing import Dict, Any
 
