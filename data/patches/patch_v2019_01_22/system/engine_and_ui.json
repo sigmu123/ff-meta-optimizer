@@ -1,0 +1,40 @@
+{
+  "connection_and_reconnect_engine": [
+    {
+      "feature": "Spawn Island Reconnection",
+      "description": "Allows players who disconnect during the Spawn Island phase to reconnect back to the match"
+    },
+    {
+      "feature": "Spectator Mode Reconnection",
+      "description": "Allows eliminated/spectating players to reconnect if disconnected while spectating"
+    }
+  ],
+  "pet_system_gameplay_mechanics": [
+    {
+      "feature": "In-game Pet Interaction",
+      "description": "Pets now interact with the player model during active gameplay matches as well as in the main lobby"
+    },
+    {
+      "feature": "In-game Pet Emotes",
+      "description": "Pet emotes can now be triggered during active matches"
+    }
+  ],
+  "ui_and_system_optimizations": [
+    {
+      "element": "Main Lobby UI",
+      "description": "Main lobby interface layout and navigational improvements"
+    },
+    {
+      "element": "Party Invite System",
+      "description": "Optimized party inviting workflow and squad joining"
+    },
+    {
+      "element": "Collection & Event Tabs",
+      "description": "Interface performance and visual layout optimization"
+    },
+    {
+      "element": "Personal Messaging",
+      "description": "Optimized chat and personal messaging performance"
+    }
+  ]
+}
