@@ -1,0 +1,57 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "SKS",
+      "category": "Marksman Rifle",
+      "adjustments": {
+        "rate_of_fire": "Increased",
+        "body_shot_damage_multiplier": "Added",
+        "armor_penetration_increase_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "SVD",
+      "category": "Marksman Rifle (Airdrop)",
+      "adjustments": {
+        "body_shot_damage_increase_percentage": 50,
+        "armor_penetration_increase_percentage": 30
+      }
+    },
+    {
+      "weapon_name": "M1887",
+      "category": "Shotgun",
+      "adjustments": {
+        "effective_range_reduction_percentage": 15,
+        "minimum_damage": "-2"
+      }
+    },
+    {
+      "weapon_name": "M14",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "damage_ratio": { "previous": 50, "new": 58 },
+        "minimum_damage": { "previous": 20, "new": 30 }
+      }
+    },
+    {
+      "weapon_name": "VSS",
+      "attachment": "Ripper Bullet",
+      "adjustments": {
+        "bleeding_damage_per_tick": { "previous": 7, "new": 8 }
+      }
+    },
+    {
+      "weapon_name": "Kar98k",
+      "attachment": "Biometric Scope",
+      "adjustments": {
+        "unscope_time_delay_after_shot_percentage": -30
+      }
+    },
+    {
+      "weapon_name": "Inhaler",
+      "adjustments": {
+        "hp_ep_restriction": "Removed (Can now be used at any EP/HP level)"
+      }
+    }
+  ]
+}
