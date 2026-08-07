@@ -1,0 +1,79 @@
+{
+  "patch_version": "OB51",
+  "system_status": "reworked",
+  "description": "Original eight loadouts replaced with 4 brand-new loadouts.",
+  "loadouts": [
+    {
+      "loadout_id": "team_booster",
+      "name": "Team Booster",
+      "role": "Support",
+      "battle_royale": {
+        "max_boost_slots": 3,
+        "available_boosts_count": 6,
+        "slot_1_unlock": "Free at match start",
+        "slot_2_unlock_cost_coins": 400,
+        "slot_3_unlock_cost_coins": 800,
+        "swap_allowed_anytime": true,
+        "persists_after_revival": true,
+        "unique_boosts": [
+          { "id": "hp_ep_recovery", "effect": "Restore 2 EP and 1 HP every second" },
+          { "id": "speed_up", "effect": "Move 7% faster after not firing/taking damage for 4s" },
+          { "id": "extra_heal", "effect": "Receive 10% more healing. Effect disappears 2s after taking out-of-zone damage" },
+          { "id": "out_zone_buff", "effect": "Outside Safe Zone: EP conversion rate +200%, move 7% faster" },
+          { "id": "gloo_wall", "effect": "Increase Gloo Wall HP by 180" },
+          { "id": "armor", "effect": "Restore 3% armor durability every second" }
+        ]
+      },
+      "clash_squad": {
+        "item": "Helper Bot per round",
+        "rescue_range_meters": 16,
+        "base_revive_time_seconds": 7.5,
+        "thiva_boosted_revive_time_seconds": 4.0,
+        "destructible": true,
+        "store_addition": "Secret Bazaar section in CS Store for team buffs"
+      }
+    },
+    {
+      "loadout_id": "enhance_hammer",
+      "name": "Enhance Hammer",
+      "role": "Firepower Support",
+      "battle_royale": {
+        "enhancement_cost_coins": 600,
+        "target": "Self or teammate weapon"
+      },
+      "clash_squad": {
+        "token_grant": "1 Hammer Token for every 2 eliminations",
+        "usage": "Enhance weapons in CS Store or enhance Gloo Walls to carry up to 6"
+      }
+    },
+    {
+      "loadout_id": "tactical_market",
+      "name": "Tactical Market",
+      "role": "Gadget Deployment",
+      "battle_royale": {
+        "purchasable_items": ["Info Box", "Arsenal Key", "Hit List", "Tactical Gadgets", "Monster Truck", "Bolt Maker"],
+        "bolt_maker": {
+          "max_per_match": 5,
+          "availability_window_seconds": 600,
+          "duration_seconds": 30,
+          "effect": "Lightning strikes inside zone 1x/sec dealing 68 DMG to enemies; teammates immune"
+        }
+      },
+      "clash_squad": {
+        "selectable_gadgets": [
+          { "name": "Super Bonfire", "effect": "Heals teammates within 8m and provides combat boosts" },
+          { "name": "Smoke Vortex", "effect": "Swirling smoke field blocking vision" },
+          { "name": "Cyber Barricade", "effect": "Large barriers for cover" }
+        ]
+      }
+    },
+    {
+      "loadout_id": "super_leg_pockets",
+      "name": "Super Leg Pockets",
+      "role": "Utility Merge",
+      "description": "Merges Leg Pockets, Bonfire, and Armor Crate",
+      "battle_royale": ["Bonfire", "Additional Backpack Space", "Extra Armor", "Other Items"],
+      "clash_squad": ["Bonfire", "Katana", "Extra Armor", "Other Items"]
+    }
+  ]
+}
