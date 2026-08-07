@@ -1,0 +1,12 @@
+{
+  "character_system_updates": [
+    {
+      "feature": "Active Skill Exchange",
+      "rule": "Players can equip active skills of other characters in character menu, provided no other active skill is equipped"
+    },
+    {
+      "feature": "Skill Activation Indicators",
+      "rule": "Passive skill UI icons light up upon active triggering"
+    }
+  ]
+}
