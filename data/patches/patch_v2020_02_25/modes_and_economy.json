@@ -1,0 +1,30 @@
+{
+  "maps": [
+    {
+      "map_name": "Kalahari",
+      "type": "Classic",
+      "release_time": "2020-02-28 04:00 AM"
+    },
+    {
+      "map_name": "Purgatory",
+      "status": "Classic Mode removed",
+      "rush_hour_availability": "Daily 18:00 - 22:00 starting 2020-02-28"
+    },
+    {
+      "map_name": "Training Grounds",
+      "type": "Weapon Testing / Social",
+      "release_time": "2020-02-28 04:00 AM"
+    }
+  ],
+  "mode_updates": [
+    {
+      "mode_name": "Team Deathmatch",
+      "features": [
+        "All item presets include default armor and helmet",
+        "Expanded weapon selection pool",
+        "Airdrops added (up to 10 per match)",
+        "New respawn points added in each play zone to prevent spawn camping"
+      ]
+    }
+  ]
+}
