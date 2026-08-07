@@ -1,0 +1,21 @@
+{
+  "hud_and_indicators": [
+    {
+      "element": "Damage Indicator",
+      "description": "New HUD directional indicator displayed when taking incoming damage"
+    },
+    {
+      "element": "Teammate Knockdown Indicator",
+      "description": "New HUD visual alert/indicator when squad members are knocked down"
+    }
+  ],
+  "controls_and_traversal": [
+    {
+      "phase": "Parachuting Phase",
+      "feature": "Added a new dive button allowing players to dive forward automatically"
+    }
+  ],
+  "device_compatibility": {
+    "screen_support": "Added native resolution and aspect ratio support for big-screen Android devices"
+  }
+}
