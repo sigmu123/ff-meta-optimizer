@@ -1,0 +1,21 @@
+{
+  "weapon_buffs": [
+    {
+      "weapon_name": "M14",
+      "adjustment_type": "Buff",
+      "impact": "General performance and combat stat enhancement"
+    },
+    {
+      "weapon_name": "Kar98k",
+      "adjustment_type": "Buff",
+      "impact": "General performance and long-range effectiveness enhancement"
+    }
+  ],
+  "weapon_vaulting": [
+    {
+      "weapon_name": "Desert Eagle",
+      "status": "Temporarily Removed",
+      "availability": false
+    }
+  ]
+}
