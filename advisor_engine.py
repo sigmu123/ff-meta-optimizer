@@ -18,6 +18,11 @@ class AdvisorEngine:
         self.active_patch_name = self.router.get_latest_patch_version() or "patch_ob54"
         self.loader = PatchLoader(patch_name=self.active_patch_name, base_dir=current_dir)
 
+    def extract_character_name(self, raw_id_or_data):
+        if isinstance(raw_id_or_data, dict):
+            return raw_id_or_data.get("character_name") or raw_id_or_data.get("character_id", "").title()
+        return str(raw_id_or_data).replace("_", " ").title()
+
     def run_isolated_advisor(self):
         start_time = time.time()
 
@@ -32,19 +37,29 @@ class AdvisorEngine:
         exec_time = round((time.time() - start_time) * 1000, 3)
 
         print("=" * 70)
-        print("    ISOLATED META ADVISOR ENGINE - SINGLE PATCH MODE")
+        print("    ISOLATED META ADVISOR ENGINE - CHARACTER MODE")
         print("=" * 70)
         print(f"[*] Engine Latency: {exec_time}ms | Permutations Evaluated: {results.get('permutations_tested', 0)}")
         print(f"[*] Isolated Active Patch Target: {self.active_patch_name.upper()}")
         print("-" * 70)
         
         loadout = best_build.get('character_loadout', {})
-        print("\n1. Dynamic Optimal Setup (Evaluated Mathematically):")
-        print(f"   • Active Skill  : {loadout.get('active_skill', 'N/A')}")
-        for idx, p in enumerate(loadout.get('passives', []), 1):
-            print(f"   • Passive {idx}     : {p}")
-        print(f"   • Pet           : {best_build.get('pet', 'N/A')}")
-        print(f"   • Loadout       : {best_build.get('item_loadout', 'N/A')}")
+        
+        # Character Name Extraction
+        raw_active = loadout.get('active_skill', 'N/A')
+        active_char_name = self.extract_character_name(self.loader.active_skills.get(raw_active.lower(), raw_active))
+
+        passive_char_names = []
+        for p in loadout.get('passives', []):
+            p_data = self.loader.passive_skills.get(p.lower(), p)
+            passive_char_names.append(self.extract_character_name(p_data))
+
+        print("\n1. Dynamic Optimal Setup (Character Names Matched):")
+        print(f"   • Active Character  : {active_char_name}")
+        for idx, p_name in enumerate(passive_char_names, 1):
+            print(f"   • Passive {idx}         : {p_name}")
+        print(f"   • Pet Choice        : {best_build.get('pet', 'N/A')}")
+        print(f"   • Loadout           : {best_build.get('item_loadout', 'N/A')}")
 
         print("\n2. Weapon Analysis (Calculated Real Stats):")
         weapons = best_build.get('weapons', {})
