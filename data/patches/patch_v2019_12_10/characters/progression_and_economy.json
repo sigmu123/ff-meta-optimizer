@@ -1,0 +1,27 @@
+{
+  "character_system_rework": {
+    "skill_slots": {
+      "4th_skill_slot_unlocked": true,
+      "slot_unlock_cost": [
+        { "slot": 1, "gold": 0, "diamonds": 0 },
+        { "slot": 2, "gold": 2000, "diamonds": 50, "previous_gold": 8000, "previous_diamonds": 100 },
+        { "slot": 3, "gold": 5000, "diamonds": 75, "previous_gold": 12000, "previous_diamonds": 150 }
+      ]
+    },
+    "fragment_drop_rate": {
+      "per_match_increase_percentage": 350,
+      "daily_max_fragment_limit": 250,
+      "previous_daily_max_fragment_limit": 100
+    },
+    "leveling_cost_table": [
+      { "level": 1, "fragments_required": 0, "gold_cost": 0, "diamond_cost": 0 },
+      { "level": 2, "fragments_required": 100, "gold_cost": 500, "diamond_cost": 20, "previous_diamond_cost": 25 },
+      { "level": 3, "fragments_required": 300, "gold_cost": 1000, "diamond_cost": 60, "previous_gold_cost": 2000, "previous_diamond_cost": 80 },
+      { "level": 4, "fragments_required": 500, "gold_cost": 2000, "diamond_cost": 120, "previous_gold_cost": 4500, "previous_diamond_cost": 160 },
+      { "level": 5, "fragments_required": 700, "gold_cost": 4500, "diamond_cost": 150, "previous_gold_cost": 8000, "previous_diamond_cost": 270 },
+      { "level": 6, "fragments_required": 1500, "gold_cost": 8000, "diamond_cost": 250, "previous_gold_cost": 12000, "previous_diamond_cost": 400 },
+      { "level": 7, "fragments_required": 2500, "gold_cost": 12000, "diamond_cost": 300, "previous_fragments": 3000, "previous_gold_cost": 20000, "previous_diamond_cost": 500 },
+      { "level": 8, "fragments_required": 4000, "gold_cost": 16000, "diamond_cost": 350, "previous_fragments": 6000, "previous_gold_cost": 30000, "previous_diamond_cost": 750 }
+    ]
+  }
+}
