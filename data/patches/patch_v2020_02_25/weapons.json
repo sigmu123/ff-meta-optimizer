@@ -1,0 +1,48 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "AN94",
+      "damage_ratio": 36,
+      "previous_damage_ratio": 38,
+      "rate_of_fire_increase_percentage": 11,
+      "minimum_range": "Increased",
+      "recoil_recovery_speed_increase_percentage": 100,
+      "attachment_slots": {
+        "muzzle": false
+      }
+    },
+    {
+      "weapon_name": "XM8",
+      "damage_ratio": 33,
+      "previous_damage_ratio": 30,
+      "rate_of_fire_increase_percentage": 18,
+      "magazine_capacity": 25,
+      "previous_magazine_capacity": 30,
+      "range_reduction": 5,
+      "accuracy_reduction_percentage": 5,
+      "aim_movement_speed_increase_percentage": 15,
+      "moving_shot_accuracy_penalty": "Removed"
+    }
+  ],
+  "advanced_attachments": [
+    {
+      "attachment_name": "Armor-Piercer",
+      "compatible_weapon": "AWM",
+      "availability": "Classic Mode",
+      "effect": "Deals 300% extra damage to enemy defensive gear (does not affect player base HP)"
+    },
+    {
+      "attachment_name": "Thermal Boost",
+      "compatible_weapon": "PLASMA",
+      "availability": "Classic Mode",
+      "effect": "Overheat time increased by 33%, cooldown reduced by 33%. Scaling damage boost as weapon nears overheat."
+    }
+  ],
+  "rank_mode_pool_additions": [
+    "Double Magazine",
+    "Ice Gun (Airdrop Only)",
+    "Kar98k - Bio Scope",
+    "VSS - Ripper Bullet",
+    "M14 - Rage Core"
+  ]
+}
