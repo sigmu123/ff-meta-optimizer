@@ -1,0 +1,19 @@
+{
+  "patch_version": "OB51",
+  "upgradable_weapons_list": [
+    "M60", "FAMAS", "M14", "M4A1", "SCAR", "AUG", "MAC10", "MP5", "M1014", "Kar98K", "Winchester"
+  ],
+  "damage_thresholds": {
+    "level_0_to_1": 200,
+    "level_1_to_2": 350,
+    "level_2_to_3": 850
+  },
+  "br_loot_source_change": "Ground loot only spawns Lv. 0 upgradable guns (no Lv. 1 on ground)",
+  "knockdown_hp_loss": {
+    "affected_classes": ["Marksman Rifles", "Machine Guns", "Assault Rifles", "Sniper Rifles"],
+    "duration_seconds_old": 35,
+    "duration_seconds_new": 145,
+    "knocked_down_crawling_speed_boost": "+35%",
+    "rafael_exemption": true
+  }
+}
