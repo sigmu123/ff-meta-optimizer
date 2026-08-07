@@ -1,0 +1,62 @@
+{
+  "patch_version": "OB53",
+  "patch_date": "2026-04-02",
+  "category": "active_skills_and_new_characters",
+  "active_skills": [
+    {
+      "character_id": "ray",
+      "character_name": "Ray (The Watchman)",
+      "skill_name": "Bond of Eclipse",
+      "type": "Low-HP Finisher / Elimination Streak",
+      "status": "new",
+      "range_meters": 30.0,
+      "range_shape": "fan-shaped",
+      "tag_duration_seconds": 10.0,
+      "link_visibility_range_meters": 40.0,
+      "instant_knockdown_hp_threshold": 40,
+      "effects": {
+        "instant_knockdown_at_low_hp": true,
+        "skill_reset_on_knockdown_or_elimination": true,
+        "hp_restoration": {
+          "rate_per_sec": 18,
+          "duration_seconds": 3.0,
+          "total_hp_restored": 54
+        }
+      },
+      "cooldown_seconds": 45
+    },
+    {
+      "character_id": "koda",
+      "skill_name": "Aurora Vision",
+      "type": "Information / Wall Reveal",
+      "status": "nerfed",
+      "duration_seconds": 10.0,
+      "previous_duration_seconds": 12.0,
+      "movement_speed_boost_pct": 15.0,
+      "detection_range_meters": 58.0,
+      "detection_interval_seconds": 1.0,
+      "detection_limitations": ["crouching", "prone"],
+      "cooldown_seconds": 45,
+      "parachuting_effect": {
+        "highlights_enemies_in_fov": true,
+        "shared_with_teammates": false
+      }
+    },
+    {
+      "character_id": "nero",
+      "skill_name": "Cryo Mind",
+      "type": "Area Control / Anti-Gloo Wall",
+      "status": "nerfed",
+      "plushie_hp": 150,
+      "plushie_duration_seconds": 12.0,
+      "effect_radius_meters": 8.0,
+      "effects": {
+        "gloo_wall_placement_disabled": true,
+        "enemy_hp_drain_per_sec": 14,
+        "previous_enemy_hp_drain_per_sec": 16,
+        "gloo_wall_post_exit_recovery_delay": "reduced"
+      },
+      "cooldown_seconds": 45
+    }
+  ]
+}
