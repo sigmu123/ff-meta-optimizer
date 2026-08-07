@@ -1,0 +1,29 @@
+{
+  "movement_and_traversal": {
+    "vaulting": {
+      "window_vaulting": true,
+      "description": "Players can now vault directly through building window frames"
+    },
+    "air_surfing": {
+      "enabled": true,
+      "description": "Allows players to deploy and skate using a surfboard while freefalling in the air"
+    }
+  },
+  "rendering_engine": {
+    "view_distance": {
+      "increase_percentage": "25%",
+      "impact": "Players can render and spot enemy entities at significantly longer combat distances"
+    }
+  },
+  "combat_fixes": {
+    "right_hand_cover_exploit_fix": {
+      "bug_fixed": "Fixed an issue where right-handed character camera angles allowed shooting enemies safely behind cover without exposure"
+    }
+  },
+  "network_and_connectivity": {
+    "reconnect_system": {
+      "enabled": true,
+      "description": "Disconnected players are now allowed to rejoin active live matches"
+    }
+  }
+}
