@@ -1,0 +1,11 @@
+{
+  "bomb_squad_mode_rework": {
+    "availability": "2020-06-13 04:00 SGT",
+    "preset_system": "Preset weapon menu removed; replaced with store economy system similar to Clash Squad",
+    "ui_and_indicators": [
+      "Higher quality bombsite icon rendering",
+      "End-of-round performance summary added",
+      "Planted bomb site location automatically revealed to all players upon activation"
+    ]
+  }
+}
