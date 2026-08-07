@@ -1,0 +1,23 @@
+{
+  "mode_updates": [
+    {
+      "mode_name": "Clash Squad",
+      "optimizations": [
+        "Added MMR (Matchmaking Rating) system",
+        "Removed all oil barrels from maps",
+        "Enabled character movement during the freeze preparation period",
+        "Purchased weapons spawn with full ammo",
+        "Extra bonus ammo given at the start of each round",
+        "Shop interface closes by clicking outside active area",
+        "Bypassed Spawn Island transition step before match starts",
+        "Loss streak economic scaling: Teams on a losing streak receive increased money payouts"
+      ]
+    },
+    {
+      "mode_name": "Rush Hour",
+      "features": [
+        "Introduced experimental Dynamic Weather System"
+      ]
+    }
+  ]
+}
