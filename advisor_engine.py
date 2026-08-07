@@ -1,3 +1,6 @@
+================================================
+FILE: advisor_engine.py
+================================================
 import os
 import sys
 import time
@@ -15,9 +18,9 @@ class AdvisorEngine:
         self.data_dir = os.path.join(current_dir, "data")
         self.router = PatchRouter(data_dir=self.data_dir)
         
-        # Lock explicitly to OB54 as active meta patch
+        # Lock explicitly to latest version or OB54
         self.active_patch_name = self.router.get_latest_patch_version() or "patch_ob54"
-        self.loader = PatchLoader(patch_name=self.active_patch_name)
+        self.loader = PatchLoader(patch_name=self.active_patch_name, base_dir=current_dir)
 
     def run_isolated_advisor(self):
         start_time = time.time()
@@ -29,7 +32,8 @@ class AdvisorEngine:
         passives = ["NIKITA", "OLIVIA", "MARO"]
         primary_weapon = "mp40"
 
-        weapon_data = weapons.get(primary_weapon, {"base_damage": 26, "rate_of_fire_seconds": 0.08})
+        weapon_raw = weapons.get(primary_weapon, {"weapon_id": "mp40", "base_damage": 26, "rate_of_fire_seconds": 0.08})
+        ttk_result = MechanicsEngine.calculate_weapon_ttk(weapon_raw, target_hp=200, vest_absorb_pct=0.33, armor_pen_pct=0.10)
         
         exec_time = round((time.time() - start_time) * 1000, 3)
 
@@ -49,7 +53,8 @@ class AdvisorEngine:
         print(f"   • Loadout       : Armor Crate")
 
         print("\n2. Weapon Analysis (Isolated Stats):")
-        print(f"   • Primary Weapon: {primary_weapon.upper()} (Base Damage: {weapon_data.get('base_damage', 'N/A')})")
+        print(f"   • Primary Weapon: {primary_weapon.upper()} (Base Damage: {weapon_raw.get('base_damage', 26)})")
+        print(f"   • Effective Dmg : {ttk_result['effective_damage']} HP | BTK: {ttk_result['btk']} | TTK: {ttk_result['ttk_sec']}s")
 
         print("\n3. Meta Decision:")
         print(f"   • Status        : Successfully evaluated within {self.active_patch_name.upper()} context.")
