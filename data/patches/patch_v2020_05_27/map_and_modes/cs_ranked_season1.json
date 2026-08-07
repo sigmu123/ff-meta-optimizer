@@ -1,0 +1,15 @@
+{
+  "clash_squad_season_1": {
+    "start_date": "2020-06-04 17:00 GMT+8",
+    "end_date": "2020-07-29 12:00 GMT+8",
+    "rank_reward": "The Golden Eagle (Reached Gold III)",
+    "anti_afk_and_matchmaking": {
+      "afk_penalty": "Temporary ban from Clash Squad Ranked for frequent early leaving",
+      "bot_takeover": "Bots replace disconnected/AFK teammates automatically"
+    },
+    "stat_tracking": [
+      "Leaderboard for Kills and Winrate",
+      "Career performance page in player profile"
+    ]
+  }
+}
