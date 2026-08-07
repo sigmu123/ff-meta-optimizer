@@ -1,122 +1,71 @@
 import os
 import sys
-import traceback
 
-# Path setups to ensure relative directory stability
+# Ensure local imports resolve correctly
 current_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(current_dir)
 sys.path.append(current_dir)
 
 from src.patch_router import PatchRouter
-from core.ttk_calculator import MechanicsEngine
-from interface.prompt_parser import TacticalParser
-from engine.combinatorial_tester import CombinatorialOptimizer
 from patch_loader import PatchLoader
+from engine.combinatorial_tester import PermutationTester
+from interface.prompt_parser import PromptParser
 
-class QuickExecutionEngine:
-    def __init__(self):
-        self.data_dir = os.path.join(current_dir, "data")
-        self.router = PatchRouter(data_dir=self.data_dir)
-        
-        # 1. ISOLATION FIX: Automatically detect and force ONLY the Latest Patch
-        self.latest_patch = self.router.get_latest_patch_version() or "patch_ob54"
-        
-        # 2. Dynamic Loader Initialization
-        self.patch_loader = PatchLoader(patch_name=self.latest_patch)
-        self.parser = TacticalParser(patch_version=self.latest_patch)
-        self.optimizer = CombinatorialOptimizer(mode="CS")
 
-    def _get_dynamic_weapon_stats(self, weapon_id: str) -> dict:
-        """Fetch real dynamic weapon attributes directly from loaded JSON patch data."""
-        weapons_data = self.patch_loader.weapons
-        if weapon_id in weapons_data:
-            w_stats = weapons_data[weapon_id]
-            return {
-                "weapon_id": weapon_id,
-                "base_damage": w_stats.get("base_damage", 25),
-                "rate_of_fire_seconds": w_stats.get("rate_of_fire_seconds", 0.10)
-            }
-        
-        # Safe fallback if specific weapon key is not explicitly mapped in json
-        return {
-            "weapon_id": weapon_id,
-            "base_damage": 28,
-            "rate_of_fire_seconds": 0.088
-        }
+def main():
+    # 1. Initialize System Router & Load Active Patch Data
+    router = PatchRouter(data_dir=os.path.join(current_dir, "data"))
+    latest_patch = router.get_latest_patch_version() or "patch_v33"
+    loader = PatchLoader(patch_name=latest_patch)
 
-    def generate_quick_execution_sheet(self, user_prompt: str = "best close range rush strategy"):
-        # Parse query against the isolated latest patch context
-        parsed_data = self.parser.query_system(user_prompt)
-        
-        # Run Quantum Combinatorial Permutation Tester
-        sweep_result = self.optimizer.run_permutation_sweep(parsed_data)
-        best_combo = sweep_result.get("best_combination", {})
-        exec_time = sweep_result.get("execution_time_ms", 0.0)
-        total_perms = sweep_result.get("total_permutations", 0)
+    # 2. Parse Execution Scenario (e.g., Clash Squad Rush Meta)
+    parsed_intent = PromptParser.parse("OB34 CS Ranked rush build with high damage")
 
-        # -------------------------------------------------------------
-        # DYNAMIC EXTRACTION (No Hardcoded Fallbacks)
-        # -------------------------------------------------------------
-        active_skill = str(best_combo.get('active_skill', 'N/A')).title()
-        
-        # Dynamic passives extraction
-        raw_passives = best_combo.get('passives', [])
-        passives_formatted = [str(p).replace('_', ' ').title() for p in raw_passives]
-        
-        p1 = passives_formatted[0] if len(passives_formatted) > 0 else "None"
-        p2 = passives_formatted[1] if len(passives_formatted) > 1 else "None"
-        p3 = passives_formatted[2] if len(passives_formatted) > 2 else "None"
+    # 3. Trigger Combinatorial Matrix Search Engine Across All Combinations
+    tester = PermutationTester(patch_data=loader)
+    optimization_results = tester.run_matrix_search(
+        mode=parsed_intent.get("mode", "clash_squad"),
+        playstyle=parsed_intent.get("playstyle", "rush"),
+        top_k=1
+    )
 
-        pet_selected = str(best_combo.get('pet', 'None')).replace('_', ' ').title()
-        loadout_selected = str(best_combo.get('loadout', 'None')).replace('_', ' ').title()
-        
-        # Dynamic Weapon & TTK Math Calculation
-        weap_id = str(best_combo.get('primary_weapon', 'mp40')).lower()
-        dynamic_weapon_data = self._get_dynamic_weapon_stats(weap_id)
-        
-        ttk_res = MechanicsEngine.calculate_weapon_ttk(
-            dynamic_weapon_data, 
-            target_hp=200, 
-            vest_absorb_pct=0.33, 
-            armor_pen_pct=0.20, 
-            range_decay_pct=0.05
-        )
+    best_build = optimization_results["top_build"]
+    total_permutations = optimization_results["permutations_tested"]
+    latency = optimization_results["latency_ms"]
 
-        win_score = sweep_result.get("meta_score", best_combo.get("score", 88.4))
+    # 4. Standard Quick Execution Sheet UI Format
+    print("=" * 60)
+    print("          QUICK EXECUTION SHEET - META ENGINE OUTPUT          ")
+    print("=" * 60)
+    print(f"[*] Engine Latency: {latency:.3f}ms | Permutations Tested: {total_permutations}")
+    print(f"[*] Active Isolated Patch: {str(latest_patch).upper()}")
+    print("-" * 60)
+    
+    print("\n1. Setup EQUIP Karein (Direct Active/Passive/Pet/Loadout List):")
+    print(f"   • Active Skill  : {best_build['character_loadout']['active_skill']}")
+    print(f"   • Passive 1     : {best_build['character_loadout']['passives'][0]}")
+    print(f"   • Passive 2     : {best_build['character_loadout']['passives'][1]}")
+    print(f"   • Passive 3     : {best_build['character_loadout']['passives'][2]}")
+    print(f"   • Pet Companion : {best_build['pet']}")
+    print(f"   • Item Loadout  : {best_build['item_loadout']}")
 
-        # -------------------------------------------------------------
-        # DYNAMIC CLI OUTPUT RENDER
-        # -------------------------------------------------------------
-        print("=" * 60)
-        print("          QUICK EXECUTION SHEET - META ENGINE OUTPUT          ")
-        print("=" * 60)
-        print(f"[*] Engine Latency: {exec_time}ms | Permutations Tested: {total_perms}")
-        print(f"[*] Active Isolated Patch: {str(self.latest_patch).upper()}")
-        print("-" * 60)
-        
-        print("\n1. Dynamic Meta Loadout (Optimal Setup):")
-        print(f"   • Active Skill  : {active_skill}")
-        print(f"   • Passive 1     : {p1}")
-        print(f"   • Passive 2     : {p2}")
-        print(f"   • Passive 3     : {p3}")
-        print(f"   • Pet Companion : {pet_selected}")
-        print(f"   • Item Loadout  : {loadout_selected}")
+    print("\n2. Weapons Multiplier (Recommended Guns):")
+    print(f"   • Short-Range   : {best_build['weapons']['short_range']['name']}")
+    print(f"     └ Eff Dmg: {best_build['weapons']['short_range']['effective_dmg']} HP | BTK: {best_build['weapons']['short_range']['btk']} | TTK: {best_build['weapons']['short_range']['ttk']}s")
+    print(f"   • Mid-Range     : {best_build['weapons']['mid_range']['name']}")
+    print(f"     └ Eff Dmg: {best_build['weapons']['mid_range']['effective_dmg']} HP | BTK: {best_build['weapons']['mid_range']['btk']} | TTK: {best_build['weapons']['mid_range']['ttk']}s")
 
-        print("\n2. Dynamic Weapon TTK Performance:")
-        print(f"   • Weapon Name   : {dynamic_weapon_data['weapon_id'].upper()}")
-        print(f"   • Base Damage   : {dynamic_weapon_data['base_damage']} HP")
-        print(f"   • Effective Dmg : {ttk_res['effective_damage']} HP")
-        print(f"   • Bullets To Kill: {ttk_res['btk']}")
-        print(f"   • Time To Kill  : {ttk_res['ttk_sec']}s")
+    print("\n3. Strategic Winning Trick:")
+    print(f"   • Step 1 (Defense) : {best_build['strategy']['defense_tactic']}")
+    print(f"   • Step 2 (Attack)  : {best_build['strategy']['attack_tactic']}")
+    print(f"   • Step 3 (Trick)   : {best_build['strategy']['map_trick']}")
 
-        print("\n3. Strategy Score:")
-        print(f"   • Calculated Meta Score: {win_score}%")
-        print("=" * 60)
+    print("\n4. Simple Summary Result:")
+    print(f"   • Defense Buff     : +{best_build['summary']['defense_buff_pct']}%")
+    print(f"   • Attack Buff      : +{best_build['summary']['attack_buff_pct']}%")
+    print(f"   • Win Probability  : {best_build['summary']['win_probability_pct']}%")
+    print("=" * 60)
+
 
 if __name__ == "__main__":
-    try:
-        engine = QuickExecutionEngine()
-        engine.generate_quick_execution_sheet("best close range rush strategy")
-    except Exception:
-        print("\n[!] Critical Pipeline Failure:")
-        traceback.print_exc()
+    main()
