@@ -1,0 +1,13 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Moco",
+      "skill": {
+        "ability_type": "Passive / Tagging",
+        "description": "Tags enemies that Moco shoots for a few seconds. Tagged enemies are made visible on the map for Moco and all teammates.",
+        "tactical_utility": "Shared map vision and real-time squad tracking"
+      },
+      "status": "Added to character roster"
+    }
+  ]
+}
