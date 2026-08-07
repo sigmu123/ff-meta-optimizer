@@ -1,0 +1,15 @@
+{
+  "patch_version": "1.6.5",
+  "map_updates": [
+    {
+      "map_name": "Bermuda",
+      "adjustment_type": "EXPANSION",
+      "description": "Map size increased to expand play area and playable zones."
+    }
+  ],
+  "ui_hud_mechanics": {
+    "hitmarker_style": null,
+    "spectator_hud": null
+  },
+  "modes_adjustments": []
+}
