@@ -1,7 +1,6 @@
 import os
 import sys
 
-# Ensure local imports resolve correctly
 current_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(current_dir)
 sys.path.append(current_dir)
@@ -13,15 +12,15 @@ from interface.prompt_parser import PromptParser
 
 
 def main():
-    # 1. Initialize System Router & Load Active Patch Data
+    # Initialize System Router & Load Active Patch Data (Fallback default patch_ob54)
     router = PatchRouter(data_dir=os.path.join(current_dir, "data"))
-    latest_patch = router.get_latest_patch_version() or "patch_v33"
+    latest_patch = router.get_latest_patch_version() or "patch_ob54"
     loader = PatchLoader(patch_name=latest_patch)
 
-    # 2. Parse Execution Scenario (e.g., Clash Squad Rush Meta)
-    parsed_intent = PromptParser.parse("OB34 CS Ranked rush build with high damage")
+    # Parse Scenario Parameters
+    parsed_intent = PromptParser.parse("OB54 CS Ranked rush build with high damage")
 
-    # 3. Trigger Combinatorial Matrix Search Engine Across All Combinations
+    # Run Permutation Search Engine Across Patch Matrices
     tester = PermutationTester(patch_data=loader)
     optimization_results = tester.run_matrix_search(
         mode=parsed_intent.get("mode", "clash_squad"),
@@ -33,7 +32,6 @@ def main():
     total_permutations = optimization_results["permutations_tested"]
     latency = optimization_results["latency_ms"]
 
-    # 4. Standard Quick Execution Sheet UI Format
     print("=" * 60)
     print("          QUICK EXECUTION SHEET - META ENGINE OUTPUT          ")
     print("=" * 60)
