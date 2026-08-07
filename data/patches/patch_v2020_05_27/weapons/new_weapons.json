@@ -1,0 +1,26 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "M82B",
+      "category": "Sniper Rifle",
+      "availability": [
+        "Hot Zone (Classic Mode)",
+        "Clash Squad Store",
+        "Training Grounds"
+      ],
+      "base_stats": {
+        "damage_ratio": 150,
+        "minimum_damage": 128,
+        "magazine_capacity": 5,
+        "effective_range_meters": "60-90m",
+        "movement_speed_percentage": 90,
+        "armor_penetration_percentage": 30
+      },
+      "special_ability": "Ballistic Tips",
+      "ability_mechanics": {
+        "gloo_wall_penetration_damage_to_enemies_percentage": 80,
+        "bonus_damage_to_vehicles_and_gloo_walls_percentage": 200
+      }
+    }
+  ]
+}
