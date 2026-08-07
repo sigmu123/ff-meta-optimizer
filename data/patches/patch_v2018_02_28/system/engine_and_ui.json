@@ -1,0 +1,21 @@
+{
+  "control_settings": {
+    "aim_precision_toggle": {
+      "feature": "Aim precision control settings toggle reintroduced/added",
+      "accessible_via": "Settings Menu"
+    }
+  },
+  "animation_and_character_engine": {
+    "female_character_overhaul": "Complete overhaul of female character base model and movement/combat animations"
+  },
+  "end_game_hud": {
+    "squad_stats": "Teammate performance metrics shown on match summary screen"
+  },
+  "anti_cheat_engine": {
+    "detection_optimizations": [
+      "Speed hack detection",
+      "Multiple bullet hack detection",
+      "Wall hack detection"
+    ]
+  }
+}
