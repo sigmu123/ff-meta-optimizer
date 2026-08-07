@@ -32,7 +32,6 @@ class PatchLoader:
         if not os.path.exists(self.patch_dir):
             return
 
-        # Walk through patch directory and ingest JSON structures safely
         for root, _, files in os.walk(self.patch_dir):
             for file_name in files:
                 if file_name == "patch_manifest.json" or not file_name.endswith(".json"):
@@ -41,7 +40,6 @@ class PatchLoader:
                 file_path = os.path.join(root, file_name)
                 data = self._load_json_safe(file_path)
                 
-                # Ingest Characters & Skills
                 if file_name == "active_skills.json":
                     skill_list = data.get("active_skills", []) if isinstance(data, dict) else data
                     if isinstance(skill_list, list):
@@ -66,7 +64,6 @@ class PatchLoader:
                     if isinstance(data, dict):
                         self.characters.update(data)
 
-                # Ingest Weapons & Attributes
                 elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json"]:
                     w_list = data.get("weapons", []) if isinstance(data, dict) else []
                     if isinstance(w_list, list) and len(w_list) > 0:
@@ -79,12 +76,10 @@ class PatchLoader:
                             if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics"]:
                                 self.weapons[str(k).lower()] = v
 
-                # Ingest Range Decay
                 elif file_name == "range_decay.json":
                     if isinstance(data, dict):
                         self.range_decay.update(data)
 
-                # Ingest Mechanics, Modes & Utilities
                 elif file_name in ["map_tactics.json", "modes_and_maps.json", "mode_adjustments.json", "gameplay_rules.json"]:
                     if isinstance(data, dict):
                         self.modes_and_maps.update(data)
@@ -93,6 +88,5 @@ class PatchLoader:
                     if isinstance(data, dict):
                         self.utilities.update(data)
 
-        # Merge active/passive dictionaries into general character repository for legacy callers
         if not self.characters.get("characters"):
             self.characters["characters"] = {**self.active_skills, **self.passive_skills}
