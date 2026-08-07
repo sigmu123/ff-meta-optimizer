@@ -1,0 +1,24 @@
+{
+  "map_updates": [
+    {
+      "map_name": "Purgatory",
+      "changes": [
+        "Purgatory - Classic reintroduced",
+        "Purgatory - Rush Hour removed"
+      ]
+    },
+    {
+      "map_name": "Training Grounds",
+      "changes": [
+        "Shooting Range and Practice Zone physically separated",
+        "Vehicles added to practice range",
+        "Gloo Walls added to armory",
+        "M82B sniper rifle added to armory"
+      ]
+    },
+    {
+      "map_feature": "Info Box",
+      "mechanics": "Safe zone location now auto-shares location info with all teammates"
+    }
+  ]
+}
