@@ -1,0 +1,18 @@
+{
+  "version": "v2020_05_27",
+  "patch_name": "Rampage is Back",
+  "publish_date": "2020-05-27",
+  "active_submodules": [
+    "characters/new_character.json",
+    "characters/pets.json",
+    "characters/system_changes.json",
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "weapons/ammo.json",
+    "map_and_modes/cs_store.json",
+    "map_and_modes/cs_ranked_season1.json",
+    "map_and_modes/map_adjustments.json",
+    "map_and_modes/bomb_squad.json",
+    "system/engine_and_ui.json"
+  ]
+}
