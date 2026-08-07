@@ -1,0 +1,42 @@
+{
+  "clash_squad_store_prices": {
+    "weapons": {
+      "tier_1": [
+        { "name": "M500", "price": 400 },
+        { "name": "G18", "price": 500 },
+        { "name": "Desert Eagle", "price": 800 },
+        { "name": "FAMAS", "price": 1100 }
+      ],
+      "tier_2": [
+        { "name": "AN94", "price": 1200 },
+        { "name": "MP5", "price": 1300 },
+        { "name": "M1887", "price": 1500 },
+        { "name": "Thompson", "price": 1500 }
+      ],
+      "tier_3": [
+        { "name": "P90", "price": 1600 },
+        { "name": "SKS", "price": 1700 },
+        { "name": "AK", "price": 1700 },
+        { "name": "M1014", "price": 1800 }
+      ],
+      "tier_4": [
+        { "name": "SCAR", "price": 1900 },
+        { "name": "XM8", "price": 2000 },
+        { "name": "MP40", "price": 2100 },
+        { "name": "M82B", "price": 2200 }
+      ]
+    },
+    "gears": [
+      { "name": "Lvl 2 Vest", "price": 400 },
+      { "name": "Lvl 2 Helmet", "price": 200 },
+      { "name": "Lvl 3 Vest", "price": 1000 },
+      { "name": "Armor Repair Kit", "price": 200 }
+    ],
+    "grenades_and_consumables": [
+      { "name": "Grenade", "max_limit": 2, "price": 200 },
+      { "name": "Gloo Wall", "max_limit": 3, "price": 300 },
+      { "name": "Smoke Grenade", "max_limit": 1, "price": 300 },
+      { "name": "Mushroom", "price": 100 }
+    ]
+  }
+}
