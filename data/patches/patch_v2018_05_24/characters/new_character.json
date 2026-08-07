@@ -1,0 +1,13 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Maxim",
+      "callsign": "The Glutton",
+      "passive_skill": {
+        "ability_name": "Eat and Heal Faster",
+        "description": "Reduces the eating duration of mushrooms and usage time of medkits/healing items"
+      },
+      "status": "Added to character roster"
+    }
+  ]
+}
