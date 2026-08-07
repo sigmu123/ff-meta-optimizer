@@ -1,0 +1,12 @@
+{
+  "version": "v2018_06_20",
+  "publish_date": "2018-06-20",
+  "active_submodules": [
+    "characters/new_character.json",
+    "characters/qol_fixes.json",
+    "weapons/balance_adjustments.json",
+    "loadouts/loadout_system.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json"
+  ]
+}
