@@ -1,0 +1,46 @@
+{
+  "patch_version": "OB54",
+  "patch_date": "2026-06-23",
+  "category": "passive_skills_and_global_caps",
+  "global_mechanic_caps": {
+    "movement_speed_cap": {
+      "has_maximum_limit": true,
+      "description": "Movement speed can no longer exceed the hard cap, including cumulative bonuses from skills, items, and event buffs. A special visual effect triggers upon reaching the cap."
+    }
+  },
+  "passive_skills": [
+    {
+      "character_id": "nikita",
+      "skill_name": "Firearms Expert",
+      "type": "Reload Speed / Anti-Healing",
+      "status": "nerfed",
+      "reload_speed_buff_pct": 20.0,
+      "previous_reload_speed_buff_pct": 30.0,
+      "anti_healing": {
+        "healing_deduction_pct_per_hit": 50.0,
+        "max_healing_deduction_pct": 50.0,
+        "duration_seconds": 6.0
+      }
+    },
+    {
+      "character_id": "olivia",
+      "skill_name": "Healing Touch",
+      "type": "Support / Area Healing",
+      "status": "buffed",
+      "healing_amplification_pct": 30.0,
+      "spread_healing_pct": 90.0,
+      "previous_spread_healing_pct": 80.0,
+      "spread_radius_meters": 20.0,
+      "previous_spread_radius_meters": 15.0
+    },
+    {
+      "character_id": "maro",
+      "skill_name": "Falcon Fervor",
+      "type": "Distance Damage Multiplier",
+      "status": "adjusted",
+      "max_distance_damage_boost_pct": 20.0,
+      "previous_max_distance_damage_boost_pct": 25.0,
+      "marked_enemy_damage_boost_pct": 5.0
+    }
+  ]
+}
