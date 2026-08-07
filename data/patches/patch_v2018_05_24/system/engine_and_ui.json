@@ -1,0 +1,13 @@
+{
+  "spectator_and_reporting": {
+    "squad_death_spectate": {
+      "enabled": true,
+      "description": "Enables spectating and direct reporting options upon team elimination in Squad mode"
+    }
+  },
+  "audio_and_visual_feedback": {
+    "item_consumption_feedback": {
+      "added_assets": "New sound effects and animations for item usage (medkits, consumables)"
+    }
+  }
+}
