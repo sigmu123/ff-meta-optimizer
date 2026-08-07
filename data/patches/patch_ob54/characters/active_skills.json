@@ -1,0 +1,203 @@
+{
+  "patch_version": "OB54",
+  "patch_date": "2026-06-23",
+  "category": "active_skills_and_boosts",
+  "mechanic_updates": {
+    "skill_boost_system": {
+      "mode_availability": ["BR", "CS"],
+      "energy_acquisition": ["surviving", "dealing_damage", "scoring_eliminations"],
+      "unlisted_active_skills_buff": {
+        "cooldown_reduction_pct": 15.0
+      }
+    }
+  },
+  "active_skills": [
+    {
+      "character_id": "nero",
+      "skill_name": "Cryo Mind",
+      "type": "Disruption / Area Control",
+      "status": "nerfed",
+      "plushie_hp": 1,
+      "previous_plushie_hp": 150,
+      "plushie_duration_seconds": 12.0,
+      "max_flight_distance_meters": {
+        "CS": 50,
+        "BR": 100
+      },
+      "detection_radius_meters": 8.0,
+      "effect_radius_meters": 8.0,
+      "effects": {
+        "gloo_wall_placement_disabled": true,
+        "enemy_hp_drain_per_sec": 6,
+        "previous_enemy_hp_drain_per_sec": 18,
+        "destroyer_mark_duration_seconds": 5.0
+      },
+      "cooldown_seconds": 45
+    },
+    {
+      "character_id": "chrono",
+      "skill_name": "Time Turner",
+      "type": "Defensive Shield",
+      "status": "buffed",
+      "shield_hp": 1000,
+      "allow_outside_attack": false,
+      "duration_seconds": 18.0,
+      "cooldown_seconds": 45,
+      "previous_cooldown_seconds": 60,
+      "skill_boosts": [
+        {
+          "boost_id": "time_veil",
+          "boost_name": "Time Veil",
+          "description": "Creates an impenetrable force field that cannot be seen through from the outside and blocks 1000 DMG.",
+          "one_way_vision_block": true
+        },
+        {
+          "boost_id": "time_drift",
+          "boost_name": "Time Drift",
+          "description": "Force field moves with the user or can be placed dynamically."
+        }
+      ]
+    },
+    {
+      "character_id": "oscar",
+      "skill_name": "Valiant Dash",
+      "type": "Mobility / Rush",
+      "status": "nerfed",
+      "gloo_walls_detonated_limit": 3,
+      "gloo_wall_damage": 25,
+      "enemy_damage": 25,
+      "enemy_knockback": true,
+      "cooldown_seconds": 60,
+      "previous_cooldown_seconds": 45,
+      "skill_boosts": [
+        {
+          "boost_id": "phantom_dash",
+          "boost_name": "Phantom Dash",
+          "description": "Summons Oscar's phantom forms to increase dash range."
+        },
+        {
+          "boost_id": "sustained_dash",
+          "boost_name": "Sustained Dash",
+          "description": "Extends dash duration to 8s with initial lowered speed that increases over time.",
+          "duration_seconds": 8.0
+        }
+      ]
+    },
+    {
+      "character_id": "wukong",
+      "skill_name": "Camouflage",
+      "type": "Disguise / Stealth",
+      "skill_boosts": [
+        {
+          "boost_id": "camo_decoy",
+          "boost_name": "Camo Decoy",
+          "description": "Leaves a moving Wukong decoy at original position.",
+          "decoy_hp": 10,
+          "decoy_duration_seconds": 18.0,
+          "decoy_destroys_on_human_form": true
+        },
+        {
+          "boost_id": "cloned_camo",
+          "boost_name": "Cloned Camo",
+          "description": "Creates two extra bushes to confuse enemies.",
+          "extra_bushes_count": 2,
+          "duration_seconds": 10.0
+        }
+      ]
+    },
+    {
+      "character_id": "homer",
+      "skill_name": "Senses Shockwave",
+      "type": "Intel / Drone",
+      "skill_boosts": [
+        {
+          "boost_id": "uav_shockwave",
+          "boost_name": "UAV Shockwave",
+          "description": "Scans around impact point upon hitting an enemy, exposing enemies on minimap for 5s.",
+          "scan_duration_seconds": 5.0,
+          "scan_radius_meters": {
+            "BR": 120,
+            "CS": 30
+          }
+        },
+        {
+          "boost_id": "super_drone",
+          "boost_name": "Super Drone",
+          "description": "Launches an enhanced drone letting user glide with a 15% speed boost for 15s.",
+          "speed_boost_pct": 15.0,
+          "duration_seconds": 15.0
+        }
+      ]
+    },
+    {
+      "character_id": "kassie",
+      "skill_name": "Focused Therapy",
+      "type": "Support / Healing",
+      "skill_boosts": [
+        {
+          "boost_id": "mutual_focus",
+          "boost_name": "Mutual Focus",
+          "description": "Restores 60 HP to self while healing teammate via Focused Therapy.",
+          "self_hp_restored": 60
+        },
+        {
+          "boost_id": "echoed_bond",
+          "boost_name": "Echoed Bond",
+          "description": "Creates mini Kassies behind self and target teammate that deal 5 extra damage on landing shots.",
+          "extra_damage_per_shot": 5,
+          "cooldown_seconds": 0.25
+        }
+      ]
+    },
+    {
+      "character_id": "skyler",
+      "skill_name": "Riptide Rhythm",
+      "type": "Anti-Gloo Wall",
+      "skill_boosts": [
+        {
+          "boost_id": "sticky_rhythm",
+          "boost_name": "Sticky Rhythm",
+          "description": "Creates a lingering area sticking to target enemy that damages Gloo Walls over time."
+        },
+        {
+          "boost_id": "split_rhythm",
+          "boost_name": "Split Rhythm",
+          "description": "Locks onto Gloo Walls within 75m for 15s, launching sonic waves to up to 3 walls simultaneously.",
+          "range_meters": 75.0,
+          "duration_seconds": 15.0,
+          "max_simultaneous_targets": 3
+        }
+      ]
+    },
+    {
+      "character_id": "alok",
+      "skill_name": "Drop the Beat",
+      "type": "Aura / Speed & Heal",
+      "skill_boosts": [
+        {
+          "boost_id": "speed_remix",
+          "boost_name": "Speed Remix",
+          "aura_radius_meters": 18.0,
+          "movement_speed_boost_pct": 16.0
+        },
+        {
+          "boost_id": "heal_remix",
+          "boost_name": "Heal Remix",
+          "hp_restore_per_sec": 20
+        }
+      ]
+    },
+    {
+      "character_id": "koda",
+      "skill_name": "Adaptive Skill",
+      "type": "Combat Buff",
+      "skill_boosts": [
+        {
+          "boost_id": "damage_stack",
+          "boost_name": "Damage Stack",
+          "extra_damage_per_stack": 10
+        }
+      ]
+    }
+  ]
+}
