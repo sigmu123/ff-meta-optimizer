@@ -15,24 +15,21 @@ class AdvisorEngine:
         self.data_dir = os.path.join(current_dir, "data")
         self.router = PatchRouter(data_dir=self.data_dir)
         
-        # 1. CROSS-PATCH FIX: Lock to ONLY the Latest Patch (OB54)
+        # Lock explicitly to OB54 as active meta patch
         self.active_patch_name = self.router.get_latest_patch_version() or "patch_ob54"
         self.loader = PatchLoader(patch_name=self.active_patch_name)
 
     def run_isolated_advisor(self):
         start_time = time.time()
 
-        # Dynamic Data Fetch from the Isolated Active Patch
         characters = self.loader.characters.get("characters", {})
         weapons = self.loader.weapons
         
-        # Select active/passives dynamically from loaded single patch
-        active_skill = "Ray (The Watchman)"
-        passives = ["MIGUEL", "ANDREW", "HAYATO"]
-        primary_weapon = "m24"
+        active_skill = "Chrono (Time Turner)"
+        passives = ["NIKITA", "OLIVIA", "MARO"]
+        primary_weapon = "mp40"
 
-        # Calculate weapon stats dynamically from single patch
-        weapon_data = weapons.get(primary_weapon, {"base_damage": 88, "rate_of_fire_seconds": 0.8})
+        weapon_data = weapons.get(primary_weapon, {"base_damage": 26, "rate_of_fire_seconds": 0.08})
         
         exec_time = round((time.time() - start_time) * 1000, 3)
 
