@@ -1,0 +1,58 @@
+{
+  "weapon_reworks_and_adjustments": [
+    {
+      "weapon_name": "G18",
+      "category": "Pistol",
+      "changes": [
+        {
+          "attribute": "Firing Mode",
+          "adjustment": "Converted into a burst-fire pistol"
+        }
+      ]
+    },
+    {
+      "weapon_name": "MP40",
+      "category": "SMG",
+      "changes": [
+        {
+          "attribute": "Recoil",
+          "adjustment": "Increased recoil"
+        },
+        {
+          "attribute": "Attachments",
+          "adjustment": "Foregrips can now be equipped"
+        }
+      ]
+    },
+    {
+      "weapon_name": "M249",
+      "category": "LMG",
+      "changes": [
+        {
+          "attribute": "Damage",
+          "adjustment": "Increased damage"
+        },
+        {
+          "attribute": "Range",
+          "adjustment": "Increased effective range"
+        }
+      ]
+    },
+    {
+      "weapon_name": "VSS",
+      "category": "Sniper / DMR",
+      "changes": [
+        {
+          "attribute": "Damage",
+          "adjustment": "Slightly increased damage"
+        }
+      ]
+    }
+  ],
+  "weapon_features": {
+    "weapon_skins": {
+      "enabled": true,
+      "description": "Weapon skins system introduced to the game"
+    }
+  }
+}
