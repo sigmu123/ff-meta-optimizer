@@ -1,0 +1,31 @@
+{
+  "character_balance": [
+    {
+      "character_name": "A124",
+      "skill_name": "Thrill of Battle",
+      "buff_type": "Cooldown Reduction",
+      "cooldown_seconds_per_level": {
+        "level_1": 90,
+        "level_2": 80,
+        "level_3": 75,
+        "level_4": 70,
+        "level_5": 65,
+        "level_6": 60
+      },
+      "previous_cooldown_seconds_per_level": {
+        "level_1": 150,
+        "level_2": 140,
+        "level_3": 130,
+        "level_4": 120,
+        "level_5": 110,
+        "level_6": 100
+      }
+    },
+    {
+      "character_name": "Joseph",
+      "skill_name": "Nutty Movement",
+      "buff_type": "Mechanic Trigger Expansion",
+      "changes": "Movement speed boost now successfully triggers while sprinting upon taking damage"
+    }
+  ]
+}
