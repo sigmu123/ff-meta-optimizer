@@ -1,0 +1,15 @@
+{
+  "weapon_reworks": [
+    {
+      "weapon_name": "Crossbow",
+      "rework_type": "Explosive Rework",
+      "slot_change": "Reclassified as Secondary Weapon",
+      "attributes": {
+        "base_damage_ratio": 90,
+        "max_explosion_damage": 180,
+        "explosion_radius_meters": 3.0
+      },
+      "mechanics": "Fires explosive bolts dealing splash damage to force enemies out of cover"
+    }
+  ]
+}
