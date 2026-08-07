@@ -1,0 +1,22 @@
+{
+  "combat_mechanics_and_bug_fixes": [
+    {
+      "target_issue": "Crouch-Headshot Exploit",
+      "fix_implementation": "Added random crosshair movement/bloom when un-crouching to prevent instant auto-aim headshot abuse without penalizing regular movement"
+    }
+  ],
+  "hud_and_control_settings": [
+    {
+      "setting_name": "Active Skill Icon Customization",
+      "description": "Active skill button position and size can now be adjusted inside HUD layout settings"
+    }
+  ],
+  "graphics_and_engine_optimizations": [
+    {
+      "rendering": "Optimized see-through object visuals for low-spec mobile devices"
+    },
+    {
+      "download_manager": "Optional asset packages can now be modularly downloaded in smaller partial files"
+    }
+  ]
+}
