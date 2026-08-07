@@ -1,0 +1,23 @@
+{
+  "new_items_and_equipment": [
+    {
+      "item_name": "Inhaler",
+      "availability": "Classic Mode",
+      "mechanics": "Usable while moving. Restores 25 HP and 25 EP up to 150 total."
+    },
+    {
+      "item_name": "Electric Surfboard",
+      "availability": "Classic Mode",
+      "mechanics": "Boost duration 3 seconds. Surfing speed tuned down for balance."
+    }
+  ],
+  "system_and_controls": [
+    { "feature": "Sprint Behavior", "rule": "Sprint state is no longer interrupted by active skill triggers" },
+    { "feature": "Auto Weapon Swap", "rule": "Optional setting to swap weapons automatically when ammo depletes" },
+    { "feature": "Dynamic Fire Button UI", "rule": "Fire button icon adjusts based on active weapon category" },
+    { "feature": "Voice Chat Control", "rule": "Ability to mute individual team members in voice chat" },
+    { "feature": "Minimap Scaling", "rule": "Added setting for automatic minimap zoom scaling" },
+    { "feature": "Vehicle HUD", "rule": "Optimized vehicle HP display bar" },
+    { "feature": "Heal Assistance Prompt", "rule": "Added UI prompt for medkit usage at low health threshold" }
+  ]
+}
