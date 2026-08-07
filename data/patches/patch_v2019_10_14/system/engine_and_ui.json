@@ -1,0 +1,48 @@
+{
+  "visual_and_combat_feedback": [
+    {
+      "feature": "Gloo Wall Crack Visuals",
+      "description": "Added visual breaking effects when Gloo Walls are low on durability"
+    },
+    {
+      "feature": "Special In-game Event Markers",
+      "description": "Added automated tactical map/HUD markers when squad members are hurt, firing, downed, or lighting a bonfire"
+    },
+    {
+      "feature": "Character Voice System",
+      "description": "Added English context-driven voice lines triggered during match events"
+    }
+  ],
+  "hud_and_ui_updates": [
+    {
+      "element": "Kill Feed Adjustment",
+      "setting": "Added toggle option to reduce in-game kill feed UI scale"
+    },
+    {
+      "element": "Mode Selection Screen",
+      "description": "Redesigned Game Mode Selection UI"
+    },
+    {
+      "element": "Settings Menu",
+      "description": "Player regional location now displayed in Settings UI"
+    },
+    {
+      "element": "Name Change",
+      "description": "Added option to prioritize consuming Name Change Cards first"
+    }
+  ],
+  "engine_and_optimization": [
+    {
+      "feature": "Resource Download Center",
+      "description": "Modular asset package manager allowing selective downloading of maps and expansions to optimize storage"
+    },
+    {
+      "feature": "Graphics Optimization",
+      "targets": ["Trees", "Grass", "Ground Textures", "Skybox", "Ocean Visuals", "Parachuting Animation"]
+    },
+    {
+      "feature": "Device Compatibility",
+      "targets": ["iPhone navigation menu bar optimization"]
+    }
+  ]
+}
