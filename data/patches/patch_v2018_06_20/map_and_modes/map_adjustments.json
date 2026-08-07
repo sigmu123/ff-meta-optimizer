@@ -1,0 +1,29 @@
+{
+  "game_modes": [
+    {
+      "mode_name": "Rush Hour",
+      "player_count": 20,
+      "features": [
+        "Top tier equipment and high-level weapons spawn as ground loot",
+        "Playzone safezone circle shrinks at a significantly faster rate"
+      ]
+    },
+    {
+      "mode_name": "Death Race",
+      "availability_changes": {
+        "schedule": "Weekends only",
+        "map_restriction": "Playable exclusively on Purgatory map"
+      }
+    }
+  ],
+  "map_objects_and_interactivity": [
+    {
+      "object_type": "Oil Barrels",
+      "properties": "Destroyable map objects that explode upon taking shot damage"
+    },
+    {
+      "location": "Starting Island / Spawn Lobby",
+      "feature": "Added new interactive mini-game"
+    }
+  ]
+}
