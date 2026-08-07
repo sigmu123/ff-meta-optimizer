@@ -1,0 +1,10 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "M500",
+      "category": "Pistol / Sidearm",
+      "pre_equipped_attachment": "Scope",
+      "specialization": "Long-range scoped sidearm combat"
+    }
+  ]
+}
