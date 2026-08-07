@@ -1,0 +1,13 @@
+{
+  "new_characters": [
+    {
+      "character_name": "A124",
+      "skill_type": "Active",
+      "ability": {
+        "description": "Instantly converts a fixed amount of EP (Energy Points) into HP (Health Points) upon activation",
+        "tactical_utility": "In-fight instantaneous health restoration"
+      },
+      "status": "Added to character roster"
+    }
+  ]
+}
