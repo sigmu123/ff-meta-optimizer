@@ -1,78 +1,61 @@
 import math
-from typing import Dict, Any
 
-class MechanicsEngine:
-    @staticmethod
-    def calculate_effective_damage(
-        base_dmg: float,
-        range_decay_pct: float,
-        vest_absorb_pct: float,
-        armor_pen_pct: float
-    ) -> float:
-        """
-        Micro-Variable Damage Equation:
-        Effective Dmg = Base Dmg * (1 - Range Decay %) * [1 - Vest Absorption % * (1 - Armor Pen %)]
-        """
-        dmg_after_range = base_dmg * (1.0 - range_decay_pct)
-        effective_vest_absorption = vest_absorb_pct * (1.0 - armor_pen_pct)
-        effective_damage = dmg_after_range * (1.0 - effective_vest_absorption)
-        return round(effective_damage, 2)
+class TTKCalculator:
+    def __init__(self, target_hp=200, target_vest_lvl=3, target_helmet_lvl=2):
+        self.target_hp = target_hp
+        self.target_vest_lvl = target_vest_lvl
+        self.target_helmet_lvl = target_helmet_lvl
 
-    @staticmethod
-    def calculate_ttk(target_hp: float, effective_dmg: float, rate_of_fire_sec: float) -> Dict[str, Any]:
+    def calculate_effective_damage(self, base_damage, armor_pen, damage_boost=0.0):
         """
-        Calculates Bullets To Kill (BTK) and exact Time To Kill (TTK) in seconds.
-        BTK = Ceil(Target HP / Effective Dmg)
-        TTK = (BTK - 1) * Rate of Fire (sec)
+        Calculates body shot damage factoring armor reduction & penetration
         """
-        if effective_dmg <= 0:
-            return {"btk": float('inf'), "ttk_sec": float('inf')}
+        # Armor reduction values per level (Level 0 to 4)
+        vest_reductions = {0: 0.0, 1: 0.33, 2: 0.45, 3: 0.50, 4: 0.55}
+        base_reduction = vest_reductions.get(self.target_vest_lvl, 0.0)
+
+        # Apply armor penetration mitigation
+        effective_reduction = max(0.0, base_reduction - armor_pen)
         
-        btk = math.ceil(target_hp / effective_dmg)
-        ttk_sec = round((btk - 1) * rate_of_fire_sec, 3)
+        # Calculate raw damage after passive skills/boosts
+        boosted_damage = base_damage * (1.0 + damage_boost)
         
+        # Calculate final effective damage applied to HP
+        effective_damage = boosted_damage * (1.0 - effective_reduction)
+        return max(1.0, round(effective_damage, 2))  # Floor at 1.0 to prevent DivByZero
+
+    def calculate_weapon_ttk(self, weapon_stats, player_boosts=None):
+        """
+        Calculates Effective Damage, BTK, and TTK
+        """
+        if player_boosts is None:
+            player_boosts = {}
+
+        # Safe extraction with fallback values
+        base_damage = weapon_stats.get("base_damage", weapon_stats.get("damage", 0))
+        rate_of_fire = weapon_stats.get("rate_of_fire", weapon_stats.get("fire_rate", 1.0))
+        armor_pen = weapon_stats.get("armor_penetration", 0.0)
+        damage_boost = player_boosts.get("damage_boost", 0.0)
+
+        # Fallback safeguard if damage missing
+        if base_damage <= 0:
+            return {
+                "effective_damage": 0.0,
+                "btk": float('inf'),
+                "ttk": float('inf')
+            }
+
+        eff_dmg = self.calculate_effective_damage(base_damage, armor_pen, damage_boost)
+        
+        # Bullets To Kill (BTK)
+        btk = math.ceil(self.target_hp / eff_dmg)
+
+        # Time To Kill (TTK) in seconds
+        # Shots firing interval = 1 / rate_of_fire
+        ttk = round((btk - 1) / rate_of_fire, 3)
+
         return {
-            "btk": btk,
-            "ttk_sec": ttk_sec
-        }
-
-    @classmethod
-    def calculate_weapon_ttk(
-        cls,
-        weapon_data: Dict[str, Any],
-        target_hp: float = 200.0,
-        vest_absorb_pct: float = 0.0,
-        armor_pen_pct: float = 0.0,
-        range_decay_pct: float = 0.0
-    ) -> Dict[str, Any]:
-        """
-        Helper method to compute TTK directly from JSON weapon attributes.
-        """
-        base_dmg = weapon_data.get("base_damage", 0.0)
-        rof = weapon_data.get("rate_of_fire_seconds", 0.1)
-        
-        eff_dmg = cls.calculate_effective_damage(base_dmg, range_decay_pct, vest_absorb_pct, armor_pen_pct)
-        ttk_info = cls.calculate_ttk(target_hp, eff_dmg, rof)
-        
-        return {
-            "weapon_id": weapon_data.get("weapon_id", "unknown"),
             "effective_damage": eff_dmg,
-            "btk": ttk_info["btk"],
-            "ttk_sec": ttk_info["ttk_sec"]
+            "btk": btk,
+            "ttk": ttk
         }
-
-
-if __name__ == "__main__":
-    sample_weapon = {
-        "weapon_id": "g36_assault",
-        "base_damage": 26,
-        "rate_of_fire_seconds": 0.096
-    }
-    res = MechanicsEngine.calculate_weapon_ttk(
-        sample_weapon,
-        target_hp=200,
-        vest_absorb_pct=0.33,
-        armor_pen_pct=0.10,
-        range_decay_pct=0.05
-    )
-    print(f"[ENGINE UNIT TEST] Effective Damage: {res['effective_damage']} | BTK: {res['btk']} | TTK: {res['ttk_sec']}s")
