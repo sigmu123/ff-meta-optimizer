@@ -1,0 +1,20 @@
+{
+  "map_features_and_events": [
+    {
+      "feature_name": "Motorbike Rework",
+      "availability": "All Modes",
+      "mechanics": "Capacity increased to support 2 players simultaneously"
+    },
+    {
+      "feature_name": "Airship",
+      "availability": "Classic & Rank Modes (Starting 2020-04-19)",
+      "map": "Bermuda",
+      "description": "Overseeing airship event dropping surprises"
+    },
+    {
+      "feature_name": "Camo Box (Camouflage)",
+      "availability": "Kalahari Map",
+      "description": "Tactical camouflage concealment box"
+    }
+  ]
+}
