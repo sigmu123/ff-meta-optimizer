@@ -1,0 +1,36 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "M1887",
+      "category": "Shotgun",
+      "type": "Two-barrel Shotgun",
+      "attributes": {
+        "damage_ratio": 178,
+        "clip_size": 2,
+        "rate_of_fire": 0.45,
+        "range": 35,
+        "recharge_or_reload_speed": "Long reload duration"
+      },
+      "combat_niche": "Effective in mid to close range engagement with high burst damage"
+    },
+    {
+      "weapon_name": "FF Knife",
+      "category": "Throwing Melee / Weapon",
+      "availability": "Cold Steel Special Mode",
+      "attributes": {
+        "damage_ratio": 9999,
+        "maximum_charges": 3,
+        "accuracy": 100
+      }
+    },
+    {
+      "weapon_name": "Decoy Grenade",
+      "category": "Tactical Throwable",
+      "attributes": {
+        "health": 180,
+        "map_effect": "Displays a fake red-dot firing indicator on enemy minimaps upon deployment"
+      },
+      "tactical_utility": "Tricks enemies into exposing their positions"
+    }
+  ]
+}
