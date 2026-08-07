@@ -2,7 +2,7 @@ import os
 import json
 
 class PatchLoader:
-    def __init__(self, patch_name="patch_v33_heroes_arise"):
+    def __init__(self, patch_name="patch_ob54"):
         self.patch_name = patch_name
         self.patch_dir = os.path.join("data", "patches", self.patch_name)
         self.manifest_path = os.path.join(self.patch_dir, "patch_manifest.json")
@@ -29,37 +29,70 @@ class PatchLoader:
         return {}
 
     def _load_all_data(self):
-        files = self.manifest.get("files", {}) if isinstance(self.manifest, dict) else {}
-        
-        if "active_skills" in files:
-            self.active_skills = self._load_json_safe(os.path.join(self.patch_dir, files["active_skills"]))
-        if "passive_skills" in files:
-            self.passive_skills = self._load_json_safe(os.path.join(self.patch_dir, files["passive_skills"]))
-        if "base_attributes" in files:
-            self.weapons = self._load_json_safe(os.path.join(self.patch_dir, files["base_attributes"]))
-        if "range_decay" in files:
-            self.range_decay = self._load_json_safe(os.path.join(self.patch_dir, files["range_decay"]))
+        if not os.path.exists(self.patch_dir):
+            return
 
-        if os.path.exists(self.patch_dir):
-            for root, _, files_in_dir in os.walk(self.patch_dir):
-                for file_name in files_in_dir:
-                    if file_name.endswith(".json") and file_name != "patch_manifest.json":
-                        file_path = os.path.join(root, file_name)
-                        content = self._load_json_safe(file_path)
-                        
-                        if file_name in ["characters.json", "skills_rework.json"]:
-                            self.characters = content
-                        elif file_name == "active_skills.json":
-                            self.active_skills = content
-                        elif file_name == "passive_skills.json":
-                            self.passive_skills = content
-                                
-                        elif file_name in ["weapons.json", "weapon_balance.json", "base_attributes.json"]:
-                            if not self.weapons:
-                                self.weapons = content
-                                
-                        elif file_name in ["modes_and_maps.json", "mode_adjustments.json", "gameplay_rules.json", "system_updates.json", "utilities.json"]:
-                            if not self.modes_and_maps:
-                                self.modes_and_maps = content
-                            if not self.utilities:
-                                self.utilities = content
+        # Walk through patch directory and ingest JSON structures safely
+        for root, _, files in os.walk(self.patch_dir):
+            for file_name in files:
+                if file_name == "patch_manifest.json" or not file_name.endswith(".json"):
+                    continue
+                
+                file_path = os.path.join(root, file_name)
+                data = self._load_json_safe(file_path)
+                
+                # Ingest Characters & Skills
+                if file_name == "active_skills.json":
+                    skill_list = data.get("active_skills", []) if isinstance(data, dict) else data
+                    if isinstance(skill_list, list):
+                        for skill in skill_list:
+                            s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name")
+                            if s_id:
+                                self.active_skills[str(s_id).lower()] = skill
+                    elif isinstance(data, dict):
+                        self.active_skills.update(data)
+
+                elif file_name == "passive_skills.json":
+                    skill_list = data.get("passive_skills", []) if isinstance(data, dict) else data
+                    if isinstance(skill_list, list):
+                        for skill in skill_list:
+                            s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name")
+                            if s_id:
+                                self.passive_skills[str(s_id).lower()] = skill
+                    elif isinstance(data, dict):
+                        self.passive_skills.update(data)
+
+                elif file_name in ["characters.json", "skills_rework.json"]:
+                    if isinstance(data, dict):
+                        self.characters.update(data)
+
+                # Ingest Weapons & Attributes
+                elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json"]:
+                    w_list = data.get("weapons", []) if isinstance(data, dict) else []
+                    if isinstance(w_list, list) and len(w_list) > 0:
+                        for w in w_list:
+                            w_id = w.get("weapon_id") or w.get("name")
+                            if w_id:
+                                self.weapons[str(w_id).lower()] = w
+                    elif isinstance(data, dict):
+                        for k, v in data.items():
+                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics"]:
+                                self.weapons[str(k).lower()] = v
+
+                # Ingest Range Decay
+                elif file_name == "range_decay.json":
+                    if isinstance(data, dict):
+                        self.range_decay.update(data)
+
+                # Ingest Mechanics, Modes & Utilities
+                elif file_name in ["map_tactics.json", "modes_and_maps.json", "mode_adjustments.json", "gameplay_rules.json"]:
+                    if isinstance(data, dict):
+                        self.modes_and_maps.update(data)
+
+                elif file_name in ["utilities.json", "system_updates.json", "system_qol.json"]:
+                    if isinstance(data, dict):
+                        self.utilities.update(data)
+
+        # Merge active/passive dictionaries into general character repository for legacy callers
+        if not self.characters.get("characters"):
+            self.characters["characters"] = {**self.active_skills, **self.passive_skills}
