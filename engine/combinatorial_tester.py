@@ -1,6 +1,3 @@
-================================================
-FILE: engine/combinatorial_tester.py
-================================================
 import time
 from typing import Dict, Any
 from core.ttk_calculator import MechanicsEngine
