@@ -1,0 +1,13 @@
+{
+  "gameplay_and_mechanics_fixes": [
+    { "feature": "Foliage Hiding", "rule": "Players can no longer hide inside/on top of foliage elements" },
+    { "feature": "Active Skill & Scope interaction", "rule": "Triggering active skill while scoped will no longer unscope the weapon" },
+    { "feature": "Mushroom Consumption", "rule": "Double-clicking consume button will no longer cancel picking up mushrooms" },
+    { "feature": "Auto-Pickup Delay", "rule": "Added user setting to reduce auto-pickup latency" },
+    { "feature": "Parachuting Cosmetics Visibility", "rule": "Parachuting state displays active backpack skin" }
+  ],
+  "hud_and_indicators": [
+    { "feature": "Match Type Indicator", "rule": "In-game HUD shows explicitly whether current match is Ranked or Casual" },
+    { "feature": "TDM & CS Match Results", "rule": "End-screen UI optimizations" }
+  ]
+}
