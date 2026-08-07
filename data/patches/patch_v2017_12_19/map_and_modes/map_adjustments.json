@@ -1,0 +1,13 @@
+{
+  "patch_version": "1.8.x_2017_12_19",
+  "map_updates": [
+    {
+      "map_name": "Bermuda",
+      "status": "FULL_RELEASE",
+      "description": "The entire island has now been unlocked and made fully playable."
+    }
+  ],
+  "lobby_mechanics": {
+    "max_players_per_match": 50
+  }
+}
