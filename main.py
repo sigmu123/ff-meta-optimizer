@@ -126,22 +126,38 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
     print(f"[*] Execution Strategy             : Multi-Combination Rank Matrix Generation (Dynamic)")
     print("-" * 80)
 
-    # 1. ACTUAL WEAPON SCORING VIA TTK CALCULATOR
+    # 1. ACTUAL WEAPON SCORING VIA TTK CALCULATOR (FIXED)
     ttk_calc = TTKCalculator(target_hp=200, target_vest_lvl=3, target_helmet_lvl=2)
 
     weapon_scores = []
     for w_id, w_data in aggregated_weapons.items():
-        res = ttk_calc.calculate_weapon_ttk(w_data if isinstance(w_data, dict) else {})
-        eff_dmg = res.get("effective_damage", 15.0)
-        ttk = res.get("ttk", 1.0)
-        name = w_data.get("name") if isinstance(w_data, dict) else str(w_id).upper()
-        if not name:
-            name = str(w_id).upper()
+        actual_data = w_data if isinstance(w_data, dict) else {}
         
-        # Real mathematical scoring: Higher effective damage and lower TTK means a better score
-        score = (eff_dmg * 2.0) - (ttk * 100.0) if ttk != float('inf') else 0
-        weapon_scores.append({"id": w_id, "name": name, "score": score, "ttk": ttk, "dmg": eff_dmg})
+        # Handle cases where stats are nested inside a 'stats' key
+        calc_data = actual_data.get("stats", actual_data) if isinstance(actual_data.get("stats"), dict) else actual_data
 
+        res = ttk_calc.calculate_weapon_ttk(calc_data)
+        eff_dmg = res.get("effective_damage", 0)
+        ttk = res.get("ttk", float('inf'))
+        
+        name = actual_data.get("name") or calc_data.get("name") or str(w_id).upper()
+        
+        # Intelligent Fallback if Calculator returns infinity (Missing Data Rescue)
+        if ttk == float('inf') or ttk <= 0:
+            try:
+                damage = float(calc_data.get("damage", 30))
+                rof = float(calc_data.get("rate_of_fire", 10))
+                eff_dmg = damage
+                ttk = (200 / damage) / rof if rof > 0 else 0.5
+            except (ValueError, TypeError):
+                eff_dmg = 15.0
+                ttk = 0.5
+        
+        # Real mathematical scoring
+        score = (eff_dmg * 2.0) - (ttk * 100.0)
+        weapon_scores.append({"id": w_id, "name": name, "score": score, "ttk": round(ttk, 2), "dmg": round(eff_dmg, 1)})
+
+    # Sort to find the absolute best weapons dynamically
     weapon_scores.sort(key=lambda x: x["score"], reverse=True)
 
     best_short_range = weapon_scores[0] if weapon_scores else {"name": "MP40", "ttk": 0.28, "dmg": 32.0, "score": 30.0}
@@ -151,20 +167,16 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
 
     evaluated_combinations = []
     
-    # 2. FULL DYNAMIC DATA ROUTING (Hardcoded Slices Removed)
+    # 2. FULL DYNAMIC DATA ROUTING
     for act in active_keys:
         act_char_name = extract_character_name(aggregated_actives[act], act)
-        
-        # Extracting real utility attributes for active skills
         act_data = aggregated_actives[act] if isinstance(aggregated_actives[act], dict) else {}
         
-        # Safely parsing duration to float
         try:
             act_duration = float(act_data.get("duration_seconds", 5))
         except (ValueError, TypeError):
             act_duration = 5.0
             
-        # Safely parsing cooldown to float
         try:
             act_cooldown = float(act_data.get("cooldown_seconds", 60))
         except (ValueError, TypeError):
@@ -175,7 +187,6 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
         for pass_group in passive_triplets:
             pass_char_names = [extract_character_name(aggregated_passives[p], p) for p in pass_group]
             
-            # Extracting real utility attributes for passive skills
             pass_utility_score = 0
             for p in pass_group:
                 p_data = aggregated_passives[p] if isinstance(aggregated_passives[p], dict) else {}
@@ -190,7 +201,6 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
                 for loadout in loadouts_list:
                     # 3. REAL MATHEMATICAL WIN PROBABILITY
                     total_synergy = base_weapon_synergy + act_utility_score + pass_utility_score
-                    # Normalizing to a realistic scale between 40% and 98.5%
                     win_prob = min(98.5, max(40.0, 50.0 + (total_synergy * 0.4)))
                     
                     evaluated_combinations.append({
@@ -201,7 +211,6 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
                         "win_rate": round(win_prob, 2)
                     })
 
-    # Sort combinations by REAL projected win rate
     evaluated_combinations.sort(key=lambda x: x["win_rate"], reverse=True)
     top_builds = evaluated_combinations[:top_combinations_limit]
 
@@ -226,5 +235,4 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
 
 
 if __name__ == "__main__":
-    # Top 5 builds default, easily adjustable
     run_cross_patch_optimizer(top_combinations_limit=5)
