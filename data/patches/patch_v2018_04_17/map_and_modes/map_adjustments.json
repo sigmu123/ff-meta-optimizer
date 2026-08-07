@@ -1,0 +1,19 @@
+{
+  "game_modes": [
+    {
+      "mode_name": "Death Race",
+      "format": "40-man Duo-only vehicular mode",
+      "mechanics": [
+        "Vehicle-only combat",
+        "Collectible power-ups on track",
+        "Motorcycle & vehicle survival mechanics"
+      ]
+    }
+  ],
+  "safezone_logic": {
+    "algorithm_optimization": {
+      "illogical_safezones_fix": true,
+      "description": "Improved zone generation code to eliminate impossible or illogical ring predictions/closures"
+    }
+  }
+}
