@@ -1,0 +1,20 @@
+{
+  "new_pets": [
+    {
+      "pet_name": "Ottero",
+      "release_date": "2020-04-13",
+      "skill_name": "Double Blubber",
+      "skill_type": "Passive / Support",
+      "trigger_conditions": [
+        "When using Treatment Gun",
+        "When using Medkit"
+      ],
+      "mechanics": "Restores EP to the receiver based on percentage of HP recovered",
+      "ep_recovery_percentage_of_hp": {
+        "level_1": 35,
+        "level_2": 50,
+        "level_3": 65
+      }
+    }
+  ]
+}
