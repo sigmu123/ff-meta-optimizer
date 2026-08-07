@@ -1,0 +1,41 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "MP5",
+      "category": "Submachine Gun (SMG)",
+      "adjustments": {
+        "rate_of_fire_increase_percentage": 25,
+        "accuracy_increase_percentage": 7,
+        "shooting_movement_speed_increase_percentage": 28,
+        "effective_range_increase_percentage": 13,
+        "first_shots_precise_count": {
+          "new": 6,
+          "previous": 3
+        },
+        "attachment_slots": {
+          "grip": false
+        }
+      }
+    },
+    {
+      "weapon_name": "UMP",
+      "category": "Submachine Gun (SMG)",
+      "adjustments": {
+        "damage": "+1",
+        "minimum_damage": "+5",
+        "armor_penetration": "Increased",
+        "range_reduction_percentage": 5
+      }
+    },
+    {
+      "weapon_name": "M1887",
+      "category": "Shotgun",
+      "adjustments": {
+        "armor_penetration_increase_percentage": 6,
+        "rate_of_fire_increase_percentage": 4,
+        "reload_speed_reduction_percentage": 30,
+        "minimum_damage": "-1"
+      }
+    }
+  ]
+}
