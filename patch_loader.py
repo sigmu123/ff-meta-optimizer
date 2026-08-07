@@ -1,10 +1,16 @@
+================================================
+FILE: patch_loader.py
+================================================
 import os
 import json
 
 class PatchLoader:
-    def __init__(self, patch_name="patch_ob54"):
+    def __init__(self, patch_name="patch_ob54", base_dir=None):
         self.patch_name = patch_name
-        self.patch_dir = os.path.join("data", "patches", self.patch_name)
+        if base_dir is None:
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            
+        self.patch_dir = os.path.join(base_dir, "data", "patches", self.patch_name)
         self.manifest_path = os.path.join(self.patch_dir, "patch_manifest.json")
         
         self.manifest = self._load_json_safe(self.manifest_path)
@@ -44,25 +50,34 @@ class PatchLoader:
                     skill_list = data.get("active_skills", []) if isinstance(data, dict) else data
                     if isinstance(skill_list, list):
                         for skill in skill_list:
-                            s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name")
+                            s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name") or skill.get("id")
                             if s_id:
                                 self.active_skills[str(s_id).lower()] = skill
                     elif isinstance(data, dict):
-                        self.active_skills.update(data)
+                        for k, v in data.items():
+                            self.active_skills[str(k).lower()] = v
 
                 elif file_name == "passive_skills.json":
                     skill_list = data.get("passive_skills", []) if isinstance(data, dict) else data
                     if isinstance(skill_list, list):
                         for skill in skill_list:
-                            s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name")
+                            s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name") or skill.get("id")
                             if s_id:
                                 self.passive_skills[str(s_id).lower()] = skill
                     elif isinstance(data, dict):
-                        self.passive_skills.update(data)
+                        for k, v in data.items():
+                            self.passive_skills[str(k).lower()] = v
 
                 elif file_name in ["characters.json", "skills_rework.json"]:
                     if isinstance(data, dict):
-                        self.characters.update(data)
+                        char_list = data.get("character_adjustments", []) or data.get("updates", [])
+                        if isinstance(char_list, list):
+                            for c in char_list:
+                                c_id = c.get("character_id") or c.get("character_name") or c.get("id") or c.get("name")
+                                if c_id:
+                                    self.characters[str(c_id).lower()] = c
+                        else:
+                            self.characters.update(data)
 
                 elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json"]:
                     w_list = data.get("weapons", []) if isinstance(data, dict) else []
@@ -73,7 +88,7 @@ class PatchLoader:
                                 self.weapons[str(w_id).lower()] = w
                     elif isinstance(data, dict):
                         for k, v in data.items():
-                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics"]:
+                            if k not in ["patch_version", "patch_date", "category", "special_weapon_mechanics", "global_weapon_mechanics", "weapon_tier_system"]:
                                 self.weapons[str(k).lower()] = v
 
                 elif file_name == "range_decay.json":
