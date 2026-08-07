@@ -1,0 +1,19 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Steffie",
+      "profession": "Graffiti Artist",
+      "skill_name": "Painted Refuge",
+      "skill_type": "Active",
+      "cooldown_seconds": 45,
+      "skill_attributes_by_level": {
+        "level_1": { "duration_seconds": 5, "explosive_damage_reduction_percentage": 15, "bullet_damage_reduction_percentage": 5 },
+        "level_2": { "duration_seconds": 6, "explosive_damage_reduction_percentage": 17, "bullet_damage_reduction_percentage": 5 },
+        "level_3": { "duration_seconds": 7, "explosive_damage_reduction_percentage": 19, "bullet_damage_reduction_percentage": 5 },
+        "level_4": { "duration_seconds": 8, "explosive_damage_reduction_percentage": 21, "bullet_damage_reduction_percentage": 5 },
+        "level_5": { "duration_seconds": 9, "explosive_damage_reduction_percentage": 23, "bullet_damage_reduction_percentage": 5 },
+        "level_6": { "duration_seconds": 10, "explosive_damage_reduction_percentage": 25, "bullet_damage_reduction_percentage": 5 }
+      }
+    }
+  ]
+}
