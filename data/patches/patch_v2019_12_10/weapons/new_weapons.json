@@ -1,0 +1,15 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Desert Eagle",
+      "category": "Pistol",
+      "availability": "Clash Squad Mode ONLY",
+      "attributes": {
+        "damage_ratio": 98,
+        "rate_of_fire": 0.55,
+        "clip_size": 7,
+        "range": 70
+      }
+    }
+  ]
+}
