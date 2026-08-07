@@ -1,0 +1,23 @@
+{
+  "advanced_attachments_system": [
+    {
+      "attachment_name": "Electrical Booster",
+      "compatible_weapon": "MP5",
+      "availability": "Classic Mode",
+      "buffs": {
+        "rate_of_fire": "+31%"
+      },
+      "tactical_impact": "Enhances MP5 close-mid range viability"
+    },
+    {
+      "attachment_name": "Spiral Charger",
+      "compatible_weapon": "M60",
+      "availability": "Classic Mode",
+      "buffs": {
+        "damage_increase_ratio": "2 damage per shot (stacks up to 18 times while holding fire button)",
+        "accuracy_increase": "0.015 per shot"
+      },
+      "tactical_impact": "Increases damage and stability during continuous suppressing fire"
+    }
+  ]
+}
