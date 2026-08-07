@@ -1,0 +1,18 @@
+{
+  "vehicle_destruction_mechanics": {
+    "destruction_phase": "Loss of control upon health depletion prior to detonation",
+    "explosion_mechanics": "Bursts into flames upon exploding",
+    "area_damage": {
+      "enabled": true,
+      "damage_type": "Damage over Time (DoT) fire zone",
+      "duration": "Several seconds",
+      "affects": "Surrounding players within blast radius"
+    }
+  },
+  "vehicle_durability_and_handling": {
+    "reckless_driving_damage": {
+      "enabled": true,
+      "impact": "Vehicles sustain self-damage from harsh collisions and reckless maneuvers"
+    }
+  }
+}
