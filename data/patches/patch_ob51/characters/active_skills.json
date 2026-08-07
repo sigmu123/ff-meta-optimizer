@@ -1,0 +1,35 @@
+{
+  "patch_version": "OB51",
+  "patch_date": "2025-11-01",
+  "category": "active_skills_and_rebalances",
+  "active_skills": [
+    {
+      "character_id": "chrono",
+      "character_name": "Chrono",
+      "skill_name": "Time Turner",
+      "type": "Defensive Shield",
+      "status": "balanced",
+      "shield_hp": 800,
+      "duration_seconds": 6.0,
+      "cooldown_seconds": 110
+    },
+    {
+      "character_id": "tatsuya",
+      "character_name": "Tatsuya",
+      "skill_name": "Rebel Rush",
+      "type": "Mobility",
+      "status": "adjusted",
+      "cooldown_seconds": 45,
+      "duration_seconds": 0.3
+    },
+    {
+      "character_id": "wukong",
+      "character_name": "Wukong",
+      "skill_name": "Camouflage",
+      "type": "Stealth / Disguise",
+      "status": "balanced",
+      "cooldown_seconds": 200,
+      "duration_seconds": 15
+    }
+  ]
+}
