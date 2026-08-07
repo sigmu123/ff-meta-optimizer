@@ -1,15 +1,22 @@
 {
   "patch_id": "patch_ob51",
-  "patch_name": "Patch OB51 Update",
+  "patch_name": "Free Fire OB51 Update",
+  "release_date": "2025-10-29",
   "version": "51.0",
-  "release_date": "2025-11-01",
-  "meta_period": "Late-2025",
   "is_active": true,
-  "summary": "OB51 Patch update featuring character balances, weapon tweaks, and map mechanics.",
-  "files_included": [
-    "characters/active_skills.json",
-    "characters/passive_skills.json",
-    "weapons/base_attributes.json",
-    "mechanics/map_tactics.json"
+  "summary": "Full OB51 Patch Data excluding Flame Arena event details.",
+  "modules": [
+    "loadouts/loadout_system.json",
+    "battle_royale/economy_and_loot.json",
+    "characters/new_character.json",
+    "characters/balance_adjustments.json",
+    "characters/qol_fixes.json",
+    "weapons/new_weapons.json",
+    "weapons/upgradable_system.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "map_and_modes/cs_store.json",
+    "system/engine_and_ui.json",
+    "craftland/editor_features.json"
   ]
 }
