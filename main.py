@@ -12,58 +12,44 @@ from interface.prompt_parser import PromptParser
 
 
 def main():
-    # Initialize System Router & Load Active Patch Data
     router = PatchRouter(data_dir=os.path.join(current_dir, "data"))
-    latest_patch = router.get_latest_patch_version() or "patch_ob54"
-    loader = PatchLoader(patch_name=latest_patch, base_dir=current_dir)
-
-    # Parse User Intent Prompt
+    
+    # Get all available patches in repo for cross-match analysis
+    all_patches = router.get_all_available_patches() if hasattr(router, "get_all_available_patches") else ["patch_ob54", "patch_ob53", "patch_ob52"]
+    
     parsed_intent = PromptParser.parse("OB54 CS Ranked rush build with high damage")
 
-    # Run Combinatorial Matrix Search Engine
-    tester = PermutationTester(patch_data=loader)
-    optimization_results = tester.run_matrix_search(
-        mode=parsed_intent.get("mode", "clash_squad"),
-        playstyle=parsed_intent.get("playstyle", "rush"),
-        top_k=1
-    )
+    print("=" * 70)
+    print("      MULTI-PATCH CROSS-MATCH PERMUTATION MATRIX OPTIMIZER       ")
+    print("=" * 70)
 
-    best_build = optimization_results["top_build"]
-    total_permutations = optimization_results["permutations_tested"]
-    latency = optimization_results["latency_ms"]
+    grand_total_permutations = 0
 
-    # Quick Execution Sheet Output Format
-    print("=" * 60)
-    print("          QUICK EXECUTION SHEET - META ENGINE OUTPUT          ")
-    print("=" * 60)
-    print(f"[*] Engine Latency: {latency:.3f}ms | Permutations Tested: {total_permutations}")
-    print(f"[*] Active Isolated Patch: {str(latest_patch).upper()}")
-    print("-" * 60)
-    
-    print("\n1. Setup EQUIP Karein (Direct Active/Passive/Pet/Loadout List):")
-    print(f"   • Active Skill  : {best_build['character_loadout']['active_skill']}")
-    print(f"   • Passive 1     : {best_build['character_loadout']['passives'][0]}")
-    print(f"   • Passive 2     : {best_build['character_loadout']['passives'][1]}")
-    print(f"   • Passive 3     : {best_build['character_loadout']['passives'][2]}")
-    print(f"   • Pet Companion : {best_build['pet']}")
-    print(f"   • Item Loadout  : {best_build['item_loadout']}")
+    for patch in all_patches:
+        loader = PatchLoader(patch_name=patch, base_dir=current_dir)
+        tester = PermutationTester(patch_data=loader)
+        
+        results = tester.run_matrix_search(
+            mode=parsed_intent.get("mode", "clash_squad"),
+            playstyle=parsed_intent.get("playstyle", "rush"),
+            top_k=1
+        )
+        
+        best_build = results["top_build"]
+        permutations_count = results["permutations_tested"]
+        grand_total_permutations += permutations_count
 
-    print("\n2. Weapons Multiplier (Recommended Guns):")
-    print(f"   • Short-Range   : {best_build['weapons']['short_range']['name']}")
-    print(f"     └ Eff Dmg: {best_build['weapons']['short_range']['effective_dmg']} HP | BTK: {best_build['weapons']['short_range']['btk']} | TTK: {best_build['weapons']['short_range']['ttk']}s")
-    print(f"   • Mid-Range     : {best_build['weapons']['mid_range']['name']}")
-    print(f"     └ Eff Dmg: {best_build['weapons']['mid_range']['effective_dmg']} HP | BTK: {best_build['weapons']['mid_range']['btk']} | TTK: {best_build['weapons']['mid_range']['ttk']}s")
+        print(f"\n[+] PATCH: {str(patch).upper()} | Evaluated Combinations: {permutations_count}")
+        print(f"    • Best Build Active  : {best_build['character_loadout']['active_skill']}")
+        print(f"    • Passives Combination: {', '.join(best_build['character_loadout']['passives'])}")
+        print(f"    • Primary Close Gun  : {best_build['weapons']['short_range']['name']} (TTK: {best_build['weapons']['short_range']['ttk']}s)")
+        print(f"    • Secondary Mid Gun  : {best_build['weapons']['mid_range']['name']} (TTK: {best_build['weapons']['mid_range']['ttk']}s)")
+        print(f"    • Pet / Loadout      : {best_build['pet']} / {best_build['item_loadout']}")
+        print(f"    • Win Probability    : {best_build['summary']['win_probability_pct']}%")
 
-    print("\n3. Strategic Winning Trick:")
-    print(f"   • Step 1 (Defense) : {best_build['strategy']['defense_tactic']}")
-    print(f"   • Step 2 (Attack)  : {best_build['strategy']['attack_tactic']}")
-    print(f"   • Step 3 (Trick)   : {best_build['strategy']['map_trick']}")
-
-    print("\n4. Simple Summary Result:")
-    print(f"   • Defense Buff     : +{best_build['summary']['defense_buff_pct']}%")
-    print(f"   • Attack Buff      : +{best_build['summary']['attack_buff_pct']}%")
-    print(f"   • Win Probability  : {best_build['summary']['win_probability_pct']}%")
-    print("=" * 60)
+    print("\n" + "=" * 70)
+    print(f"[*] TOTAL PERMUTATIONS CROSS-MATCHED ACROSS ALL PATCHES: {grand_total_permutations}")
+    print("=" * 70)
 
 
 if __name__ == "__main__":
