@@ -1,0 +1,24 @@
+{
+  "map_updates": [
+    {
+      "map_name": "Bermuda",
+      "update_type": "Map Revamp",
+      "new_locations": [
+        {
+          "location_name": "Graveyard",
+          "description": "Newly added playable compounds/area on Bermuda map"
+        }
+      ]
+    }
+  ],
+  "spawn_island_features": [
+    {
+      "element": "Train",
+      "status": "Re-introduced / Returned to Spawn Island"
+    },
+    {
+      "element": "Seasonal Assets",
+      "status": "Snow and winter seasonal decorations removed"
+    }
+  ]
+}
