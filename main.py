@@ -2,7 +2,6 @@ import os
 import sys
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
-# Setup paths
 current_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(current_dir)
 if current_dir not in sys.path:
@@ -18,7 +17,6 @@ def process_patch(patch, parsed_intent):
     try:
         loader = PatchLoader(patch_name=patch, base_dir=current_dir)
         
-        # Guard against empty or corrupted skill data
         if not loader.active_skills or not loader.passive_skills:
             return patch, None, 0, "Skipped (Data missing or empty)"
 
@@ -35,12 +33,11 @@ def process_patch(patch, parsed_intent):
 
 def main():
     print("=" * 70)
-    print("      MULTI-PATCH OPTIMIZER (PARALLEL PROCESS EXECUTION)       ")
+    print("      MULTI-PATCH OPTIMIZER (FAST PARALLEL EXECUTION)       ")
     print("=" * 70)
 
     router = PatchRouter(data_dir=os.path.join(current_dir, "data"))
     
-    # Verify existing patches on disk to prevent missing folder hangs
     patches_dir = os.path.join(current_dir, "data", "patches")
     if os.path.exists(patches_dir):
         available_on_disk = set(os.listdir(patches_dir))
@@ -59,29 +56,34 @@ def main():
 
     print(f"[*] Starting matrix evaluation across {len(all_patches)} valid patches...\n")
 
-    # Use ProcessPoolExecutor to utilize true CPU cores and avoid GIL thread hangs
     max_workers = min(os.cpu_count() or 4, len(all_patches))
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
         futures = {executor.submit(process_patch, patch, parsed_intent): patch for patch in all_patches}
         
         for future in as_completed(futures):
-            patch, results, count, err = future.result()
-            
-            if err:
-                print(f"[-] PATCH: {str(patch).upper():<25} | Status: Error ({err})")
-                continue
+            try:
+                # Set strict 5-second per process limit
+                patch, results, count, err = future.result(timeout=5.0)
                 
-            if not results or "top_build" not in results or not results["top_build"]:
-                print(f"[-] PATCH: {str(patch).upper():<25} | Status: No valid build found")
-                continue
+                if err:
+                    print(f"[-] PATCH: {str(patch).upper():<25} | Status: Error ({err})")
+                    continue
+                    
+                if not results or "top_build" not in results or not results["top_build"]:
+                    print(f"[-] PATCH: {str(patch).upper():<25} | Status: No valid build found")
+                    continue
 
-            grand_total_permutations += count
-            best_build = results["top_build"]
-            
-            active_skill = best_build.get('character_loadout', {}).get('active_skill', 'N/A')
-            win_prob = best_build.get('summary', {}).get('win_probability_pct', 'N/A')
+                grand_total_permutations += count
+                best_build = results["top_build"]
+                
+                active_skill = best_build.get('character_loadout', {}).get('active_skill', 'N/A')
+                win_prob = best_build.get('summary', {}).get('win_probability_pct', 'N/A')
 
-            print(f"[+] PATCH: {str(patch).upper():<25} | Tested: {count:>8,} | Best Active: {active_skill:<12} | Win Rate: {win_prob}%")
+                print(f"[+] PATCH: {str(patch).upper():<25} | Tested: {count:>8,} | Best Active: {active_skill:<12} | Win Rate: {win_prob}%")
+
+            except Exception as exc:
+                patch_name = futures[future]
+                print(f"[-] PATCH: {str(patch_name).upper():<25} | Status: Timed out / Halted ({exc})")
 
     print("\n" + "=" * 70)
     print(f"[*] TOTAL COMBINATIONS EVALUATED: {grand_total_permutations:,}")
