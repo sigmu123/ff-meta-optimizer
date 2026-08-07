@@ -1,0 +1,18 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Thompson",
+      "category": "Submachine Gun (SMG)",
+      "availability": "Classic Mode",
+      "combat_niche": "Mid-to-close range consistent spray",
+      "base_stats": {
+        "damage": 50,
+        "rate_of_fire": 77,
+        "magazine": 48,
+        "accuracy": 34,
+        "reload": 48,
+        "range": 33
+      }
+    }
+  ]
+}
