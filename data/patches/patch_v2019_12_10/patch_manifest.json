@@ -1,0 +1,14 @@
+{
+  "version": "v2019_12_10",
+  "patch_name": "Winterlands",
+  "publish_date": "2019-12-10",
+  "active_submodules": [
+    "characters/progression_and_economy.json",
+    "characters/new_character.json",
+    "weapons/new_weapons.json",
+    "weapons/advanced_attachments.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/clash_squad.json",
+    "system/gameplay_mechanics_and_hud.json"
+  ]
+}
