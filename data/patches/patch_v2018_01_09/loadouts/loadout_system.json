@@ -1,0 +1,29 @@
+{
+  "patch_version": "1.9.0_2018_01_09",
+  "store_and_currency": {
+    "new_currency": "Diamond",
+    "currency_type": "PAID_PREMIUM",
+    "first_purchase_rewards": [
+      "Leather Jacket (Red)",
+      "School Uniform (Red)",
+      "Parachute Camouflage (Red)"
+    ],
+    "store_items_added": [
+      "Man's Best Friend",
+      "Shifty Puss",
+      "Classic Leopard",
+      "Schoolgirl (Dark)",
+      "Short Skirt (Dark)",
+      "Beige Leather Jacket (male)",
+      "Beige Leather Pants (male)"
+    ],
+    "loot_crate_updates": {
+      "crate_name": "Silver Loot Crate",
+      "items_added": [
+        "Ragey Bulldog",
+        "Agile Puss",
+        "Crouching Tiger"
+      ]
+    }
+  }
+}
