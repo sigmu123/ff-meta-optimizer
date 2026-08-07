@@ -1,0 +1,41 @@
+{
+  "anti_cheat": {
+    "system_update": "Added secondary anti-hack detection layers with zero-tolerance permanent ban enforcement"
+  },
+  "mechanics_and_controls": [
+    {
+      "feature": "Firing during Reload",
+      "rule": "Holding fire button during reload fires instantly upon reload animation completion"
+    },
+    {
+      "feature": "EP Regeneration in Close Combat Mode",
+      "rule": "HP regeneration rate from EP increased in Close Combat Mode"
+    },
+    {
+      "feature": "Close Combat Warmup",
+      "rule": "Added 30-second warmup phase for all Close Combat modes"
+    }
+  ],
+  "hud_and_ui_settings": [
+    {
+      "feature": "Hitmarkers",
+      "rule": "Added toggle setting for enlarged size and custom hitmarker colors"
+    },
+    {
+      "feature": "Armor HUD Display",
+      "rule": "Optimized armor degradation bar visual output on main HUD"
+    },
+    {
+      "feature": "Emote Slots",
+      "rule": "Optimized emote equipping menu workflow (increased slot capacity support)"
+    },
+    {
+      "feature": "Party Privacy",
+      "rule": "Added setting to block party invitations from non-friends"
+    },
+    {
+      "feature": "Guild Management",
+      "rule": "Added rank/level entry filters for applicants, sign-in rewards, and delegated management powers to Guild Officers"
+    }
+  ]
+}
