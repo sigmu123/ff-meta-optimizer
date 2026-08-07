@@ -157,8 +157,19 @@ def run_cross_patch_optimizer(top_combinations_limit=5):
         
         # Extracting real utility attributes for active skills
         act_data = aggregated_actives[act] if isinstance(aggregated_actives[act], dict) else {}
-        act_duration = act_data.get("duration_seconds", 5)
-        act_cooldown = act_data.get("cooldown_seconds", 60)
+        
+        # Safely parsing duration to float
+        try:
+            act_duration = float(act_data.get("duration_seconds", 5))
+        except (ValueError, TypeError):
+            act_duration = 5.0
+            
+        # Safely parsing cooldown to float
+        try:
+            act_cooldown = float(act_data.get("cooldown_seconds", 60))
+        except (ValueError, TypeError):
+            act_cooldown = 60.0
+
         act_utility_score = max(0, act_duration - (act_cooldown * 0.1))
 
         for pass_group in passive_triplets:
