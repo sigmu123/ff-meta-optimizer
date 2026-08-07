@@ -1,0 +1,13 @@
+{
+  "patch_version": "1.8.x_2017_12_19",
+  "weapon_adjustments": [
+    {
+      "category": "AIM_ASSIST",
+      "applied_to": [
+        "red_dot_sights",
+        "scopes"
+      ],
+      "description": "Added aim assist functionality when ADS using red-dot sights and scopes."
+    }
+  ]
+}
