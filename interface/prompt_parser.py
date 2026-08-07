@@ -61,3 +61,7 @@ class TacticalParser:
                 "loot_and_vending": utilities.get("loot_and_vending", {}) if isinstance(utilities, dict) else {}
             }
         }
+
+# Aliases to prevent ImportError in main.py
+PromptParser = TacticalParser
+NaturalLanguageParser = TacticalParser
