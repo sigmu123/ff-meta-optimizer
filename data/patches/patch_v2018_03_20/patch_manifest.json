@@ -1,0 +1,11 @@
+{
+  "version": "v2018_03_20",
+  "publish_date": "2018-03-20",
+  "active_submodules": [
+    "characters/new_character.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "vehicle_physics.json",
+    "system/engine_and_ui.json"
+  ]
+}
