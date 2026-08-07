@@ -1,0 +1,11 @@
+{
+  "version": "v2019_08_14",
+  "publish_date": "2019-08-14",
+  "active_submodules": [
+    "characters/new_character.json",
+    "battle_royale/economy_and_loot.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json",
+    "custom_rooms/room_settings.json"
+  ]
+}
