@@ -1,0 +1,53 @@
+{
+  "interactive_point_rebalance": {
+    "arsenals": {
+      "maps_affected": [
+        "Bermuda",
+        "Purgatory",
+        "Kalahari",
+        "Alpine"
+      ],
+      "relocation_strategy": "Moved away from map centers to edge/contested areas between multiple zones"
+    },
+    "revival_points": {
+      "bermuda_additions": [
+        "Mill",
+        "Clock Tower"
+      ],
+      "bermuda_removals": [
+        "Kota Tua"
+      ]
+    },
+    "player_launchers": {
+      "bermuda_additions": [
+        "Rim Nam Village",
+        "Mill"
+      ],
+      "alpine_additions": [
+        "Blue Ville",
+        "Rye",
+        "Dock"
+      ]
+    },
+    "vending_machines": {
+      "bermuda_hangar": "Relocated from outside to inside the Hangar area"
+    }
+  },
+  "slope_sliding_physics_engine": {
+    "enabled": true,
+    "angle_thresholds": {
+      "slow_slide_angle_degrees": 75,
+      "full_speed_slide_angle_degrees": 85
+    },
+    "applicable_surfaces": "Natural terrain and environment structures",
+    "exclusions": {
+      "gloo_walls": "Player-placed Gloo Walls are NOT affected",
+      "exempt_maps": [
+        "Kalahari"
+      ]
+    }
+  },
+  "uav_destructibility": {
+    "health_bars": "All shootable UAVs now feature visible overhead health bars"
+  }
+}
