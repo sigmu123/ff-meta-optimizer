@@ -1,0 +1,41 @@
+{
+  "gold_unlock_system": {
+    "all_characters_purchasable_via_gold": true,
+    "instant_max_skill_power": true,
+    "skill_levels_removed": true,
+    "level_based_attribute_scaling": false
+  },
+  "preset_system": {
+    "max_presets": 5,
+    "components_per_preset": [
+      "character_appearance",
+      "character_skills",
+      "pet_skills",
+      "loadout"
+    ],
+    "auto_bind_to_modes": ["Battle Royale", "Clash Squad", "Lone Wolf"],
+    "sharing_features": [
+      "copy_preset_code",
+      "paste_preset_code",
+      "apply_recommended_preset"
+    ]
+  },
+  "character_bond_system": {
+    "enhancement_method": "Playing battles with character",
+    "level_inheritance": "Inherits progress from original character levels"
+  },
+  "pet_system_integration": {
+    "ui_location": "Merged into Character page",
+    "hide_pet_in_matches_toggle": true,
+    "level_scaling_reworked": {
+      "old_max_level": 7,
+      "new_max_level": 4,
+      "reward_retention": "Only levels with rewards retained, total rewards unchanged"
+    }
+  },
+  "awakening_system_simplification": {
+    "mission_accumulation": "Equip skill of target awakening character",
+    "daily_reset_removed": true,
+    "gold_refresh_cost": "Reduced"
+  }
+}
