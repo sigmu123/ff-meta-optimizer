@@ -1,0 +1,12 @@
+{
+  "version": "v2022_11_16",
+  "patch_name": "WINTERLANDS",
+  "publish_date": "2022-11-16",
+  "active_submodules": [
+    "characters/character_updates.json",
+    "map_and_modes/gameplay_and_modes.json",
+    "battle_royale/economy_and_loot.json",
+    "weapons/weapons_and_balance.json",
+    "system/engine_and_ui.json"
+  ]
+}
