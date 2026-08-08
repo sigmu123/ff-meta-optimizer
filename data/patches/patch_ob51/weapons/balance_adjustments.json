@@ -1,0 +1,81 @@
+{
+  "weapon_balance_adjustments": {
+    "assault_rifles": [
+      {
+        "weapon_name": "PARAFAL",
+        "stat_changes": {
+          "armor_penetration_percent": "+5%",
+          "damage_percent": "+3%",
+          "accuracy_percent": "+5%"
+        }
+      },
+      {
+        "weapon_series": "SCAR / SCAR-I / SCAR-II",
+        "stat_changes": {
+          "damage_percent": "+3%",
+          "rate_of_fire_percent": "+3%"
+        }
+      },
+      {
+        "weapon_series": "M4A1 / M4A1-I / M4A1-II",
+        "stat_changes": {
+          "rate_of_fire_percent": "+3%"
+        }
+      },
+      {
+        "weapon_series": "FAMAS / FAMAS-I / FAMAS-II",
+        "stat_changes": {
+          "consecutive_hit_damage_bonus_percent": "+15%"
+        }
+      }
+    ],
+    "submachine_guns": [
+      {
+        "weapon_name": "Thompson",
+        "stat_changes": {
+          "damage_percent": "+3%",
+          "armor_penetration_percent": "+5%",
+          "range_percent": "+10%",
+          "accuracy_percent": "+5%",
+          "attachment": "2x Scope added"
+        }
+      }
+    ],
+    "machine_guns": [
+      {
+        "weapon_series": "M60 / M60-I / M60-II / M60-III",
+        "stat_changes": {
+          "damage_percent": "+3%",
+          "crouching_rate_of_fire_percent": "+5%"
+        }
+      }
+    ],
+    "marksman_rifles": [
+      {
+        "weapon_series": "M14 / M14-I / M14-II",
+        "stat_changes": {
+          "rate_of_fire_percent": "+10%"
+        }
+      }
+    ],
+    "snipers": [
+      {
+        "weapon_series": "Kar98k / Kar98k-I / Kar98k-II",
+        "stat_changes": {
+          "rate_of_fire_percent": "+5%"
+        }
+      }
+    ],
+    "pistols": [
+      {
+        "weapon_name": "Mini Uzi",
+        "stat_changes": {
+          "magazine_capacity": {
+            "old": 20,
+            "new": 16
+          }
+        }
+      }
+    ]
+  }
+}
