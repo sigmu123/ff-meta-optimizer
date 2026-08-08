@@ -1,0 +1,22 @@
+{
+  "training_grounds_updates": {
+    "island_rework": "Moved to Batou Island",
+    "new_minigames_and_zones": [
+      "New Shooting Range",
+      "Bunny Race",
+      "eSports Hall of Fame",
+      "Ferris Wheel",
+      "Gloo Wall Training"
+    ],
+    "store_additions": [
+      {
+        "item_name": "Fancy Hammer",
+        "currency": "Engagement Coins"
+      },
+      {
+        "item_name": "Giant Dice",
+        "currency": "Engagement Coins"
+      }
+    ]
+  }
+}
