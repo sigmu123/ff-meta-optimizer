@@ -1,0 +1,52 @@
+{
+  "rifles": {
+    "m14_1": { "rate_of_fire": "-5%" },
+    "m14_2": { "rate_of_fire": "-5%" },
+    "m14_3": { "rate_of_fire": "-5%" },
+    "famas_1": { "damage_3rd_bullet": "+8%" },
+    "famas_2": { "damage_3rd_bullet": "+8%" },
+    "famas_3": { "damage_3rd_bullet": "+15%" },
+    "scar_1": { "rate_of_fire": "-3%" },
+    "scar_2": { "rate_of_fire": "-3%" },
+    "scar_3": { "rate_of_fire": "-3%" }
+  },
+  "smgs": {
+    "ump": { "muzzle_slot": "Disabled" },
+    "p90": {
+      "damage": "+10%",
+      "accuracy": "+20%",
+      "built_in_silencer": true
+    }
+  },
+  "marksman_rifles": {
+    "ac80": {
+      "damage": "+20%",
+      "headshot_effective_range": "-20%"
+    },
+    "woodpecker": {
+      "headshot_effective_range": "-20%"
+    }
+  },
+  "shotguns": {
+    "m1887": {
+      "minimum_damage": "-10%",
+      "minimum_range": "-25%"
+    }
+  },
+  "snipers": {
+    "m24": {
+      "gloo_wall_penetration_damage_pct": 40,
+      "damage_multiplier_vs_gloo_walls": 2.0
+    }
+  },
+  "melee_and_others": {
+    "katana": { "damage_vs_gloo_walls": "Increased" },
+    "bat": { "movement_speed": "+5%" }
+  },
+  "mechanics": {
+    "grenade_indicator": {
+      "audio_cue_on_cooking": true,
+      "minimap_location_reveal_during_cooking": true
+    }
+  }
+}
