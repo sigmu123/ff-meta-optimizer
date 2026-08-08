@@ -1,0 +1,21 @@
+{
+  "clash_squad_season_5": {
+    "start_date": "2021-02-05 17:00 SGT",
+    "end_date": "2021-04-14",
+    "season_reward": "The Golden MP5 (Gold III or above)",
+    "store_system": {
+      "type": "Map-Based Store System",
+      "variants": [
+        "Bermuda / Bermuda Remastered Store",
+        "Kalahari Store"
+      ]
+    },
+    "new_items": [
+      {
+        "item_name": "Mystery Box",
+        "availability": "Clash Squad - Casual Only",
+        "mechanic": "Contains 3 items; player chooses 1 item to bring into battle"
+      }
+    ]
+  }
+}
