@@ -1,0 +1,32 @@
+{
+  "upgradable_weapon_system": {
+    "eligible_weapons": [
+      "M60",
+      "FAMAS",
+      "M14",
+      "M4A1",
+      "SCAR",
+      "AUG",
+      "MAC10",
+      "MP5",
+      "M1014",
+      "Kar98k"
+    ],
+    "upgrade_methods": ["Accumulated Damage", "Upgrade Chips"],
+    "damage_thresholds": {
+      "base_to_tier_I_dmg": 200,
+      "tier_I_to_tier_II_dmg": 350,
+      "tier_II_to_tier_III_dmg": 850
+    },
+    "br_ground_loot_spawn_tier": "Lv. 0 guns spawned on ground (Lv. 1 ground drops removed)"
+  },
+  "knockdown_mechanics": {
+    "hp_loss_speed_seconds_by_weapon_type": {
+      "applicable_categories": ["Marksman Rifles", "Machine Guns", "Assault Rifles", "Sniper Rifles"],
+      "old_duration_seconds": 35,
+      "new_duration_seconds": 14
+    },
+    "downed_player_crawling_speed_percent": "+35%",
+    "rafael_interaction": "Unchanged (Rafael bleedout speed overrides standard values)"
+  }
+}
