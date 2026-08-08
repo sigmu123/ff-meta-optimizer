@@ -1,0 +1,31 @@
+{
+  "new_weapons_and_utilities": [
+    {
+      "item_name": "Mini UZI",
+      "category": "Secondary Weapon",
+      "ammo_type": "SMG Ammo",
+      "availability": ["Battle Royale", "Clash Squad"],
+      "base_stats": {
+        "base_damage": 17,
+        "rate_of_fire": 0.855
+      }
+    },
+    {
+      "item_name": "Ice Grenade",
+      "category": "Grenade Utility",
+      "availability": ["Battle Royale", "Clash Squad"],
+      "stats": {
+        "explosive_damage": 180,
+        "explosion_radius_meters": 5,
+        "ice_frost_radius_meters": 5,
+        "ice_frost_duration_seconds": 18
+      },
+      "debuff_mechanics": {
+        "movement_speed_reduction_percentage": 10,
+        "rate_of_fire_reduction_percentage": 20,
+        "damage_over_time": "5-10 per second depending on duration inside frost",
+        "friendly_fire": true
+      }
+    }
+  ]
+}
