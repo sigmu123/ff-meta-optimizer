@@ -1,0 +1,23 @@
+{
+  "cs_store_weapon_lineup_changes": {
+    "added_weapons": [
+      { "weapon_name": "Winchester-II", "price_cs_cash": 1700 },
+      { "weapon_name": "Thompson-X", "price_cs_cash": 2400 }
+    ],
+    "replaced_weapons": [
+      { "old_weapon": "M1014", "new_weapon": "M1814-II", "price_cs_cash": 1700 }
+    ],
+    "cyber_item_section_additions": [
+      { "weapon_name": "FAMAS-III", "price_cs_cash": 1600 },
+      { "weapon_name": "M14-III", "price_cs_cash": 1888 },
+      { "weapon_name": "Double Vector", "price_cs_cash": 1780 },
+      { "weapon_name": "M60-III", "price_cs_cash": 1700 }
+    ]
+  },
+  "cs_store_price_adjustments": {
+    "Thompson": { "old_price_cs_cash": 1400, "new_price_cs_cash": 1800 },
+    "PARAFAL": { "old_price_cs_cash": 1400, "new_price_cs_cash": 1600 },
+    "Bizon": { "old_price_cs_cash": 1500, "new_price_cs_cash": 1488 },
+    "SCAR": { "old_price_cs_cash": 1500, "new_price_cs_cash": 1488 }
+  }
+}
