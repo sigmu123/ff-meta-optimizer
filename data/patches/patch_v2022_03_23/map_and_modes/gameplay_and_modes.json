@@ -1,0 +1,25 @@
+{
+  "clash_squad_updates": {
+    "quadra_kill_special_effect": "Enhanced visual effects when executing an ACE/Quadra Kill"
+  },
+  "battle_royale_updates": {
+    "in_game_missions": [
+      {
+        "mission_type": "Hit List",
+        "acquisition_method": "Purchase from Vending Machine using FF Coins",
+        "objective": "Eliminate target within time limit"
+      },
+      {
+        "mission_type": "Supply Run",
+        "acquisition_method": "Obtain for free on the map",
+        "objective": "Reach specified location within time limit"
+      }
+    ]
+  },
+  "custom_room_enhancements": {
+    "new_features": [
+      "Faster safe zone shrink pacing controls",
+      "Enhanced rescue options for knockdowns"
+    ]
+  }
+}
