@@ -1,0 +1,16 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Vector Akimbo",
+      "category": "Submachine Gun (SMG)",
+      "availability": ["Classic", "Clash Squad"],
+      "base_stats": {
+        "damage": 22,
+        "magazine_capacity": 30,
+        "rate_of_fire": 0.08
+      },
+      "compatible_attachments": ["Muzzle", "Stock"],
+      "special_mechanics": "Akimbo - Dual wield capability allowing players to hold one Vector in each hand"
+    }
+  ]
+}
