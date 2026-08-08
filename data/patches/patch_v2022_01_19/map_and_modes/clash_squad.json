@@ -1,0 +1,29 @@
+{
+  "clash_squad_updates": {
+    "map_availability": [
+      {
+        "map": "Alpine",
+        "modes": ["Clash Squad", "Clash Squad Ranked"]
+      }
+    ],
+    "bermuda_map_adjustments": [
+      {
+        "location": "Hangar",
+        "status": "New Clash Squad area added"
+      },
+      {
+        "location": "Nurek Dam",
+        "status": "New Clash Squad area added"
+      },
+      {
+        "locations": ["Katulistiwa", "Mars Electric", "Mill"],
+        "status": "Added covers in open spaces for tactical balance"
+      }
+    ],
+    "features": {
+      "battle_cards": "Customizable loading page showcasing stats and battle tags in Clash Squad Ranked",
+      "bonus_airdrop": "Airdrops spawn every round in classic Clash Squad mode (contains unique weapons like 3-shot M1887)",
+      "ui_ranks": "Brand new rank icons exclusive to Clash Squad Ranked"
+    }
+  }
+}
