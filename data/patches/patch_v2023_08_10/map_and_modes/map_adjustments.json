@@ -1,0 +1,24 @@
+{
+  "ranked_map_pool": {
+    "active_maps": ["Bermuda", "NeXTerra", "Purgatory"]
+  },
+  "bermuda_reworks": {
+    "peak": {
+      "layout": "Completely reset building layout; replaced old structures with a new estate.",
+      "elevation": "Overall height lowered relative to surrounding areas for deeper vertical combat.",
+      "loot_density": "Significantly increased overall loot density and tier quality.",
+      "mode_availability": ["BR Casual", "BR Ranked", "CS Casual", "CS Ranked"]
+    },
+    "hangar": {
+      "middle_area": "Removed 2 trees blocking vision; rebalanced curb and shelter angles.",
+      "container_area": "Adjusted container positions for improved combat flow.",
+      "second_floor": "Adjusted shelters for clearer lines of sight.",
+      "first_floor": "Added an extra door passageway for new rotation routes."
+    },
+    "factory": {
+      "third_floor_platform": "Lowered platform height and removed platform covers to nerf high-ground advantage.",
+      "railings": "Railing thickness reduced to minimize interference with aim assist.",
+      "lighting": "Interior brightness increased for better visibility."
+    }
+  }
+}
