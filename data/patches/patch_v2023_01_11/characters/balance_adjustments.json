@@ -1,0 +1,78 @@
+{
+  "skyler": {
+    "skill_name": "Riptide Rhythm",
+    "rework_type": "Mechanism change",
+    "description": "Unleashes a sonic wave forward, causing hit barriers to explode and inflicting damage to Gloo Walls within a 3.5 meter radius for 4s.",
+    "range_meters_per_level": [50, 58, 67, 77, 88, 100],
+    "aoe_radius_meters": 3.5,
+    "duration_seconds": 4,
+    "cooldown_seconds_per_level": [75, 70, 65, 60, 55, 50],
+    "removed_mechanic": "HP recovery on Gloo Wall deployment completely removed"
+  },
+  "kenta": {
+    "skill_name": "Swordsman's Wrath",
+    "rework_type": "Buff",
+    "description": "Forms a frontal shield of 5m width that reduces weapon damage coming from the front. Shield stays active when firing.",
+    "shield_width_meters": 5,
+    "frontal_damage_reduction_default": "50%",
+    "frontal_damage_reduction_when_firing": "10%",
+    "duration_seconds_per_level": [2, 3, 3.5, 4, 4.5, 5],
+    "cooldown_seconds_per_level": [128, 110, 108, 90, 88, 70]
+  },
+  "tatsuya": {
+    "skill_name": "Rebel Rush",
+    "rework_type": "Buff",
+    "dash_duration_seconds_per_level": [0.2, 0.2, 0.2, 0.3, 0.3, 0.3],
+    "dash_replenish_cooldown_seconds": {
+      "old": [175, 160, 150, 140, 130, 120],
+      "new": [110, 100, 90, 88, 70, 60]
+    }
+  },
+  "hayato": {
+    "skill_name": "Art of Blades",
+    "rework_type": "Nerf",
+    "armor_penetration_per_10pct_hp_loss": {
+      "old": [4.5, 5, 5.5, 6, 6.5, 7.0],
+      "new": [2.5, 3, 3.5, 4, 4.5, 5.0]
+    },
+    "awakening_frontal_damage_reduction_per_10pct_hp_loss": {
+      "old": [1.0, 1.5, 2.0, 2.5, 3.0, 3.5],
+      "new": [0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
+    }
+  },
+  "iris": {
+    "skill_name": "Wall Brawl",
+    "rework_type": "Buff",
+    "skill_duration_seconds": {
+      "old": [5, 6, 7, 8, 9, 10],
+      "new": 15
+    },
+    "mark_and_penetrate_radius_meters": 7,
+    "max_gloo_walls_affected": [3, 3, 4, 4, 5, 5],
+    "cooldown_seconds_per_level": [85, 80, 75, 70, 65, 60]
+  },
+  "j_biebs": {
+    "skill_name": "Silent Sentinel",
+    "rework_type": "Nerf",
+    "effective_range_meters": {
+      "old": [6, 8, 8, 10, 10, 12],
+      "new": 12
+    },
+    "damage_blocked_by_ep": {
+      "old": ["7%", "7%", "10%", "10%", "15%", "15%"],
+      "new": ["6%", "6%", "9%", "9%", "12%", "12%"]
+    }
+  },
+  "leon": {
+    "skill_name": "Buzzer Beater",
+    "rework_type": "Adjustment",
+    "total_hp_recovered": {
+      "old": [5, 10, 15, 20, 25, 30],
+      "new": [16, 24, 32, 40, 48, 60]
+    },
+    "hp_recovery_rate": {
+      "old": "5 HP/s for 1 to 6 seconds",
+      "new": "4 HP/s for 4 to 15 seconds"
+    }
+  }
+}
