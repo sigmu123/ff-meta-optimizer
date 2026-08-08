@@ -1,0 +1,15 @@
+{
+  "new_weapon_tiers_and_visual_system": {
+    "tier_color_expansion": {
+      "previous": ["White", "Gold", "Red"],
+      "updated": ["White", "Light Gold", "Gold", "Light Red", "Red"]
+    },
+    "tier_definitions": {
+      "white": "Ground loot weapons / Lv. 0 upgradable weapons",
+      "light_gold": "Lv. 1 upgradable weapons",
+      "gold": "Lv. 2 upgradable weapons / special weapons (e.g., M79)",
+      "light_red": "Regular Airdrop weapons / Lv. 3 upgradable weapons",
+      "red": "Advanced Airdrop weapons (e.g., Groza-X)"
+    }
+  }
+}
