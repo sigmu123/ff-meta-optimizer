@@ -1,0 +1,14 @@
+{
+  "character_qol_updates": [
+    {
+      "character_name": "Santino",
+      "skill_name": "Shape Splitter",
+      "fix": "Optimized issue where mannequin could not be placed or used near Gloo Walls"
+    },
+    {
+      "character_name": "Paloma",
+      "skill_name": "Arms Dealing",
+      "fix": "Adjusted skill text description for clarity"
+    }
+  ]
+}
