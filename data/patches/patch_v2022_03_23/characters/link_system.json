@@ -1,0 +1,33 @@
+{
+  "free_character_link_system": {
+    "rules": {
+      "active_links_allowed": 1,
+      "daily_link_points_limit": true,
+      "gold_coin_boost_available": true,
+      "scope": "All characters prior to this patch update"
+    },
+    "character_level_up_fragment_cost": [
+      { "level_step": "2->3", "previous_cost": 500, "new_cost": 400 },
+      { "level_step": "3->4", "previous_cost": 1500, "new_cost": 1000 },
+      { "level_step": "4->5", "previous_cost": 2500, "new_cost": 2000 },
+      { "level_step": "5->6", "previous_cost": 5000, "new_cost": 4000 }
+    ],
+    "skill_slot_unlock_cost": [
+      {
+        "slot": 1,
+        "previous_cost": { "diamonds": 50, "coins": 2000 },
+        "new_cost": { "diamonds": 40, "coins": 2000 }
+      },
+      {
+        "slot": 2,
+        "previous_cost": { "diamonds": 75, "coins": 5000 },
+        "new_cost": { "diamonds": 75, "coins": 3750 }
+      },
+      {
+        "slot": 3,
+        "previous_cost": { "diamonds": 125, "coins": 10000 },
+        "new_cost": { "diamonds": 125, "coins": 6250 }
+      }
+    ]
+  }
+}
