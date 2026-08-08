@@ -1,0 +1,35 @@
+{
+  "mechadrake_invasion": {
+    "villain_conquest": {
+      "interaction": "Interact with summoning circle at marked designated points to summon villains",
+      "rewards": "High-tier loot and Mechadrake Points",
+      "point_limit": "Maximum 1 Mechadrake Point per team per match",
+      "activation_requirement": "Collect 3 Mechadrake Points to qualify for Mechadrake Trial"
+    },
+    "mechadrake_trial": {
+      "activation": "Requires 3 Mechadrake Points. If 1 team member has 3 points, the whole squad activates it in BR-Ranked on Bermuda map",
+      "victory_condition": "Achieve Booyah in Mechadrake Trial to enter Mechadrake War after match",
+      "success_reward": "Extra rank points upon defeating Mechadrake; Mechadrake Points reset to 0",
+      "failure_penalty": "Failing to Booyah deducts 1 Mechadrake Point",
+      "in_trial_villain": "Defeating a villain during trial still awards 1 Mechadrake Point"
+    }
+  },
+  "vending_machines": {
+    "map_specific_additions": [
+      {
+        "map": "Kalahari",
+        "item": "Hook Gun",
+        "price_ff_coins": 208,
+        "purchase_limit_per_player": 1
+      }
+    ],
+    "price_adjustments": "General price tweaks applied across other shop items"
+  },
+  "portal_go": {
+    "teleport_duration_seconds": 1.0,
+    "energizer_interaction": "Usage of Energizer is non-interruptible during teleportation"
+  },
+  "airdrop_adjustments": {
+    "monster_truck_airdrop": "Light effect indicator on the ground has been removed"
+  }
+}
