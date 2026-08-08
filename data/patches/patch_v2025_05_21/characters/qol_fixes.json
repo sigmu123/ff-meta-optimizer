@@ -1,0 +1,36 @@
+{
+  "character_qol_updates": [
+    {
+      "character_name": "Skyler",
+      "skill_name": "Riptide Surge",
+      "qol_improvement": "Added an obstacle indicator directly on the aiming trajectory line for higher placement accuracy."
+    },
+    {
+      "character_name": "Homer",
+      "skill_name": "Senses Shock",
+      "qol_improvement": "Added explicit voice audio notification triggered when no enemies are within detection range."
+    },
+    {
+      "character_name": "Clu",
+      "skill_name": "Tracing Steps",
+      "qol_improvement": "Added explicit voice audio notification triggered when no enemies are within detection range."
+    },
+    {
+      "character_name": "Kassie",
+      "skill_name": "Healing Bond",
+      "qol_improvement": "Added a flexible outer buffer distance zone beyond maximum tether range to prevent immediate disconnection, allowing players to step back in. Disabled Focused Therapy activation when target HP is full."
+    },
+    {
+      "character_name": "Arvon",
+      "skill_name": "Spotter",
+      "qol_improvement": "Skill activation is now fully enabled while parachuting."
+    },
+    {
+      "skill_cards_added": [
+        "Koda",
+        "Kassie",
+        "Oscar"
+      ]
+    }
+  ]
+}
