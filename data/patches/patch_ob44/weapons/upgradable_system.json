@@ -1,0 +1,21 @@
+{
+  "upgradable_aug": {
+    "weapon": "AUG",
+    "upgrade_method": "Damage Dealing (Upgrade Chips cannot be used)",
+    "thresholds": [
+      {
+        "tier": "AUG-I",
+        "damage_required": 200
+      },
+      {
+        "tier": "AUG-II",
+        "damage_required": 488
+      },
+      {
+        "tier": "AUG-III",
+        "damage_required": 888
+      }
+    ],
+    "stat_scaling": "Progressively increases base damage and armor penetration rate"
+  }
+}
