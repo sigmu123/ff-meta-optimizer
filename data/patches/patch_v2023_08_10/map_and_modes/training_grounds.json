@@ -1,0 +1,18 @@
+{
+  "target_range_optimizations": {
+    "layout": "Wider area with added physical covers.",
+    "customizable_target_settings": [
+      "Unlimited HP toggle",
+      "Running Speed adjustment",
+      "Spawn Amount adjustment",
+      "Spawn Distance adjustment",
+      "Armor Level / HP adjustment"
+    ],
+    "difficulty_presets": {
+      "beginner": "Static targets, slow respawn",
+      "intermediate": "Moving targets, slow respawn",
+      "advanced": "Moving targets, fast respawn"
+    },
+    "weapon_box_ui": "Adjusted weapons in current patch get a dedicated tab with an 'i' info icon for exact changes."
+  }
+}
