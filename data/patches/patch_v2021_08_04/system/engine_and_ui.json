@@ -1,0 +1,29 @@
+{
+  "gameplay_and_system_updates": [
+    {
+      "feature": "Lobby Rework",
+      "details": "Relocated functions and increased overall size of all lobby buttons for better UI/UX accessibility"
+    },
+    {
+      "feature": "Drag to Sprint",
+      "details": "Added option in settings menu to sprint by dragging joystick"
+    },
+    {
+      "feature": "Fire Pass Missions Integration",
+      "details": "Retired separate Activity Missions menu and combined rewards into Fire Pass Missions menu"
+    }
+  ],
+  "optimizations_and_bug_fixes": [
+    "Likes received at the end of match displayed on match results page",
+    "SMG ammo 3D model updated to match icon",
+    "Fixed Clash Squad bug where 'waiting for players' message remained after teams filled",
+    "Hiding own pet will now automatically hide teammates' pets",
+    "Unusable ammo types grayed out/shown in inventory",
+    "Reduced bomb transparency in Bomb Squad",
+    "Removed advanced attachments UI icon displays from the map",
+    "Added notification sound when team captain starts matchmaking",
+    "Optimized Multi-kill announcements",
+    "Air Hammers prohibited from Combat Zone in Training Grounds",
+    "Added matchmaking queue for 1v1 ring in Training Grounds"
+  ]
+}
