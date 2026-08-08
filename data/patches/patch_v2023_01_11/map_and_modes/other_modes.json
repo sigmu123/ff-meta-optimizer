@@ -1,0 +1,19 @@
+{
+  "free_for_all": {
+    "scoreboard": "Real-time display showing eliminations and current rank.",
+    "elimination_buff": "Instantly restores HP & EP and repairs armor durability.",
+    "armor_durability": "Durability can be fully restored upon acquiring elimination buff.",
+    "revival_mechanic": "Spawns player at the least crowded nearby revival point.",
+    "match_start_prep": "Players visible to each other but immobilized during countdown; can browse store.",
+    "weapon_purchase_window": "Store stays open post-revival until player fires their first shot."
+  },
+  "big_head_mode": {
+    "level_up_buffs": "Grants OP buffs upon head level-ups and revivals.",
+    "ui_optimizations": "Clearer head level progress, real-time rank/total rank, and score/total score display.",
+    "performance": "Warm-up stage added at game start to optimize low-end devices.",
+    "game_pace": "Parachuting duration reduced."
+  },
+  "active_map_pool": {
+    "battle_royale_and_clash_squad": ["Bermuda", "NeXTerra", "Purgatory"]
+  }
+}
