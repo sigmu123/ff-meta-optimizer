@@ -1,0 +1,23 @@
+{
+  "in_match_quests": {
+    "trigger_mechanic": "Random or hidden quests triggered during match by Kelly",
+    "quest_types": [
+      "Spend a certain amount of FF Coins at Vending Machines",
+      "Accumulate a certain amount of eliminated players under UAV",
+      "Consume a certain number of mushrooms"
+    ],
+    "event_rewards": [
+      "Discount on items at Vending Machines",
+      "15 airdrops in Safe Zone",
+      "Revival Points will not close",
+      "Reveal position of second last Safe Zone"
+    ]
+  },
+  "super_revival_card": {
+    "vending_machine_cost_ff_coins": 600,
+    "revived_player_loadout": {
+      "armor": "Lv. 2 Helmet and Lv. 2 Vest",
+      "weapon": "UMP"
+    }
+  }
+}
