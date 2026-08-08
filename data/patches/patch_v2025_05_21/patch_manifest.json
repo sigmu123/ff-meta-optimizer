@@ -1,0 +1,14 @@
+{
+  "patch_version": "patch_v2025_05_21",
+  "patch_name": "OB49 Patch Update - Welcome to Solara",
+  "release_date": "2025-05-21",
+  "active_sub_modules": [
+    "loadouts/loadout_system.json",
+    "battle_royale/economy_and_loot.json",
+    "characters/balance_adjustments.json",
+    "characters/qol_fixes.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json"
+  ]
+}
