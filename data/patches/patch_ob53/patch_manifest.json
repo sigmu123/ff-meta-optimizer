@@ -1,0 +1,13 @@
+{
+  "patch_version": "OB53",
+  "release_date": "2026-04-08",
+  "data_scope": "Full Esports Core Mechanics & Gameplay Updates",
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system"
+  ]
+}
