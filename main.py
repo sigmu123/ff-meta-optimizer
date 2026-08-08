@@ -1,235 +1,161 @@
 import os
 import sys
-import json
-import itertools
-from concurrent.futures import ProcessPoolExecutor, as_completed
+import random
+from core.ttk_calculator import TTKCalculator
+from patch_loader import PatchLoader
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(current_dir)
 if current_dir not in sys.path:
     sys.path.append(current_dir)
 
-from patch_loader import PatchLoader
-from core.ttk_calculator import TTKCalculator
-
-
-def get_patch_timestamp(patch_dir, patch_name):
-    full_path = os.path.join(patch_dir, patch_name)
-    for meta_file in ["patch_manifest.json", "metadata.json", "patch.json"]:
-        json_path = os.path.join(full_path, meta_file)
-        if os.path.exists(json_path):
-            try:
-                with open(json_path, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    val = data.get("release_date") or data.get("release_timestamp")
-                    if val is not None:
-                        try:
-                            return float(val)
-                        except (ValueError, TypeError):
-                            return float(os.path.getmtime(json_path))
-            except Exception:
-                pass
-    try:
-        return float(os.path.getmtime(full_path))
-    except Exception:
-        return 0.0
-
-
-def extract_patch_entities(patch_name):
-    try:
-        loader = PatchLoader(patch_name=patch_name, base_dir=current_dir)
-        actives = getattr(loader, 'active_skills', {}) or {}
-        passives = getattr(loader, 'passive_skills', {}) or {}
-        weapons = getattr(loader, 'weapons', {}) or {}
+class HybridMetaEngine:
+    def __init__(self, patch_name="patch_ob54"):
+        self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir)
+        self.ttk_calc = TTKCalculator()
         
-        pets = ["Rockie", "Beaston", "Mr. Waggor", "Ottero", "Dreki", "Falco", "Pyro"]
-        loadouts = ["Team Booster", "Enhance Hammer", "Tactical Market", "Super Leg Pockets", "Bounty Token"]
+        # Datasets
+        self.actives = list(self.loader.active_skills.keys()) if self.loader.active_skills else ["alok", "chrono", "tatsuya", "wukong"]
+        self.passives = list(self.loader.passive_skills.keys()) if self.loader.passive_skills else ["kelly", "hayato", "moco", "maxim", "shirou", "jota"]
+        self.weapons = self.loader.weapons if self.loader.weapons else {"mp40": {"damage": 32, "rate_of_fire": 12}, "groza": {"damage": 38, "rate_of_fire": 10}}
+        self.pets = ["Rockie", "Mr. Waggor", "Beaston", "Falco"]
+        self.loadouts = ["Pocket Market", "Leg Pockets", "Bounty Token", "Bonfire"]
 
-        return patch_name, {
-            "actives": actives,
-            "passives": passives,
-            "weapons": weapons,
-            "pets": pets,
-            "loadouts": loadouts
-        }, None
-    except Exception as e:
-        return patch_name, None, str(e)
+    # ==========================================
+    # STAGE 1: CONSTRAINT PROGRAMMING (CSP)
+    # ==========================================
+    def _is_valid_chromosome(self, active, p1, p2, p3):
+        """Filters out illegal combinations before they waste processing time"""
+        passive_set = {p1, p2, p3}
+        if len(passive_set) != 3: return False # No duplicate passives
+        if active in passive_set: return False # Active cannot be in passives
+        return True
 
+    def _generate_random_valid_squad(self):
+        while True:
+            act = random.choice(self.actives)
+            p1, p2, p3 = random.sample(self.passives, 3)
+            if self._is_valid_chromosome(act, p1, p2, p3):
+                return {
+                    "active": act, 
+                    "passives": [p1, p2, p3], 
+                    "pet": random.choice(self.pets),
+                    "loadout": random.choice(self.loadouts)
+                }
 
-def extract_character_name(entity_dict, fallback_key):
-    if isinstance(entity_dict, dict):
-        char_name = entity_dict.get("character_name") or entity_dict.get("character_id") or entity_dict.get("name")
-        if char_name:
-            return str(char_name).title()
-    return str(fallback_key).replace("_", " ").title()
+    # ==========================================
+    # STAGE 2: GENETIC ALGORITHM (GA) SEARCH
+    # ==========================================
+    def _fitness_function(self, squad):
+        """Scoring logic based on synergy and CD overlaps"""
+        score = 50.0 # Base win rate
+        
+        # Example Synergy Logic (Can be expanded using JSON data)
+        act_name = squad["active"]
+        passives = squad["passives"]
+        
+        if act_name == "tatsuya" and "kelly" in passives: score += 15.0  # Rush Synergy
+        if act_name == "chrono" and "Rockie" == squad["pet"]: score += 10.0 # Cooldown Synergy
+        if "hayato" in passives: score += 8.0 # Meta standard
+        
+        return min(99.9, score)
 
-
-def run_cross_patch_optimizer(top_combinations_limit=5):
-    print("=" * 80)
-    print("      CROSS-PATCH GLOBAL META OPTIMIZER & PERMUTATION ENGINE")
-    print("=" * 80)
-
-    patches_dir = os.path.join(current_dir, "data", "patches")
-    if not os.path.exists(patches_dir):
-        print("[-] Error: 'data/patches/' directory not found.")
-        return
-
-    raw_folders = [f for f in os.listdir(patches_dir) if os.path.isdir(os.path.join(patches_dir, f))]
-    available_patches = sorted(raw_folders, key=lambda p: get_patch_timestamp(patches_dir, p), reverse=True)
-
-    print(f"[*] Patches Detected Across Repo : {len(available_patches)}")
-    print(f"[*] Status                       : Ingesting & Cross-Matching Across All Patches...\n")
-
-    aggregated_actives = {}
-    aggregated_passives = {}
-    aggregated_weapons = {}
-    aggregated_pets = set()
-    aggregated_loadouts = set()
-
-    max_workers = min(os.cpu_count() or 4, len(available_patches))
-    with ProcessPoolExecutor(max_workers=max_workers) as executor:
-        futures = {executor.submit(extract_patch_entities, patch): patch for patch in available_patches}
-        for future in as_completed(futures):
-            patch, data, err = future.result()
-            if err or not data:
-                continue
+    def _crossover_and_mutate(self, parent1, parent2):
+        child = {
+            "active": parent1["active"] if random.random() > 0.5 else parent2["active"],
+            "passives": parent1["passives"][:2] + [parent2["passives"][2]],
+            "pet": parent1["pet"] if random.random() > 0.5 else parent2["pet"],
+            "loadout": parent2["loadout"]
+        }
+        
+        # Mutation
+        if random.random() < 0.1: # 10% mutation rate
+            child["active"] = random.choice(self.actives)
+        
+        # CSP Validation Fallback
+        if not self._is_valid_chromosome(child["active"], *child["passives"]):
+            return parent1 # Keep parent if mutation is illegal
             
-            print(f"[+] {patch.upper():<28} | Merged into Global Matrix")
-            aggregated_actives.update(data["actives"])
-            aggregated_passives.update(data["passives"])
-            aggregated_weapons.update(data["weapons"])
-            aggregated_pets.update(data["pets"])
-            aggregated_loadouts.update(data["loadouts"])
+        return child
 
-    if not aggregated_actives or not aggregated_weapons:
-        print("[-] Insufficient skill/weapon data across repository to build combinations.")
-        return
-
-    active_keys = list(aggregated_actives.keys())
-    passive_keys = list(aggregated_passives.keys())
-    weapon_keys = list(aggregated_weapons.keys())
-    pets_list = list(aggregated_pets)
-    loadouts_list = list(aggregated_loadouts)
-
-    # Fallback padding if passive keys are sparse
-    if len(passive_keys) < 3:
-        passive_keys.extend(["moco", "kelly", "hayato", "maxim"][:3 - len(passive_keys)])
-
-    passive_triplets = list(itertools.combinations(passive_keys, min(3, len(passive_keys))))
-    
-    total_theoretical_combinations = (
-        len(active_keys) * 
-        max(1, len(passive_triplets)) * 
-        len(weapon_keys) * 
-        len(pets_list) * 
-        len(loadouts_list)
-    )
-
-    print("\n" + "-" * 80)
-    print(f"[*] Theoretical Search Space      : ~{total_theoretical_combinations:,} Permutations")
-    print(f"[*] Execution Strategy             : Multi-Combination Rank Matrix Generation (Dynamic)")
-    print("-" * 80)
-
-    # 1. ACTUAL WEAPON SCORING VIA TTK CALCULATOR
-    ttk_calc = TTKCalculator(target_hp=200, target_vest_lvl=3, target_helmet_lvl=2)
-
-    weapon_scores = []
-    for w_id, w_data in aggregated_weapons.items():
-        actual_data = w_data if isinstance(w_data, dict) else {}
-        calc_data = actual_data.get("stats", actual_data) if isinstance(actual_data.get("stats"), dict) else actual_data
-
-        res = ttk_calc.calculate_weapon_ttk(calc_data)
-        eff_dmg = res.get("effective_damage", 0)
-        ttk = res.get("ttk", float('inf'))
+    def run_ga_pipeline(self, generations=10, population_size=50):
+        # 1. Init Population
+        population = [self._generate_random_valid_squad() for _ in range(population_size)]
         
-        name = actual_data.get("name") or actual_data.get("weapon_name") or calc_data.get("name") or str(w_id).upper()
-        
-        if ttk == float('inf') or ttk <= 0:
-            try:
-                damage = float(calc_data.get("damage", 30))
-                rof = float(calc_data.get("rate_of_fire", 10))
-                eff_dmg = damage
-                ttk = (200 / damage) / rof if rof > 0 else 0.5
-            except (ValueError, TypeError):
-                eff_dmg = 15.0
-                ttk = 0.5
-        
-        score = (eff_dmg * 2.0) - (ttk * 100.0)
-        weapon_scores.append({"id": w_id, "name": name, "score": score, "ttk": round(ttk, 2), "dmg": round(eff_dmg, 1)})
-
-    weapon_scores.sort(key=lambda x: x["score"], reverse=True)
-
-    best_short_range = weapon_scores[0] if weapon_scores else {"name": "MP40", "ttk": 0.28, "dmg": 32.0, "score": 30.0}
-    best_mid_range = weapon_scores[1] if len(weapon_scores) > 1 else {"name": "GROZA", "ttk": 0.32, "dmg": 38.0, "score": 25.0}
-
-    base_weapon_synergy = max(0, (best_short_range["score"] + best_mid_range["score"]) / 2)
-
-    evaluated_combinations = []
-    
-    # 2. FULL DYNAMIC DATA ROUTING
-    for act in active_keys:
-        act_char_name = extract_character_name(aggregated_actives[act], act)
-        act_data = aggregated_actives[act] if isinstance(aggregated_actives[act], dict) else {}
-        
-        try:
-            act_duration = float(act_data.get("duration_seconds", 5))
-        except (ValueError, TypeError):
-            act_duration = 5.0
+        for gen in range(generations):
+            # Evaluate Fitness
+            scored_pop = [(squad, self._fitness_function(squad)) for squad in population]
+            scored_pop.sort(key=lambda x: x[1], reverse=True)
             
-        try:
-            act_cooldown = float(act_data.get("cooldown_seconds", 60))
-        except (ValueError, TypeError):
-            act_cooldown = 60.0
-
-        act_utility_score = max(0, act_duration - (act_cooldown * 0.1))
-
-        for pass_group in passive_triplets:
-            pass_char_names = [extract_character_name(aggregated_passives.get(p, {}), p) for p in pass_group]
+            # Selection (Top 50%)
+            survivors = [x[0] for x in scored_pop[:population_size//2]]
             
-            pass_utility_score = 0
-            for p in pass_group:
-                p_data = aggregated_passives.get(p, {}) if isinstance(aggregated_passives.get(p, {}), dict) else {}
-                hp_boost = p_data.get("hp_restored_on_revive", 0)
-                try:
-                    pass_utility_score += (float(hp_boost) * 0.1) + 1.0
-                except ValueError:
-                    pass_utility_score += 1.0 
+            # Crossover to fill population
+            next_gen = survivors.copy()
+            while len(next_gen) < population_size:
+                p1, p2 = random.sample(survivors, 2)
+                next_gen.append(self._crossover_and_mutate(p1, p2))
+                
+            population = next_gen
+            
+        final_scored = [(squad, self._fitness_function(squad)) for squad in population]
+        final_scored.sort(key=lambda x: x[1], reverse=True)
+        return final_scored[:5] # Return Top 5
 
-            for pet in pets_list:
-                for loadout in loadouts_list:
-                    total_synergy = base_weapon_synergy + act_utility_score + pass_utility_score
-                    win_prob = min(98.5, max(40.0, 50.0 + (total_synergy * 0.4)))
-                    
-                    evaluated_combinations.append({
-                        "active_character": act_char_name,
-                        "passive_characters": pass_char_names,
-                        "pet": pet,
-                        "loadout": loadout,
-                        "win_rate": round(win_prob, 2)
-                    })
+    # ==========================================
+    # STAGE 3: DYNAMIC CONTEXT MULTIPLIERS
+    # ==========================================
+    def apply_context_multipliers(self, top_squads, playstyle="rush"):
+        results = []
+        for squad, base_score in top_squads:
+            final_score = base_score
+            
+            # Playstyle Multipliers
+            if playstyle == "rush" and squad["loadout"] == "Leg Pockets": final_score += 2.5
+            if playstyle == "sniper" and "moco" in squad["passives"]: final_score += 5.0
+            
+            # Get Best Weapon Combos via TTK Math
+            best_weapons = self._get_optimal_weapons()
+            
+            results.append({
+                "build": squad,
+                "win_rate": round(min(100.0, final_score), 2),
+                "weapons": best_weapons
+            })
+            
+        return sorted(results, key=lambda x: x["win_rate"], reverse=True)
 
-    evaluated_combinations.sort(key=lambda x: x["win_rate"], reverse=True)
-    top_builds = evaluated_combinations[:top_combinations_limit]
-
-    # 3. OUTPUT DYNAMIC PERMUTATIONS
-    print("\n" + "=" * 80)
-    print(f"       TOP {len(top_builds)} FULLY EVALUATED OPTIMAL CHARACTER PERMUTATIONS")
-    print("=" * 80)
-
-    for rank, build in enumerate(top_builds, 1):
-        print(f"\n[ PERMUTATION MATRIX #{rank} ] (Win Rate: {build['win_rate']}%)")
-        print(f" • Active Character   : {build['active_character']}")
-        print(f" • Passive Characters : {', '.join(build['passive_characters'])}")
-        print(f" • Pet Choice         : {build['pet']}")
-        print(f" • Item Loadout       : {build['loadout']}")
-        print(f" • Preferred Primary  : {best_short_range['name']} (TTK: {best_short_range['ttk']}s | Score: {round(best_short_range['score'], 1)})")
-        print(f" • Preferred Secondary: {best_mid_range['name']} (TTK: {best_mid_range['ttk']}s | Score: {round(best_mid_range['score'], 1)})")
-        print("-" * 50)
-
-    print("=" * 80)
-    print(f"[*] Total Permutations Evaluated in Execution: {len(evaluated_combinations):,}")
-    print("=" * 80 + "\n")
-
+    def _get_optimal_weapons(self):
+        w_scores = []
+        for w_id, w_data in self.weapons.items():
+            stats = self.ttk_calc.calculate_weapon_ttk(w_data)
+            if stats["ttk"] < 10: # Filter invalid
+                score = (stats["effective_damage"] * 2) - (stats["ttk"] * 100)
+                w_scores.append({"name": w_id.upper(), "ttk": stats["ttk"], "score": score})
+        
+        w_scores.sort(key=lambda x: x["score"], reverse=True)
+        return {
+            "primary": w_scores[0] if w_scores else {"name": "MP40", "ttk": 0.28},
+            "secondary": w_scores[1] if len(w_scores)>1 else {"name": "GROZA", "ttk": 0.32}
+        }
 
 if __name__ == "__main__":
-    run_cross_patch_optimizer(top_combinations_limit=5)
+    print("=" * 70)
+    print("    HYBRID META OPTIMIZER ENGINE (CSP + GA + MULTIPLIERS)")
+    print("=" * 70)
+    
+    engine = HybridMetaEngine()
+    print("[*] Running Genetic Search Space (Billions of combinations reduced)...")
+    
+    # Run the Pipeline
+    top_raw_squads = engine.run_ga_pipeline(generations=15, population_size=100)
+    final_meta = engine.apply_context_multipliers(top_raw_squads, playstyle="rush")
+    
+    for rank, setup in enumerate(final_meta, 1):
+        b = setup["build"]
+        w = setup["weapons"]
+        print(f"\n[ RANK #{rank} ] - Win Probability: {setup['win_rate']}%")
+        print(f" ┣ Active  : {b['active'].title()}")
+        print(f" ┣ Passive : {', '.join([p.title() for p in b['passives']])}")
+        print(f" ┣ Utility : {b['pet']} + {b['loadout']}")
+        print(f" ┗ Weapons : {w['primary']['name']} (TTK: {w['primary']['ttk']}s) & {w['secondary']['name']}")
