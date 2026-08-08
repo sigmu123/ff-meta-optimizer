@@ -1,0 +1,13 @@
+{
+  "new_weapon_mechanics": [
+    {
+      "weapon_name": "Scythe",
+      "feature_name": "Charged Dash",
+      "mechanics": {
+        "activation": "Hold Charge button while equipping Scythe",
+        "max_dash_distance_meters": 6,
+        "effect": "Executes a slash at dash end, dealing extra damage to Gloo Walls"
+      }
+    }
+  ]
+}
