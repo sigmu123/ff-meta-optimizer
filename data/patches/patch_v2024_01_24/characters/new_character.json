@@ -1,0 +1,12 @@
+{
+  "character_name": "Ryden",
+  "identity": "Tech Geek",
+  "skill_name": "Spider Trap",
+  "skill_type": "Active",
+  "description": "Releases an explosive spider trap towards target direction. Traps enemies entering range, reducing movement speed and inflicting bleeding damage.",
+  "attributes": {
+    "bleeding_damage_per_second": 10,
+    "bleeding_duration_seconds": 3,
+    "cooldown_seconds": 75
+  }
+}
