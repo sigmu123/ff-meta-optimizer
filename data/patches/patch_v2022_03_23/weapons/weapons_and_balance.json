@@ -1,0 +1,116 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "G36",
+      "category": "AR",
+      "special_mechanic": "Toggle firing mode between Assault (short-range) and Range (mid-range)",
+      "stats": {
+        "assault_mode": {
+          "base_damage": 26,
+          "rate_of_fire": 0.896,
+          "magazine": 30
+        },
+        "range_mode": {
+          "base_damage": 33,
+          "rate_of_fire": 0.15,
+          "magazine": 30
+        }
+      }
+    }
+  ],
+  "upgradeable_ultimate_weapons": {
+    "upgrade_mechanism": "Upgradeable up to 3 stages using Upgrade Chips (excludes Airdrop weapons)",
+    "applicable_weapons": [
+      "VSS",
+      "MP5",
+      "M60",
+      "M4A1",
+      "M14",
+      "Kar98k",
+      "PLASMA",
+      "FAMAS"
+    ]
+  },
+  "weapon_balance": [
+    { "weapon_name": "M4A1", "adjustments": { "effective_range_percentage": -4 } },
+    { "weapon_name": "SCAR", "adjustments": { "effective_range_percentage": 5 } },
+    { "weapon_name": "M249", "adjustments": { "effective_range_percentage": -3 } },
+    { "weapon_name": "FAMAS", "adjustments": { "effective_range_percentage": -2 } },
+    { "weapon_name": "XM8", "adjustments": { "effective_range_percentage": 5 } },
+    { "weapon_name": "AN94", "adjustments": { "effective_range_percentage": 4 } },
+    { "weapon_name": "AUG", "adjustments": { "effective_range_percentage": 6 } },
+    { "weapon_name": "PARAFAL", "adjustments": { "effective_range_percentage": 5 } },
+    { "weapon_name": "Kar98k", "adjustments": { "gun_switch_time_percentage": 20 } },
+    {
+      "weapon_name": "UMP",
+      "adjustments": {
+        "effective_range_percentage": -3,
+        "firing_movement_speed_percentage": -10,
+        "stability_percentage": -7
+      }
+    },
+    {
+      "weapon_name": "MP5",
+      "adjustments": {
+        "effective_range_percentage": -10,
+        "damage_percentage": 18
+      }
+    },
+    { "weapon_name": "VSS", "adjustments": { "effective_range_percentage": -15 } },
+    {
+      "weapon_name": "MP40",
+      "adjustments": {
+        "stability_percentage": 15,
+        "carrying_movement_speed_percentage": 15,
+        "firing_movement_speed_percentage": 10
+      }
+    },
+    { "weapon_name": "Thompson", "adjustments": { "effective_range_percentage": -3 } },
+    { "weapon_name": "Mini Uzi", "adjustments": { "effective_range_percentage": -8 } },
+    { "weapon_name": "MAC10", "adjustments": { "effective_range_percentage": -4 } },
+    {
+      "weapon_name": "M1014",
+      "adjustments": {
+        "effective_range_percentage": -16,
+        "reload_speed_percentage": 30
+      }
+    },
+    { "weapon_name": "M1873", "adjustments": { "effective_range_percentage": -15 } },
+    {
+      "weapon_name": "SPAS12",
+      "adjustments": {
+        "effective_range_percentage": -8,
+        "reload_speed_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "M1887",
+      "adjustments": {
+        "effective_range_percentage": -12,
+        "damage_percentage": 8,
+        "carrying_movement_speed_percentage": 5
+      }
+    },
+    {
+      "weapon_name": "MAG-7",
+      "adjustments": {
+        "effective_range_percentage": -15,
+        "damage_percentage": 4,
+        "stability_percentage": 18
+      }
+    },
+    {
+      "weapon_name": "Charge Buster",
+      "adjustments": {
+        "effective_range_percentage": -10,
+        "damage_percentage": 5
+      }
+    },
+    {
+      "weapon_name": "M1887-X",
+      "adjustments": {
+        "new_feature": "Added new muzzle accessory slots"
+      }
+    }
+  ]
+}
