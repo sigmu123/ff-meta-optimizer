@@ -7,10 +7,8 @@
     "characters/new_character.json",
     "characters/balance_adjustments.json",
     "characters/qol_fixes.json",
-    "weapons/special_boosts.json",
     "weapons/balance_adjustments.json",
     "map_and_modes/map_adjustments.json",
-    "map_and_modes/cs_store.json",
     "system/engine_and_ui.json"
   ]
 }
