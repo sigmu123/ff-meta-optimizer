@@ -1,0 +1,26 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "MAG-7",
+      "category": "Shotgun",
+      "availability": ["Classic", "Clash Squad"],
+      "base_stats": {
+        "base_damage": 20,
+        "magazine_capacity": 8,
+        "rate_of_fire": 0.2
+      },
+      "compatible_attachments": ["Grip", "Stock"]
+    },
+    {
+      "weapon_name": "FF Knife",
+      "category": "Throwable / Special",
+      "availability": ["Classic (Casual & Ranked)"],
+      "base_stats": {
+        "base_damage": 50,
+        "ammo_capacity": 3,
+        "rate_of_fire": 0.5,
+        "armor_penetration_percentage": 100
+      }
+    }
+  ]
+}
