@@ -1,0 +1,37 @@
+{
+  "ranked_mode_cs_peak": {
+    "mode_name": "CS-Peak",
+    "queue_type": "Solo-queue only",
+    "anonymity_system": "Avatars and banners completely hidden in-match",
+    "scoring_system": "Points awarded purely based on individual in-match performance",
+    "economy_preset": "Esports CS Store setup with reduced Gloo Wall prices and expanded active skill card / weapon options",
+    "mvp_display": "Unique MVP intro broadcast before each round starting from Round 2"
+  },
+  "hud_interface_updates": {
+    "hud_menu_relocation": "Settings > In-Match",
+    "share_code_expiration": "Shareable HUD codes will no longer expire",
+    "newly_hideable_buttons": [
+      "Quick Response Button",
+      "Emote Button",
+      "Pet Emote Button",
+      "Prone Button"
+    ]
+  },
+  "match_result_sharing_system": {
+    "highlight_summary_page": "Displays detailed post-match stats including eliminations, damage dealt, help-ups, and total healing"
+  },
+  "in_game_album_system": {
+    "functionality": "In-game photo/screenshot auto-save system built into player profile with editing capabilities"
+  },
+  "security_and_fair_play": {
+    "guild_hacker_penalty_notification": "Automated mail and main page warning sent to all guild members when a hacker is detected during Guild Wars or daily matches"
+  },
+  "ui_and_engine_optimizations": {
+    "prone_to_stand_transition": "Reduced animation delay when standing up from prone state",
+    "thermal_scope_visibility": "Increased crosshair and lens transparency for enhanced target tracking",
+    "in_match_info_panel": "Redesigned UI layout for team HP, armor durability, and active loadouts",
+    "graphics_options": "Added support for 30 FPS Lobby and Max Graphics configuration",
+    "default_lv3_backpack": "Refreshed 3D model for Lv. 3 Backpack",
+    "skill_keyword_hints": "Added contextual mechanic tooltips next to active skill and gadget icons"
+  }
+}
