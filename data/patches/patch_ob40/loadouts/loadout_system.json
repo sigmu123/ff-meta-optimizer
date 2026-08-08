@@ -1,0 +1,58 @@
+{
+  "loadouts": {
+    "bonfire": {
+      "effects": {
+        "hp_recovery_per_second": 5,
+        "ep_recovery_per_second": 20,
+        "duration_seconds": 10
+      },
+      "modes": ["Clash Squad", "Battle Royale"]
+    },
+    "airdrop_aid": {
+      "effect": "The Loadout user gets 300 extra CS Cash after any teammate loots the airdrop."
+    },
+    "supply_crate": {
+      "cs_round_rewards": {
+        "round_1": "Katana",
+        "round_2": "Inhaler x1",
+        "round_3": "Flash Freeze x1",
+        "round_4": "Gloo Wall x1",
+        "round_5": "Upgrade Chip x1",
+        "round_6": "Bonfire x1",
+        "round_7": "Super Med x1"
+      },
+      "br_revival_rewards": {
+        "ff_coins": 300,
+        "weapon": "Bizon",
+        "ammo": "60 SMG Ammo"
+      }
+    },
+    "leg_pockets": {
+      "match_start": {
+        "gloo_maker_level": 2,
+        "backpack_level": 3,
+        "additional_backpack_capacity": 200,
+        "extra_gloo_walls": 2
+      },
+      "revival_bonus": {
+        "extra_gloo_walls": 2
+      }
+    },
+    "bounty_token": {
+      "first_elimination_rewards": {
+        "ff_coins": 400,
+        "random_attachment": true,
+        "weapon": "Lv. 2 Upgradable Weapon"
+      }
+    },
+    "secret_clue": {
+      "chest_contents": [
+        "Gloo Chip",
+        "Launch Pad",
+        "600 FF Coins",
+        "Other Random Items"
+      ],
+      "mechanic": "Once chest is opened, a new chest location is marked on the map."
+    }
+  }
+}
