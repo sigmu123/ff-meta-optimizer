@@ -1,0 +1,62 @@
+{
+  "new_modes": [
+    {
+      "mode_name": "Zombie Hunt",
+      "release_date": "2022-11-16",
+      "difficulty_levels": ["Easy", "Normal", "Hard"],
+      "team_size": "Squad default (Solo unlocked after passing Hard)",
+      "winning_condition": "Pass 6 stages and defeat the final boss",
+      "progression_mechanics": {
+        "revival": "Auto-revive if at least one teammate survives",
+        "in_match_buffs": "Random buff selection after passing each stage",
+        "out_of_match_talents": "Earn Talent Points to upgrade permanent lobby talents"
+      }
+    },
+    {
+      "mode_name": "Football Squad",
+      "release_date": "2022-12-02",
+      "team_size": "4v4",
+      "winning_condition": "Score most goals within time limit",
+      "roles": [
+        { "role": "Striker", "skill": "Tatsuya Rebel Rush" },
+        { "role": "Defender", "skill": "Chrono Time Turner" }
+      ],
+      "random_boosters": ["Gloo Wall", "Flash Freeze"]
+    },
+    {
+      "mode_name": "Football Fire - Social Island",
+      "release_date": "2022-11-16",
+      "offense_type": "Football Shooter",
+      "duration_minutes": 6
+    }
+  ],
+  "mode_optimizations": {
+    "bomb_squad_5v5": {
+      "knockdowns": "Disabled (eliminated players cannot be revived)",
+      "bomb_carrying": "All Offense players carry a bomb and can detonate it",
+      "map_changes_el_pastelo": {
+        "point_b": "Gas station platform lowered",
+        "front_gate": "Widened"
+      }
+    },
+    "clash_squad": {
+      "safe_zone_timings": {
+        "zone_shrink_start_second": { "previous": 25, "new": 20 },
+        "zone_shrink_finish_second": { "previous": 90, "new": 70 }
+      },
+      "store_price_adjustments": {
+        "level_3_upgrade_cost": "880 -> 1980",
+        "m4a1_price": { "previous": 1100, "new": 1000 },
+        "famas_price": { "previous": 1100, "new": 1000 },
+        "grenade_price": { "previous": 200, "new": 300 },
+        "grenade_carrying_limit": { "previous": 2, "new": 1 }
+      },
+      "extra_ammo_mechanism": "Receive backup ammo for equipped weapons when purchasing phase ends"
+    }
+  },
+  "map_updates": {
+    "lone_wolf": {
+      "new_map": "Ice Ground"
+    }
+  }
+}
