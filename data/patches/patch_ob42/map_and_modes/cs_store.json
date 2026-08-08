@@ -1,0 +1,47 @@
+{
+  "cs_special_mode": {
+    "mode_name": "The Epic Battle",
+    "launch_date": "2023-12-01",
+    "rank_protection_chances": 2,
+    "max_level": 4,
+    "exp_sources": ["Eliminations", "Assists", "Help-ups"],
+    "battle_styles": [
+      {
+        "style_name": "Megabolt",
+        "levels": {
+          "lv1": "Faster EP conversion while sprinting",
+          "lv2": "Receive Tatsuya Active Skill Card",
+          "lv3": "Show enemy location if a knockdown occurs nearby",
+          "lv4": "Increased reload speed"
+        },
+        "duplicate_skill_fallback_card": "Alok Skill Card"
+      },
+      {
+        "style_name": "Demolitionist",
+        "levels": {
+          "lv1": "Explosive damage boost (damage dealt to enemy)",
+          "lv2": "Receive Skylar Active Skill Card",
+          "lv3": "Obtain Flash Freeze",
+          "lv4": "Increased damage to Gloo Walls"
+        },
+        "duplicate_skill_fallback_card": "Homer Skill Card"
+      },
+      {
+        "style_name": "Warding Lord",
+        "levels": {
+          "lv1": "+35 HP",
+          "lv2": "Receive Chrono Active Skill Card",
+          "lv3": "Every 60s obtain a shield that can block bullets",
+          "lv4": "Obtain Lv. 4 Vest"
+        },
+        "duplicate_skill_fallback_card": "Steffie Skill Card"
+      }
+    ],
+    "ultimate_warrior": {
+      "level_required": 4,
+      "features": ["Special effects at beginning of each round", "Unique elimination sound effects"],
+      "elimination_bonus": "Triggers special shutdown sound effect and grants extra CS Cash to eliminator"
+    }
+  },
+  "deca_square_deca_portal": "Teleport button appearance prompt optimized to appear immediately when approaching portal"
+}
