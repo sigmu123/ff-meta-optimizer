@@ -1,0 +1,12 @@
+{
+  "battle_royale_updates": {
+    "vending_machine": {
+      "map_visibility": "Locations now marked on the mini-map",
+      "damage_interruption": "Playzone damage no longer interrupts interaction",
+      "availability": "Expanded to all maps"
+    },
+    "revival_point": {
+      "availability": "Expanded to all maps in BR Casual Mode"
+    }
+  }
+}
