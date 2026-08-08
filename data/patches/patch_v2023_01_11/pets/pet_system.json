@@ -1,0 +1,20 @@
+{
+  "new_pet": {
+    "name": "Kactus",
+    "skill_name": "Freeze!",
+    "mechanics": {
+      "trigger_condition": "Owner stays still for designated duration",
+      "stationary_duration_seconds": [8, 7, 6],
+      "ep_recovery_rate": "10 EP per second",
+      "max_ep_restoration_cap": 100,
+      "interruption_triggers": ["Player movement", "Player jumping"]
+    }
+  },
+  "pet_skill_reworks": {
+    "mr_waggor": {
+      "skill_name": "Smooth Gloo",
+      "adjustment": "In game modes with Gloo Makers, skill grants 200 Gloo Maker EXP at specific time intervals after game start.",
+      "time_intervals_seconds": [600, 400, 200]
+    }
+  }
+}
