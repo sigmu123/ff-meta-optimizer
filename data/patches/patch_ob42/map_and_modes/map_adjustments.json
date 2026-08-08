@@ -1,0 +1,31 @@
+{
+  "ranked_map_pool": {
+    "active_maps": ["Bermuda", "NeXTerra", "Alpine"],
+    "removed_map": "Purgatory"
+  },
+  "bermuda_snow_theme": {
+    "snow_coverage": {
+      "ground": "Almost half blanketed in snow",
+      "vegetation": "All trees and grass covered in snow except tropical trees",
+      "roofs": "Snowpacks added on roofs, heavy concentration in Peak",
+      "weather_effects": "Gentle snowfall at Peak"
+    },
+    "frozen_lakes": {
+      "frozen_water_locations": ["Rim Nam Village", "Nurek Dam", "Sentosa"],
+      "mechanics": "Water surfaces transformed into solid ice allowing sprinting; added ice rocks on frozen surfaces"
+    }
+  },
+  "specific_map_balance": {
+    "peak": [
+      "Maison roof changed into a sunken area with a depth of 1.8m",
+      "Optimized visuals of broken ladder",
+      "Added hidden room on 2nd floor of maison accessible via ladder",
+      "Optimized airdrop quantity",
+      "Swimming pool water added and frozen",
+      "Vehicles added to parking lot"
+    ],
+    "hangar": [
+      "Moved both ladders in the side room to the middle edge for Clash Squad spawn balance"
+    ]
+  }
+}
