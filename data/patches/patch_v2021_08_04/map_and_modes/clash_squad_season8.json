@@ -1,0 +1,21 @@
+{
+  "clash_squad_season_8": {
+    "season_period": "2021-08-05 to 2021-09-29",
+    "start_time": "2021-08-05 17:00 GMT+8",
+    "season_reward": "The Golden AN94 (Gold III or above)",
+    "new_features": [
+      {
+        "feature_name": "Request Function",
+        "description": "Allows players to request teammates to purchase an item directly to their inventory in Casual and Ranked"
+      },
+      {
+        "feature_name": "Backpack Display",
+        "description": "Option to display custom backpacks from Vault inside Clash Squad"
+      },
+      {
+        "feature_name": "Killing Spree Rework",
+        "description": "Reworked visual and system mechanics for killstreaks"
+      }
+    ]
+  }
+}
