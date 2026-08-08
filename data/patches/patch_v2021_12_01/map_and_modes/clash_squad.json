@@ -1,0 +1,24 @@
+{
+  "clash_squad_updates": {
+    "item_request": {
+      "multi_request": "Players can send additional item requests once prior request is fulfilled",
+      "radio_commands": "Automated radio commands trigger upon sending item requests"
+    },
+    "backpack_limit": {
+      "utility_cap": "Restricted carryover limit for Gloo Walls and Grenades into subsequent rounds"
+    },
+    "map_adjustments": [
+      {
+        "location": "Academy",
+        "adjustment": "Structural and spawn layout adjustments for match balance"
+      },
+      {
+        "location": "Mill",
+        "adjustment": "Structural and spawn layout adjustments for match balance"
+      }
+    ],
+    "custom_room_features": {
+      "dynamic_play_zone": true
+    }
+  }
+}
