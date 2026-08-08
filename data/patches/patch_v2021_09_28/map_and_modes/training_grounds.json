@@ -1,0 +1,8 @@
+{
+  "training_grounds_updates": {
+    "zone_adjustments": {
+      "zone_name": "Combat Zone",
+      "changes": "Removed layout objects to simplify line of sight and make enemies more visible"
+    }
+  }
+}
