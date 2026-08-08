@@ -1,0 +1,23 @@
+{
+  "map_adjustments": {
+    "gloo_factory": {
+      "map": "Bermuda",
+      "location": "Factory",
+      "changes": "Passageways, staircases, multi-level platforms, and covers replaced with destructible Gloo materials. Select structures remain indestructible."
+    },
+    "bermuda_minimap_rework": {
+      "terrain_building_colors": "Visual overhaul for high-contrast visibility",
+      "high_tier_zone": "Optimized display for High-Tier Loot (Blue Zone) and UAV-Lite range",
+      "interactive_icons": "Standardized visual hierarchy for arsenals and airdrops"
+    },
+    "window_vault_optimizations": {
+      "applicable_maps": "All maps except Kalahari",
+      "changes": "Window frame sizes increased in Bermuda buildings to fix player stuck issues"
+    },
+    "cs_high_ground_rebalance": {
+      "nurek_dam": "Rooftop structure adjusted",
+      "observatory": "Rooftop structure adjusted",
+      "sentosa": "Two-story building structure modified, trash can near cars replaced, middle fence containers removed"
+    }
+  }
+}
