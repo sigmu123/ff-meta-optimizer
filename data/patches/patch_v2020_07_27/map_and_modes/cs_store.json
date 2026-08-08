@@ -1,0 +1,18 @@
+{
+  "clash_squad_updates": {
+    "rank_season_2": {
+      "start_date": "2020-07-30 17:00 SGT",
+      "season_reward": "The Golden G18 (Reached Gold III or above)"
+    },
+    "new_items": [
+      {
+        "item_name": "Horizaline (Revive Kit)",
+        "availability": "Classic & Clash Squad",
+        "mechanics": "Allows downed players to self-revive and restore combat ability. Does NOT stop bleeding or playzone damage."
+      }
+    ],
+    "aim_assist_adjustment": {
+      "priority_rule": "Aim assist now prioritizes active combat targets over downed players"
+    }
+  }
+}
