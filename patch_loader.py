@@ -14,11 +14,7 @@ class PatchLoader:
         
         self.active_skills = {}
         self.passive_skills = {}
-        self.characters = {}
         self.weapons = {}
-        self.range_decay = {}
-        self.modes_and_maps = {}
-        self.utilities = {}
         
         self._load_all_data()
 
@@ -28,7 +24,7 @@ class PatchLoader:
                 with open(path, "r", encoding="utf-8") as f:
                     return json.load(f)
             except Exception:
-                return {}
+                pass
         return {}
 
     def _load_all_data(self):
@@ -37,7 +33,7 @@ class PatchLoader:
 
         for root, _, files in os.walk(self.patch_dir):
             for file_name in files:
-                if file_name == "patch_manifest.json" or not file_name.endswith(".json"):
+                if not file_name.endswith(".json") or file_name == "patch_manifest.json":
                     continue
                 
                 file_path = os.path.join(root, file_name)
@@ -45,79 +41,35 @@ class PatchLoader:
                 if not data:
                     continue
 
-                # Unified Active Skills Ingestion
-                if file_name == "active_skills.json":
-                    skill_list = data.get("active_skills", []) if isinstance(data, dict) else data
-                    if isinstance(skill_list, list):
-                        for skill in skill_list:
-                            if isinstance(skill, dict):
-                                s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name") or skill.get("id")
-                                if s_id:
-                                    self.active_skills[str(s_id).lower()] = skill
-                    elif isinstance(data, dict):
-                        for k, v in data.items():
-                            if isinstance(v, dict):
-                                self.active_skills[str(k).lower()] = v
+                self._ingest_skills(data, file_name)
+                self._ingest_weapons(data, file_name)
 
-                # Unified Passive Skills Ingestion
-                elif file_name == "passive_skills.json":
-                    skill_list = data.get("passive_skills", []) if isinstance(data, dict) else data
-                    if isinstance(skill_list, list):
-                        for skill in skill_list:
-                            if isinstance(skill, dict):
-                                s_id = skill.get("character_id") or skill.get("character_name") or skill.get("skill_name") or skill.get("id")
-                                if s_id:
-                                    self.passive_skills[str(s_id).lower()] = skill
-                    elif isinstance(data, dict):
-                        for k, v in data.items():
-                            if isinstance(v, dict):
-                                self.passive_skills[str(k).lower()] = v
+    def _ingest_skills(self, data, file_name):
+        # Handle Actives
+        if "active" in file_name.lower() or "characters" in file_name.lower():
+            items = data.get("active_skills", data.get("character_adjustments", []))
+            self._parse_and_store(items, self.active_skills, force_type="active")
 
-                # Legacy & Rework Character Files Ingestion
-                elif file_name in ["characters.json", "skills_rework.json", "balance_adjustments.json", "new_character.json"]:
-                    if isinstance(data, dict):
-                        char_list = data.get("character_adjustments", []) or data.get("updates", []) or data.get("character_balances", [])
-                        if isinstance(char_list, list):
-                            for c in char_list:
-                                if isinstance(c, dict):
-                                    c_id = c.get("character_id") or c.get("character_name") or c.get("id") or c.get("name")
-                                    if c_id:
-                                        # Distribute based on type or general storage
-                                        if c.get("type", "").lower() == "active" or "active" in file_name:
-                                            self.active_skills[str(c_id).lower()] = c
-                                        else:
-                                            self.passive_skills[str(c_id).lower()] = c
-                        else:
-                            for k, v in data.items():
-                                if isinstance(v, dict):
-                                    self.characters[str(k).lower()] = v
+        # Handle Passives
+        if "passive" in file_name.lower() or "characters" in file_name.lower():
+            items = data.get("passive_skills", data.get("updates", []))
+            self._parse_and_store(items, self.passive_skills, force_type="passive")
 
-                # Unified Weapon Attributes Ingestion
-                elif file_name in ["base_attributes.json", "weapons.json", "weapon_balance.json", "new_weapons.json"]:
-                    w_list = data.get("weapons", []) or data.get("new_weapons", []) or data.get("weapon_balances", []) or data.get("weapon_adjustments", [])
-                    if isinstance(w_list, list) and len(w_list) > 0:
-                        for w in w_list:
-                            if isinstance(w, dict):
-                                w_id = w.get("weapon_id") or w.get("name") or w.get("weapon_name") or w.get("weapon")
-                                if w_id:
-                                    self.weapons[str(w_id).lower()] = w
-                    elif isinstance(data, dict):
-                        for k, v in data.items():
-                            if k not in ["patch_version", "patch_date", "category", "weapon_tier_system", "global_weapon_mechanics"]:
-                                if isinstance(v, dict):
-                                    self.weapons[str(k).lower()] = v
+    def _ingest_weapons(self, data, file_name):
+        if "weapon" in file_name.lower() or "attributes" in file_name.lower():
+            items = data.get("weapons", data.get("weapon_balances", []))
+            self._parse_and_store(items, self.weapons)
 
-                elif file_name == "range_decay.json":
-                    if isinstance(data, dict):
-                        self.range_decay.update(data)
-
-                elif file_name in ["map_tactics.json", "modes_and_maps.json", "mode_adjustments.json", "gameplay_rules.json"]:
-                    if isinstance(data, dict):
-                        self.modes_and_maps.update(data)
-
-                elif file_name in ["utilities.json", "system_updates.json", "system_qol.json"]:
-                    if isinstance(data, dict):
-                        self.utilities.update(data)
-
-        if not self.characters:
-            self.characters = {**self.active_skills, **self.passive_skills}
+    def _parse_and_store(self, items, target_dict, force_type=None):
+        if isinstance(items, list):
+            for item in items:
+                if isinstance(item, dict):
+                    key = item.get("character_id") or item.get("weapon_id") or item.get("name")
+                    if key:
+                        if force_type and item.get("type", "").lower() != force_type and force_type not in item.get("type", "").lower():
+                            continue # Basic strict filtering
+                        target_dict[str(key).lower()] = item
+        elif isinstance(items, dict):
+            for k, v in items.items():
+                if isinstance(v, dict):
+                    target_dict[str(k).lower()] = v
