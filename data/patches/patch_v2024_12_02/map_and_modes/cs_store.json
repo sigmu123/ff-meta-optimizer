@@ -1,18 +1,4 @@
 {
-  "clash_squad_aurora_buffs": [
-    {
-      "color": "Green Aurora",
-      "buff": "Restore 2 EP/s"
-    },
-    {
-      "color": "Red Aurora",
-      "buff": "Armor penetration increased by 50%"
-    },
-    {
-      "color": "Blue Aurora",
-      "buff": "Receive 1 Gloo Wall at start of each round"
-    }
-  ],
   "mushroom_rules": {
     "purchase_limit": "Once EP reaches max, player can no longer purchase or request mushrooms"
   },
