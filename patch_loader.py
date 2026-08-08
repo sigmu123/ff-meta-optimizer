@@ -1,6 +1,5 @@
 import os
 import json
-import glob
 
 class PatchLoader:
     def __init__(self, patch_name="all", base_dir=None):
@@ -31,11 +30,10 @@ class PatchLoader:
         if not os.path.exists(self.patches_base_dir):
             return
 
-        # Sort patches to ensure newer patches (like OB54) override older ones
         patch_folders = sorted(os.listdir(self.patches_base_dir))
         
         if self.patch_name != "all" and self.patch_name in patch_folders:
-            patch_folders = [self.patch_name] # Load specific if asked, else load all
+            patch_folders = [self.patch_name]
 
         for patch_folder in patch_folders:
             patch_dir = os.path.join(self.patches_base_dir, patch_folder)
@@ -52,42 +50,36 @@ class PatchLoader:
                     if not data:
                         continue
 
-                    self._ingest_skills(data, file_name)
-                    self._ingest_weapons(data, file_name)
-                    self._ingest_pets_loadouts(data, file_name)
+                    self._ingest_skills(data)
+                    self._ingest_weapons(data)
+                    self._ingest_pets_loadouts(data)
 
-    def _ingest_skills(self, data, file_name):
-        items = data.get("active_skills", data.get("character_adjustments", []))
-        if not items and "character_balance_numeric_changes" in data:
-            items = data["character_balance_numeric_changes"].get("active_skills", {})
-        if not items and "new_characters" in data:
-            items = data.get("new_characters", [])
-        if not items and "awakened_characters" in data:
-            items = data.get("awakened_characters", [])
-        if not items and "character_reworks" in data:
-            items = data.get("character_reworks", [])
-            
-        self._parse_and_store(items, self.active_skills, force_type="active")
+    def _ingest_skills(self, data):
+        # Safely route active skills
+        actives = data.get("active_skills", [])
+        if "character_balance_numeric_changes" in data:
+            actives = data["character_balance_numeric_changes"].get("active_skills", actives)
+        self._parse_and_store(actives, self.active_skills)
 
-        p_items = data.get("passive_skills", data.get("updates", []))
-        if not p_items and "character_balance_numeric_changes" in data:
-            p_items = data["character_balance_numeric_changes"].get("passive_skills", {})
-        if not p_items and "character_balance_changes" in data:
-            p_items = data.get("character_balance_changes", [])
-            
-        self._parse_and_store(p_items, self.passive_skills, force_type="passive")
+        # Safely route passive skills
+        passives = data.get("passive_skills", [])
+        if "character_balance_numeric_changes" in data:
+            passives = data["character_balance_numeric_changes"].get("passive_skills", passives)
+        self._parse_and_store(passives, self.passive_skills)
 
-    def _ingest_weapons(self, data, file_name):
-        items = data.get("weapons", data.get("weapon_balances", []))
-        if not items and "weapon_adjustments" in data:
-            items = data.get("weapon_adjustments", {})
-        self._parse_and_store(items, self.weapons)
+        # Handle flat reworks to prevent active/passive corruption
+        reworks = data.get("reworked_characters", data.get("character_reworks", data.get("character_balance_changes", [])))
+        self._parse_and_store(reworks, self.passive_skills) # Defaulting reworks to passives to prevent active override
+
+    def _ingest_weapons(self, data):
+        # Enable recursive extraction for nested categories like 'assault_rifles'
+        weapons_data = data.get("weapons", data.get("weapon_balances", data.get("weapon_adjustments", {})))
+        self._parse_and_store(weapons_data, self.weapons, recursive=True)
         
-    def _ingest_pets_loadouts(self, data, file_name):
-        if "pets" in data:
-            self._extract_list_names(data["pets"], self.pets)
-        if "pet_updates" in data:
-            self._extract_list_names(data["pet_updates"], self.pets, key="pet")
+    def _ingest_pets_loadouts(self, data):
+        for key in ["pets", "pet_updates"]:
+            if key in data:
+                self._extract_list_names(data[key], self.pets, key="pet")
         
         if "loadouts" in data:
             if isinstance(data["loadouts"], dict):
@@ -99,7 +91,7 @@ class PatchLoader:
         if isinstance(items, list):
             for item in items:
                 if isinstance(item, dict):
-                    val = item.get(key)
+                    val = item.get(key) or item.get("name")
                     if val and str(val).lower() not in [x.lower() for x in target_list]:
                         target_list.append(str(val))
         elif isinstance(items, dict):
@@ -107,7 +99,7 @@ class PatchLoader:
                 if str(k).lower() not in [x.lower() for x in target_list]:
                     target_list.append(str(k))
 
-    def _parse_and_store(self, items, target_dict, force_type=None):
+    def _parse_and_store(self, items, target_dict, recursive=False):
         if isinstance(items, list):
             for item in items:
                 if isinstance(item, dict):
@@ -118,7 +110,8 @@ class PatchLoader:
         elif isinstance(items, dict):
             for k, v in items.items():
                 if isinstance(v, dict):
-                    if any(isinstance(sub_v, dict) for sub_v in v.values()):
+                    # Recursive check for nested categories like {"smg": {"mp40": {...}}}
+                    if recursive and any(isinstance(sub_v, dict) for sub_v in v.values()):
                         for sub_k, sub_v in v.items():
                             if isinstance(sub_v, dict):
                                 target_dict[str(sub_k).lower()] = sub_v
