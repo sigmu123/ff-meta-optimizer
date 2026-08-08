@@ -1,0 +1,56 @@
+{
+  "clash_squad_updates": {
+    "map_additions": {
+      "nexterra": {
+        "modes": ["CS-Ranked", "CS-Casual"],
+        "available_zones": [
+          "Intellect Center",
+          "Mud Site",
+          "Deca Square",
+          "Museum",
+          "Grav Labs",
+          "Rust Town",
+          "Farmtopia"
+        ]
+      }
+    },
+    "weapon_upgrade_system": {
+      "upgradable_weapons": [
+        "FAMAS-I / FAMAS-II / FAMAS-III",
+        "M60-I / M60-II / M60-III",
+        "M4A1-I / M4A1-II / M4A1-III",
+        "SCAR-I / SCAR-II / SCAR-III"
+      ]
+    },
+    "teammate_skill_combination_display": {
+      "locations": [
+        "Team Lobby",
+        "CS Battle Cards",
+        "In-Game Scoreboard"
+      ]
+    },
+    "winning_streak_system": {
+      "emblem_threshold": "3 consecutive wins",
+      "visuals": "Winning streak animation displayed after Booyah"
+    }
+  },
+  "battle_royale_updates": {
+    "revival_point_mechanism": {
+      "structure": "Added a central pillar inside revival point providing cover and glowing to indicate progress",
+      "locations_type": "Fixed locations instead of random",
+      "total_points_per_map": {
+        "bermuda": 12,
+        "alpine": 12,
+        "kalahari": 12,
+        "purgatory": 12
+      },
+      "minimap_visibility": "Immediately visible at match start"
+    }
+  },
+  "nexterra_map_interactions": {
+    "farmtopia": {
+      "carousel": "Activated central moving carousel",
+      "moving_platform": "Activated second-floor moving platform"
+    }
+  }
+}
