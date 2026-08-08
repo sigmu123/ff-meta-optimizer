@@ -1,0 +1,13 @@
+{
+  "version": "v2020_09_23",
+  "patch_name": "BOOYAH Day",
+  "publish_date": "2020-09-23",
+  "active_submodules": [
+    "characters/character_adjustments.json",
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/cs_ranked_season3.json",
+    "map_and_modes/training_grounds_and_maps.json",
+    "system/engine_and_ui.json"
+  ]
+}
