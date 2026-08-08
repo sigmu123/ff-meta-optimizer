@@ -1,0 +1,141 @@
+{
+  "marksman_rifles": [
+    {
+      "weapon_name": "SKS",
+      "stat_changes": {
+        "headshot_range": "+20%",
+        "accuracy": "-5%"
+      }
+    },
+    {
+      "weapon_name": "AC80",
+      "stat_changes": {
+        "headshot_range": "+20%"
+      }
+    }
+  ],
+  "map_exclusive_weapons": [
+    {
+      "weapon_name": "PLASMA",
+      "map_availability": "Bermuda only",
+      "stat_changes": {
+        "energy_recovery_speed": "+25%",
+        "rate_of_fire": "+5%"
+      }
+    },
+    {
+      "weapon_name": "Shield Gun",
+      "map_availability": "NeXTerra only",
+      "stat_changes": {
+        "shield_hp": "-20%",
+        "damage": "+3%",
+        "accuracy": "+15%",
+        "armor_penetration": "+4%"
+      }
+    }
+  ],
+  "sniper_rifles": [
+    {
+      "weapon_name": "AWM",
+      "variants": [
+        "AWM",
+        "AWM-Y"
+      ],
+      "hit_registration_fix": true,
+      "stat_changes": {
+        "rate_of_fire": "+5%",
+        "reload_speed": "-20%"
+      }
+    },
+    {
+      "weapon_name": "VSK94",
+      "hit_registration_fix": true,
+      "stat_changes": {
+        "rate_of_fire": "+8%"
+      }
+    },
+    {
+      "weapon_name": "M82B",
+      "stat_changes": {
+        "magazine_capacity": {
+          "old": 8,
+          "new": 18
+        },
+        "reload_speed": "-20%"
+      }
+    },
+    {
+      "weapon_name": "Kar98K",
+      "variants": [
+        "Kar98K",
+        "Kar98K-I",
+        "Kar98K-II",
+        "Kar98K-III"
+      ],
+      "stat_changes": {
+        "reload_speed": "+25%"
+      }
+    }
+  ],
+  "smgs": [
+    {
+      "weapon_name": "Thompson",
+      "stat_changes": {
+        "damage": "+4%"
+      }
+    }
+  ],
+  "pistols": [
+    {
+      "weapon_name": "M1917",
+      "stat_changes": {
+        "damage": "+10%",
+        "accuracy": "+15%"
+      }
+    },
+    {
+      "weapon_name": "G18",
+      "stat_changes": {
+        "accuracy": "+10%"
+      }
+    }
+  ],
+  "shotguns": [
+    {
+      "weapon_name": "Charge Buster",
+      "stat_changes": {
+        "charge_speed": "+20%"
+      }
+    }
+  ],
+  "explosives_and_armor_rebalance": [
+    {
+      "item_name": "Grenade",
+      "minimum_explosion_damage": {
+        "old": 40,
+        "new": 60
+      }
+    },
+    {
+      "item_name": "M79",
+      "minimum_explosion_damage": {
+        "old": 40,
+        "new": 60
+      }
+    },
+    {
+      "item_name": "Lv. 2 Vest",
+      "explosion_damage_reduction_percent": {
+        "old": 15,
+        "new": 25
+      }
+    },
+    {
+      "item_name": "Lv. 3 Vest",
+      "explosion_damage_reduction_percent": {
+        "old": 20,
+        "new": 45
+      }
+    }
+  ]
+}
