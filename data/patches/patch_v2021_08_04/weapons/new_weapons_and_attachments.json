@@ -1,0 +1,41 @@
+{
+  "new_weapons": [
+    {
+      "item_name": "AC80",
+      "category": "Marksman Rifle",
+      "availability": ["Battle Royale", "Clash Squad"],
+      "base_stats": {
+        "base_damage": 50,
+        "rate_of_fire": 0.45,
+        "magazine_capacity": 10
+      },
+      "compatible_attachments": ["Muzzle", "Grip", "Stock"],
+      "special_ability": "Piercing Shots - Every second damage dealt with the AC80 will deal extra damage"
+    }
+  ],
+  "weapon_upgrades": [
+    {
+      "weapon_name": "M4A1",
+      "upgrade_item": "M4 Chip",
+      "available_variants": ["M4A1-X", "M4A1-Y", "M4A1-Z"],
+      "mechanic": "Pick up or purchase M4 Chip to upgrade base M4A1 into X, Y, or Z versions"
+    }
+  ],
+  "new_special_attachments": [
+    {
+      "attachment_name": "Shotgun Muzzle",
+      "compatible_weapon_types": ["Shotgun"],
+      "effect": "+1 bullet in each shotgun shell fired"
+    },
+    {
+      "attachment_name": "SMG Muzzle",
+      "compatible_weapon_types": ["SMG"],
+      "effect": "Minimum damage range +1, range +1, every third shot will deal 1.2x damage"
+    },
+    {
+      "attachment_name": "AR Magazine",
+      "compatible_weapon_types": ["AR"],
+      "effect": "Rate of fire increase, magazine size -15%"
+    }
+  ]
+}
