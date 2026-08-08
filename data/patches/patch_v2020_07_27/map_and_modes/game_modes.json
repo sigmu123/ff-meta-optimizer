@@ -1,0 +1,22 @@
+{
+  "game_modes_rework": [
+    {
+      "mode_names": ["TDM", "Kill Secured", "Rampage"],
+      "preset_system": "Preset menu removed; replaced with credit-based armory store selection upon revival"
+    },
+    {
+      "mode_name": "Big Head Mode",
+      "adjustments": [
+        "Added option to give up and redeploy immediately when downed",
+        "Lowered parachuting altitude for faster combat re-entry"
+      ]
+    },
+    {
+      "mode_name": "Gun King",
+      "adjustments": [
+        "Added 4v4 squad match support",
+        "Added 'Skip' weapon option after 4 consecutive losses or significant progress lag"
+      ]
+    }
+  ]
+}
