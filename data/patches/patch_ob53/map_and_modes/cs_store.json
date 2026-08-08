@@ -1,0 +1,27 @@
+{
+  "cs_cash_adjustments": {
+    "famas": {
+      "old_price": 1800,
+      "new_price": 1600
+    }
+  },
+  "cyber_items_pool": {
+    "m1014_III": {
+      "price": 1900
+    },
+    "winchester_III": {
+      "price": 1980
+    }
+  },
+  "cs_movement_speed_buff_nerfs": {
+    "team_booster": {
+      "old_speed_boost_pct": 20,
+      "new_speed_boost_pct": 12
+    },
+    "tactical_market_super_bonfire": {
+      "old_speed_boost_pct": 10,
+      "new_speed_boost_pct": 5,
+      "decay_speed": "Dissipates faster upon leaving bonfire area"
+    }
+  }
+}
