@@ -1,0 +1,37 @@
+{
+  "gaming_environment_improvements": {
+    "credit_system": {
+      "release_schedule": "2022-03-25T11:08:00+08:00",
+      "scoring_rules": {
+        "score_deduction_range": [1, 4],
+        "deduction_triggers": ["intentionally_throwing", "afk", "force_quit", "verbal_abuse"],
+        "frequent_abuser_penalty": "Extra score deduction",
+        "score_recovery": "1-2 credit points per game for good behavior"
+      },
+      "thresholds": {
+        "perfect_score": "Unlocks valuable prizes",
+        "score_below_98": "Banned from CS-Ranked",
+        "score_below_88": "Banned from BR-Ranked"
+      }
+    },
+    "report_system_improvements": {
+      "new_reporting_locations": [
+        "Match history page",
+        "CS mode scoreboards"
+      ],
+      "features": [
+        "Added new reasons for reporting",
+        "In-game mail report response tracking"
+      ]
+    },
+    "in_game_voice_chat_reporting": {
+      "release_schedule": "2022-03-25T11:08:00+08:00",
+      "privacy_policy": "Detection takes place only after a report is sent",
+      "mechanics": "Mute button now includes option to report selected player(s)",
+      "penalties": [
+        "Voice chat mute punishment",
+        "Credit score reduction"
+      ]
+    }
+  }
+}
