@@ -1,0 +1,21 @@
+{
+  "gameplay_and_system_updates": [
+    {
+      "feature": "Grenade Slot HUD Option",
+      "details": "Added 'Two Grenade Slots' option in settings menu for fast utility swapping"
+    },
+    {
+      "feature": "In-Game Voice Commands",
+      "details": "Integrated voice-over audio for Quick Message communication"
+    }
+  ],
+  "optimizations_and_bug_fixes": [
+    "Character Page background UI optimized",
+    "Character Awakening no longer requires level conditions",
+    "Battle Royale and Clash Squad Rank interface stats display adjusted",
+    "In-game HUD buttons layout optimized",
+    "Minimap toggle added for Vending Machine and Revival Point icons",
+    "Rank Interface updated to allow custom choice of displayed rank",
+    "Fixed Clash Squad Rank Shield bug exceeding 100 points"
+  ]
+}
