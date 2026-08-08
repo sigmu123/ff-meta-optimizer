@@ -1,0 +1,37 @@
+{
+  "camera_system_optimizations": {
+    "portrait_mode": "In-match portrait mode video/photo recording with templates",
+    "out_match_camera_options": {
+      "visibility_toggles": ["Hide Backpack", "Hide Weapons", "Hide Pets"],
+      "emote_playback": "Enabled emote preview/playback in camera mode"
+    }
+  },
+  "tournament_system": {
+    "access_path": "Esports Tab > Tournament Button",
+    "features": [
+      "BR tournament recruitment via team codes, social media, and friend invites",
+      "Schedule conflict prevention (cannot register for overlapping tournaments)",
+      "Automated reward distribution via in-game mail 24 hours post-official review"
+    ]
+  },
+  "hud_and_presets": {
+    "custom_hud_slots": "Added extra customizable HUD preset slot",
+    "v_badge_preset_recommendation": "Community & Pro-player HUD preset sharing page with mode, role, and search filters"
+  },
+  "social_island_custom_rooms": {
+    "max_players": 48,
+    "entry_mode": "Solo participants only",
+    "spectator_restriction": "Friends cannot spectate inside Social Island custom rooms",
+    "mid_match_restrictions": "Disables friend invites and chat channels once match begins",
+    "recruitment": "Host-only channel recruitment button"
+  },
+  "fairgame_and_security": {
+    "interface_consolidation": "Honor Score and Report Feedback consolidated under Fairgame dashboard button"
+  },
+  "graphics_and_engine": {
+    "max_graphics": "Added support for Max Graphics quality and HD material settings",
+    "matchmaking_qol": "Players can request to join teams or accept invites during active matchmaking queue",
+    "prone_animation": "Reduced stand-up animation transition delay from prone state",
+    "backpack_3d_model": "Refreshed default Lv. 3 Backpack 3D asset model"
+  }
+}
