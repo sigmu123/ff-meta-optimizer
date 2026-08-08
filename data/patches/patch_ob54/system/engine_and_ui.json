@@ -1,0 +1,74 @@
+{
+  "battle_royale_mechanic_changes": {
+    "revival_card_purchase_window_seconds": {
+      "old_value": 420,
+      "new_value": 355
+    },
+    "revival_card_spectator_discount": "Disabled while spectating after elimination",
+    "gloo_wall_makers": "Capacity increases by 1 per Gloo Maker level; Gloo Walls from eliminations and loot boxes unified to 1",
+    "weapon_racks": "Now contain ammo",
+    "coin_machines_and_loot": {
+      "med_kits": "Removed from Coin Machines; increased ground drops",
+      "wealth_mushrooms": "Removed from ground loot",
+      "active_skill_cards": "Removed from ground loot"
+    },
+    "vending_machine_interaction": "Optimized to prevent damage interrupts from cancelling interactions easily"
+  },
+  "combat_and_physics_engine": {
+    "global_movement_speed_cap": {
+      "enabled": true,
+      "description": "Hard cap applied on maximum movement speed from skills, items, and buffs, displaying special visual effect when hit"
+    },
+    "aim_assist_priority": "Prioritizes standing enemies over downed enemies when overlapping",
+    "wall_penetration_indicators": {
+      "weapons": ["M82B", "SVD-Y"],
+      "effects": "Leaves penetration marks on Gloo Walls; crosshair dynamically changes when aiming through Gloo Walls"
+    },
+    "damage_ui": "Scaling damage numbers introduced (higher damage numbers appear larger)",
+    "self_revive_assist": "Teammates can interact with self-reviving players to speed up revival time",
+    "debuff_indicators": "Visual indicators added for Slow, Healing Reduction, and Vest/Helmet break states"
+  },
+  "ui_controls_and_hud": {
+    "movement_wheel_setting": "Added 'Fixed' option so wheel stays stationary and doesn't follow left hand",
+    "looting_and_inventory": {
+      "auto_swap_logic": "Automatically equips enhanced versions of ground weapons over currently held weapons",
+      "auto_pickup_ammo": "Automatically collects ammo stacks up to configured cap"
+    },
+    "area_capture_indicators": "Enhanced capture alerts for Revival Points, Defense Airdrops, Ultra Airdrops, and Cyber Airdrops when enemies enter zone",
+    "br_area_loot_tier_display": {
+      "parachute_phase_display": true,
+      "colors": ["Red", "Gold", "Purple"]
+    },
+    "weapon_attribute_display": "Added visual stat breakdowns in Backpack, Training Grounds, and CS Store UI"
+  },
+  "audio_fixes": {
+    "reload_sound_mismatches_fixed": [
+      "AK47",
+      "Desert Eagle",
+      "Kar98k",
+      "M1873",
+      "Bizon",
+      "XM8"
+    ]
+  },
+  "match_review_system": {
+    "br_match_review": {
+      "available_modes": ["BR-Ranked", "Custom Matches"],
+      "features": [
+        "Full-match movement routes",
+        "Key events timeline (Fights, Revivals, Arsenal Captures)",
+        "Nearby enemy activity tracking",
+        "Full-match enemy heatmap",
+        "External video sharing"
+      ]
+    }
+  },
+  "spectator_and_room_system": {
+    "room_spectating_improvements": {
+      "free_view_spectate": true,
+      "nearby_info_panel": "Shows team count in range; tapping switches perspective directly",
+      "map_icon_switching": "Tap team icons on map to switch spectating target",
+      "inventory_visibility": "Spectators can view spectated player's healing items"
+    }
+  }
+}
