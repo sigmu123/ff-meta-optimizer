@@ -1,0 +1,52 @@
+{
+  "controls_and_physics": {
+    "parachuting": {
+      "default_speed": "Increased for all players (equivalent to former Falco speed)",
+      "ui_changes": "Removed Accelerate and Open buttons; acceleration is automatic",
+      "cabin_hud": "Jumpmaster displayed while in cabin"
+    },
+    "vehicle_physics": {
+      "downhill_control": "Greatly improved vehicle control when going downhill"
+    }
+  },
+  "audio_and_voice": {
+    "social_island": {
+      "multiplayer_voice_channel": true,
+      "distance_based_attenuation": true
+    },
+    "customized_voice_packs": {
+      "revamped_quick_messages_page": true,
+      "free_funny_voice_packs": true
+    }
+  },
+  "hud_and_ui": {
+    "lobby_network_indicator": {
+      "good": "White",
+      "unstable_or_poor": "Yellow or Red"
+    },
+    "ping_color_logic": "Optimized color display accuracy for low and high ping",
+    "display_settings": "Added 'Enhanced' option under frame rate settings",
+    "auto_pickup_priority": "Added Med Kits, Super Meds, and Inhalers to Priority tab",
+    "gloo_wall_decay_prompt": "Added special visual effect prompt before Gloo Walls disappear over time",
+    "backpack_ui": "Items stacked by default",
+    "cs_match_score_details": "Can check Score Details immediately upon achieving Booyah",
+    "profile_reporting": "Added reporting channel for avatars on profile pages and windows",
+    "grandmaster_icon": "Displays specific numerical ranking on icon"
+  },
+  "system_features": {
+    "ff_intellimate": "Lobby pet provides post-match behavior-based tips and new patch info",
+    "rank_breakthrough_rewards": "First-time rank reach rewards from Bronze II to Diamond IV",
+    "bonfire_marking": "Bonfire marking icon canceled",
+    "guild_system_2_0": {
+      "dynamic_activity_level": "Settlement every Monday 4:00 AM based on Activity Points",
+      "guild_wars": {
+        "mode": "Battle Royale (Full Guild Squad)",
+        "matchmaking": "Guild-strength based",
+        "scoring": "Best 5 match scores per weekly round count toward total score",
+        "rewards": "Weekly Guild Glory Titles and regional leaderboard prizes"
+      },
+      "guild_store": "Unlocked via guild level, uses Guild Tokens",
+      "guild_news": "Highlights star members, win streaks, and rank achievements"
+    }
+  }
+}
