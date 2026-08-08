@@ -1,0 +1,22 @@
+{
+  "cheat_victim_protection_system": {
+    "br_ranked": {
+      "negative_score_protection": true,
+      "rule": "If match score is negative due to elimination by an identified cheater, zero points are deducted. Excludes the 20 extra daily mission points.",
+      "positive_score": "Calculated normally"
+    },
+    "cs_ranked": {
+      "loss_protection": true,
+      "rule": "If defeated by an identified cheater, zero rank stars and zero protection points are deducted.",
+      "win_score": "Calculated normally"
+    }
+  },
+  "honor_system_and_penalties": {
+    "supported_modes": [
+      "Bomb Squad Ranked",
+      "Lone Wolf Ranked"
+    ],
+    "rank_based_deduction": true,
+    "teammate_force_quit_compensation": "Grants extra CS-Ranked protection points if a teammate force quits"
+  }
+}
