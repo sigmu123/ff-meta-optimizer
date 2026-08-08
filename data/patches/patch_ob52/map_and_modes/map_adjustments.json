@@ -1,22 +1,12 @@
 {
-  "new_location": {
-    "name": "Neon City",
-    "mode_availability": "Battle Royale",
-    "mechanics": {
-      "portals": "4 Rift Portals spawn on every map leading to Neon City; inner portals fast-travel players to various map locations",
-      "combat_rule": "Combat disabled inside Neon City",
-      "max_stay_duration_seconds": 30,
-      "overtime_penalty": "Returned to original portal position on map"
-    }
-  },
   "map_fixes_and_tweaks": {
     "kalahari": [
-      "Adjusted specific windows for smoother vaulting/jumping",
-      "Fixed hit registration bug in specific locations"
+      "Adjusted specific windows for smoother vaulting and jumping",
+      "Fixed hit registration bug where damage would not register in certain locations"
     ],
     "solara": [
-      "Improved slide enter/exit interactions",
-      "Slightly increased slide speed in the Hub area"
+      "Improved slide enter and exit interactions",
+      "Slightly increased slide movement speed in the Hub area"
     ]
   }
 }
