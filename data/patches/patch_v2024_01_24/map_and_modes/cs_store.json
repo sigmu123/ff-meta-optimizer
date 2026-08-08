@@ -1,0 +1,24 @@
+{
+  "purchase_withdrawal_system": {
+    "status": "Active (Starts Feb 1)",
+    "mechanism": "Undo purchase button reverts purchases in reverse chronological order",
+    "restrictions": "Cannot withdraw dropped items, mushrooms, Secret Bazaar buffs, or Pocket Market items"
+  },
+  "price_adjustments": [
+    {"item_name": "M1873", "status": "Newly Added", "price": 400},
+    {"item_name": "Bizon", "price_previous": 1300, "price_current": 1500},
+    {"item_name": "Thompson", "price_previous": 1400, "price_current": 1300},
+    {"item_name": "PARAFAL", "price_previous": 1500, "price_current": 1400},
+    {"item_name": "Vector", "price_previous": 2400, "price_current": 2200}
+  ],
+  "in_match_quests": {
+    "activation_date": "April 1",
+    "quests": [
+      "Eliminate target amount of players from long distance",
+      "Team-wide collective item usage quota",
+      "All players equipped with SMG/Shotgun at round start",
+      "Team-wide headshot threshold",
+      "Reach specific match round target"
+    ]
+  }
+}
