@@ -1,0 +1,62 @@
+{
+  "character_buffs": [
+    {
+      "name": "Ryden",
+      "skill_name": "Spider Trap",
+      "duration_seconds": { "old": 30, "new": 60 },
+      "cooldown_seconds": { "old": 75, "new": 60 },
+      "bleed_duration_seconds": { "old": 3, "new": 5 },
+      "speed_reduction": "80%",
+      "bleed_damage_per_sec": 18,
+      "detection_radius": "5m",
+      "stop_trigger_window": "10s"
+    },
+    {
+      "name": "Santino",
+      "skill_name": "Shape Splitter",
+      "mannequin_duration_seconds": { "old": 12, "new": 25 },
+      "cooldown_seconds": { "old": 75, "new": 60 },
+      "mannequin_hp": 200,
+      "teleport_range_max": "60m",
+      "teleport_cooldown": "3s internal cooldown between swaps (max 2 swaps)",
+      "destroyer_mark_duration": "5s"
+    },
+    {
+      "name": "Joseph",
+      "skill_name": "Silver Spoon",
+      "cooldown_seconds": { "old": 60, "new": 45 },
+      "effects": "Immunity to disruptive effects (slowdown, marking, skill-silencing) and +10% movement speed for 5s"
+    },
+    {
+      "name": "Nikita",
+      "skill_name": "Firearms Expert",
+      "reload_speed_increase": "20% - 30%",
+      "healing_deduction_on_hit": "30%",
+      "healing_deduction_duration_seconds": 18,
+      "max_healing_deduction": "30%"
+    },
+    {
+      "name": "Caroline",
+      "skill_name": "Agility",
+      "shotgun_movement_speed": { "old": "13%", "new": "16%" }
+    },
+    {
+      "name": "Kapella",
+      "skill_name": "Healing Song",
+      "revive_speed_boost": { "old": "10%", "new": "80%" },
+      "revive_shield_hp": 80,
+      "shield_decay_window": "Boost effects decay over 4s post-revive",
+      "knocked_bleed_reduction": "35%"
+    }
+  ],
+  "character_nerfs": [
+    {
+      "name": "Tatsuya",
+      "skill_name": "Rebel Rush",
+      "dash_replenish_time_seconds": { "old": 60, "new": 45 },
+      "max_charges": 2,
+      "internal_cooldown_between_uses": "1s",
+      "dash_duration": "0.3s"
+    }
+  ]
+}
