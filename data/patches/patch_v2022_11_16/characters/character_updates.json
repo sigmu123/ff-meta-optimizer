@@ -1,0 +1,90 @@
+{
+  "new_pets": [
+    {
+      "pet_name": "Arvon",
+      "skill_name": "Dinoculars",
+      "description": "Detect the number of enemies in an area of 50m radius, no matter what position they are in.",
+      "stats": {
+        "detection_radius_meters": 50,
+        "duration_seconds_by_level": [3, 4, 6],
+        "max_usages_per_match_by_level": [1, 2, 3],
+        "shared_with_teammates": true
+      }
+    }
+  ],
+  "character_reworks": [],
+  "character_balancing": [
+    {
+      "character_name": "K",
+      "skill_name": "Master of All",
+      "skill_type": "Active",
+      "adjustments": {
+        "max_ep_increase": {
+          "previous": 50,
+          "new": 20
+        },
+        "jiujitsu_mode_ep_conversion_rate_percentage_by_level": {
+          "previous": [500, 500, 500, 500, 500, 500],
+          "new": [300, 350, 400, 450, 500, 600]
+        },
+        "psychology_mode_ep_recovery_interval_seconds_by_level": {
+          "previous": [2.2, 2.0, 1.8, 1.6, 1.4, 1.0],
+          "new": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0]
+        },
+        "psychology_mode_ep_recovery_amount": 3,
+        "psychology_mode_max_ep_cap_by_level": {
+          "previous": [100, 110, 120, 130, 140, 150],
+          "new": [120, 140, 160, 180, 200, 220]
+        },
+        "mode_switch_cooldown_seconds": 3
+      }
+    },
+    {
+      "character_name": "Clu",
+      "skill_name": "Tracing Steps",
+      "skill_type": "Active",
+      "adjustments": {
+        "scan_range_meters_by_level": {
+          "previous": [50, 55, 60, 65, 70, 75],
+          "new": [65, 65, 65, 65, 65, 65]
+        },
+        "duration_seconds_by_level": [5, 6, 7, 8, 9, 10],
+        "cooldown_seconds_by_level": [75, 70, 65, 60, 55, 50],
+        "target_condition": "Not in prone or squat position",
+        "shared_with_teammates": true
+      }
+    },
+    {
+      "character_name": "Nikita",
+      "skill_name": "Firearms Expert",
+      "skill_type": "Passive",
+      "adjustments": {
+        "reload_speed_increase_percentage_by_level": {
+          "previous": [14, 16, 18, 20, 22, 24],
+          "new": [20, 20, 20, 20, 20, 20]
+        },
+        "smg_damage_boost_bullet_count_by_level": {
+          "previous": [10, 10, 10, 10, 10, 10],
+          "new": [10, 11, 12, 13, 14, 15]
+        },
+        "smg_damage_boost_percentage_by_level": [15, 18, 21, 24, 27, 30]
+      }
+    }
+  ],
+  "character_system_economy": {
+    "character_level_up_costs": {
+      "level_1_to_2": { "fragments": 100, "gold": 1000 },
+      "level_2_to_3": { "fragments": 300, "gold": 3000 },
+      "level_3_to_4": { "fragments": 600, "gold": 6000 },
+      "level_4_to_5": { "fragments": 1000, "gold": 10000 },
+      "level_5_to_6": { "fragments": 1800, "gold": 18000 },
+      "total_upgrade_cost": { "fragments": 3800, "gold": 38000 }
+    },
+    "skill_slot_costs": {
+      "slot_1": { "diamonds": 5, "gold": 250 },
+      "slot_2": { "diamonds": 10, "gold": 500 },
+      "slot_3": { "diamonds": 20, "gold": 1000 },
+      "total_slot_cost": { "diamonds": 35, "gold": 1750 }
+    }
+  }
+}
