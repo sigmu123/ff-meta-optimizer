@@ -1,0 +1,39 @@
+{
+  "ping_compensation_system": {
+    "gloo_wall_fix": "Damage dealt by ammo fired before a Gloo Wall placement command is registered will now take effect.",
+    "movement_smoothing": "Reduced abnormal teleportation/clipping seen by opponents during high lag spikes."
+  },
+  "quick_chat_tool_revamp": {
+    "drag_and_drop_pin_system": true,
+    "contextual_hud_pins": {
+      "active_skill": "Displays Ready or On Cooldown",
+      "med_kit": "Requests healing items",
+      "hp_bar": "Reports full or non-full health",
+      "ff_coins": "Requests FF Coins",
+      "gloo_wall": "Requests or reports Gloo Wall count",
+      "weapon_bar": "Requests ammo for equipped gun or requests a gun if unarmed"
+    },
+    "alert_mode": "Auto-switches to Alert status when player takes damage.",
+    "combat_auto_disable": "Non-essential tactical chat popups auto-disable during combat."
+  },
+  "teammate_recognition": {
+    "overhead_markers": "Displays colored numbers above teammates' characters.",
+    "offscreen_indicators": "Edge-of-screen color-coded indicators for out-of-sight teammates."
+  },
+  "movement_animation": {
+    "multi_directional_jumps": "Players can turn jump direction while camera position remains locked."
+  },
+  "battle_prep_system": {
+    "unified_strategy_page": "Combines character skills, pet skills, and loadouts into 2 toggleable preset pages."
+  },
+  "regional_weapon_glory_leaderboard": {
+    "modes": ["BR Ranked", "CS Ranked"],
+    "rankings_limit": "Top 100 receive displayable titles",
+    "score_model": "Base Score + Ranked Performance Points * Coefficient (decay applies if weapon unused)",
+    "location_change_limit": "Once per week"
+  },
+  "social_and_duo": {
+    "dynamic_duo_max_level": 6,
+    "character_skill_share": "Dynamic Duo partners share access to all owned character skills."
+  }
+}
