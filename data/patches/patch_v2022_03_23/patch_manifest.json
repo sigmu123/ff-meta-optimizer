@@ -1,0 +1,13 @@
+{
+  "version": "v2022_03_23",
+  "patch_name": "HEROES ARISE",
+  "publish_date": "2022-03-23",
+  "active_submodules": [
+    "system/gaming_environment.json",
+    "characters/link_system.json",
+    "characters/character_updates.json",
+    "map_and_modes/gameplay_and_modes.json",
+    "weapons/weapons_and_balance.json",
+    "system/engine_and_ui.json"
+  ]
+}
