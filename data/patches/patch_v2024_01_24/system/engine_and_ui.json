@@ -1,0 +1,38 @@
+{
+  "hud_and_controls": {
+    "custom_hud": {
+      "collapsible_control_panel": true,
+      "fine_tuning_controller": true
+    },
+    "sprint_and_jump": {
+      "drag_to_sprint": "Shorter drag threshold with wider trigger region on virtual joystick",
+      "sprint_while_jumping": "Sprint queues during jump phase and triggers instantly upon ground impact"
+    },
+    "combat_ui": {
+      "landmine_indicators": {
+        "teammate_landmine": "Blue visual marker",
+        "enemy_or_self_landmine": "Green visual marker"
+      },
+      "downed_state": {
+        "death_countdown": "Displayed directly above knocked down allies",
+        "give_up_button": "Single-tap give up option replacing press-and-hold",
+        "ask_for_help_button": "Fire button converts to call-for-assistance during down state"
+      },
+      "auto_weapon_pickup": {
+        "cs_mode_usp": "Disabled automatic USP auto-pickup",
+        "out_of_combat_upgrade": "Auto-swaps low-level weapon with higher tier variant when non-combat"
+      }
+    }
+  },
+  "social_and_spectating": {
+    "friend_spectating_system": {
+      "minimum_level_requirement": 10,
+      "features": ["Book match", "Send likes/emojis", "Copy player HUD/preset"]
+    },
+    "offline_messaging": {
+      "private_message_cap": 100,
+      "guild_message_cap": 500,
+      "expiration_days": 7
+    }
+  }
+}
