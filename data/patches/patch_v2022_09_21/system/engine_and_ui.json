@@ -1,0 +1,40 @@
+{
+  "weapon_skin_lifetime_system": {
+    "mechanism": "Accumulate lifetime progress by collecting time-limited versions",
+    "permanent_unlock_threshold_percentage": 100
+  },
+  "rank_and_matchmaking_system": {
+    "rank_protection_cards": {
+      "type": "Time-limited and automatically used during ranked matches",
+      "restrictions": "Strict restrictions on rank, season, and availability",
+      "conversion": "Former rank protection cards converted to equal amounts of new cards"
+    },
+    "team_rank_restrictions": {
+      "rule": "Rank gap restrictions applied to incomplete teams to prevent excessive tier disparity in matchmaking",
+      "exemption": "Full squad teams exempt from rank restrictions"
+    },
+    "teamwork_appreciation": {
+      "tracked_actions": ["Helping up", "Healing teammates", "Reviving"],
+      "impact": "Contributes to final score and displayed on match results page"
+    }
+  },
+  "ui_and_hud_enhancements": {
+    "default_hud_layout": {
+      "right_side_buttons": ["Throwables", "Gloo Walls", "Quick messages", "Pins"],
+      "button_size": "Increased for primary combat actions"
+    },
+    "training_grounds": {
+      "social_zone": "Separated into an independent Social Island accessible from bottom of mode selection page"
+    }
+  },
+  "qol_and_system_optimizations": {
+    "armor_attachments": "Automatically substituted with higher-tier versions upon pickup",
+    "knockdown_post_revive": "Player can choose to stand or crouch immediately after being helped up",
+    "br_give_up_option": "Knocked down players can manually choose to give up their life",
+    "spectator_quick_messages": "Quick messages enabled while spectating",
+    "death_analysis": "Displays elimination reason and enemy damage breakdown upon knockdown",
+    "audio_balancing": "Added slider to adjust voice message vs sound effect ratio without affecting master volume",
+    "download_center": "Obsolete legacy assets excluded from auto-download pool",
+    "report_system": "Immediate feedback pop-up upon successful player report"
+  }
+}
