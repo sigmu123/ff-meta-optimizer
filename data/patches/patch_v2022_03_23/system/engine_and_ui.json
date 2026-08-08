@@ -1,0 +1,44 @@
+{
+  "gameplay_features": {
+    "in_game_vibration_feedback": "Toggleable and customizable vibration settings in Settings page"
+  },
+  "post_game_results_enhancements": {
+    "data_sheet_expansion": [
+      "Assists",
+      "Knockdowns",
+      "Heal",
+      "Revives/Rescues (multiplayer only, revives BR mode only)"
+    ],
+    "loot_and_progression_ui": [
+      "Memory Fragment progress display with one-click level-up support",
+      "LINK status progress display",
+      "Increased overall drop rates of Memory Fragments (higher drops on first few daily games)"
+    ]
+  },
+  "resource_download_center": {
+    "package_size_reduction": "Modularized assets to reduce base app size",
+    "moved_to_download_center": [
+      "Pets",
+      "Training Grounds",
+      "Lone Wolf",
+      "Craftland",
+      "Character assets"
+    ]
+  },
+  "other_adjustments_and_bug_fixes": [
+    "FF coins now displayed on BR mode HUD",
+    "Death location icon shown on BR map for fast loot retrieval after revival",
+    "Airdrop vending machine accessible from all 360-degree angles",
+    "Minimap prioritizes vending machine revival points over player icons",
+    "Healing Weapon UI: Low-health teammates blink red on team list",
+    "Healing Weapon effectiveness decays when exposed to play zone over extended time",
+    "Exact star count for Master rank shown on in-game scoreboards",
+    "Player info displays longer on CS loading screen + added new CS loading screen",
+    "Fixed bug where players revive with gloo walls automatically in Training Grounds",
+    "Invitation list now supports custom alias creation and editing",
+    "Optimized radar chart algorithm on personal info profile page",
+    "CS Cup invitations now display in lobby",
+    "Reduced pet level-up costs",
+    "Matchmaking optimization for shorter queue time"
+  ]
+}
