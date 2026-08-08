@@ -1,0 +1,31 @@
+{
+  "cs_store_price_adjustments": {
+    "M1873": {
+      "old_price_cs_cash": 488,
+      "new_price_cs_cash": 500
+    },
+    "AN94": {
+      "old_price_cs_cash": 1100,
+      "new_price_cs_cash": 1000
+    },
+    "G36": {
+      "old_price_cs_cash": 1100,
+      "new_price_cs_cash": 1000
+    },
+    "Kingfisher": {
+      "old_price_cs_cash": 1100,
+      "new_price_cs_cash": 1000
+    },
+    "VSS": {
+      "old_price_cs_cash": 1400,
+      "new_price_cs_cash": 1500
+    }
+  },
+  "cs_map_adjustments": {
+    "solara_cs": {
+      "added_features": [
+        "Supply Gadgets"
+      ]
+    }
+  }
+}
