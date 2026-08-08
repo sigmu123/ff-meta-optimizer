@@ -1,0 +1,16 @@
+{
+  "version": "v2020_07_27",
+  "patch_name": "3volution",
+  "publish_date": "2020-07-27",
+  "active_submodules": [
+    "characters/new_character.json",
+    "characters/pets.json",
+    "characters/awakened_character.json",
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/cs_store.json",
+    "map_and_modes/map_adjustments.json",
+    "map_and_modes/game_modes.json",
+    "system/engine_and_ui.json"
+  ]
+}
