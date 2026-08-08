@@ -1,0 +1,92 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "SCAR",
+      "category": "AR",
+      "adjustments": {
+        "recoil_percentage": -10
+      }
+    },
+    {
+      "weapon_name": "M60",
+      "category": "LMG",
+      "adjustments": {
+        "machine_gun_mode_recoil_percentage": -30
+      }
+    },
+    {
+      "weapon_name": "UMP",
+      "category": "SMG",
+      "adjustments": {
+        "effective_range_percentage": -5,
+        "reload_time_percentage": 5
+      }
+    },
+    {
+      "weapon_name": "XM8",
+      "category": "AR",
+      "adjustments": {
+        "reload_time_percentage": 5
+      }
+    },
+    {
+      "weapon_name": "MP5-X",
+      "category": "SMG",
+      "adjustments": {
+        "rate_of_fire_percentage": 5
+      }
+    },
+    {
+      "weapon_name": "MP5",
+      "category": "SMG",
+      "adjustments": {
+        "effective_range_percentage": -3
+      }
+    },
+    {
+      "weapon_name": "Thompson",
+      "category": "SMG",
+      "adjustments": {
+        "effective_range_percentage": -3
+      }
+    },
+    {
+      "weapon_name": "UZI",
+      "category": "Pistol / Secondary",
+      "adjustments": {
+        "effective_range_percentage": -5
+      }
+    },
+    {
+      "weapon_name": "MAG-7",
+      "category": "Shotgun",
+      "adjustments": {
+        "effective_range_percentage": -3
+      }
+    },
+    {
+      "weapon_name": "Kar98k",
+      "category": "Sniper Rifle",
+      "adjustments": {
+        "rate_of_fire_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "Groza",
+      "category": "AR",
+      "adjustments": {
+        "armor_penetration_percentage": 20
+      }
+    }
+  ],
+  "mechanic_changes": [
+    {
+      "feature": "Weapon Swap Time",
+      "details": "Added variable swap times based on weapon category (Pistols remain fastest)"
+    },
+    {
+      "feature": "Flashbang Indicator",
+      "details": "Optimized visual display and indicators on flashed targets for team visibility"
+    }
+  ]
+}
