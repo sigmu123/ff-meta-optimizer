@@ -1,0 +1,82 @@
+{
+  "machine_guns": [
+    {
+      "weapon_name": "M60",
+      "attachment_slots_added": [
+        "Muzzle",
+        "Stock"
+      ]
+    },
+    {
+      "weapon_name": "M249",
+      "attachment_slots_added": [
+        "Muzzle",
+        "Stock"
+      ]
+    }
+  ],
+  "marksman_rifles": [
+    {
+      "weapon_name": "AC80",
+      "stat_changes": {
+        "rate_of_fire_percent": "+5%",
+        "base_damage_percent": "+20%",
+        "consecutive_hit_damage_bonus_percent": "-28%"
+      }
+    }
+  ],
+  "assault_rifles": [
+    {
+      "weapon_name": "AN94",
+      "stat_changes": {
+        "accuracy_percent": "+18%"
+      }
+    }
+  ],
+  "pistols": [
+    {
+      "weapon_name": "M1917",
+      "stat_changes": {
+        "damage_percent": "-10%"
+      }
+    },
+    {
+      "weapon_name": "FGL-24",
+      "stat_changes": {
+        "armor_penetration": "Reduced damage and armor destruction capabilities against enemies behind Gloo Walls"
+      }
+    }
+  ],
+  "shotguns": [
+    {
+      "weapon_name": "M590",
+      "stat_changes": {
+        "minimum_damage_percent": "+15%",
+        "reload_speed_percent": "-20%"
+      }
+    }
+  ],
+  "submachine_guns": [
+    {
+      "weapon_name": "Bizon",
+      "stat_changes": {
+        "accuracy_percent": "+10%"
+      }
+    }
+  ],
+  "snipers": [
+    {
+      "weapon_name": "VSK94",
+      "stat_changes": {
+        "aim_assist": "Completely Removed",
+        "effective_range_percent": "+10%"
+      }
+    },
+    {
+      "weapon_name": "M82B",
+      "stat_changes": {
+        "damage_through_gloo_wall_percent": "-15%"
+      }
+    }
+  ]
+}
