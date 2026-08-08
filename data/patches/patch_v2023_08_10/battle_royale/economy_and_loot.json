@@ -1,0 +1,68 @@
+{
+  "in_match_quests": {
+    "defense_arsenal": {
+      "activation_rules": "Arsenal keys removed from ground loot and vending machines. Unlocked by standing in capture range until 100%.",
+      "capture_speed": "Accelerated with multiple teammates in range. Contested state triggers when enemies enter range, pausing progress.",
+      "reward": "Unlocks arsenal and spawns a scanning UAV above it that reveals nearby enemies. UAV can be destroyed by enemies."
+    },
+    "solo_dare": {
+      "trigger_condition": "Available for free in Vending Machines (excluding Airdrop Vending Machines) when all teammates are eliminated in Duo/Squad mode.",
+      "duration_seconds": {
+        "duo": 90,
+        "squad": 100
+      },
+      "completion_reward": "400 FF Coins and Super Revival for all teammates.",
+      "visibility": "Player location visible to all enemies on mini-map.",
+      "eliminator_reward": "Mystery gift awarded for eliminating Solo Dare player.",
+      "max_purchases_per_match": 5
+    }
+  },
+  "airdrop_adjustments": {
+    "defense_airdrop": {
+      "drop_time_seconds": 80,
+      "total_drops_per_match": 4
+    },
+    "normal_airdrop": {
+      "drop_time_seconds": 400,
+      "total_drops_per_match": {
+        "solo": 2,
+        "duo_and_squad": 3
+      }
+    }
+  },
+  "map_loot_adjustments": {
+    "blue_zone": {
+      "hand_cannon_drop": false,
+      "40mmSR_drop": "Limited spawn",
+      "ff_coin_reduction_percentage": 15,
+      "guaranteed_weapons": "2x M60-1"
+    },
+    "global_map_loot": {
+      "40mmSR": "Small chance across whole map",
+      "helmet_thickener": "Small chance across whole map",
+      "lv1_war_chest": "Reduced high-level items drop rate, increased healing items drop rate"
+    },
+    "airship_system": {
+      "active": true,
+      "mechanics": "Patrols along fixed route. Accessible via ziplines.",
+      "timed_war_chest": "Produces new high-tier weapons/items every 120 seconds.",
+      "guaranteed_item_per_refresh": "Launch Pad"
+    }
+  },
+  "vending_machine_adjustments": {
+    "replacements": [
+      {"from": "MP40", "to": "AK47"},
+      {"from": "FAMAS-II", "to": "FAMAS-III"},
+      {"from": "Free Katana", "to": "Free Pan"},
+      {"from": "Free Foregrip Lv. 2", "to": "Free AR Magazine"},
+      {"from": "Free UZI", "to": "Free UAV-Lite", "limit_per_player": 1},
+      {"from": "AR Magazine", "to": "Silencer", "price_ff_coins": 300}
+    ],
+    "removed_items": [
+      "Helmet Thickener",
+      "UAV-Lite (as regular shop item)",
+      "Arsenal Keys (from Airdrop Vending Machines)"
+    ],
+    "revival_card_qol": "Auto-selects maximum revived teammates based on available FF Coins."
+  }
+}
