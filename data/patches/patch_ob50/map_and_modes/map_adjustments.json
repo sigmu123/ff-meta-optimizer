@@ -1,0 +1,14 @@
+{
+  "parachuting_mechanics": {
+    "diving_angle": "Steeper diving angle for precise vertical landing",
+    "camera_control": "Expanded free look camera angle control during parachuting phase"
+  },
+  "training_grounds_updates": {
+    "target_range_settings_panel": "Added options to directly adjust skill cooldowns and shooting sensitivity in real-time",
+    "combat_zone_gloo_wall_system": {
+      "starting_gloo_walls": 2,
+      "passive_generation": "1 Gloo Wall every 10 seconds",
+      "elimination_rewards": "No Gloo Walls granted upon consecutive eliminations"
+    }
+  }
+}
