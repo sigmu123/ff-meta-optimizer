@@ -1,0 +1,29 @@
+{
+  "controls_and_sensitivity": {
+    "sensitivity_cap": { "old": 100, "new": 200 },
+    "vehicle_hud": {
+      "free_look_vehicle": "Removed",
+      "custom_hud_vehicle": "Enabled"
+    }
+  },
+  "in_game_interactions": {
+    "vehicle_interactions": "Vehicles can now capture Arsenals, Airdrops, and Revival Points, as well as interact with Coin Machines",
+    "downed_player_hud": "Pin button automatically transforms into a direct red spot-marker when downed",
+    "downed_indicator": "Enhanced visual feedback for calling-for-help status above knocked teammates"
+  },
+  "communication_system": {
+    "quick_messages": [
+      "It's Booyah time! button at match start with team cheer animation",
+      "Enemy here! button auto-records exact location of damage dealt",
+      "Contextual quick message recommendations prioritized at the top of list (e.g., auto-suggesting 'I need Med Kit' when low HP without healing)"
+    ],
+    "auto_triggered_messages": "Auto-pings added for specific combat events and marked strategic objectives"
+  },
+  "graphics_and_performance": {
+    "graphics_recommendation": "Added recommended graphics quality settings based on device specs",
+    "high_fps_option": "Added enhanced 90-FPS setting option"
+  },
+  "combat_feedback": {
+    "instant_battle_notifications": 15
+  }
+}
