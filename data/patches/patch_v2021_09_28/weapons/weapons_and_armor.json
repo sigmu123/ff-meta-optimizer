@@ -1,0 +1,83 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Treatment Sniper",
+      "category": "Sniper Rifle / Support",
+      "availability": ["Battle Royale"],
+      "base_stats": {
+        "base_damage": 78,
+        "heal_strength": 50,
+        "rate_of_fire": 8.45
+      },
+      "mechanic": "Deals damage to enemies and heals teammates when fired at them"
+    }
+  ],
+  "armor_attachments": [
+    {
+      "item_name": "Vest Thickener",
+      "compatible_equipment": "Vest",
+      "effect": "Reduces damage taken from explosions"
+    },
+    {
+      "item_name": "Vest HP Booster",
+      "compatible_equipment": "Vest",
+      "effect": "Increases player HP"
+    }
+  ],
+  "weapon_balance": [
+    {
+      "weapon_name": "SPAS-12",
+      "category": "Shotgun",
+      "adjustments": {
+        "range_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "FF-Knife",
+      "category": "Melee / Throwable",
+      "adjustments": {
+        "base_damage_percentage": 50,
+        "rate_of_fire_percentage": 20
+      }
+    },
+    {
+      "weapon_name": "Grenade",
+      "category": "Throwable",
+      "adjustments": {
+        "maximum_damage_percentage": -25
+      }
+    },
+    {
+      "weapon_name": "P90",
+      "category": "SMG",
+      "adjustments": {
+        "range_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "AWM",
+      "category": "Sniper Rifle",
+      "adjustments": {
+        "armor_penetration_percentage": 8
+      }
+    },
+    {
+      "weapon_name": "SKS",
+      "category": "Marksman Rifle",
+      "adjustments": {
+        "minimum_scoped_in_damage_percentage": 25
+      }
+    },
+    {
+      "weapon_name": "Vector",
+      "category": "SMG",
+      "adjustments": {
+        "reload_time_percentage": -20,
+        "rate_of_fire_percentage": -5,
+        "magazine_capacity_flat": -5,
+        "akimbo_rate_of_fire_percentage": -20,
+        "akimbo_movement_speed_percentage": -4
+      }
+    }
+  ]
+}
