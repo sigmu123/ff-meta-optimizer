@@ -1,0 +1,39 @@
+{
+  "performance_and_graphics": {
+    "frame_rate_boost": "Experimental Frame Rate Boost option added inside High FPS Mode"
+  },
+  "hud_and_settings": {
+    "hud_recommendation_system": {
+      "location": "Settings > HUD",
+      "features": [
+        "Browse and apply Pro player HUD layouts",
+        "Share code tool located at bottom-left",
+        "Pro presets include linked sensitivity settings with sync options"
+      ]
+    },
+    "quick_loadout_access": "Dedicated button added next to bag button for quick loadout page access"
+  },
+  "customization_and_vault": {
+    "final_shots": "Decoupled from weapon types; triggers with any weapon, fists, or melee",
+    "finishing_moves": "Executes selected animation on any melee/fist kill regardless of held melee item",
+    "vault_ui": "New sub-tabs for Final Shots and Finishing Moves with locked icons and Random Equip option"
+  },
+  "social_and_matchmaking": {
+    "assemble_and_rematch": {
+      "min_players_required": 2,
+      "effect": "Re-queues random squad members together instantly upon agreement"
+    },
+    "teammate_knock_alerts": "Enhanced visual and audio alerts when teammate is downed/eliminated; team portraits gray out",
+    "jumpmaster_request": "Added request-to-be-jumpmaster feature and improved drop-point prompts"
+  },
+  "movement_and_audio_physics": {
+    "fall_damage_physics": "Falling from high places no longer interrupts sprint",
+    "voice_chat": "Added Push-To-Talk button for microphone",
+    "vehicle_physics": {
+      "speed_boost": "Added active vehicle speed boost burst",
+      "explosion": "Explodes instantly at 0 HP",
+      "burn_effect": "Reduced burn duration; post-explosion fire no longer damages players",
+      "jeep_wreckage": "Optimized Jeep wreckage model for improved cover physics"
+    }
+  }
+}
