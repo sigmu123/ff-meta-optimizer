@@ -1,0 +1,10 @@
+{
+  "anti_cheat_detection_system": {
+    "real_time_cheater_removal": true,
+    "cheater_removal_action": "Player automatically removed immediately upon cheat detection during a match",
+    "system_notification": "Remaining players in the match receive a system alert notification"
+  },
+  "honor_score_and_abandonment_protection": {
+    "team_force_quit_exemption": "If all teammates force quit leaving only one player, the last remaining player is exempt from Honor Score deduction upon quitting"
+  }
+}
