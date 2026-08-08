@@ -1,0 +1,26 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Nero",
+      "lore_title": "Dreamsmith",
+      "skill_name": "Cryo Mind",
+      "skill_type": "Active",
+      "mechanics": {
+        "plushie_hp": 150,
+        "plushie_duration_seconds": 12,
+        "max_fly_distance_meters": {
+          "clash_squad": 50,
+          "battle_royale": 100
+        },
+        "target_tracking_range_meters": 8,
+        "dreamy_space_radius_meters": 8,
+        "dreamy_space_effects": [
+          "Disables Gloo Wall placement for user and enemies inside space",
+          "Enemies inside space lose 16 HP per second"
+        ],
+        "plushie_destroyer_mark_duration_seconds": 5,
+        "cooldown_seconds": 45
+      }
+    }
+  ]
+}
