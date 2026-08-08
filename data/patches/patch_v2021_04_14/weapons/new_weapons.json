@@ -1,0 +1,16 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Kord",
+      "category": "LMG",
+      "availability": ["Battle Royale", "Clash Squad"],
+      "base_stats": {
+        "base_damage": 35,
+        "rate_of_fire": 0.21,
+        "magazine_capacity": 80
+      },
+      "compatible_attachments": ["Scope"],
+      "special_mechanics": "Machine Gun Mode - Crouching or proning triggers special stats (Rate of Fire +5%, fires 3 shots simultaneously)"
+    }
+  ]
+}
