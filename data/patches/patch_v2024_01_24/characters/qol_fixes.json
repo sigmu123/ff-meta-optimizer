@@ -1,0 +1,24 @@
+{
+  "skill_interaction_fixes": [
+    {
+      "character": "K",
+      "interaction": "Fixed bug where K's skill resets Ford's skill cooldown."
+    },
+    {
+      "character": "Alvaro",
+      "interaction": "Awakened split grenade trajectories optimized with thinner guidance lines."
+    },
+    {
+      "pet": "Arvon",
+      "interaction": "Skill operation simplified to trigger directly from the minimap without prior item pre-selection."
+    },
+    {
+      "character": "Homer",
+      "interaction": "Drone lock-on tracking updated to bypass terrain obstacles and hit targets reliably."
+    },
+    {
+      "character": "Iris",
+      "interaction": "Fixed damage calculation bug when firing through Gloo Walls."
+    }
+  ]
+}
