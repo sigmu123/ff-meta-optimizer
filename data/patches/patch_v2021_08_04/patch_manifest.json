@@ -1,0 +1,15 @@
+{
+  "version": "v2021_08_04",
+  "patch_name": "4NNIVERSARY",
+  "publish_date": "2021-08-04",
+  "active_submodules": [
+    "characters_and_pets/characters_and_pets.json",
+    "weapons/new_weapons_and_attachments.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/lone_wolf.json",
+    "map_and_modes/clash_squad_season8.json",
+    "map_and_modes/battle_royale_mechanics.json",
+    "map_and_modes/training_grounds.json",
+    "system/engine_and_ui.json"
+  ]
+}
