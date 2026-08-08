@@ -1,0 +1,96 @@
+{
+  "gloo_maker_system_overhaul": {
+    "level_1": {
+      "max_gloo_walls": 4,
+      "generation_time_seconds": {
+        "old": 188,
+        "new": 78
+      },
+      "exp_needed_to_level_up": 0,
+      "gloo_walls_on_start_or_revive": {
+        "old": 1,
+        "new": 2
+      },
+      "gloo_walls_per_elimination": {
+        "old": 1,
+        "new": 2
+      }
+    },
+    "level_2": {
+      "max_gloo_walls": 5,
+      "generation_time_seconds": {
+        "old": 90,
+        "new": 60
+      },
+      "exp_needed_to_level_up": {
+        "old": 300,
+        "new": 500
+      },
+      "gloo_walls_on_start_or_revive": {
+        "old": 1,
+        "new": 2
+      },
+      "gloo_walls_per_elimination": 2
+    },
+    "level_3": {
+      "max_gloo_walls": 6,
+      "generation_time_seconds": {
+        "old": 50,
+        "new": 80
+      },
+      "exp_needed_to_level_up": {
+        "old": 700,
+        "new": 1000
+      },
+      "gloo_walls_on_start_or_revive": {
+        "old": 1,
+        "new": 2
+      },
+      "gloo_walls_per_elimination": {
+        "old": 3,
+        "new": 2
+      }
+    },
+    "level_4": {
+      "max_gloo_walls": 7,
+      "generation_time_seconds": {
+        "old": 60,
+        "new": 40
+      },
+      "exp_needed_to_level_up": {
+        "old": 1100,
+        "new": 1500
+      },
+      "gloo_walls_on_start_or_revive": {
+        "old": 1,
+        "new": 3
+      },
+      "gloo_walls_per_elimination": {
+        "old": 4,
+        "new": 2
+      }
+    },
+    "level_5": {
+      "max_gloo_walls": {
+        "old": 10,
+        "new": 7
+      },
+      "generation_time_seconds": {
+        "old": 50,
+        "new": 30
+      },
+      "exp_needed_to_level_up": {
+        "old": 1500,
+        "new": 2500
+      },
+      "gloo_walls_on_start_or_revive": {
+        "old": 1,
+        "new": 3
+      },
+      "gloo_walls_per_elimination": {
+        "old": 4,
+        "new": 2
+      }
+    }
+  }
+}
