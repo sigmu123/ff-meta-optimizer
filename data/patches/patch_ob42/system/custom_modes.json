@@ -1,0 +1,13 @@
+{
+  "zombie_invasion_optimizations": {
+    "second_active_skill_slot": true,
+    "max_player_level_cap": 15,
+    "added_mechanics": ["Arsenals", "BR War Chests"],
+    "removed_mechanics": ["Airstrikes"],
+    "safe_zone_pace": "Adjusted shrink pace"
+  },
+  "triple_wolves_optimizations": {
+    "matchmaking_fairness": "Improved to match opponents of equal skill",
+    "default_team_size": "Duo"
+  }
+}
