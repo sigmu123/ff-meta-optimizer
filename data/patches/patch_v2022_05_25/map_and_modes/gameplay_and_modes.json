@@ -1,0 +1,48 @@
+{
+  "rank_system_overhaul": {
+    "br_ranked": {
+      "heroic_sub_tier_display": "1-5 Stars indicator",
+      "daily_challenges_count": 3
+    },
+    "rewards_structure": {
+      "epic_rarity_weapon_skins": "Platinum and Diamond ranks (Time-limited)",
+      "exclusive_emotes": "Heroic and Master ranks (BR & CS)",
+      "unified_progression": "Season and rank-up rewards merged based on total matches played"
+    }
+  },
+  "clash_squad_map_balancing": {
+    "bermuda": {
+      "nurek_dam": "Adjusted placement of container covers on one side"
+    },
+    "kalahari": {
+      "santa_catarina": "Moved one spawn point horizontally to equalize distance to ship",
+      "foundation": "Removed completely from map rotation"
+    },
+    "alpine": {
+      "fusion": "Adjusted both spawn points to equalize distance to elevated area"
+    }
+  },
+  "safe_zone_damage_scaling": {
+    "shrink_phase_1": {
+      "max_damage_per_tick": 3,
+      "time_threshold_seconds": 170
+    },
+    "shrink_phase_2": {
+      "max_damage_per_tick": 6,
+      "time_threshold_seconds": 278
+    },
+    "shrink_phase_3": {
+      "base_damage_per_tick": 4,
+      "max_damage_per_tick": 12,
+      "time_threshold_seconds": 360,
+      "damage_scaling_rate": "Reduced"
+    },
+    "shrink_phase_4": {
+      "base_damage_per_tick": 8,
+      "max_damage_per_tick": 24,
+      "time_threshold_seconds": 20,
+      "damage_scaling_rate": "Reduced"
+    },
+    "timer_rule": "Duration of taking damage outside Safe Zone does not reset when a new Safe Zone appears"
+  }
+}
