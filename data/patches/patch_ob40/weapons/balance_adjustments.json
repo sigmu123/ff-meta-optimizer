@@ -1,0 +1,68 @@
+{
+  "throwables_balance": {
+    "gloo_melter": {
+      "damage_per_second_vs_gloo_walls": {"old": 150, "new": 230},
+      "throwing_distance_boost": "+30%",
+      "damage_range_vs_players": {"old": "10-25", "new": 5},
+      "mechanic_change": "Gloo Walls inside range no longer take extra stacked damage when attacked."
+    }
+  },
+  "weapon_adjustments": {
+    "assault_rifles": {
+      "xm8": {
+        "accuracy": "+15%"
+      }
+    },
+    "smg": {
+      "thompson": {
+        "damage": "+4%"
+      },
+      "mp40": {
+        "damage": "+8%"
+      },
+      "bizon": {
+        "damage": "+10%",
+        "ease_of_use_optimization": true
+      }
+    },
+    "shotguns": {
+      "m1887": {
+        "range": "-15%",
+        "reload_speed": "+10%"
+      },
+      "m1014_tier_1": {
+        "range": "-12%",
+        "accuracy": "+20%"
+      },
+      "m1014_tier_2": {
+        "range": "-12%",
+        "accuracy": "+20%"
+      },
+      "m1014_tier_3": {
+        "range": "-12%",
+        "accuracy": "+20%"
+      },
+      "charge_buster": {
+        "range": "-20%",
+        "magazine_capacity": "+1"
+      },
+      "trogon": {
+        "ease_of_use_optimization": true
+      },
+      "mag_7": {
+        "ease_of_use_optimization": true
+      }
+    },
+    "pistols": {
+      "m1917": {
+        "damage": "-13%",
+        "rate_of_fire": "+6%"
+      }
+    },
+    "attachments": {
+      "marksman_grip": {
+        "rate_of_fire_adjustment": "-3%"
+      }
+    }
+  }
+}
