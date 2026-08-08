@@ -1,0 +1,61 @@
+{
+  "loadouts": [
+    {
+      "name": "Pocket Market",
+      "replaces": "Scan",
+      "starting_quantity": 2,
+      "type": "Portable Item / Market Interface",
+      "br_mode_details": {
+        "function": "Additional purchasing channel outside Vending Machines",
+        "inventory_additions": [
+          "Portal Go",
+          "Active Skill Cards"
+        ]
+      },
+      "cs_mode_details": {
+        "usable_phase": "After CS purchase phase",
+        "free_items": [
+          "Mushrooms",
+          "Super Meds"
+        ],
+        "discounted_items": [
+          "Gloo Walls",
+          "Armor Upgrade Crates"
+        ]
+      }
+    },
+    {
+      "name": "Bounty Token",
+      "br_changes": {
+        "elimination_weapon_reward_update": {
+          "previous": ["VSS-II", "M14-II"],
+          "new": ["M4A1-II", "MP5-II"]
+        }
+      },
+      "cs_changes": {
+        "cash_reward": 100,
+        "conditions": [
+          "Each enemy eliminated before round first Safe Zone finishes shrinking",
+          "Each enemy eliminated"
+        ]
+      }
+    },
+    {
+      "name": "Airdrop Aid",
+      "cs_changes": {
+        "cash_reward_on_loot": 300,
+        "team_wide_bonus": 300,
+        "stackable": false
+      }
+    },
+    {
+      "name": "Leg Pocket",
+      "br_changes": {
+        "starting_items": {
+          "gloo_maker_level": 2,
+          "additional_backpack_capacity": 300
+        }
+      }
+    }
+  ]
+}
