@@ -1,0 +1,33 @@
+{
+  "new_map_solara": {
+    "map_name": "Solara",
+    "theme": "Portside resort town, subtropical scenery, twin peaks, canyons, waterfalls, jacaranda trees",
+    "modes_available": [
+      "BR-Ranked",
+      "CS-Ranked"
+    ],
+    "key_locations": [
+      {
+        "location_name": "Studio",
+        "description": "Movie set-themed zone featuring two moving steam trains running toward each other in the center"
+      },
+      {
+        "location_name": "The Hub",
+        "description": "Symmetrical research facility with mirrored slides for high-speed rotational positioning"
+      },
+      {
+        "location_name": "Bloomtown",
+        "description": "Central S-shaped bend road lined with jacaranda trees"
+      },
+      {
+        "location_name": "Eco Drain",
+        "description": "Wastewater treatment facility covered in yellow pipes providing concealed tactical routes"
+      }
+    ],
+    "unique_map_mechanics": {
+      "slides_and_stations": "Enables rapid terrain traversal across the entire map",
+      "slide_gloo_wall_protection": "Players can deploy special surrounding Gloo Walls while riding slides",
+      "enemy_proximity_warning": "Slides flash red when hostile targets are nearby"
+    }
+  }
+}
