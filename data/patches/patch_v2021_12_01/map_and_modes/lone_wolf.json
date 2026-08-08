@@ -1,0 +1,15 @@
+{
+  "lone_wolf_updates": {
+    "weapon_selection": {
+      "mechanic": "Players take turns picking weapons for themselves and enemies every 2 rounds",
+      "cooldown": "Picked weapons enter cooldown before re-selection"
+    },
+    "map_adjustments": {
+      "map_name": "Iron Cage",
+      "adjustment": "Increased play area/cage size for 2v2 combat balance"
+    },
+    "custom_room": {
+      "supported": true
+    }
+  }
+}
