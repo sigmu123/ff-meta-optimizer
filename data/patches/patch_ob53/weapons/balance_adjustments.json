@@ -1,0 +1,82 @@
+{
+  "global_mechanic_changes": {
+    "limb_damage_multiplier": {
+      "status": "removed",
+      "rule": "Limb hits now deal equal damage to body shots"
+    },
+    "armor_coverage": {
+      "status": "updated",
+      "rule": "Armor now covers limbs by default"
+    }
+  },
+  "attachment_slot_expansions": {
+    "m590": ["Foregrip", "Stock"],
+    "plasma": ["Foregrip", "Stock"],
+    "kord": ["Foregrip", "Stock"]
+  },
+  "marksman_rifles": {
+    "ac80": {
+      "damage_nerf_pct": -6,
+      "old_extra_damage_to_shield_points_pct": 20,
+      "new_extra_damage_to_shield_points_pct": 8
+    },
+    "sks": {
+      "rate_of_fire_buff_pct": 6,
+      "range_buff_pct": 15,
+      "reload_speed_buff_pct": 10,
+      "old_magazine_capacity": 16,
+      "new_magazine_capacity": 18
+    }
+  },
+  "underused_weapons": {
+    "shield_gun": {
+      "rate_of_fire_buff_pct": 30,
+      "accuracy_nerf_pct": -18,
+      "movement_speed_nerf_pct": -8,
+      "reload_speed_nerf_pct": -40,
+      "old_magazine_capacity": 30,
+      "new_magazine_capacity": 25,
+      "map_availability": ["NeXTerra", "Solara"]
+    },
+    "charge_buster": {
+      "old_pellet_count": 8,
+      "new_pellet_count": 7,
+      "added_slots": ["Foregrip"],
+      "movement_speed_buff_pct": 6,
+      "limb_damage_buff_pct": 25
+    }
+  },
+  "sniper_rifles": {
+    "awm": {
+      "armor_penetration_buff_pct": 20,
+      "limb_damage_buff_pct": 50
+    },
+    "awm_y": {
+      "armor_penetration_buff_pct": 20,
+      "limb_damage_buff_pct": 50
+    },
+    "m82b": {
+      "armor_penetration_buff_pct": 20,
+      "limb_damage_buff_pct": 50
+    },
+    "vsk94": {
+      "armor_penetration_buff_pct": 20,
+      "limb_damage_buff_pct": 50
+    },
+    "kar98k": {
+      "armor_penetration_buff_pct": 20,
+      "limb_damage_buff_pct": 50
+    }
+  },
+  "close_range_weapons": {
+    "mag_7": {
+      "weapon_switch_speed_buff_pct": 15,
+      "rate_of_fire_buff_pct": 5,
+      "movement_speed_buff_pct": 5
+    },
+    "ump": {
+      "range_buff_pct": 5,
+      "added_slots": ["Muzzle"]
+    }
+  }
+}
