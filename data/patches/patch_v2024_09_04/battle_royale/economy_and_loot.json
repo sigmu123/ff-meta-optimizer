@@ -1,0 +1,78 @@
+{
+  "gloo_nova_br_mechanics": {
+    "gloo_arsenals": {
+      "key_requirement": false,
+      "unlock_mechanism": "Smash/Break the Gloo covering the arsenal door"
+    },
+    "gloo_airdrops": {
+      "unlock_mechanism": "Smash/Break the Gloo around the drop",
+      "extra_rewards": "FF Coins upon breaking Gloo"
+    },
+    "gloo_maker_special_events": {
+      "gloo_overload": {
+        "extra_gloo_wall_carrying_limit": 2,
+        "generation_speed_boost_percent": 30
+      },
+      "gloo_voyager": {
+        "extra_gloo_maker_exp_for_distance_traveled": true
+      }
+    }
+  },
+  "item_adjustments": {
+    "landmine": {
+      "max_damage": 168,
+      "min_damage": "Unchanged",
+      "placement_activation_delay_seconds": 5.0,
+      "self_damage_percent": 20
+    },
+    "portal_go": {
+      "teleportation_delay_seconds": 2.5,
+      "max_deployment_range_meters": 80
+    }
+  },
+  "ground_loot_and_map_economy": {
+    "overall_weapon_drop_rate": "Increased",
+    "active_skill_card_drop_rate": "Increased",
+    "airdrop_vending_machines": "Removed from matches",
+    "defense_arsenal_capture_unlock_timer_seconds": 320,
+    "guaranteed_arsenal_loot": {
+      "airdrop_weapons": 4,
+      "level_3_weapons": 2
+    }
+  },
+  "vending_machine_adjustments": {
+    "weapons": [
+      {
+        "name": "Groza",
+        "price_ff_coins": 400,
+        "purchase_limit_per_match": 5
+      },
+      {
+        "name": "Thompson",
+        "price_ff_coins": 100
+      },
+      {
+        "name": "AC80",
+        "price_ff_coins": 200,
+        "purchase_limit_per_match": 10
+      },
+      {
+        "name": "Scythe",
+        "price_ff_coins": 100
+      }
+    ]
+  },
+  "revival_points": {
+    "open_duration_seconds": 730,
+    "capturing_speed_increase_percent": 25,
+    "supported_maps": [
+      "Bermuda",
+      "Alpine",
+      "Kalahari",
+      "Purgatory"
+    ]
+  },
+  "airdrop_physics": {
+    "collision_effect": "Players hit by landing/rolling airdrops receive knockback and damage instead of instant elimination"
+  }
+}
