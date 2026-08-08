@@ -64,9 +64,13 @@ class AdvisorEngine:
             f.write(f"   • Status             : Verified by CSP & Evaluated via Custom Fitness Function\n")
             f.write("=" * 70 + "\n")
 
-        # Terminal par sirf success message show hoga
+        # Terminal par success message
         print(f"[+] Success! Optimal meta build generated.")
-        print(f"[+] Result has been saved to: {output_file_path}")
+        print(f"[+] Result has been saved to: {output_file_path}\n")
+
+        # File save karne ke baad terminal par bhi print karwane ke liye:
+        with open(output_file_path, "r", encoding="utf-8") as f:
+            print(f.read())
 
 if __name__ == "__main__":
     advisor = AdvisorEngine()
