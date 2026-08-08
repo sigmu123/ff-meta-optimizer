@@ -1,0 +1,20 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Luqueta",
+      "profession": "Soccer Player",
+      "skill_name": "Hat Trick",
+      "skill_type": "Passive",
+      "mechanics": "Every kill increases maximum HP, up to a maximum cap",
+      "hp_increase_per_kill": {
+        "level_1": 8,
+        "level_2": 10,
+        "level_3": 12,
+        "level_4": 14,
+        "level_5": 16,
+        "level_6": 18
+      },
+      "max_hp_cap": 35
+    }
+  ]
+}
