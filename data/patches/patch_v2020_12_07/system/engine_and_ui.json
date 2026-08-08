@@ -1,0 +1,39 @@
+{
+  "gameplay_mechanics": [
+    {
+      "feature": "Electric Surfboard Nerf",
+      "adjustments": {
+        "unequip_rule": "Automatically unequipped upon taking damage",
+        "cooldowns": "Added cooldown periods for surfboard activation and speed boosts"
+      }
+    }
+  ],
+  "system_and_ui_updates": [
+    {
+      "feature": "Dual HUD Configs",
+      "rule": "Players can now save and switch between 2 separate in-game HUD presets"
+    },
+    {
+      "feature": "Rotatable Utility Menu",
+      "rule": "Added HUD setting to freely rotate and re-position the utilities menu"
+    },
+    {
+      "feature": "Ranked Interface",
+      "rule": "Added dedicated Lobby Hub for BR and CS stats, seasonal rewards, and leaderboards"
+    },
+    {
+      "feature": "Fire Pass UI Rework",
+      "rule": "Replaced Veteran/Elite missions with Weekly missions and updated progress tracking UI"
+    },
+    {
+      "feature": "Partner Program Badge",
+      "rule": "Official Free Fire Partners display a special verified badge in-game"
+    }
+  ],
+  "bug_fixes_and_optimizations": [
+    "Optimized Battle Royale kill camera view",
+    "Optimized tire airborne physics for vehicle control",
+    "Added ability to re-follow the Jumpmaster during parachuting",
+    "Most secondary weapons now display visually on character 3D models"
+  ]
+}
