@@ -1,0 +1,19 @@
+{
+  "clash_squad_season_6": {
+    "start_date": "2021-04-15 17:00 SGT",
+    "season_reward": "The Golden M1014 (Gold III or above)",
+    "store_system": {
+      "type": "Dynamic Store Set System",
+      "variants": ["Store Alpha", "Store Beta", "Store Charlie", "Store Delta", "Store Mysterious (Casual Only)"],
+      "rule": "One store selected per match and applies to both teams for the entire match duration"
+    },
+    "map_additions": [
+      "Bermuda Remastered (Samurai Garden) available in CS Casual and Ranked"
+    ],
+    "gameplay_updates": [
+      "Weapons and attachments are permanently pre-attached upon purchase",
+      "Dynamic Playzone: Safe zone center varies per round to prevent passive gameplay",
+      "Post-match UI now displays MVP for both teams"
+    ]
+  }
+}
