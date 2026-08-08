@@ -1,0 +1,25 @@
+{
+  "editor_limits": {
+    "max_map_cost": {
+      "old": 4800,
+      "new": 10000
+    }
+  },
+  "new_interactable_objects": {
+    "grav_labs": {
+      "customizable_parameters": ["jump_height", "fall_damage"]
+    },
+    "oil_barrels": {
+      "customizable_parameters": ["hp", "explosion_range", "explosion_damage"]
+    },
+    "zombie_boss": "The Butcher",
+    "structural_objects": ["Iron Fence B", "Damaged truck"]
+  },
+  "skill_cooldown_override": {
+    "zero_cooldown_supported_characters": ["A124", "Homer", "Iris", "Tatsuya"]
+  },
+  "map_publishing": {
+    "custom_cover_photo_feature": true,
+    "loading_screen_info": ["Map Name", "Game Mode", "Map Cover", "Summary"]
+  }
+}
