@@ -1,0 +1,23 @@
+{
+  "character_name": "Ray",
+  "title": "The Watchman",
+  "role": "Rusher / Low-HP Finisher",
+  "skill_details": {
+    "skill_name": "Bond of Eclipse",
+    "skill_type": "Active",
+    "targeting_range_meters": 30,
+    "shape": "Fan-shaped",
+    "tag_duration_seconds": 10,
+    "link_visibility_range_meters": 40,
+    "link_visible_to": ["User", "Tagged Enemy"],
+    "execution_threshold_hp": 40,
+    "execution_effect": "Instant knockdown",
+    "on_knockdown_or_elimination_effect": {
+      "reset_cooldown": true,
+      "hp_recovery_per_second": 18,
+      "hp_recovery_duration_seconds": 3,
+      "total_hp_restored": 54
+    },
+    "cooldown_seconds": 45
+  }
+}
