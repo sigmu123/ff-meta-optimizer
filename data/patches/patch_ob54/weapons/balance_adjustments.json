@@ -1,0 +1,81 @@
+{
+  "weapon_adjustments": [
+    {
+      "weapon_name": "PARAFAL",
+      "adjustment_type": "Buff",
+      "armor_penetration_percentage_change": 5,
+      "rarity_tier": {
+        "old_tier": "Standard",
+        "new_tier": "Gold"
+      }
+    },
+    {
+      "weapon_name": "MP48",
+      "adjustment_type": "Buff",
+      "armor_penetration_percentage_change": 10,
+      "accuracy_percentage_change": 5,
+      "weapon_switch_speed_percentage_change": 25,
+      "rarity_tier": {
+        "old_tier": "Standard",
+        "new_tier": "Gold"
+      }
+    },
+    {
+      "weapon_name": "M590",
+      "adjustment_type": "Buff",
+      "headshot_falloff_range_percentage_change": 15,
+      "weapon_switch_speed_percentage_change": 20,
+      "rarity_tier": {
+        "old_tier": "Standard",
+        "new_tier": "Gold"
+      }
+    },
+    {
+      "weapon_name": "M82B",
+      "adjustment_type": "Buff",
+      "base_damage_percentage_change": 6,
+      "armor_penetration_percentage_change": 18,
+      "effective_range_percentage_change": 20,
+      "rarity_tier": {
+        "old_tier": "Standard",
+        "new_tier": "Gold"
+      }
+    },
+    {
+      "weapon_name": "Shield Gun",
+      "adjustment_type": "Rework",
+      "shield_damage_reduction_percentage": 5,
+      "shield_points": "Unlimited",
+      "legacy_mechanic": "Blocked 100% incoming damage with 120 Shield Points"
+    },
+    {
+      "weapon_name": "Parang",
+      "adjustment_type": "Buff / QoL",
+      "allow_attack_while_running": true
+    },
+    {
+      "weapon_name": "Kar98k",
+      "adjustment_type": "Tier Reclassification",
+      "rarity_tier": {
+        "old_tier": "Gold",
+        "new_tier": "White"
+      }
+    },
+    {
+      "weapon_name": "FAMAS",
+      "adjustment_type": "Tier Reclassification",
+      "rarity_tier": {
+        "old_tier": "Gold",
+        "new_tier": "White"
+      }
+    },
+    {
+      "weapon_name": "Charge Buster",
+      "adjustment_type": "Tier Reclassification",
+      "rarity_tier": {
+        "old_tier": "Gold",
+        "new_tier": "White"
+      }
+    }
+  ]
+}
