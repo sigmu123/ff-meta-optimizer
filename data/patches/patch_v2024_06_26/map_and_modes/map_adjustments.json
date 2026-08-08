@@ -1,0 +1,44 @@
+{
+  "clash_squad_maps": {
+    "rim_nam_village": {
+      "changes": [
+        "Narrowed Safe Zone",
+        "Modified structure and placement of left edge houses at both spawn points",
+        "Resized second-floor edge railings in the middle area"
+      ]
+    },
+    "nurek_dam": {
+      "changes": [
+        "Adjusted edge structures of long corridor rooftops to eliminate high-ground exploits"
+      ]
+    },
+    "sentosa": {
+      "changes": [
+        "Removed two wooden crates near the fence at one spawn point"
+      ]
+    },
+    "observatory": {
+      "changes": [
+        "Added railings to rooftop edges on one side of the building"
+      ]
+    },
+    "bermuda_general": {
+      "changes": [
+        "Replaced barbed wire texture for fences"
+      ]
+    }
+  },
+  "cs_mode_updates": {
+    "special_anniversary_mechanics": {
+      "mini_peak_teleportation": "Random teleport in 5th and/or 6th rounds",
+      "spawn_point_size": "Expanded",
+      "default_inventory": "All players start with Gloo Wall",
+      "supply_gadgets": "Provides classic high-power weapons on Mini Peak",
+      "gift_boxes": "Placed on other maps for random loot"
+    },
+    "trogon_cs_availability": {
+      "grenade_launcher_mode": "Removed",
+      "shotgun_mode": "Retained"
+    }
+  }
+}
