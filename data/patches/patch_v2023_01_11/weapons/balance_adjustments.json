@@ -1,0 +1,51 @@
+{
+  "rifles": {
+    "shield_gun": {
+      "damage": "+10%",
+      "shield_hp": "+6%",
+      "shield_recovery_speed": "+15%"
+    },
+    "g36_assault_mode": {
+      "effective_range": "+10%"
+    },
+    "parafal": {
+      "rate_of_fire": "+10%",
+      "accuracy": "+10%",
+      "magazine_capacity": {
+        "old": 30,
+        "new": 18
+      }
+    },
+    "aug": {
+      "rate_of_fire": "+10%",
+      "min_damage": "-10%",
+      "armor_penetration": "+10%"
+    }
+  },
+  "smgs": {
+    "mac10": {
+      "damage": "+5%",
+      "min_damage": "+10%",
+      "max_damage_distance": "+5%"
+    }
+  },
+  "shotguns": {
+    "trogon_shotgun_mode": {
+      "rate_of_fire": "+12%",
+      "accuracy": "+10%"
+    }
+  },
+  "machine_guns": {
+    "m60": {
+      "rate_of_fire": "+5%",
+      "accuracy": "+10%",
+      "crouching_rate_of_fire_bonus": "+15%"
+    }
+  },
+  "others": {
+    "m79": {
+      "reload_speed": "-15%",
+      "ammo_compatibility": "Only compatible with M79 ammo (no longer accepts generic grenade launcher ammo)"
+    }
+  }
+}
