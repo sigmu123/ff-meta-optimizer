@@ -1,0 +1,50 @@
+{
+  "character_adjustments": [
+    {
+      "character_name": "Chrono",
+      "skill_name": "Time Turner",
+      "skill_type": "Active",
+      "adjustments": {
+        "cooldown": "Increased cooldown time",
+        "shield_duration": "Reduced shield duration"
+      }
+    },
+    {
+      "character_name": "Wukong",
+      "skill_name": "Camouflage",
+      "skill_type": "Active",
+      "adjustments": {
+        "movement_speed_penalty_percentage": -20
+      }
+    },
+    {
+      "character_name": "Andrew 'The Fierce'",
+      "skill_name": "Wolfpack",
+      "skill_type": "Passive (Awakened)",
+      "adjustments": {
+        "damage_reduction_percentage_by_level": {
+          "previous": [8, 9, 10, 11, 12, 14],
+          "new": [5, 7, 8, 9, 10, 11]
+        }
+      }
+    },
+    {
+      "character_name": "Shirou",
+      "skill_name": "Damage Delivered",
+      "skill_type": "Passive",
+      "adjustments": {
+        "cooldown_seconds_by_level": {
+          "previous": [35, 34, 32, 29, 25, 20],
+          "new": [25, 24, 22, 19, 15, 10]
+        }
+      }
+    }
+  ],
+  "new_items": [
+    {
+      "item_name": "Jai's Microchip",
+      "availability": "Free Fire Store",
+      "effect": "Unlocks Jai's skill 'Raging Reload' for usage"
+    }
+  ]
+}
