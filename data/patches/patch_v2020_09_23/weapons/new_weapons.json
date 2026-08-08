@@ -1,0 +1,28 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "PARAFAL",
+      "category": "Assault Rifle (AR)",
+      "availability": ["Classic", "Clash Squad"],
+      "base_stats": {
+        "damage": 48,
+        "magazine_capacity": 30,
+        "rate_of_fire": 0.245
+      },
+      "compatible_attachments": ["Muzzle", "Stock", "Magazine", "Grip", "Scope"]
+    },
+    {
+      "weapon_name": "Flamethrower",
+      "category": "Secondary Weapon",
+      "availability": ["Training Grounds"],
+      "base_stats": {
+        "damage": 15,
+        "minimum_damage": 18,
+        "effective_range": 4,
+        "rate_of_fire": 0.06,
+        "reloadable": false
+      },
+      "special_mechanics": "Melts Gloo Walls faster than standard weapons"
+    }
+  ]
+}
