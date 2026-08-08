@@ -1,0 +1,77 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_names": [
+        "M1014",
+        "SPAS12",
+        "M1887",
+        "MAG-7",
+        "UMP",
+        "MP5",
+        "MP40",
+        "P90",
+        "Thompson",
+        "MAC10"
+      ],
+      "adjustments": {
+        "effective_range_percentage": -5,
+        "long_distance_headshot_damage_percentage": -20
+      }
+    },
+    {
+      "weapon_name": "Mini Uzi",
+      "adjustments": {
+        "effective_range_percentage": -5,
+        "long_distance_headshot_damage_percentage": -20,
+        "armor_penetration_percentage": -20
+      }
+    },
+    {
+      "weapon_name": "Vector",
+      "adjustments": {
+        "long_distance_headshot_damage_percentage": -20
+      }
+    },
+    {
+      "weapon_name": "M500",
+      "adjustments": {
+        "long_distance_headshot_damage_percentage": -20
+      }
+    },
+    {
+      "weapon_name": "SCAR",
+      "adjustments": {
+        "damage_percentage": 4,
+        "effective_range_percentage": 6
+      }
+    },
+    {
+      "weapon_name": "AUG",
+      "adjustments": {
+        "damage_percentage": 2,
+        "effective_range_percentage": 3
+      }
+    },
+    {
+      "weapon_name": "Kingfisher",
+      "adjustments": {
+        "magazine_capacity_flat": 2
+      }
+    },
+    {
+      "weapon_name": "Flashbang",
+      "adjustments": {
+        "base_damage": {
+          "previous": 1,
+          "new": 5
+        }
+      }
+    },
+    {
+      "attachment_name": "Helmet Thickener",
+      "adjustments": {
+        "headshot_reduction_percentage": -20
+      }
+    }
+  ]
+}
