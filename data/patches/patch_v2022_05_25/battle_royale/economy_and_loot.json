@@ -1,0 +1,62 @@
+{
+  "airdrop_enhancements": {
+    "light_beams": {
+      "looted_state": "Light beam disappears immediately even if partial items remain",
+      "rare_loot_indicator": "Brighter light beams for high-tier items",
+      "unlooted_state": "Pulsing light beams"
+    },
+    "pending_airdrop_signal": "On-ground visual signal displays landing spot for nearby players",
+    "minimap_icons": "Adjusted color indication for Airdrop Vending Machine icon",
+    "removed_visuals": "Deleted light beams for Monster Trucks"
+  },
+  "rare_loot_glow_system": {
+    "gold_glow": [
+      "Level 1 ultimate weapons"
+    ],
+    "gold_plus_glow": [
+      "Level 2 ultimate weapons",
+      "Regular Airdrop weapons",
+      "Upgrade Chips",
+      "Level 4 Vest",
+      "Level 4 Helmet",
+      "FF Coin stacks (>500)"
+    ],
+    "red_glow": [
+      "Level 3 ultimate weapons",
+      "Upgraded Airdrop weapons"
+    ]
+  },
+  "vending_machine_economy": {
+    "price_reductions": [
+      { "item": "Hit List Mission", "previous_cost": 600, "new_cost": 400 },
+      { "item": "UAV", "previous_cost": 600, "new_cost": 400 }
+    ],
+    "removed_items": [
+      "PLASMA",
+      "FAMAS",
+      "M24",
+      "UMP",
+      "M1014",
+      "Sniper Ammo (multi-stack)"
+    ],
+    "airdrop_vending_machine_free_weapons": [
+      "M14",
+      "MP5"
+    ]
+  },
+  "loot_distribution_adjustments": {
+    "revival_point_active_duration_seconds": 620,
+    "med_kits_spawn_rate_change_percentage": 15,
+    "gloo_walls_ground_spawn_reduction_percentage": -18,
+    "sniper_ammo": "Restricted ground spawns to 1 stack per node",
+    "ground_spawn_removals": [
+      "VSS-III (Ultimate)",
+      "Kar98k-III (Ultimate)",
+      "Charge Buster"
+    ],
+    "charge_buster_new_locations": [
+      "Airdrops",
+      "Airdrop Vending Machines"
+    ]
+  }
+}
