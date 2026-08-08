@@ -1,0 +1,128 @@
+{
+  "match_duration_adjustments": {
+    "solara": {
+      "old_duration_seconds": 1455,
+      "new_duration_seconds": 420
+    },
+    "nexterra": {
+      "old_duration_seconds": 1455,
+      "new_duration_seconds": 390
+    },
+    "other_maps": {
+      "old_duration_seconds": 1455,
+      "new_duration_seconds": 385
+    }
+  },
+  "revival_point_adjustments": {
+    "cooldown_seconds": {
+      "old": 300,
+      "new": 180
+    },
+    "closure_timing": "End of second zone shrink (previously end of third zone shrink)",
+    "multi_player_capture_speed_seconds": {
+      "1_player": 25,
+      "2_players": {
+        "old": 20,
+        "new": 12
+      },
+      "3_players": {
+        "old": 16,
+        "new": 8
+      }
+    }
+  },
+  "defense_airdrop_capture_speed_seconds": {
+    "1_player": 45,
+    "2_players": {
+      "old": 33,
+      "new": 27
+    },
+    "3_players": {
+      "old": 27,
+      "new": 19
+    },
+    "4_players": {
+      "old": 19,
+      "new": 15
+    }
+  },
+  "vending_machine_adjustments": {
+    "hit_list_price_ff_coins": {
+      "old_price": 488,
+      "new_price": 200
+    },
+    "weapon_prices_ff_coins": {
+      "MAG-7": 180,
+      "MP40": 200,
+      "AC80": 200
+    },
+    "active_skill_cards_available": {
+      "oscar_unlimited_skill_card": {
+        "price_ff_coins": 1200,
+        "purchase_limit": "1 per player"
+      },
+      "dimitri_unlimited_skill_card": {
+        "price_ff_coins": 1288,
+        "purchase_limit": "3 per match"
+      }
+    }
+  },
+  "hit_list_mechanics_adjustments": {
+    "minimum_enemy_scan_distance_meters": {
+      "old": 100,
+      "new": 20
+    },
+    "elimination_rewards": {
+      "weapon_grant": "Randomly grants one weapon from: M4A1-III, MP5-III, M1814-III",
+      "removed_attachments": [
+        "Vest Enlarger",
+        "Vest Hardener"
+      ],
+      "lv3_gear_drop_chance_percent": {
+        "items": ["Lv. 3 Helmet", "Lv. 3 Vest", "Lv. 3 Backpack"],
+        "old": 33,
+        "new": 50
+      },
+      "rgs58_drop_chance_percent": {
+        "old": 50,
+        "new": 100
+      }
+    }
+  },
+  "ground_loot_and_gadgets": {
+    "removed_structures": [
+      "Tech Workshops"
+    ],
+    "loot_density_adjustments": {
+      "decreased_loot_locations": ["Clock Tower", "Observatory", "Peak"],
+      "increased_loot_locations": ["Katulistiwa", "Mars Electric", "Pochinok", "Peak Surrounding Areas"]
+    },
+    "gloo_melter": {
+      "pickup_limit": {
+        "old": 3,
+        "new": 2
+      },
+      "drop_rate_change": "-50%"
+    },
+    "dragon_freeze": {
+      "status": "Added to ground loot",
+      "pickup_limit": 1
+    },
+    "mini_turret": {
+      "range_meters": {
+        "old": 30,
+        "new": 68
+      },
+      "damage_per_shot": {
+        "old": 20,
+        "new": 50
+      }
+    },
+    "cyber_mushrooms": {
+      "activation_trigger": "Can now be activated by vehicle collisions"
+    },
+    "portal_go": {
+      "usability_expansion": "Can now be used while crouching or prone"
+    }
+  }
+}
