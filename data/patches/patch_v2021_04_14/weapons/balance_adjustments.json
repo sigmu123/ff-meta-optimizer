@@ -1,0 +1,100 @@
+{
+  "machine_gun_mode": {
+    "activation_condition": "Crouch or Prone",
+    "weapons_affected": [
+      {
+        "weapon_name": "M60",
+        "mode_buffs": "Damage +28, Rate of Fire +9%"
+      },
+      {
+        "weapon_name": "M249",
+        "mode_buffs": "Damage +5"
+      },
+      {
+        "weapon_name": "Kord",
+        "mode_buffs": "Rate of Fire +5%, shoots 3 bullets at once"
+      }
+    ]
+  },
+  "weapon_balance": [
+    {
+      "weapon_name": "FAMAS",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "base_damage": { "previous": 28, "new": 30 },
+        "minimum_damage": { "previous": 11, "new": 12 },
+        "burst_speed_percentage": 11,
+        "recoil_build_up_percentage": 20
+      }
+    },
+    {
+      "weapon_name": "UMP",
+      "category": "Submachine Gun",
+      "adjustments": {
+        "base_damage": { "previous": 24, "new": 25 },
+        "rate_of_fire_percentage": -5,
+        "precise_shots_count": 1,
+        "accuracy_percentage": 25,
+        "moving_accuracy_percentage": 13,
+        "shooting_movement_speed_percentage": 21
+      }
+    },
+    {
+      "weapon_name": "FF Knife",
+      "category": "Throwable / Special",
+      "adjustments": {
+        "downed_enemy_bonus_damage": 80
+      }
+    },
+    {
+      "weapon_name": "MAG-7",
+      "category": "Shotgun",
+      "adjustments": {
+        "accuracy_percentage": 8,
+        "moving_accuracy_percentage": 4,
+        "max_recoil_reduction_percentage": 14
+      }
+    },
+    {
+      "weapon_name": "Vector",
+      "category": "Submachine Gun",
+      "adjustments": {
+        "headshot_multiplier": { "previous": "550%", "new": "400%" },
+        "akimbo_effective_range_percentage": -10,
+        "akimbo_recoil_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "M82B",
+      "category": "Sniper Rifle",
+      "adjustments": {
+        "ballistic_rounds_extra_damage": { "previous": 1.0, "new": 0.6 },
+        "player_damage_behind_gloo_wall_multiplier": { "previous": 0.8, "new": 0.6 }
+      }
+    },
+    {
+      "weapon_name": "M14",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "minimum_damage": { "previous": 25, "new": 30 }
+      }
+    },
+    {
+      "weapon_name": "Flashbang",
+      "category": "Grenade Utility",
+      "adjustments": {
+        "cooking_mechanic": "Added",
+        "flash_duration_seconds": { "previous": 8.0, "new": 2.2 }
+      }
+    },
+    {
+      "weapon_name": "Smoke Grenade",
+      "category": "Grenade Utility",
+      "adjustments": {
+        "bloom_speed": "Increased",
+        "throw_distance": "Increased",
+        "availability": "Added to Battle Royale Mode via Air Drops"
+      }
+    }
+  ]
+}
