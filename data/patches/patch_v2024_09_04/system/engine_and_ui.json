@@ -1,0 +1,32 @@
+{
+  "hud_and_visual_settings": {
+    "cs_enemy_outline": {
+      "color": "Yellow",
+      "opacity_scaling": "Dynamic based on enemy distance",
+      "toggle_in_settings": true
+    },
+    "uav_minimap_colors": {
+      "friendly_uav_color": "Distinct",
+      "hostile_uav_color": "Distinct",
+      "neutral_uav_color": "Distinct"
+    }
+  },
+  "training_grounds_mechanics": {
+    "auto_spawn_inventory": [
+      "2x Inhaler",
+      "2x Repair Kit"
+    ],
+    "trogon_restrictions": "Grenade Launcher mode disabled",
+    "kill_streak_audio": "Consecutive elimination sound effects enabled"
+  },
+  "role_system_expansion": {
+    "max_level": 10,
+    "elite_role_advancement": true,
+    "scoring_dimensions": {
+      "first_eliminations": "Counts toward Elite Rusher/Sniper/Rifler",
+      "headshot_rate_rifles_marksman": "Counts toward Elite Rifler",
+      "consecutive_sniper_hits": "Counts toward Elite Sniper",
+      "dragon_freeze_usage": "Counts toward Elite Bomber"
+    }
+  }
+}
