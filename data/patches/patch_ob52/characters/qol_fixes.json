@@ -1,0 +1,21 @@
+{
+  "character_qol_updates": [
+    {
+      "name": "Nero",
+      "fix_description": "Plushie skill cast optimized to pass through all cover, including ground, building floors, and ceilings without destroying user's own Gloo Walls"
+    },
+    {
+      "name": "Santino",
+      "update_description": "Mannequin can now be placed and operated on trains and rails in the Studio area of Solara"
+    },
+    {
+      "name": "Alok",
+      "fix_description": "Fixed bug where skill range misaligned with VFX, and bug causing movement speed boost failure"
+    }
+  ],
+  "system_wide_character_additions": {
+    "skill_enhancer_item": "New item available in selected modes to enhance character skills",
+    "speed_vfx": "New visual effect triggers when character reaches specific high movement speed thresholds",
+    "ui_icon_optimization": "Fixed inconsistent sizing between buff and debuff status icons"
+  }
+}
