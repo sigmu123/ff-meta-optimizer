@@ -1,0 +1,8 @@
+{
+  "craftland_updates": {
+    "matchmaking": {
+      "enabled": true,
+      "mechanism": "Select Creative Mode to enter matchmaking across 14 hot-list maps randomly allocated"
+    }
+  }
+}
