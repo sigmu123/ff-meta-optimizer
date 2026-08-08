@@ -1,0 +1,16 @@
+{
+  "active_skill_cards": {
+    "duplicate_pickup_mechanic": {
+      "available_state": "Grants 1 additional skill charge, allowing back-to-back usage",
+      "cooldown_state": "Instantly resets/refreshes the current active skill cooldown"
+    },
+    "availability": [
+      "Battle Royale In-Match Loot",
+      "Training Ground Target Range"
+    ]
+  },
+  "gloo_maker": {
+    "auto_equip_attachments": true,
+    "behavior": "Looted Gloo Maker attachments automatically equip into dedicated attachment slots"
+  }
+}
