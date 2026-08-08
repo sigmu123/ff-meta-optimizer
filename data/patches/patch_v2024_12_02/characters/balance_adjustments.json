@@ -1,0 +1,118 @@
+{
+  "awakening_system_overhaul": {
+    "mechanic_change": "Replaced all non-awakened skills with awakened versions directly",
+    "acquisition": "Automatic grants for owned characters; direct full version on future purchases"
+  },
+  "skill_reworks": [
+    {
+      "character": "Alvaro",
+      "skill_name": "Split Blitz",
+      "changes": {
+        "explosive_damage_boost_percent": 28,
+        "explosive_range_boost_percent": 18,
+        "split_mechanic": "Grenade splits into 3 mini grenades AFTER explosion",
+        "mini_grenade_damage_percent": 20
+      }
+    },
+    {
+      "character": "Skyler",
+      "skill_name": "Riptide Rhythm",
+      "changes": {
+        "aim_assist": "Auto-aims towards enemy Gloo Walls"
+      }
+    }
+  ],
+  "numeric_adjustments": [
+    {
+      "character": "Tatsuya",
+      "skill_name": "Rebel Rush",
+      "cooldown_between_charges_seconds": {
+        "old": 1,
+        "new": 10
+      }
+    },
+    {
+      "character": "Wukong",
+      "skill_name": "Camouflage",
+      "duration_seconds": 15,
+      "cooldown_seconds": {
+        "old": 75,
+        "new": 90
+      },
+      "interaction_rules": {
+        "allowed_during_camouflage": [
+          "Using Vending Machines",
+          "Opening War Chests",
+          "Using Portal Gos",
+          "Eating Mushrooms",
+          "Reviving/Helping teammates"
+        ],
+        "removes_camouflage": [
+          "Attacking enemies",
+          "Taking damage",
+          "Using vehicles",
+          "Using ziplines",
+          "Using Launch Pads"
+        ]
+      }
+    },
+    {
+      "character": "Ryden",
+      "skill_name": "Spider Trap",
+      "spider_duration_seconds": 60,
+      "trap_effect_duration_seconds": 5,
+      "movement_speed_reduction_percent": 88,
+      "damage_per_second": 10,
+      "cooldown_seconds": 60,
+      "max_skill_charges": 2,
+      "charge_interval_seconds": 10
+    },
+    {
+      "character": "Kairos",
+      "skill_name": "Defense Breaker",
+      "defense_mode": {
+        "ep_recovery_rate": "2 EP/s continuously"
+      },
+      "breaker_mode": {
+        "activation_trigger": "Full EP + first hit on shielded/armored enemy",
+        "ep_consumption_rate": {
+          "old": "5 EP/s",
+          "new": "18 EP/s"
+        },
+        "shield_armor_durability_reduction_percent": 120
+      }
+    },
+    {
+      "character": "Hayato",
+      "skill_name": "Art of Blades",
+      "trigger_threshold": "Triggers with every 10% HP loss"
+    },
+    {
+      "character": "Lila",
+      "skill_name": "Gloo Strike",
+      "deceleration_effects": {
+        "enemy_movement_speed_reduction_percent": 18,
+        "vehicle_acceleration_reduction_percent": {
+          "old": 50,
+          "new": 88
+        },
+        "duration_seconds": 3
+      },
+      "takedown_bonus": {
+        "freeze_duration_seconds": 3,
+        "extra_gloo_walls": 1,
+        "cooldown_seconds": 10
+      }
+    },
+    {
+      "character": "Nairi",
+      "skill_name": "Ice Iron",
+      "gloo_wall_durability_recovery": "160/s",
+      "teammate_healing_rate": "10 HP/s within 5m",
+      "skill_active_duration_seconds": {
+        "old": 25,
+        "new": 3
+      }
+    }
+  ]
+}
