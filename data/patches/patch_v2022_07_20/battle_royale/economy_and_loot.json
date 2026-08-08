@@ -1,0 +1,31 @@
+{
+  "war_chests_system": {
+    "max_level": 3,
+    "level_up_mechanism": "Levels up automatically over match duration",
+    "costs": {
+      "lv1_first_loot": 0,
+      "subsequent_refresh_cost": 100,
+      "loot_cost_per_instance": 300
+    },
+    "currency": "FF Coins",
+    "rare_loot_pool": [
+      "Super Med",
+      "Horizaline",
+      "UAV",
+      "Upgrade Chip",
+      "Airdrop Weapons"
+    ]
+  },
+  "vending_machine_updates": {
+    "free_item_labeling": "Free items explicitly tagged with 'Free' indicator text"
+  },
+  "ground_loot_and_consumables": {
+    "new_items": [
+      {
+        "item_name": "Super Med",
+        "type": "Consumable",
+        "description": "Advanced medical item offering full HP restoration"
+      }
+    ]
+  }
+}
