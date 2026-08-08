@@ -1,0 +1,45 @@
+{
+  "social_and_system_features": [
+    {
+      "feature": "Dynamic Duo System",
+      "availability_date": "2021-02-09 15:00 GMT+8",
+      "mechanic": "Partnership created via 'The Golden Vow' item; unlocks milestones based on play time"
+    },
+    {
+      "feature": "Social System Updates",
+      "details": [
+        "Friend's Network added",
+        "Pre-invite feature for friends currently in-game",
+        "New Personal Profile and Name Badge UI",
+        "Leaderboard display optimizations",
+        "Team Lobby added"
+      ]
+    },
+    {
+      "feature": "In-Game Quick Message",
+      "availability": "All modes",
+      "function": "Preset text/signal communication menu"
+    },
+    {
+      "feature": "Free Look Feature",
+      "availability": "Settings Menu (All modes)",
+      "function": "360-degree camera rotation while sprinting"
+    }
+  ],
+  "bug_fixes_and_optimizations": [
+    "Twitter login support added",
+    "Vehicles can now honk in Classic Mode",
+    "Crouching/uncrouching no longer interrupts teammate revive channel",
+    "Teammate name opacity reduced when near crosshairs",
+    "Fixed hit registration bug where damage failed to apply",
+    "Optimized K character skill visual effects",
+    "Inhaler now heals above 200 HP for characters with extended max health pool",
+    "Bounty Token rewards now marked on mini-map",
+    "Clash Squad scoreboard shows live combat status of teammates",
+    "Spectators can view teammate equipment and equipped skills",
+    "High FPS option expanded to additional hardware models",
+    "Added 'Open Multiple Loot Boxes' bulk action button",
+    "Parachuting markers now display on main map during jump phase",
+    "Added unique audio cues for breaking armor/helmets and landing headshots"
+  ]
+}
