@@ -1,0 +1,70 @@
+{
+  "new_characters": [
+    {
+      "character_name": "D-bee",
+      "skill_name": "Bullet Beats",
+      "skill_type": "Passive",
+      "stats_by_level": {
+        "firing_movement_speed_increase_percentage": [5, 7, 9, 11, 13, 15],
+        "firing_accuracy_increase_percentage": [10, 13, 17, 22, 28, 35]
+      }
+    }
+  ],
+  "new_pets": [
+    {
+      "pet_name": "Dr. Beanie",
+      "skill_name": "Dashy Duck",
+      "stats_by_level": {
+        "crouched_movement_speed_increase_percentage": [30, 40, 60]
+      }
+    }
+  ],
+  "character_adjustments": [
+    {
+      "character_name": "Paloma",
+      "skill_name": "Arms Dealing",
+      "skill_type": "Passive",
+      "adjustments": {
+        "ammo_compatibility": "Works with ALL ammo types except 40mm Ammo",
+        "pocket_capacity_by_level": {
+          "previous": [30, 60, 90, 120, 150, 180],
+          "new": [45, 60, 75, 90, 105, 120]
+        }
+      }
+    },
+    {
+      "character_name": "Clu",
+      "skill_name": "Tracing Steps",
+      "skill_type": "Active",
+      "adjustments": {
+        "scan_radius_meters": {
+          "previous": [30, 35, 40, 40, 45, 50],
+          "new": [50, 55, 60, 65, 70, 75]
+        },
+        "scan_duration_seconds": {
+          "previous": [5, 5.5, 6, 6, 6.5, 7],
+          "new": [5, 5.5, 6, 6.5, 7, 7.5]
+        },
+        "cooldown_seconds": {
+          "previous": [50, 50, 50, 50, 50, 50],
+          "new": [75, 72, 69, 66, 63, 60]
+        },
+        "teammate_sharing_level_unlock": {
+          "previous": 4,
+          "new": 1
+        }
+      }
+    },
+    {
+      "character_name": "Laura",
+      "skill_name": "Sharpshooter",
+      "skill_type": "Passive",
+      "adjustments": {
+        "scoped_accuracy_increase_percentage": {
+          "previous": [10, 14, 18, 22, 26, 30],
+          "new": [10, 13, 17, 22, 28, 35]
+        }
+      }
+    }
+  ]
+}
