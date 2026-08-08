@@ -1,0 +1,202 @@
+{
+  "character_reworks": [
+    {
+      "character_name": "Wolfrahh",
+      "skill_name": "Limelight",
+      "skill_type": "Passive",
+      "description": "Every elimination adds one spectator (spectator count does not decrease). Spectators reduce headshot damage taken and increase headshot damage dealt.",
+      "stats": {
+        "max_spectators_required": 3,
+        "headshot_damage_reduction_per_spectator_percentage_by_level": [2, 3, 4, 6, 8, 10],
+        "max_headshot_damage_reduction_percentage_by_level": [20, 22, 24, 26, 28, 30],
+        "headshot_damage_increase_per_spectator_percentage_by_level": [2, 3, 4, 6, 8, 10],
+        "max_headshot_damage_increase_percentage_by_level": [20, 22, 24, 26, 28, 30]
+      }
+    },
+    {
+      "character_name": "Dimitri",
+      "skill_name": "Healing Heartbeat",
+      "skill_type": "Active",
+      "description": "Creates a 3.5m healing zone. When self-recovering within the zone, players can move freely and no longer lose HP during recovery.",
+      "adjustments": {
+        "movement_during_self_recover": true,
+        "hp_loss_during_self_recover": false
+      }
+    },
+    {
+      "character_name": "D-Bee",
+      "skill_name": "Bullet Beats",
+      "skill_type": "Passive",
+      "description": "When firing while moving, movement speed and accuracy increase uniformly across all weapon categories.",
+      "stats": {
+        "movement_speed_increase_percentage_by_level": {
+          "previous": [5, 7, 9, 11, 13, 15],
+          "new": [10, 12, 14, 16, 18, 20]
+        },
+        "accuracy_increase_percentage_by_level": [20, 23, 27, 32, 38, 45]
+      }
+    }
+  ],
+  "character_balancing": [
+    {
+      "character_name": "Alok",
+      "skill_name": "Drop The Beat",
+      "skill_type": "Active",
+      "adjustments": {
+        "movement_speed_percentage_by_level": [10, 11, 12, 13, 14, 15],
+        "hp_restore_per_second": 5,
+        "duration_seconds_by_level": [5, 6, 7, 8, 9, 10],
+        "cooldown_seconds_by_level": {
+          "previous": [45, 45, 45, 45, 45, 45],
+          "new": [70, 66, 62, 58, 54, 50]
+        }
+      }
+    },
+    {
+      "character_name": "Skyler",
+      "skill_name": "Riptide Rhythm",
+      "skill_type": "Active",
+      "adjustments": {
+        "range_meters_by_level": [50, 58, 67, 77, 88, 100],
+        "gloo_wall_destruction_limit": 5,
+        "hp_recovery_per_gloo_wall_by_level": [4, 5, 6, 7, 8, 9],
+        "cooldown_seconds_by_level": {
+          "previous": [60, 58, 55, 51, 46, 40],
+          "new": [85, 80, 75, 70, 65, 60]
+        }
+      }
+    },
+    {
+      "character_name": "Steffie",
+      "skill_name": "Painted Refuge",
+      "skill_type": "Active",
+      "adjustments": {
+        "radius_meters": 4,
+        "armor_durability_restore_per_second_percentage": 10,
+        "ammo_damage_reduction_percentage_by_level": [10, 12, 14, 16, 18, 20],
+        "duration_seconds_by_level": [10, 11, 12, 13, 14, 15],
+        "cooldown_seconds_by_level": {
+          "previous": [115, 110, 105, 100, 95, 90],
+          "new": [85, 80, 75, 70, 65, 60]
+        }
+      }
+    },
+    {
+      "character_name": "Chrono",
+      "skill_name": "Time Turner",
+      "skill_type": "Active",
+      "adjustments": {
+        "shield_health": 800,
+        "duration_seconds_by_level": [4, 4, 5, 5, 6, 6],
+        "cooldown_seconds_by_level": {
+          "previous": [180, 164, 150, 138, 128, 120],
+          "new": [160, 150, 140, 130, 120, 110]
+        }
+      }
+    },
+    {
+      "character_name": "Kenta",
+      "skill_name": "Swordsman's Wrath",
+      "skill_type": "Active",
+      "adjustments": {
+        "frontal_damage_reduction_percentage": {
+          "previous": 50,
+          "new": 65
+        },
+        "duration_seconds": {
+          "previous": [2, 3, 3.5, 4, 4.5, 5],
+          "new": [5, 5, 5, 5, 5, 5]
+        },
+        "cooldown_seconds_by_level": {
+          "previous": [210, 200, 190, 180, 170, 160],
+          "new": [120, 110, 100, 90, 80, 70]
+        }
+      }
+    },
+    {
+      "character_name": "Xayne",
+      "skill_name": "Xtreme Encounter",
+      "skill_type": "Active",
+      "adjustments": {
+        "temporary_hp": {
+          "previous": 80,
+          "new": 120
+        },
+        "gloo_wall_and_shield_damage_increase_percentage_by_level": {
+          "previous": [80, 90, 100, 110, 120, 130],
+          "new": [100, 120, 140, 160, 180, 200]
+        },
+        "duration_seconds": {
+          "previous": 15,
+          "new": 6
+        },
+        "cooldown_seconds_by_level": {
+          "previous": [150, 140, 130, 120, 110, 100],
+          "new": [150, 140, 130, 120, 110, 100]
+        }
+      }
+    },
+    {
+      "character_name": "Clu",
+      "skill_name": "Tracing Steps",
+      "skill_type": "Active",
+      "adjustments": {
+        "scan_radius_meters_by_level": [50, 55, 60, 65, 70, 75],
+        "duration_seconds_by_level": {
+          "previous": [5, 5.5, 6, 6.5, 7, 7.5],
+          "new": [5, 6, 7, 8, 9, 10]
+        },
+        "cooldown_seconds_by_level": {
+          "previous": [75, 72, 69, 66, 63, 60],
+          "new": [75, 70, 65, 60, 55, 50]
+        }
+      }
+    },
+    {
+      "character_name": "Wukong",
+      "skill_name": "Camouflage",
+      "skill_type": "Active",
+      "adjustments": {
+        "movement_speed_reduction_percentage": {
+          "previous": 20,
+          "new": 10
+        },
+        "duration_seconds": 15,
+        "cooldown_seconds": 200
+      }
+    },
+    {
+      "character_name": "Misha",
+      "skill_name": "Afterburner",
+      "skill_type": "Passive",
+      "adjustments": {
+        "driving_speed_increase_percentage_by_level": {
+          "previous": [5, 6, 7, 8, 11, 15, 20],
+          "new": [2, 3, 4, 6, 8, 10]
+        },
+        "damage_reduction_percentage_by_level": {
+          "previous": [5, 8, 12, 17, 23, 30],
+          "new": [5, 6, 8, 11, 15, 20]
+        }
+      }
+    },
+    {
+      "character_name": "Nairi",
+      "skill_name": "Ice Iron",
+      "skill_type": "Passive",
+      "adjustments": {
+        "gloo_wall_durability_recovery_per_second_percentage": [20, 22, 24, 26, 28, 30],
+        "ar_damage_to_gloo_walls_increase_percentage_by_level": {
+          "previous": [20, 21, 22, 23, 24, 25],
+          "new": [30, 31, 32, 33, 34, 35]
+        }
+      }
+    }
+  ],
+  "character_progression": {
+    "memory_fragment_gold_purchase": {
+      "conversion_rate": "20 Memory Fragments = 250 Gold",
+      "purchase_location": "Directly accessible via Character Level-up interface"
+    }
+  }
+}
