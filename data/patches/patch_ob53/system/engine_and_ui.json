@@ -1,0 +1,46 @@
+{
+  "hud_system": {
+    "sharing_options": ["Social Media", "In-Game Friends", "Direct Link", "QR Code"],
+    "smart_adjust": "Analyzes screen tap data and HUD usage patterns for auto-adjustments"
+  },
+  "cs_custom_room_esports_preset": {
+    "rounds_count": 11,
+    "cyber_airdrops_enabled": true,
+    "ban_and_pick_enabled": true,
+    "ban_pick_rules": {
+      "player_1_role": "Bans active skills",
+      "other_players_role": "Picks remaining active skills",
+      "duplicate_skills_allowed": false,
+      "spectator_and_chat_support": ["Room Spectating", "Team Text Chat", "Voice Chat"]
+    },
+    "round_map_area_customization": true
+  },
+  "performance": {
+    "frame_rate_boost": "Added Experimental Frame Rate Boost in High FPS Mode"
+  },
+  "quick_message_system": {
+    "added_icons": ["Group Up"],
+    "auto_triggers": [
+      "Hitting an enemy (auto-marks location)",
+      "Attacked by nearby enemies (auto-marks location)",
+      "Using Bonfire / Super Bonfire / Bolt Maker / Smoke Grenade / Horizaline",
+      "Selecting team buff or deploying Helper Bot"
+    ],
+    "smart_suggestions": [
+      "Capturing Arsenal, Airdrop, or Revival Point",
+      "Landing without a main weapon",
+      "Picking up a main weapon on landing while team is in combat"
+    ],
+    "communication_tech": [
+      "In-match text chat",
+      "Speech-to-text conversion (Requires Excellent behavior rating)"
+    ]
+  },
+  "qol_and_gameplay_fixes": {
+    "sprinting_medkit": "Sprinting while using Med Kits or Super Meds cancels sprint and starts healing",
+    "ui_text_scrolling": "Long item names now scroll fully instead of shrinking text size",
+    "lone_wolf_final_round": "Assigns a random gun if player fails to pick before timer expires",
+    "plane_cabin_audio": "Significantly reduced volume of other players inside the plane cabin",
+    "usp_2_bugfix": "Fixed bug where USP-2 lacked weapon mastery"
+  }
+}
