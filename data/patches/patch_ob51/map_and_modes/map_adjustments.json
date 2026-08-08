@@ -1,0 +1,24 @@
+{
+  "solara_map_adjustments": {
+    "tent_models": "Updated to feature 2 openings",
+    "redesigned_high_grounds": ["Studio", "TV Tower"],
+    "bloomtown": "Slightly adjusted door placement of two-story houses",
+    "bayside": "Tweaked cabin interior layout and surrounding terrain",
+    "the_hub_cs": "Adjusted slide rail speed"
+  },
+  "gameplay_physics_and_hud_fixes": {
+    "launch_pad": "Improved landing accuracy when diving from launch pads",
+    "hitmarker_setting": "Information hitmarker setting option removed; all players unified to new style",
+    "headshot_feedback": "Enhanced visual crosshair response on headshots",
+    "airdrop_physics": "Improved airdrop bounce behavior on flat surfaces; reduced player recovery delay when struck by airdrop",
+    "minimap": "Minimap now centers on player position upon opening",
+    "spectator_hud": "Optimized spectator HUD layout",
+    "sound_effects": "Adjusted firing audio for RG59 and M79",
+    "bermuda": "Widened tent entrances to prevent player collision bottlenecks",
+    "window_vault_fix": "Fixed landing issues after jumping over high windows in Bermuda Pochinok, Solara Bloomtown, and Aquarium entrance"
+  },
+  "lone_wolf_mode": {
+    "duel_feature": "Allows challenging opponents to a rematch",
+    "rank_points": "Lone Wolf Duels no longer grant casual rank points"
+  }
+}
