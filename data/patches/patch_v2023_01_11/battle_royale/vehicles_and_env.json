@@ -1,0 +1,31 @@
+{
+  "vehicle_improvements": {
+    "horsepower_boost": true,
+    "mobility_boost": true,
+    "steep_hill_climbing_enhanced": true,
+    "airborne_mechanic": "Vehicles at max speed over steep hills can lift off the ground briefly.",
+    "controls_handling": "Easier to control",
+    "durability_changes": {
+      "hp_adjustment": "Increased",
+      "damage_taken_adjustment": "Decreased"
+    }
+  },
+  "vehicle_spawns_per_map": {
+    "bermuda_purgatory_kalahari": {
+      "jeeps": {
+        "old_range": "8-18",
+        "new_range": "16-20"
+      },
+      "sports_cars": {
+        "old_range": "5-8",
+        "new_range": "1-2"
+      }
+    },
+    "nexterra_alpine": {
+      "jeeps": {
+        "old_range": "4-8",
+        "new_range": "12-16"
+      }
+    }
+  }
+}
