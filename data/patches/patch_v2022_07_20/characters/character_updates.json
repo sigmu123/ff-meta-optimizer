@@ -1,0 +1,86 @@
+{
+  "character_reworks": [
+    {
+      "character_name": "Miguel",
+      "skill_name": "Crazy Slayer",
+      "skill_type": "Passive",
+      "description": "Trigger condition expanded from eliminations only to include knockdowns.",
+      "stats": {
+        "trigger_condition": "Knockdown or Elimination",
+        "ep_gain_by_level": [30, 40, 50, 60, 70, 80]
+      }
+    }
+  ],
+  "character_balancing": [
+    {
+      "character_name": "Andrew",
+      "skill_name": "Wolf Pack",
+      "skill_type": "Passive",
+      "adjustments": {
+        "vest_durability_loss_reduction_percentage_by_level": {
+          "previous": [2, 4, 6, 8, 10, 12],
+          "new": [10, 12, 14, 16, 18, 20]
+        }
+      }
+    },
+    {
+      "character_name": "Hayato",
+      "skill_name": "Art of Blades",
+      "skill_type": "Passive",
+      "adjustments": {
+        "armor_penetration_per_10_percent_hp_loss_by_level": {
+          "previous": [7.5, 8.0, 8.5, 9.0, 9.5, 10.0],
+          "new": [4.5, 5.0, 5.5, 6.0, 6.5, 7.0]
+        }
+      }
+    },
+    {
+      "character_name": "Antonio",
+      "skill_name": "Gangster's Spirit",
+      "skill_type": "Passive",
+      "adjustments": {
+        "extra_starting_hp_by_level": {
+          "previous": [10, 15, 20, 25, 30, 35],
+          "new": [15, 20, 25, 30, 35, 40]
+        }
+      }
+    },
+    {
+      "character_name": "Nikita",
+      "skill_name": "Firearms Expert",
+      "skill_type": "Passive",
+      "adjustments": {
+        "reload_speed_increase_percentage_by_level": [14, 16, 18, 20, 22, 24],
+        "smg_damage_boost_bullet_count": {
+          "previous": 6,
+          "new": 10
+        },
+        "smg_damage_boost_percentage_by_level": {
+          "previous": [10, 12, 14, 16, 18, 20],
+          "new": [15, 18, 21, 24, 27, 30]
+        }
+      }
+    },
+    {
+      "character_name": "Joseph",
+      "skill_name": "Nutty Movement",
+      "skill_type": "Passive",
+      "adjustments": {
+        "movement_and_sprint_speed_increase_percentage_by_level": {
+          "previous": [10, 12, 14, 16, 18, 20],
+          "new": [5, 7, 9, 11, 13, 15]
+        }
+      }
+    }
+  ],
+  "interactive_voiceovers": {
+    "supported_characters": ["Kelly", "Moco", "Hayato", "Maxim"],
+    "trigger_events": [
+      "Achieving Booyah in a match",
+      "Score leading or falling behind in Clash Squad Mode",
+      "Purchasing equipment in Clash Squad shop",
+      "Entering Battle Royale spawn island",
+      "Ejecting from the airplane"
+    ]
+  }
+}
