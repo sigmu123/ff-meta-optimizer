@@ -1,0 +1,102 @@
+{
+  "combat_traits_redesign": {
+    "system_status": "Active",
+    "mechanic": "Replaces traditional loadouts with 3-tier levelable Combat Traits during match. Levels gain EXP via moving, eliminations, assists, healing, revives, and CS round start.",
+    "traits": [
+      {
+        "trait_id": "hunter",
+        "br_rewards": {
+          "level_1": ["Bounty Token"],
+          "level_2": ["400 FF Coins"],
+          "level_3": ["Bounty Gadget"]
+        },
+        "cs_rewards": {
+          "level_1": ["Armor Crate"],
+          "level_2": ["Super Energizer", "Ice Gun"],
+          "level_3": ["Speed Boost Buff (Secret Bazaar)"]
+        }
+      },
+      {
+        "trait_id": "jammer",
+        "br_rewards": {
+          "level_1": ["Jammer"],
+          "level_2": ["400 FF Coins"],
+          "level_3": ["UAV-Lite"]
+        },
+        "cs_rewards": {
+          "level_1": ["Jammer"],
+          "level_2": ["Free Flash Freeze / Gloo Melter"],
+          "level_3": ["Heal UAV-Lite"]
+        }
+      },
+      {
+        "trait_id": "mechanic",
+        "br_rewards": {
+          "level_1": ["Leg Pockets"],
+          "level_2": ["400 FF Coins"],
+          "level_3": ["Portal Go"]
+        },
+        "cs_rewards": {
+          "level_1": ["Leg Pockets"],
+          "level_2": ["Free Flash Freeze / Gloo Melter"],
+          "level_3": ["Mini Turret"]
+        }
+      },
+      {
+        "trait_id": "guardian",
+        "br_rewards": {
+          "level_1": ["Bonfires"],
+          "level_2": ["Turret"],
+          "level_3": ["New Supply Crate"]
+        },
+        "cs_rewards": {
+          "level_1": ["Bonfires"],
+          "level_2": ["Heal Pistol", "Restore EP Buff (Secret Bazaar)"],
+          "level_3": ["Quick EP Conversion Buff (Secret Bazaar)"]
+        }
+      },
+      {
+        "trait_id": "balanced",
+        "br_rewards": {
+          "level_1": ["Secret Clue"],
+          "level_2": ["400 FF Coins"],
+          "level_3": ["Horizaline"]
+        },
+        "cs_rewards": {
+          "level_1": ["Supply Crate"],
+          "level_2": ["Super Med"],
+          "level_3": ["Lv. 4 Vest"]
+        }
+      }
+    ]
+  },
+  "legacy_loadout_adjustments": {
+    "br_mode": {
+      "airdrop_aid": {
+        "cooldown_seconds_previous": 600,
+        "cooldown_seconds_current": 400,
+        "cooldown_reduction_per_elimination_seconds": 60,
+        "cooldown_reduction_per_damage_dealt_seconds": 0.2
+      },
+      "secret_clue": {
+        "chest_loot_upgrades": {
+          "armor_level_previous": 2,
+          "armor_level_current": 3,
+          "helmet_level_previous": 2,
+          "helmet_level_current": 3,
+          "additional_items": ["Gloo Chip", "Launch Pad", "600 FF Coins"]
+        }
+      }
+    },
+    "cs_mode": {
+      "airdrop_aid": {
+        "team_cash_reward_previous": 300,
+        "team_cash_reward_current": 400
+      },
+      "bounty_token": {
+        "cash_per_elimination_previous": 100,
+        "cash_per_elimination_current": 200
+      }
+    }
+  }
+}
