@@ -1,0 +1,30 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "FGL-24",
+      "category": "Secondary Weapon / Grenade Launcher",
+      "availability": "Ground Loot",
+      "mechanics": {
+        "wall_penetration": "Penetrates standard walls and Gloo Walls, exploding on the opposite side and emitting flames",
+        "thick_wall_interaction": "Stucks in thick walls without exploding, emitting flames behind the wall after delay",
+        "effect": "Burn damage over time to caught enemies and vehicles"
+      }
+    },
+    {
+      "weapon_name": "Heal Pistol-Y",
+      "category": "Secondary Weapon / Pistol",
+      "availability": [
+        "Vending Machines",
+        "Airdrops"
+      ],
+      "mechanics": {
+        "healing_per_use_hp": 25,
+        "ranged_revive": {
+          "enabled": true,
+          "dedicated_button": true,
+          "max_uses_per_weapon": 1
+        }
+      }
+    }
+  ]
+}
