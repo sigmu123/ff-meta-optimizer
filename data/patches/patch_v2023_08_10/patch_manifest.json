@@ -1,0 +1,18 @@
+{
+  "patch_version": "OB41",
+  "release_date": "2023-08-10",
+  "patch_name": "Zombie Hunt & Peak Rework Update",
+  "active_submodules": [
+    "loadouts/loadout_system.json",
+    "battle_royale/economy_and_loot.json",
+    "characters/new_character.json",
+    "characters/balance_adjustments.json",
+    "weapons/balance_adjustments.json",
+    "weapons/melee_system.json",
+    "map_and_modes/map_adjustments.json",
+    "map_and_modes/cs_store.json",
+    "map_and_modes/zombie_hunt.json",
+    "map_and_modes/training_grounds.json",
+    "system/engine_and_ui.json"
+  ]
+}
