@@ -1,0 +1,94 @@
+{
+  "airdrop_system_adjustments": {
+    "duo_squad_airdrop_timeline": {
+      "gold_beam_airdrop_window_seconds": "270 to 450",
+      "red_beam_airdrop_window_seconds": "After 450",
+      "total_airdrops_per_match": 6,
+      "total_airdrops_nexterra": 5
+    },
+    "defense_airdrops": {
+      "start_time_seconds": 180,
+      "total_per_match": 4,
+      "total_nexterra": 3,
+      "stage_loot": {
+        "stage_1": ["Lv. 3 Helmet", "3 Super Meds"],
+        "stage_2": ["Lv. 3 Vest", "Vest Enlarger"],
+        "stage_3": ["2 Lv. 4 Vests", "Launch Pad"]
+      }
+    },
+    "airdrop_contents": {
+      "gold_airdrop": ["Airdrop Weapon (unlimited ammo)", "Lv. 3 Helmet", "Lv. 3 Vest", "Lv. 3 Backpack"],
+      "red_airdrop": ["X/Y-tier Airdrop Weapon (unlimited ammo)", "Lv. 3 Helmet", "Lv. 3 Vest", "Lv. 3 Backpack"],
+      "airdrop_aid": ["Airdrop Weapon (unlimited ammo)", "Vest Enlarger", "2 Repair Kits"]
+    }
+  },
+  "war_chest_adjustments": {
+    "removed_items": ["Upgrade Chip", "Lv. 4 Vest", "Airdrop Weapons"],
+    "reduced_50_percent_drop_rate_items": ["200 FF Coins", "Lv. 3 Helmet", "Lv. 3 Vest", "Grenades"]
+  },
+  "vending_machine_adjustments": {
+    "upgrade_chip_purchase_limit": 2,
+    "free_attachments": "Removed",
+    "added_skill_cards": ["Ignis Skill Card", "Kenta Skill Card"],
+    "weapon_price_and_limits": {
+      "Winchester-II": { "price_ff_coins": 300, "purchase_limit": 5 },
+      "M60-II": { "price_ff_coins": 300, "purchase_limit": 5 }
+    },
+    "item_price_changes": {
+      "arsenal_key": { "old_price": 1000, "new_price": 600 },
+      "lv3_backpack": { "old_price": 300, "new_price": 200 }
+    },
+    "lv3_helmet_purchase_limit": 5
+  },
+  "revival_starting_weapons": {
+    "standard_revival": { "old_weapon": "G18", "new_weapon": "M1917" },
+    "super_advanced_revival": { "old_weapon": "P90", "new_weapon": "Bizon" }
+  },
+  "ground_loot_and_economy_adjustments": {
+    "armor_durability_floor": "Helmets and Vests will no longer be destroyed (durability cannot drop below 0)",
+    "ground_drop_reductions": {
+      "lv3_helmet_and_vest_drops": { "old": 20, "new": 8 },
+      "monster_truck_airdrops": { "old": 18, "new": 5 },
+      "supply_box_drops": { "old": 20, "new": 18 },
+      "lv3_weapon_ground_drops": "Completely Removed"
+    },
+    "pickup_quantity_buffs": {
+      "repair_kit_per_pickup": { "old": 1, "new": 2 },
+      "inhaler_per_pickup": { "old": 1, "new": 2 }
+    },
+    "coin_machine_rewards": "200 FF Coins and 2 Med Kits",
+    "coin_retention_on_elimination": "Players retain 50% of FF Coins after revival; no longer drop coins on ground upon elimination",
+    "elimination_coin_reward": { "old": 180, "new": 200 }
+  },
+  "advanced_revival_point": {
+    "initial_match_spawn": "3 random Revival Points transform into Advanced Revival Points (golden effect)",
+    "global_upgrade_time_seconds": 420,
+    "features": "Revived players receive advanced gear and can locate revival chests on minimap/main map"
+  },
+  "upgradable_arsenal": {
+    "upgrade_cost_ff_coins": 1500,
+    "upgrade_loot_tables": {
+      "armor": "Upgrades Lv. 2 Helmets/Vests to Lv. 3 Helmets/Vests (retains Lv. 3 attachments)",
+      "weapons": "Adds 4 additional red-tier weapons (random types)"
+    },
+    "defense_arsenal_key_requirement": false
+  },
+  "waypoint_system": {
+    "max_waypoints": 3,
+    "auto_deletion_distance_meters": 15,
+    "auto_deletion_delay_seconds": 10
+  },
+  "weapon_racks": {
+    "density": "2 to 4 fixed weapon racks spawned in major locations"
+  },
+  "gadgets_and_mushrooms": {
+    "gloo_mushroom": {
+      "type": "Cyber Mushroom",
+      "effect": "Greatly boosts Gloo Maker generation speed within its area"
+    },
+    "gloo_uav_lite": {
+      "type": "Deployable Gadget",
+      "effect": "Provides continuous durability recovery buff to Gloo Walls within range"
+    }
+  }
+}
