@@ -1,0 +1,59 @@
+{
+  "weapon_adjustments": [
+    {
+      "weapon": "SVD / SVD-Y",
+      "category": "Marksman Rifle",
+      "stat_changes": {
+        "range_percent": 12,
+        "headshot_damage_percent": -10
+      }
+    },
+    {
+      "weapon": "MAC10 Base",
+      "category": "Submachine Gun",
+      "stat_changes": {
+        "rate_of_fire_percent": -3,
+        "accuracy_percent": -5,
+        "headshot_damage_percent": -10
+      }
+    },
+    {
+      "weapon": "VSK94",
+      "category": "Sniper Rifle",
+      "stat_changes": {
+        "damage_percent": 3,
+        "headshot_damage_percent": -10
+      }
+    },
+    {
+      "weapon": "PLASMA-X",
+      "status": "Removed from matches",
+      "replacement": "PLASMA",
+      "new_locations": [
+        "Airdrops",
+        "Arsenals"
+      ],
+      "post_adjustment_stats": {
+        "before_heated": {
+          "rate_of_fire_percent": 10,
+          "accuracy_percent": 15,
+          "magazine_capacity_percent": 50
+        },
+        "while_heated": {
+          "rate_of_fire_boost_percent": -10
+        }
+      }
+    },
+    {
+      "weapon": "RGS-50",
+      "category": "Launcher",
+      "stat_changes": {
+        "vehicle_damage_percent": 50,
+        "vehicle_lock_on_time_seconds": {
+          "old": 2.0,
+          "new": 0.6
+        }
+      }
+    }
+  ]
+}
