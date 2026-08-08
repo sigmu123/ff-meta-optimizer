@@ -1,0 +1,16 @@
+{
+  "patch_version": "OB52",
+  "release_date": "2026-01-14",
+  "metadata": {
+    "engine_version": "5.2.0",
+    "description": "OB52 Core Gameplay, Mechanics, Weapons, and System Updates"
+  },
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system"
+  ]
+}
