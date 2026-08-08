@@ -1,0 +1,28 @@
+{
+  "pocket_market": {
+    "removed_items": [
+      "UAV-Lite",
+      "Horizaline",
+      "Inhaler",
+      "Hit List"
+    ],
+    "price_adjustments": [
+      {
+        "item_name": "Clu Skill Card",
+        "price_change_ff_coins": -100
+      },
+      {
+        "item_name": "Chrono Skill Card",
+        "price_change_ff_coins": -100
+      },
+      {
+        "item_name": "Portal Go",
+        "price_change_ff_coins": 400
+      },
+      {
+        "item_name": "Sniper Ammo",
+        "price_change_ff_coins": 180
+      }
+    ]
+  }
+}
