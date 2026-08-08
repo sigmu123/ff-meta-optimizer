@@ -1,0 +1,25 @@
+{
+  "arsenal_updates": {
+    "upgrade_prices": {
+      "solo_old_price": 1200,
+      "solo_new_price": 800,
+      "duo_old_price": 1200,
+      "duo_new_price": 1800
+    }
+  },
+  "ultra_airdrop": {
+    "pillar_break_capture_speed_bonus": {
+      "old_percentage": 10,
+      "new_percentage": 3
+    }
+  },
+  "coin_machines": {
+    "med_kits_yield": {
+      "old_quantity": 2,
+      "new_quantity": 1
+    }
+  },
+  "water_loot_mechanics": {
+    "deep_water_loot_boxes": "Floats to surface automatically for normal looting"
+  }
+}
