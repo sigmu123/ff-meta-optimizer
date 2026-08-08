@@ -1,0 +1,23 @@
+{
+  "new_characters": [
+    {
+      "name": "Morse",
+      "title": "The Untraceable",
+      "role": "Flanker / Stealth",
+      "skill": {
+        "name": "Stealth Bytes",
+        "type": "Active",
+        "cooldown_seconds": 45,
+        "duration_seconds": 15,
+        "exit_delay_seconds": 1,
+        "effects": {
+          "stealth_visibility": "Hard to be seen by enemies beyond 16m",
+          "detection_immunity": "Cannot be scanned or detected by enemy skills/devices",
+          "movement_speed_boost_percentage": 20,
+          "aim_assist_trigger": "Triggers if enemies are within 4m",
+          "combat_restriction": "Cannot fire weapon while in stealth mode"
+        }
+      }
+    }
+  ]
+}
