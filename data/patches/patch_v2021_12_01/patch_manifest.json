@@ -1,0 +1,14 @@
+{
+  "version": "v2021_12_01",
+  "patch_name": "NEW AGE",
+  "publish_date": "2021-12-01",
+  "active_submodules": [
+    "characters/character_balance.json",
+    "weapons/weapons_and_armor.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/lone_wolf.json",
+    "map_and_modes/clash_squad.json",
+    "map_and_modes/battle_royale.json",
+    "system/engine_and_ui.json"
+  ]
+}
