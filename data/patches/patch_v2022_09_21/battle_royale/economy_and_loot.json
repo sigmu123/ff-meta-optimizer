@@ -1,0 +1,28 @@
+{
+  "ground_loot_adjustments": {
+    "added_loot": [
+      "Gloo Melter",
+      "Treatment Laser Gun",
+      "Marksman Foregrip",
+      "Shotgun Stock",
+      "Shield Gun (NeXTerra only)"
+    ],
+    "removed_loot": [
+      "Vest Thickener",
+      "Shotgun Muzzle",
+      "Double Magazine"
+    ]
+  },
+  "vending_machine_updates": {
+    "added_items": [
+      "Gloo Melter",
+      "Sniper Stock",
+      "Shield Gun (NeXTerra only)"
+    ]
+  },
+  "buddy_mart_system": {
+    "currency": "Buddy Coins",
+    "earn_condition": "Team up with newbie and returning players",
+    "benefits": "Faster LINK progress accumulation and additional character fragments"
+  }
+}
