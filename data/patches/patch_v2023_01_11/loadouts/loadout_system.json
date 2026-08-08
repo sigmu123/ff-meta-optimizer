@@ -1,0 +1,52 @@
+{
+  "gloo_maker": {
+    "mechanic": "Produces Gloo Walls automatically over time.",
+    "levels": [
+      { "level": 1, "cumulative_exp_required": 0, "max_gloo_wall_capacity": 4, "production_time_seconds": 100 },
+      { "level": 2, "cumulative_exp_required": 200, "max_gloo_wall_capacity": 5, "production_time_seconds": 90 },
+      { "level": 3, "cumulative_exp_required": 500, "max_gloo_wall_capacity": 6, "production_time_seconds": 80 },
+      { "level": 4, "cumulative_exp_required": 900, "max_gloo_wall_capacity": 7, "production_time_seconds": 70 },
+      { "level": 5, "cumulative_exp_required": 1300, "max_gloo_wall_capacity": 8, "production_time_seconds": 60 }
+    ],
+    "exp_sources": {
+      "passive_gain": "1 EXP per second",
+      "damage_dealt": "0.5 EXP per 1 damage dealt",
+      "gloo_chip": "200 EXP on pickup"
+    },
+    "gloo_wall_acquisition": [
+      "Produced by Gloo Maker over time",
+      "Looting an enemy you eliminated: Grants 2 Gloo Walls",
+      "Looting an enemy someone else eliminated: Grants 1 Gloo Wall to looter and 1 to eliminator"
+    ]
+  },
+  "jammer": {
+    "slot": "Backpack",
+    "detection_immunity": ["Clu's Tracing Steps", "Memory Mist", "Binoculars", "UAVs"],
+    "minimap_hide_position": true,
+    "acquisition": ["Airdrops"]
+  },
+  "loot_radar": {
+    "default_equipped": true,
+    "scan_radius_meters": 75,
+    "scan_interval_seconds": 25,
+    "targets": "Unowned and higher-level loot",
+    "notification_type": "Pin",
+    "manual_toggle_in_backpack": true
+  },
+  "solo_revival": {
+    "modes": ["BR Solo Casual", "BR Solo Ranked"],
+    "uses_per_match": 1,
+    "time_window_minutes": 3,
+    "hud_indicators": {
+      "gray_heart": "Inactive",
+      "yellow_heart": "Active",
+      "red_heart": "Active, shuts down in 30 seconds"
+    }
+  },
+  "supply_crate": {
+    "revival_rewards": {
+      "option_1": "200 FF Coins, 1x AK47, 30x AR Ammo",
+      "option_2": "200 FF Coins, 1x Thompson, 60x SMG Ammo"
+    }
+  }
+}
