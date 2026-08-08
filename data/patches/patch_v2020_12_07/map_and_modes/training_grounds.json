@@ -1,0 +1,15 @@
+{
+  "training_grounds_updates": {
+    "currency_and_items": [
+      {
+        "currency_name": "Bermuda Shells",
+        "description": "Earned by participating in minigames and social activities",
+        "use": "Exchanged for consumable Fireworks"
+      }
+    ],
+    "additions": [
+      "Music Arcade added",
+      "Dynamic Lighting system introduced (environment lighting adjusts based on real-time factors)"
+    ]
+  }
+}
