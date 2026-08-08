@@ -1,0 +1,51 @@
+{
+  "ui_hud_updates": {
+    "damage_indicators": "New visual indicator introduced for damage inflicted on shields",
+    "gloo_wall_chrono": "Optimized deployment experience inside Chrono's shield",
+    "backpack_management": {
+      "smart_pop_up": "Displays excess/replaceable items when attempting loot with a full bag",
+      "item_arrangement": "Prioritizes ammo, coins, and Med Kits in top rows",
+      "drop_all_zone": "Dedicated discard zone to bypass quantity slider",
+      "special_ammo_handling": "Secondary weapon special ammo protected from auto-discard filter",
+      "bag_pouch_attachment": {
+        "status": "Removed",
+        "capacity_compensation": "Integrated into default base backpack capacity"
+      }
+    },
+    "battle_highlights": {
+      "cs_highlights": [
+        "Big Comeback",
+        "Easy Game"
+      ],
+      "br_highlights": [
+        "Team Annihilator",
+        "Avenged"
+      ]
+    }
+  },
+  "controls_and_physics": {
+    "vehicle_autopilot": "Added dedicated autopilot button",
+    "jump_reloading": "Reloading allowed while jumping",
+    "fpp_mode": {
+      "mode_supported": "Clash Squad FPP",
+      "optimizations": [
+        "Camera adjustment",
+        "Shooting mechanics fine-tuning",
+        "Movement actions and speed smoothings",
+        "Visual enemy proximity alerts",
+        "Dedicated FPP sensitivity settings in menu"
+      ]
+    }
+  },
+  "custom_rooms": {
+    "duo_active_skills_mode": true,
+    "special_airdrop_gameplay_toggle": true
+  },
+  "sound_and_graphics": {
+    "audio_balance_descriptions": "Updated and improved in sound settings",
+    "smooth_graphics_toggle": "Added on/off switch for collection special effects on high-end devices"
+  },
+  "system_settings": {
+    "cloud_sync": "Automatic account settings upload/download enabled"
+  }
+}
