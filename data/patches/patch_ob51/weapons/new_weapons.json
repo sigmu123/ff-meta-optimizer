@@ -1,0 +1,30 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Winchester",
+      "weapon_type": "Marksman Rifle",
+      "fire_mode": "2-round burst",
+      "reload_type": "Partial reload (loads several bullets per action)",
+      "sources": ["BR Ground Loot", "BR Vending Machines", "CS Store"],
+      "upgrade_tiers": {
+        "base": "Reloads 2 bullets at a time",
+        "tier_I": "Reloads 4 bullets at a time, Rate of Fire +",
+        "tier_II": "Reloads 4 bullets at a time, Rate of Fire ++",
+        "tier_III": "Reloads 6 bullets at a time, Rate of Fire +++"
+      }
+    },
+    {
+      "weapon_name": "Thompson-X",
+      "weapon_type": "Submachine Gun (Airdrop Variant)",
+      "stat_buffs": {
+        "damage_percent": "+3%",
+        "rate_of_fire_percent": "+8%",
+        "armor_penetration_percent": "+18%",
+        "range_percent": "+15%",
+        "reload_speed_percent": "+15%",
+        "accuracy_percent": "+5%",
+        "pre_equipped_scope": "2x Scope"
+      }
+    }
+  ]
+}
