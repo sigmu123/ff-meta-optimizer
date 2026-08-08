@@ -1,0 +1,29 @@
+{
+  "clash_squad_updates": {
+    "map_balancing": {
+      "kalahari": {
+        "locations": ["The Maze", "Council Hall"],
+        "adjustment": "Moved spawn points horizontally to ensure equal distance to high ground for both teams"
+      }
+    },
+    "scoreboard_enhancements": {
+      "teammates": "Displays active skill status and real-time cooldown timer",
+      "opponents": "Displays equipped active skills"
+    },
+    "qol_and_rules": {
+      "ace_applause_limit": 10,
+      "force_quit_restriction": "Force quit option disabled in CS-Ranked settings menu",
+      "reconnection_window": "Extended reconnection timeframe for CS-Ranked across logins",
+      "uav_minimap_display": "Optimized visual display"
+    }
+  },
+  "battle_royale_updates": {
+    "safe_zone_logic": {
+      "final_safe_zone_generation": "Enhanced randomness algorithm",
+      "outside_zone_damage_scaling": "Reduced delay timer before outside zone damage steps up under continuous exposure"
+    }
+  },
+  "lone_wolf_mode": {
+    "added_weapons": ["FF Knife"]
+  }
+}
