@@ -10,25 +10,24 @@ if current_dir not in sys.path:
     sys.path.append(current_dir)
 
 class HybridMetaEngine:
-    def __init__(self, patch_name="patch_ob54"):
+    def __init__(self, patch_name="all"):
         self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir)
         self.ttk_calc = TTKCalculator()
         
-        # Datasets (Now prioritizing Dynamic JSON over hardcoded limits)
-        self.actives = list(self.loader.active_skills.keys()) if self.loader.active_skills else ["alok", "chrono", "tatsuya", "wukong"]
-        self.passives = list(self.loader.passive_skills.keys()) if self.loader.passive_skills else ["kelly", "hayato", "moco", "maxim", "shirou", "jota"]
-        self.weapons = self.loader.weapons if self.loader.weapons else {"mp40": {"damage": 32, "rate_of_fire": 12}, "groza": {"damage": 38, "rate_of_fire": 10}}
-        self.pets = self.loader.pets if self.loader.pets else ["Rockie", "Mr. Waggor", "Beaston", "Falco"]
-        self.loadouts = self.loader.loadouts if self.loader.loadouts else ["Pocket Market", "Leg Pockets", "Bounty Token", "Bonfire"]
+        # FIX 3: Removed hardcoded defaults (Tatsuya, Kelly, etc.). Engine relies strictly on JSON now.
+        self.actives = list(self.loader.active_skills.keys())
+        self.passives = list(self.loader.passive_skills.keys())
+        self.weapons = self.loader.weapons
+        self.pets = self.loader.pets if self.loader.pets else ["Rockie"] # Minimal safe fallback for pet
+        self.loadouts = self.loader.loadouts if self.loader.loadouts else ["Bonfire"]
 
-    # ==========================================
-    # STAGE 1: CONSTRAINT PROGRAMMING (CSP)
-    # ==========================================
+        if not self.actives or not self.passives:
+            raise ValueError("[!] Critical Error: Active or Passive skills failed to load from JSON. Check patch schemas.")
+
     def _is_valid_chromosome(self, active, p1, p2, p3):
-        """Filters out illegal combinations before they waste processing time"""
         passive_set = {p1, p2, p3}
-        if len(passive_set) != 3: return False # No duplicate passives
-        if active in passive_set: return False # Active cannot be in passives
+        if len(passive_set) != 3: return False
+        if active in passive_set: return False
         return True
 
     def _generate_random_valid_squad(self):
@@ -38,25 +37,19 @@ class HybridMetaEngine:
             if self._is_valid_chromosome(act, p1, p2, p3):
                 return {
                     "active": act, 
-                    "passives": sorted([p1, p2, p3]), # Sort for easy deduplication
+                    "passives": sorted([p1, p2, p3]),
                     "pet": random.choice(self.pets),
                     "loadout": random.choice(self.loadouts)
                 }
 
-    # ==========================================
-    # STAGE 2: GENETIC ALGORITHM (GA) SEARCH
-    # ==========================================
     def _fitness_function(self, squad):
-        """Scoring logic based on synergy and CD overlaps"""
-        score = 50.0 # Base win rate
-        
-        # Synergy Logic
+        score = 50.0 
         act_name = squad["active"]
         passives = squad["passives"]
         
-        if act_name == "tatsuya" and "kelly" in passives: score += 15.0  # Rush Synergy
-        if act_name == "chrono" and str(squad["pet"]).lower() == "rockie": score += 10.0 # Cooldown Synergy
-        if "hayato" in passives: score += 8.0 # Meta standard
+        if act_name == "tatsuya" and "kelly" in passives: score += 15.0  
+        if act_name == "chrono" and str(squad["pet"]).lower() == "rockie": score += 10.0 
+        if "hayato" in passives: score += 8.0 
         
         return min(99.9, score)
 
@@ -68,30 +61,25 @@ class HybridMetaEngine:
             "loadout": parent2["loadout"]
         }
         
-        # Mutation
-        if random.random() < 0.1: # 10% mutation rate
+        if random.random() < 0.1: 
             child["active"] = random.choice(self.actives)
         
-        # CSP Validation Fallback
         if not self._is_valid_chromosome(child["active"], *child["passives"]):
-            return parent1 # Keep parent if mutation is illegal
+            return parent1 
             
         child["passives"] = sorted(child["passives"])
         return child
 
-    def run_ga_pipeline(self, generations=10, population_size=50):
-        # 1. Init Population
+    # FIX 6: Increased Default GA Size and dynamically configured limit output
+    def run_ga_pipeline(self, generations=25, population_size=200, output_limit=10):
         population = [self._generate_random_valid_squad() for _ in range(population_size)]
         
         for gen in range(generations):
-            # Evaluate Fitness
             scored_pop = [(squad, self._fitness_function(squad)) for squad in population]
             scored_pop.sort(key=lambda x: x[1], reverse=True)
             
-            # Selection (Top 50%)
             survivors = [x[0] for x in scored_pop[:population_size//2]]
             
-            # Crossover to fill population
             next_gen = survivors.copy()
             while len(next_gen) < population_size:
                 p1, p2 = random.sample(survivors, 2)
@@ -99,7 +87,6 @@ class HybridMetaEngine:
                 
             population = next_gen
             
-        # Final Evaluation and Deduplication Phase
         final_scored = [(squad, self._fitness_function(squad)) for squad in population]
         final_scored.sort(key=lambda x: x[1], reverse=True)
         
@@ -107,31 +94,26 @@ class HybridMetaEngine:
         seen_signatures = set()
         
         for squad, score in final_scored:
-            # Create a unique hashable signature for each build
             signature = (squad["active"], tuple(squad["passives"]), squad["pet"], squad["loadout"])
             
             if signature not in seen_signatures:
                 seen_signatures.add(signature)
                 unique_squads.append((squad, score))
                 
-            if len(unique_squads) == 5: # Limit to top 5 unique
+            # Removed the hardcoded '5' limit. Output limit is now parameterized.
+            if len(unique_squads) == output_limit: 
                 break
                 
         return unique_squads
 
-    # ==========================================
-    # STAGE 3: DYNAMIC CONTEXT MULTIPLIERS
-    # ==========================================
     def apply_context_multipliers(self, top_squads, playstyle="rush"):
         results = []
         for squad, base_score in top_squads:
             final_score = base_score
             
-            # Playstyle Multipliers
             if playstyle == "rush" and str(squad["loadout"]).lower() == "leg pockets": final_score += 2.5
             if playstyle == "sniper" and "moco" in squad["passives"]: final_score += 5.0
             
-            # Get Best Weapon Combos via TTK Math
             best_weapons = self._get_optimal_weapons()
             
             results.append({
@@ -146,7 +128,7 @@ class HybridMetaEngine:
         w_scores = []
         for w_id, w_data in self.weapons.items():
             stats = self.ttk_calc.calculate_weapon_ttk(w_data)
-            if stats["ttk"] < 10: # Filter invalid
+            if stats["ttk"] < 10: 
                 score = (stats["effective_damage"] * 2) - (stats["ttk"] * 100)
                 w_scores.append({"name": str(w_id).upper(), "ttk": stats["ttk"], "score": score})
         
@@ -161,12 +143,16 @@ if __name__ == "__main__":
     print("    HYBRID META OPTIMIZER ENGINE (CSP + GA + MULTIPLIERS)")
     print("=" * 70)
     
-    engine = HybridMetaEngine()
+    # Defaults to loading all patches dynamically
+    engine = HybridMetaEngine(patch_name="all")
     print("[*] Running Genetic Search Space (Billions of combinations reduced)...")
     
-    # Run the Pipeline
-    top_raw_squads = engine.run_ga_pipeline(generations=15, population_size=100)
-    final_meta = engine.apply_context_multipliers(top_raw_squads, playstyle="rush")
+    # Using increased permutations for better accuracy
+    top_raw_squads = engine.run_ga_pipeline(generations=25, population_size=200, output_limit=10)
+    
+    # Read playstyle from environment variable injected by GitHub actions
+    playstyle_env = os.getenv("FF_PLAYSTYLE", "rush").lower()
+    final_meta = engine.apply_context_multipliers(top_raw_squads, playstyle=playstyle_env)
     
     for rank, setup in enumerate(final_meta, 1):
         b = setup["build"]
