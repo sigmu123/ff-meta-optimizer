@@ -1,0 +1,203 @@
+{
+  "skill_reworks": [
+    {
+      "character": "Kapella",
+      "skill_name": "Remedy Rounds",
+      "changes": {
+        "ammo_healing_percent_of_damage": 20,
+        "heal_pistol_effect_increase_percent": 20
+      }
+    },
+    {
+      "character": "Olivia",
+      "skill_name": "Healing Touch",
+      "changes": {
+        "healing_effects_boost_percent": 30,
+        "single_target_healing_spread_percent": 80,
+        "spread_range_meters": 15
+      }
+    },
+    {
+      "character": "Skyler",
+      "skill_name": "Riptide Rhythm",
+      "changes": {
+        "sonic_wave_range_meters": 100,
+        "gloo_wall_damage_per_sec": 500,
+        "explosion_radius_meters": 4,
+        "duration_seconds": 6,
+        "cooldown_seconds": 45,
+        "max_skill_charges": 2
+      }
+    },
+    {
+      "character": "Nairi",
+      "skill_name": "Ice Iron",
+      "changes": {
+        "gloo_wall_durability_restore_per_sec": {
+          "old": 150,
+          "new": 160
+        },
+        "teammate_hp_restore_per_sec": {
+          "old": 20,
+          "new": 10
+        },
+        "healing_range_meters": 5,
+        "duration_seconds": 3,
+        "stackable": false
+      }
+    }
+  ],
+  "skill_adjustments": [
+    {
+      "character": "Alok & Awakened Alok",
+      "skill_name": "Party Remix",
+      "changes": {
+        "music_note_duration_seconds": 5,
+        "drop_interval_seconds": 2,
+        "drop_distance_behind_user_meters": 2,
+        "pickup_buff_movement_speed_percent": 15,
+        "pickup_buff_hp_restore_per_sec": "3-5",
+        "buff_duration_seconds": 10
+      }
+    },
+    {
+      "character": "Chrono",
+      "skill_name": "Time Turner",
+      "changes": {
+        "force_field_durability_damage": 888,
+        "duration_seconds": {
+          "old": 6,
+          "new": 8
+        },
+        "cooldown_seconds": 75
+      }
+    },
+    {
+      "character": "Wukong",
+      "skill_name": "Camouflage",
+      "changes": {
+        "bush_duration_seconds": 15,
+        "cooldown_seconds": {
+          "old": 200,
+          "new": 75
+        },
+        "cd_reset_on_takedown": true
+      }
+    },
+    {
+      "character": "Clu",
+      "skill_name": "Tracing Steps",
+      "changes": {
+        "scan_range_meters": {
+          "old": 65,
+          "new": 80
+        },
+        "duration_seconds": 10,
+        "cooldown_seconds": 45,
+        "shared_with_teammates": true
+      }
+    },
+    {
+      "character": "Ford",
+      "skill_name": "Iron Will",
+      "changes": {
+        "hp_restore_per_sec": 10,
+        "duration_seconds": {
+          "old": 3,
+          "new": 4
+        },
+        "reset_condition": "Releasing an active skill",
+        "cooldown_seconds": 20
+      }
+    },
+    {
+      "character": "Shirou",
+      "skill_name": "Damage Delivered",
+      "changes": {
+        "trigger_range_meters": 100,
+        "mark_duration_seconds": {
+          "old": 6,
+          "new": 10
+        },
+        "max_markings": 4,
+        "shared_with_teammates": true
+      }
+    }
+  ],
+  "defensive_skill_adjustments": [
+    {
+      "character": "Andrew",
+      "skill_name": "Armor Specialist",
+      "changes": {
+        "armor_durability_loss_reduction_percent": {
+          "old": 25,
+          "new": 40
+        }
+      }
+    },
+    {
+      "character": "Andrew \"The Fierce\"",
+      "skill_name": "Wolf Pack",
+      "changes": {
+        "base_armor_damage_reduction_percent": {
+          "old": 15,
+          "new": 5
+        },
+        "additional_reduction_per_teammate_percent": 5
+      }
+    },
+    {
+      "character": "J. Biebs",
+      "skill_name": "Silent Sentinel",
+      "changes": {
+        "range_meters": {
+          "old": 12,
+          "new": 15
+        },
+        "damage_blocked_using_ep_percent": {
+          "old": 12,
+          "new": 8
+        }
+      }
+    },
+    {
+      "character": "Shani",
+      "skill_name": "Gear Recycle",
+      "changes": {
+        "shield_points": {
+          "old": 50,
+          "new": 40
+        },
+        "range_meters": 10,
+        "shield_decay_delay_seconds": 5,
+        "cooldown_seconds": 18
+      }
+    },
+    {
+      "character": "Wolfrahh",
+      "skill_name": "Limelight",
+      "changes": {
+        "headshot_damage_taken_reduction_per_spectator_percent": {
+          "old": 18,
+          "new": 7
+        },
+        "max_headshot_damage_taken_reduction_percent": {
+          "old": 30,
+          "new": 21
+        },
+        "headshot_damage_dealt_increase_per_spectator_percent": 18,
+        "max_headshot_damage_dealt_increase_percent": 30
+      }
+    },
+    {
+      "character": "Hayato \"The Firebrand\"",
+      "skill_name": "Art of Blades",
+      "changes": {
+        "frontal_damage_reduction_per_10_percent_hp_loss": {
+          "old": 3,
+          "new": 2
+        }
+      }
+    }
+  ]
+}
