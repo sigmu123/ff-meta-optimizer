@@ -1,0 +1,42 @@
+{
+  "elimination_replay": {
+    "enabled": true,
+    "replay_duration_seconds": 5,
+    "cheating_report_option": true
+  },
+  "zipline_system_overhaul": {
+    "mechanic": "Magnetic hands-free ziplines",
+    "features": [
+      "Speed boost button",
+      "Reverse direction button",
+      "360-degree screen rotation while riding",
+      "Allows shooting, using Med Kits, and throwing grenades/throwables on zipline"
+    ]
+  },
+  "finishing_move_rework": {
+    "weapon_types": "Fists, Pans, and Melee weapons",
+    "buffs_granted_post_execution": {
+      "temporary_shield_points": 20,
+      "movement_speed_boost_percent": 15,
+      "buff_duration_seconds": 4
+    },
+    "cooldown_seconds": 20
+  },
+  "hud_and_combat_qol": {
+    "sniper_crosshair": "Permanent crosshair displayed at screen center without scoping",
+    "scythe_mechanics": "Charged dash feature removed",
+    "charge_buster_warning": "In-game audio/visual alert when an enemy nearby is charging Charge Buster",
+    "cyber_mushroom": "Can now be activated using melee attacks and fists",
+    "scope_hud": "Magnification level indicated under scope HUD",
+    "backpack_hud": "Updated attachment slot icons matching equipped and unequipped states",
+    "homer_skill_targeting": "Prioritizes alive enemies over downed enemies"
+  },
+  "custom_room_features": {
+    "quit_out_penalty": "Bans players from joining other rooms if quitting early or AFK",
+    "save_custom_preset": "Allows saving room rules as presets (excluding name/password)",
+    "headshot_only_mode": "Dedicated headshot setting toggle added"
+  },
+  "graphics_performance": {
+    "performance_mode": "Added under Ultra and MAX graphics to boost FPS, minimize heating, and extend battery life"
+  }
+}
