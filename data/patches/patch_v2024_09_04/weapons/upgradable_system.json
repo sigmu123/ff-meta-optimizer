@@ -1,0 +1,39 @@
+{
+  "upgradable_weapon_adjustments": [
+    {
+      "weapon_name": "M60",
+      "mechanics_rework": "Upgrade tiers now increase base damage directly instead of boosting consecutive shots damage bonus. Reduced extra damage to Gloo Walls.",
+      "tiers": {
+        "M60-I": {
+          "damage_boost_percent": 5
+        },
+        "M60-II": {
+          "damage_boost_percent": 10
+        },
+        "M60-III": {
+          "damage_boost_percent": 15
+        }
+      }
+    },
+    {
+      "weapon_name": "AUG",
+      "tiers": {
+        "AUG_Base": {
+          "damage_percent": 3,
+          "armor_penetration_percent": -5
+        },
+        "AUG-I": {
+          "damage_percent": 3,
+          "armor_penetration_percent": -5
+        },
+        "AUG-II": {
+          "damage_percent": 3,
+          "armor_penetration_percent": -5
+        },
+        "AUG-III": {
+          "armor_penetration_percent": -5
+        }
+      }
+    }
+  ]
+}
