@@ -1,0 +1,13 @@
+{
+  "patch_version": "OB40",
+  "release_date": "2023-05-30",
+  "patch_name": "6th Anniversary Hype Up",
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system"
+  ]
+}
