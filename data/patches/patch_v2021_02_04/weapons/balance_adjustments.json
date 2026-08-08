@@ -1,0 +1,89 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "Vector",
+      "category": "Submachine Gun",
+      "adjustments": {
+        "minimum_damage": -1,
+        "maximum_range_akimbo": -4,
+        "accuracy_akimbo_percentage": -18
+      }
+    },
+    {
+      "weapon_name": "M1014",
+      "category": "Shotgun",
+      "adjustments": {
+        "minimum_damage": 3,
+        "rate_of_fire_percentage": 5,
+        "audio": "Updated firing sound effect"
+      }
+    },
+    {
+      "weapon_name": "M1887",
+      "category": "Shotgun",
+      "adjustments": {
+        "maximum_range": "Reduced"
+      }
+    },
+    {
+      "weapon_name": "PARAFAL",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "recoil_percentage": 9,
+        "maximum_range_percentage": -15,
+        "magazine_slot": "Removed"
+      }
+    },
+    {
+      "weapon_name": "Woodpecker",
+      "category": "Marksman Rifle",
+      "adjustments": {
+        "rate_of_fire_percentage": -8,
+        "magazine_slot": "Removed"
+      }
+    },
+    {
+      "weapon_name": "UMP",
+      "category": "Submachine Gun",
+      "adjustments": {
+        "armor_penetration_percentage": 30,
+        "armor_penetration_increase_percentage": 5,
+        "minimum_damage": 1
+      }
+    },
+    {
+      "weapon_name": "M249",
+      "category": "LMG",
+      "adjustments": {
+        "movement_speed_while_firing_percentage": 18,
+        "minimum_range_percentage": 4,
+        "moving_accuracy_percentage": -4
+      }
+    },
+    {
+      "weapon_name": "SVD",
+      "category": "Sniper / Marksman Rifle",
+      "adjustments": {
+        "rate_of_fire_percentage": -9,
+        "additional_body_damage_percentage": { "previous": 50, "new": 40 }
+      }
+    },
+    {
+      "weapon_name": "GROZA",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "rate_of_fire_percentage": 8,
+        "minimum_damage": 3,
+        "recoil_reduction_percentage": 6,
+        "limb_damage_multiplier": "Deals 100% damage to arms and legs"
+      }
+    },
+    {
+      "weapon_name": "FAMAS-X",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "availability": "Added to Classic Mode"
+      }
+    }
+  ]
+}
