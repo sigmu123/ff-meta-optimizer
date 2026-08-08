@@ -1,0 +1,47 @@
+{
+  "ui_and_hud_enhancements": {
+    "redesigned_interfaces": [
+      "Lobby interface layout",
+      "Pop-up window layouts",
+      "Mode Selection Page (BR and CS casual maps merged into single entrances for multi-selection matchmaking)",
+      "Daily/Weekly Missions page (includes Daily Chest and Free Pass progress)",
+      "Match Results page (displays mission progress and EP badges)"
+    ],
+    "gloo_wall_smart_throw": {
+      "setting_toggle": "Available in settings menu",
+      "single_tap": "Instantly places Gloo Wall directly in front of player",
+      "press_and_hold": "Allows precision targeting and releases to confirm placement"
+    },
+    "in_game_command_wheels": {
+      "activation": "Hold 'use' button",
+      "supported_wheels": [
+        "Quick messages",
+        "Throwables",
+        "Med Kits"
+      ]
+    },
+    "minimap_pinning": "Teammates outside standard minimap view scope are pinned at minimap edges to indicate direction"
+  },
+  "qol_and_system_optimizations": {
+    "favorite_character_system": "Pin favorite characters to top of Characters page and Equip Skills page",
+    "replay_system": {
+      "perspective_toggle": "Supports switching between First-Person and Third-Person views",
+      "killfeed_announcements": ["Knockdown", "Elimination", "Assist", "First Blood", "Multi-elimination"],
+      "match_highlights": "Automatic generation based on performance with background music toggle"
+    },
+    "auto_pickup": "Ground loot list ordered strictly according to user Auto-Pickup priority settings",
+    "social_and_lobby": {
+      "party_muting": "Mute/unmute individual teammates in lobby or custom rooms",
+      "match_join_requests": "Send join request/whisper when accepting friend booking while in squad",
+      "teamcodes": "Supports direct copy and paste",
+      "friend_recommendations": "Optimized post-match recommendation algorithm"
+    },
+    "visual_and_audio_fx": {
+      "gold_acquisition": "Special animated visual effect on Gold increase",
+      "upgrade_chips": "Optimized user experience and UI",
+      "charge_buster": "Optimized firing sound effects",
+      "skill_icon_fx": "Enhanced visual status indicators for active passive skills and A124 silence status",
+      "flashbang": "Optimized visual hit-feedback effects"
+    }
+  }
+}
