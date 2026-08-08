@@ -1,0 +1,15 @@
+{
+  "version": "v2021_06_08",
+  "patch_name": "Rampage",
+  "publish_date": "2021-06-08",
+  "active_submodules": [
+    "characters_and_pets/characters_and_pets.json",
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/cs_ranked_season7.json",
+    "map_and_modes/battle_royale_mechanics.json",
+    "map_and_modes/training_grounds.json",
+    "map_and_modes/pet_rumble.json",
+    "system/engine_and_ui.json"
+  ]
+}
