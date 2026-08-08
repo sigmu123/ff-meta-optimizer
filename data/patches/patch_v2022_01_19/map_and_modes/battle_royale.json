@@ -1,0 +1,24 @@
+{
+  "battle_royale_updates": {
+    "safe_zone_pace": {
+      "adjustment": "Accelerated speed and reduced time for initial Safe Zone shrinks in Classic BR"
+    },
+    "map_updates": {
+      "location": "Nurek Dam (Bermuda)",
+      "status": "Full area rework and visual renovation"
+    },
+    "in_game_events": {
+      "airdrop_vending_machine": "Added discounted items",
+      "war_chests": "Gear quality scales higher as match progresses",
+      "airdrops": "Equipment rarity increases as match progresses"
+    },
+    "revival_system": {
+      "orient_facing": "Parachuting players automatically face towards the Safe Zone",
+      "default_spawn_loadout": [
+        "Level 1 Helmet",
+        "Level 1 Vest",
+        "Pistol"
+      ]
+    }
+  }
+}
