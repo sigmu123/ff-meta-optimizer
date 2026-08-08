@@ -1,0 +1,81 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Dimitri",
+      "skill_name": "Healing Heartbeat",
+      "skill_type": "Active",
+      "description": "Creates a 3.5m healing zone. Inside, users and allies recover 3HP/s. When downed, users and allies can self-recover to get up.",
+      "stats_by_level": {
+        "duration_seconds": [10, 11, 12, 13, 14, 15],
+        "cooldown_seconds": [85, 80, 75, 70, 65, 60]
+      }
+    },
+    {
+      "character_name": "Thiva",
+      "skill_name": "Vital Vibes",
+      "skill_type": "Passive",
+      "description": "Rescue (help-up) speed increases. Upon a successful rescue, user recovers HP in 5s.",
+      "stats_by_level": {
+        "help_up_speed_increase_percentage": [5, 8, 11, 14, 17, 20],
+        "hp_recovered_on_rescue": [15, 20, 25, 30, 35, 40]
+      }
+    }
+  ],
+  "character_adjustments": [
+    {
+      "character_name": "Jota",
+      "skill_name": "Sustained Raids",
+      "skill_type": "Passive",
+      "rework_type": "Mechanism Rework",
+      "adjustments": {
+        "on_hit_effect": "When using guns, hitting an enemy recovers some HP for the user",
+        "on_knockdown_hp_recovery_percentage": [10, 12, 14, 16, 18, 20]
+      }
+    },
+    {
+      "character_name": "Luqueta",
+      "skill_name": "Hat Trick",
+      "skill_type": "Passive",
+      "adjustments": {
+        "max_hp_increase_per_kill": {
+          "previous": [8, 10, 12, 14, 16, 18],
+          "new": [10, 13, 16, 19, 22, 25]
+        },
+        "max_hp_cap": {
+          "previous": 35,
+          "new": 50
+        }
+      }
+    },
+    {
+      "character_name": "Shani",
+      "skill_name": "Gear Recycle",
+      "skill_type": "Passive",
+      "adjustments": {
+        "armor_durability_restore_percentage_per_kill": {
+          "previous": [10, 12, 14, 16, 18, 20],
+          "new": [10, 12, 15, 19, 24, 30]
+        },
+        "extra_effect": "Extra durability can upgrade your armor, up to level 3"
+      }
+    },
+    {
+      "character_name": "Alvaro",
+      "skill_name": "Art of Demolition",
+      "skill_type": "Passive",
+      "adjustments": {
+        "explosive_weapon_damage_increase_percentage": {
+          "previous": [6, 8, 10, 12, 14, 16],
+          "new": [10, 12, 14, 16, 18, 20]
+        }
+      }
+    }
+  ],
+  "new_pets": [
+    {
+      "pet_name": "Sensei Tig",
+      "skill_name": "Nimble Ninja",
+      "description": "Reduces the duration of enemies' man-marking skills."
+    }
+  ]
+}
