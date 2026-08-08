@@ -1,0 +1,11 @@
+{
+  "clash_squad_season_4": {
+    "start_date": "2020-12-08 17:00 SGT",
+    "season_reward": "The Golden P90 (Gold III or above)",
+    "matchmaking_adjustments": [
+      "Premade squads prioritized to match against other premade squads",
+      "Reduced Rank Shield points awarded to premade squads",
+      "Bonus Rank Shields awarded upon ranking up"
+    ]
+  }
+}
