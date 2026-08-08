@@ -1,0 +1,14 @@
+{
+  "version": "v2022_05_25",
+  "patch_name": "RAMPAGE",
+  "publish_date": "2022-05-25",
+  "active_submodules": [
+    "system/gaming_environment.json",
+    "characters/character_updates.json",
+    "map_and_modes/gameplay_and_modes.json",
+    "map_and_modes/cs_store.json",
+    "battle_royale/economy_and_loot.json",
+    "weapons/weapons_and_balance.json",
+    "system/engine_and_ui.json"
+  ]
+}
