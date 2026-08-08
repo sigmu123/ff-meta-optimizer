@@ -1,0 +1,77 @@
+{
+  "character_adjustments": [
+    {
+      "character_name": "Chrono",
+      "skill_name": "Time Turner",
+      "skill_type": "Active",
+      "rework_type": "Mechanic Overhaul",
+      "adjustments": {
+        "shield_hp": {
+          "previous": 600,
+          "new": 800
+        },
+        "duration_seconds_by_level": {
+          "previous": [3, 3, 4, 4, 5, 5],
+          "new": [4, 4, 5, 5, 6, 6]
+        },
+        "cooldown_seconds_by_level": {
+          "previous": [250, 242, 235, 229, 224, 220],
+          "new": [180, 164, 158, 138, 128, 120]
+        },
+        "removed_effects": [
+          "Firing at outside foes from within the force field",
+          "Movement speed bonus (5/6/7/8/9/10%)"
+        ],
+        "new_mechanic": "Force field blocks all damage sources from both inside and outside (two-way protection)"
+      }
+    },
+    {
+      "character_name": "Maxim",
+      "skill_name": "Gluttony",
+      "skill_type": "Passive",
+      "adjustments": {
+        "medkit_and_food_speed_percentage_by_level": {
+          "previous": [15, 18, 22, 27, 33, 40],
+          "new": [5, 8, 12, 17, 23, 38]
+        }
+      }
+    },
+    {
+      "character_name": "K",
+      "skill_name": "Master of All",
+      "skill_type": "Active",
+      "adjustments": {
+        "psychology_mode_ep_recovery": {
+          "previous": "2 EP every 3/2.8/2.6/2.4/2.2/2.0s",
+          "new": "3 EP every 2.2/2.0/1.8/1.6/1.4/1.0s"
+        },
+        "max_ep_cap_by_level": {
+          "previous": [100, 110, 120, 130, 140, 150],
+          "new": [150, 170, 190, 210, 230, 250]
+        }
+      }
+    },
+    {
+      "character_name": "D-Bee",
+      "skill_name": "Bullet Beats",
+      "skill_type": "Passive",
+      "adjustments": {
+        "accuracy_increase_percentage_by_level": {
+          "previous": [10, 13, 17, 22, 28, 35],
+          "new": [20, 23, 27, 32, 38, 45]
+        }
+      }
+    },
+    {
+      "character_name": "Thiva",
+      "skill_name": "Vital Vibes",
+      "skill_type": "Passive",
+      "adjustments": {
+        "help_up_speed_increase_percentage_by_level": {
+          "previous": [5, 8, 11, 14, 17, 20],
+          "new": [10, 13, 16, 19, 22, 25]
+        }
+      }
+    }
+  ]
+}
