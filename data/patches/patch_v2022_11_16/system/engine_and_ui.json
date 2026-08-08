@@ -1,0 +1,41 @@
+{
+  "weapon_mastery_system": {
+    "access_path": "Lobby > Armory > Weapon Mastery",
+    "excluded_weapons": ["Melees", "Grenades", "Ice Gun"],
+    "mastery_stages": ["Amateur", "Trained", "Experienced", "Advanced", "Pro"],
+    "stage_rewards": {
+      "advanced": "Permanent rare gun skin",
+      "pro": "Special visual celebration effect + unannounced mystery reward"
+    },
+    "progress_tracking": ["Eliminations", "Damage Inflicted", "Headshots", "Healing (Treatment Guns)"]
+  },
+  "ui_and_hud_enhancements": {
+    "minimap_rework": {
+      "position": "Right side of screen",
+      "interactions": "Can pin/unpin location, move, and use Med Kits while open",
+      "auto_close": "Closes when opening backpack or tapping cross button"
+    },
+    "dynamic_crosshairs": {
+      "exclusive_crosshairs": ["Melee", "Shotgun", "Rifle", "Marksman Rifle", "Treatment Gun", "Grenade Launcher"],
+      "color_indicators": {
+        "green": "Healing teammate",
+        "red": "Aiming at enemy",
+        "orange": "Aiming at destroyable object/Gloo Wall"
+      },
+      "feedback": ["Reload duration indicator", "New hit visual effect", "New knockdown visual effect"]
+    },
+    "friends_list": {
+      "displayed_status_info": ["Map", "Mode", "Play time"]
+    },
+    "ready_button_prompts": ["Center text prompt", "Sound effect", "Button visual pulse", "Device vibration"]
+  },
+  "audio_optimizations": {
+    "volume_increased": ["VSS", "AUG", "AR15", "Thompson", "Kord", "Handcannon", "Grenade"],
+    "volume_decreased": ["M14", "SCAR", "AK47"],
+    "item_sfx_overhaul": ["Dice", "UAV", "Wooden Crate Disguise", "Landmine", "Jet Pack Shoes", "Jumping Shoes", "Parachutes", "Skywings"]
+  },
+  "link_system_updates": {
+    "ui_prompts": ["New tag for recently added characters", "Hot tag for popular characters"],
+    "access": "Direct LINK buttons on character skill page"
+  }
+}
