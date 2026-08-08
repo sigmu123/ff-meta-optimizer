@@ -1,0 +1,27 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "MAC10",
+      "category": "SMG",
+      "base_stats": {
+        "base_damage": 24,
+        "rate_of_fire": 0.09
+      },
+      "special_ability": "Dead Silent - Pre-attached silencer"
+    }
+  ],
+  "new_armor_attachments": [
+    {
+      "attachment_name": "Vest Enlarger",
+      "compatible_equipment": "Vest",
+      "availability": ["Battle Royale"],
+      "effect": "Reduces damage received on limbs by 25%"
+    },
+    {
+      "attachment_name": "Helmet Thickener",
+      "compatible_equipment": "Helmet",
+      "availability": ["Battle Royale"],
+      "effect": "Reduces headshot damage received by 36%"
+    }
+  ]
+}
