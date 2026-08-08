@@ -1,0 +1,21 @@
+{
+  "map_updates": {
+    "nexterra_2_0": {
+      "zipway": "Replaced open empty terrain with a high-tech industrial park featuring enhanced loot density and core zipline connectivity.",
+      "grav_labs": "Lowered elevated platform heights, added connecting slope to outer stairs, removed outer barrier crouching ambushes.",
+      "farmtopia": "Removed select 2nd-floor barriers, shortened moving platform barriers, added 1st-floor conveyor belt covers.",
+      "mortar_ruins": "Reduced building spacing and reorganized structures for streamlined rotations.",
+      "outskirts_clusters": "Clustered scattered rural huts near Farmtopia, Museum, Grav Labs, Deca Square, and Plazaria into compact fight zones.",
+      "new_named_location": "Boxing Gym"
+    },
+    "bermuda": {
+      "hangar": "Removed warehouse edge tree in Clash Squad mode to eliminate unbalanced sniping positions."
+    }
+  },
+  "custom_modes": {
+    "lone_wolf_duo_active_skills": {
+      "status": "Enabled",
+      "mechanic": "Players equip 2 active skills simultaneously in Lone Wolf combat."
+    }
+  }
+}
