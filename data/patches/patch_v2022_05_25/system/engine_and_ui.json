@@ -1,0 +1,44 @@
+{
+  "pin_system_enhancements": {
+    "features": [
+      "Pinned locations display on minimap",
+      "Can pin while in knocked-down state",
+      "Increased maximum pin distance for distant objects/players",
+      "Press and hold loot list to pin individual item",
+      "Item pin duration extends automatically when teammate responds with OK"
+    ]
+  },
+  "hud_and_visual_alerts": {
+    "visual_gunfire_alert": {
+      "setting_toggle": "Available in settings menu",
+      "feature": "Displays on-screen directional indicators for incoming enemy gunfire"
+    },
+    "hud_customization": "Settings button location can be freely customized on HUD"
+  },
+  "communication_and_qol": {
+    "automated_quick_messages": [
+      "Automatic 'Thank you' when revived by a teammate",
+      "Automatic 'Thank you' when buy request is fulfilled in CS Store",
+      "Automatic 'Thank you' when picking up an item pinned by a teammate"
+    ],
+    "replay_system": "Extended support to Bomb Squad Mode and Lone Wolf Mode",
+    "in_match_feedback": "Upgraded visual thumbs-up design",
+    "team_lobby": "Lobby owner name now displayed while in squad"
+  },
+  "max_client_optimizations": {
+    "performance": [
+      "Reduced app file size",
+      "Lobby performance drain reduced",
+      "Reduced frame glitches and device thermal throttling during gameplay",
+      "Upgraded in-match sound effect output quality",
+      "Added character facial expression animations"
+    ],
+    "download_center_modular_resources": [
+      "Lone Wolf",
+      "Events",
+      "Alpine map",
+      "Select Collection assets"
+    ],
+    "in_team_download_tracker": "Tracks missing map/mode resource downloads per individual party/room member in real-time"
+  }
+}
