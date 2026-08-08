@@ -1,0 +1,101 @@
+{
+  "character_adjustments": [
+    {
+      "character_name": "Nero",
+      "skill_name": "Cryo Mind",
+      "type": "Active",
+      "adjustment_type": "Adjustment / Shift to Anti-Wall & Area Control",
+      "plushie_hp": {
+        "old_value": 150,
+        "new_value": 1
+      },
+      "plushie_duration_seconds": 12,
+      "max_range_meters": {
+        "clash_squad": 50,
+        "battle_royale": 100
+      },
+      "detection_radius_meters": 8,
+      "effect_radius_meters": 8,
+      "gloo_wall_disable_zone": true,
+      "enemy_hp_drain_per_second": {
+        "old_value": 18,
+        "new_value": 6
+      },
+      "mark_destroyer_duration_seconds": 5,
+      "cooldown_seconds": 45
+    },
+    {
+      "character_name": "Chrono",
+      "skill_name": "Time Turner",
+      "type": "Active",
+      "adjustment_type": "Buff",
+      "forcefield_shield_hp": 1000,
+      "prevents_outbound_attacks": true,
+      "duration_seconds": 18,
+      "cooldown_seconds": {
+        "old_value": 60,
+        "new_value": 45
+      }
+    },
+    {
+      "character_name": "Maro",
+      "skill_name": "Falcon Fervor",
+      "type": "Passive",
+      "adjustment_type": "Nerf",
+      "max_distance_damage_boost_percentage": {
+        "old_value": 25,
+        "new_value": 20
+      },
+      "marked_enemy_additional_damage_percentage": 5
+    },
+    {
+      "character_name": "Oscar",
+      "skill_name": "Valiant Dash",
+      "type": "Active",
+      "adjustment_type": "Nerf",
+      "dash_gloo_wall_detonation_count": 3,
+      "gloo_wall_damage": 25,
+      "enemy_impact_damage": 25,
+      "enemy_knockback_effect": true,
+      "cooldown_seconds": {
+        "old_value": 45,
+        "new_value": 60
+      }
+    },
+    {
+      "character_name": "Nikita",
+      "skill_name": "Firearms Expert",
+      "type": "Passive",
+      "adjustment_type": "Nerf",
+      "reload_speed_increase_percentage": {
+        "old_value": 30,
+        "new_value": 20
+      },
+      "anti_heal_deduction_percentage": 50,
+      "anti_heal_duration_seconds": 6,
+      "max_anti_heal_deduction_cap_percentage": 50
+    },
+    {
+      "character_name": "Olivia",
+      "skill_name": "Healing Touch",
+      "type": "Passive",
+      "adjustment_type": "Buff",
+      "self_healing_effect_boost_percentage": 30,
+      "single_target_healing_spread_percentage": {
+        "old_value": 80,
+        "new_value": 98
+      },
+      "spread_radius_meters": {
+        "old_value": 15,
+        "new_value": 20
+      }
+    },
+    {
+      "character_name": "Misha",
+      "skill_name": "Afterburner",
+      "type": "Passive",
+      "adjustment_type": "Extension",
+      "applies_to_horses": true
+    }
+  ]
+}
