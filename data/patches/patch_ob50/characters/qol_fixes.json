@@ -1,0 +1,12 @@
+{
+  "skill_indicator_optimizations": [
+    {
+      "characters": ["Ryden", "Ignis", "Oscar"],
+      "optimization_detail": "Skill indicators now dynamically adjust to slope inclines when casting on sloped terrain for precise distance control."
+    },
+    {
+      "character_name": "A124",
+      "optimization_detail": "Holding the skill button displays full throw trajectory arc and explosion radius before release."
+    }
+  ]
+}
