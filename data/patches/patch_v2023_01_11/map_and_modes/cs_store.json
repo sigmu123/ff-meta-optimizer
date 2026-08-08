@@ -1,0 +1,14 @@
+{
+  "shifting_play_zones": {
+    "mechanic": "After the first zone shrinks, a new target location randomly appears on the map. The Play Zone moves to that location before shrinking again to counter camping.",
+    "targeted_map_locations": ["Factory", "Clock Tower"]
+  },
+  "weapon_cost_adjustments": [
+    {
+      "weapon": "M14-II",
+      "old_cost": 1900,
+      "new_cost": 1700
+    }
+  ],
+  "new_store_weapons": ["M1917", "SVD", "M60"]
+}
