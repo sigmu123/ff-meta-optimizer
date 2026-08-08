@@ -1,0 +1,26 @@
+{
+  "hud_and_control_optimizations": {
+    "aim_assist": "When target lock is on a knocked-down enemy, crosshair moves easily to standing nearby enemies.",
+    "backpack_bullet_discarding": "Initial discard quantity for merged bullets changed from half to 1 full stack (30 bullets).",
+    "item_pickup_behavior": "Picking up a throwable while unarmed no longer automatically forces switching to hold the throwable.",
+    "weapon_switching": "Weapon switching allowed while jumping (excluding tire jumps and falling states).",
+    "animation_adjustments": "Running head position raised when holding Katana or Scythe.",
+    "sonia_orion_controls": "Buffered firing inputs execute immediately once skill restriction ends."
+  },
+  "ui_and_system_features": {
+    "lobby_network_ping_indicator": {
+      "white_icon": "Good connection",
+      "red_icon": "Poor connection",
+      "pop_up_prompts": "Triggers mandatory confirmation pop-up for team leader and members before matchmaking if ping is poor."
+    },
+    "in_match_compass": "Displays teammate directions on top HUD compass.",
+    "emotes": "Movement-based emotes can no longer be interrupted by sprinting.",
+    "graphics_optimization": "Low FPS warning offers a one-tap option to auto-apply recommended graphics/FPS quality.",
+    "team_up_and_booking": {
+      "play_again_button": "Available on spectator screen, Booyah screen, and post-match results page.",
+      "cross_team_invites": "Allows sending invites/bookings to players currently in another squad.",
+      "leader_transfer": "Leader title can be manually transferred; squad no longer disbands if leader leaves.",
+      "booking_slots": "Max 3 active booking slots; booked players auto-join post-match."
+    }
+  }
+}
