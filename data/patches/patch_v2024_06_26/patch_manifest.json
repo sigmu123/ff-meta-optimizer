@@ -1,0 +1,17 @@
+{
+  "patch_version": "patch_v2024_06_26",
+  "release_date": "2024-06-26",
+  "theme": "7th Anniversary Special",
+  "active_submodules": [
+    "loadouts/loadout_system.json",
+    "battle_royale/economy_and_loot.json",
+    "characters/new_character.json",
+    "characters/balance_adjustments.json",
+    "weapons/new_weapons.json",
+    "weapons/upgradable_system.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "map_and_modes/cs_store.json",
+    "system/engine_and_ui.json"
+  ]
+}
