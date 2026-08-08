@@ -1,0 +1,44 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "M1917",
+      "category": "Pistol",
+      "adjustments": {
+        "minimum_damage": { "previous": 36, "new": 45 },
+        "effective_range_percentage": 25
+      }
+    },
+    {
+      "weapon_name": "Kord",
+      "category": "LMG",
+      "adjustments": {
+        "accuracy_percentage": 28,
+        "machine_gun_mode_rate_of_fire_percentage": 25,
+        "multiplier_damage_to_gloo_walls_barrels_vehicles_percentage": {
+          "previous": 100,
+          "new": 120
+        }
+      }
+    },
+    {
+      "weapon_name": "M60",
+      "category": "LMG",
+      "adjustments": {
+        "machine_gun_mode_damage_flat": 5,
+        "multiplier_damage_to_gloo_walls_barrels_vehicles_percentage": 60
+      }
+    },
+    {
+      "weapon_name": "Kar98k",
+      "category": "Sniper Rifle",
+      "adjustments": {
+        "limb_damage_percentage": 25,
+        "body_damage_percentage": -18,
+        "armor_penetration_percentage": {
+          "previous": 8,
+          "new": 40
+        }
+      }
+    }
+  ]
+}
