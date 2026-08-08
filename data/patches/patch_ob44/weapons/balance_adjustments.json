@@ -1,0 +1,35 @@
+{
+  "weapon_adjustments": [
+    {
+      "name": "Bizon",
+      "damage_modifier": "-10%",
+      "magazine_capacity": { "old": 30, "new": 25 }
+    },
+    {
+      "name": "Trogon",
+      "damage_modifier": "-8%",
+      "range_modifier": "-5%"
+    },
+    {
+      "name": "Charge Buster",
+      "damage_modifier": "-10%",
+      "max_charge_duration_modifier": "-25%",
+      "movement_speed_modifier": "-5%",
+      "full_charge_time_modifier": "+30%"
+    },
+    {
+      "name": "Vector",
+      "magazine_capacity": { "old": 20, "new": 23 },
+      "double_vector_accuracy_modifier": "+5%"
+    },
+    {
+      "name": "MP5",
+      "damage_modifier": "+8%"
+    },
+    {
+      "name": "PARAFAL",
+      "magazine_capacity": { "old": 18, "new": 20 },
+      "ads_scope_in_speed_modifier": "+10%"
+    }
+  ]
+}
