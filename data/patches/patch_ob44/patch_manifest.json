@@ -1,0 +1,14 @@
+{
+  "patch_version": "OB44",
+  "release_date": "2024-04-17",
+  "patch_title": "Mechadrake BR Invasion & Skill/Weapon Adjustments",
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "clash_squad",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system"
+  ]
+}
