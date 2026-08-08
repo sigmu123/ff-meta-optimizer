@@ -1,0 +1,41 @@
+{
+  "pet_smash": {
+    "team_size": "2v2",
+    "win_conditions": "First to 7 points or highest score after 5 minutes",
+    "mechanics": [
+      "Select from 3 unique pets with distinct attack styles and ultimates",
+      "Attacking charges ultimate skill energy bar",
+      "3-second respawn at random location after elimination",
+      "Out of combat for 4 seconds triggers HP recovery",
+      "Attribute-boosting stat buffs spawn randomly on map"
+    ]
+  },
+  "triple_wolves": {
+    "format": "2v2v2 or 1v1v1 brawl across 6 rounds",
+    "scoring": "Points awarded for eliminations and survival; highest cumulative score wins",
+    "map": "Winter-themed Lone Wolf map",
+    "round_loadout": [
+      "1x Flashbang",
+      "1x Flash Freeze",
+      "Lv. 2 Helmet & Armor",
+      "2x Gloo Walls",
+      "Player-selected gun choice for all participants"
+    ]
+  },
+  "coin_clash_optimizations": {
+    "revival_choice": "Manual selection of landing location near teammates; auto-spawns in safe area if unselected",
+    "gear_retention": "Players retain pre-elimination weapons and items upon revival (FF Coins deducted)"
+  },
+  "lone_wolf_cup": {
+    "format": "1v1 match structure against 7 other players across 3 rounds",
+    "integration": "Added to Free Fire Cup ecosystem"
+  },
+  "training_grounds": {
+    "realistic_targets_count": 2,
+    "features": [
+      "Destructible armor mechanics",
+      "Customizable HP and Armor values",
+      "Auto-respawn on knockdown"
+    ]
+  }
+}
