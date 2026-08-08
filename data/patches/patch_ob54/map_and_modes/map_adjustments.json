@@ -1,0 +1,13 @@
+{
+  "map_updates": {
+    "building_traversal_optimization": "Improved window jumping mechanics across maps for smoother vaulting.",
+    "building_edge_exploits_fixed": [
+      "Nurek Dam bridge outer edge (Bermuda)",
+      "Exterior stairs outer edge at Grav Labs (NeXTerra)"
+    ],
+    "map_pool_removals": [
+      "Bermuda 2.0",
+      "Alpine"
+    ]
+  }
+}
