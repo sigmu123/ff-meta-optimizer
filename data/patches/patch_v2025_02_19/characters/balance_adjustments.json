@@ -1,0 +1,128 @@
+{
+  "character_rework": [
+    {
+      "character_name": "Ignis",
+      "skill_name": "Flame Mirage",
+      "skill_type": "Active",
+      "width_meters": 10,
+      "duration_seconds": 18,
+      "forward_movement_speed_mps": 6,
+      "max_forward_movement_duration_seconds": 5,
+      "manual_stop": "Re-activate skill while screen is moving to stop it in place",
+      "enemy_touch_damage": {
+        "instant_damage": 25,
+        "burn_damage_per_second": 5,
+        "burn_duration_seconds": 2
+      },
+      "gloo_wall_touch_damage": {
+        "instant_damage": 480,
+        "burn_damage_per_second": 188,
+        "burn_duration_seconds": 2
+      },
+      "cooldown_seconds": 60
+    }
+  ],
+  "shield_points_stacking_nerfs": [
+    {
+      "character_name": "Xayne",
+      "skill_name": "Xtreme Encounter",
+      "temporary_shield_points": {
+        "old": 60,
+        "new": 50
+      },
+      "duration_seconds": 12,
+      "knockdown_reset_effect": "Knockdown resets temporary Shield Points to 50 and resets duration",
+      "cooldown_seconds": 75
+    },
+    {
+      "character_name": "Shani",
+      "skill_name": "Gear Recycle",
+      "shield_points_granted": {
+        "old": 40,
+        "new": 30
+      },
+      "range_meters": 18,
+      "shield_decay_seconds": 5,
+      "cooldown_seconds": 10
+    },
+    {
+      "character_name": "Luqueta",
+      "skill_name": "Hat Trick",
+      "max_hp_sp_scaling_adjustment": "Re-balanced to curb total Shield Point stacking"
+    },
+    {
+      "character_name": "Antonio",
+      "skill_name": "Gangster's Spirit",
+      "extra_shield_points_at_start": {
+        "old": 30,
+        "new": 20
+      },
+      "recovery_condition": "Recovers Shield Points after surviving combat"
+    }
+  ],
+  "buffed_and_adjusted_characters": [
+    {
+      "character_name": "Koda",
+      "skill_name": "Aurora Vision",
+      "active_duration_seconds": 10,
+      "movement_speed_boost_percent": {
+        "old": 10,
+        "new": 15
+      },
+      "detection_range_meters": 50,
+      "detection_interval_seconds": 1,
+      "cooldown_seconds": {
+        "old": 60,
+        "new": 45
+      },
+      "parachuting_passive": "Highlights enemy locations within field of view (not shared with teammates)"
+    },
+    {
+      "character_name": "Wolfrahh",
+      "skill_name": "Limelight",
+      "headshot_damage_taken_reduction_per_spectator_percent": {
+        "old": 7,
+        "new": 4
+      },
+      "max_headshot_damage_taken_reduction_percent": {
+        "old": 21,
+        "new": 12
+      },
+      "headshot_damage_to_enemies_boost_per_spectator_percent": 10,
+      "max_headshot_damage_to_enemies_boost_percent": 30
+    },
+    {
+      "character_name": "Lila",
+      "skill_name": "Gloo Strike",
+      "weapon_compatibility": [
+        "Assault Rifles",
+        "Marksman Rifles"
+      ],
+      "enemy_movement_speed_reduction_percent": 10,
+      "vehicle_acceleration_reduction_percent": {
+        "old": 50,
+        "new": 88
+      },
+      "deceleration_duration_seconds": 3,
+      "takedown_freeze_duration_seconds": 3,
+      "extra_gloo_wall_granted": 1
+    },
+    {
+      "character_name": "Nikita",
+      "skill_name": "Firearms Expert",
+      "reload_speed_boost_percent": 30,
+      "healing_deduction_applied_to_target_percent": {
+        "old": 30,
+        "new": 50
+      },
+      "healing_deduction_duration_seconds": {
+        "old": 10,
+        "new": 6
+      },
+      "max_healing_deduction_percent": {
+        "old": 30,
+        "new": 50
+      }
+    }
+  ]
+}
