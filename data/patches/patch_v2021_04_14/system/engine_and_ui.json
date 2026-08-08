@@ -1,0 +1,21 @@
+{
+  "system_and_ui_features": [
+    {
+      "feature": "Loadout Menu UI Rework",
+      "details": "Redesigned pre-match layout for verifying skills and loadouts"
+    },
+    {
+      "feature": "Heroic Emblem",
+      "details": "Dedicated interface for tracking rank achievements across seasons"
+    }
+  ],
+  "optimizations": [
+    "In-game backpack manual sorting (ascending and descending order)",
+    "Minimap display optimizations across all game modes",
+    "Optimized vehicle honk UI control buttons",
+    "Ranked stats interface now accessible inside team lobby",
+    "In-game HUD configuration menu layout optimized",
+    "World Chat moderation system (added report option for inappropriate behavior)",
+    "HUD customization options (Emote, Pet Emote, Prone, Ping, and Legendary Costume buttons can now be toggled invisible)"
+  ]
+}
