@@ -1,0 +1,45 @@
+{
+  "shield_points_system": {
+    "mechanics": "Deducted before HP when taking damage. Does NOT protect against Danger Zone, fall damage, or bleeding damage. No armor damage reduction applied to Shield Points. Custom UI displayed above HP bar with dedicated hit sound effects.",
+    "shield_providing_characters": ["Kapella", "Sonia", "Antonio", "Shani"]
+  },
+  "movement_speed_cap": {
+    "max_skill_movement_speed_boost_percentage": 15
+  },
+  "character_reworks": {
+    "antonio": {
+      "skill_name": "Gangster's Spirit",
+      "rework_details": "Grants 40 Shield Points at match start. Regenerates Shield Points if no damage is taken for 4 seconds."
+    },
+    "nairi": {
+      "skill_name": "Ice Iron",
+      "rework_details": "Deployed Gloo Walls restore 250 durability per second when hit. Teammates within 5m restore 20 HP/s (Max 40 HP per teammate per Gloo Wall). Gloo Wall healing disables if inside Danger Zone for more than 10s."
+    },
+    "shani": {
+      "skill_name": "Gear Recycle",
+      "rework_details": "Using an active skill gives 50 Shield Points to self and allies within 10m. Shield Points decay after 5s. Cooldown: 10s."
+    },
+    "shirou": {
+      "skill_name": "Damage Delivered",
+      "rework_details": "Refocused to an informational skill that marks and reveals ambushing enemies to the entire team."
+    }
+  },
+  "skill_adjustments": {
+    "andrew_awakened": {
+      "skill_name": "Wolf Pack",
+      "armor_damage_reduction_boost": "28% -> 15%",
+      "teammate_stacking_reduction": "10% -> 5% per teammate carrying skill"
+    },
+    "skyler": {
+      "skill_name": "Riptide Rhythm",
+      "range_meters": 180,
+      "gloo_wall_damage_radius_meters": 4,
+      "gloo_wall_damage": "5 -> 65",
+      "cooldown_seconds": "45 -> 40"
+    },
+    "moco": {
+      "skill_name": "Hacker's Eye",
+      "buff_details": "Can now tag multiple targets simultaneously."
+    }
+  }
+}
