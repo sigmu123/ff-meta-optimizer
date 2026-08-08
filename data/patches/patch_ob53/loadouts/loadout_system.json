@@ -1,0 +1,61 @@
+{
+  "in_match_preset_selection": {
+    "preparation_phase_switch": true,
+    "in_match_selection_range": "Preset 1-5",
+    "restrictions": {
+      "active_skill_change_in_match": false,
+      "passive_skill_change_in_match": false,
+      "lock_preset_editing_on_loadout_use": true
+    },
+    "auto_open_page_rank": "Heroic and above"
+  },
+  "tactical_market_and_gadgets": {
+    "device_usability_rule": "Most devices single-use",
+    "exceptions_unlimited_use": ["Launch Pad", "Portal", "Mini Turret"],
+    "removed_items": ["Hit List", "Arsenal Key", "Active Skill Cards"],
+    "item_adjustments": {
+      "monster_truck_drop": {
+        "purchase_window_seconds": 680
+      },
+      "binoculars": {
+        "old_price_ff_coins": 200,
+        "new_price_ff_coins": 100
+      },
+      "launch_pad": {
+        "usage": "unlimited",
+        "price_ff_coins": 1400,
+        "old_cooldown_seconds": 240,
+        "new_cooldown_seconds": 300
+      },
+      "uav_lite": {
+        "rarity": "purple",
+        "usage": "single-use",
+        "purchase_limit": 2,
+        "ground_spawn_rate": "significantly_reduced"
+      },
+      "heal_uav_lite": {
+        "status": "added",
+        "purchase_limit": 2,
+        "ground_spawn_rate": "significantly_reduced"
+      },
+      "gloo_uav_lite": {
+        "ground_spawn_rate": "significantly_reduced"
+      },
+      "inhaler": {
+        "carry_limit": 10
+      }
+    },
+    "deployable_devices": {
+      "mini_turret": {
+        "old_rate_of_fire_seconds": 1.0,
+        "new_rate_of_fire_seconds": 0.5,
+        "old_damage_per_shot": 50,
+        "new_damage_per_shot": 25,
+        "old_duration_seconds": 120,
+        "new_duration_seconds": 240,
+        "old_firing_distance_meters": 60,
+        "new_firing_distance_meters": 100
+      }
+    }
+  }
+}
