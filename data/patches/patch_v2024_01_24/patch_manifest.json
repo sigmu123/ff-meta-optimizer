@@ -1,0 +1,14 @@
+{
+  "patch_version": "OB44",
+  "release_date": "2024-01-24",
+  "patch_name": "The Chaos",
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system",
+    "vehicles"
+  ]
+}
