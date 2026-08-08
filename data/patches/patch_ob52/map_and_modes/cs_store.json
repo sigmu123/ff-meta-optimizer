@@ -1,0 +1,24 @@
+{
+  "cyber_airdrop_mechanics": {
+    "capture_stages": 2,
+    "shared_progress": true,
+    "stage_1_reward": "All players in capture area receive items and a damage reduction buff",
+    "stage_2_reward": "Player unlocking stage 2 retains damage reduction buff for remainder of the round"
+  },
+  "cs_economy_and_store_prices": {
+    "random_discount_system": "Discounted weapons randomly spawn in store",
+    "weapon_prices": [
+      { "weapon": "FAMAS", "price_cash": 1800, "location": "Regular CS Store" },
+      { "weapon": "VSS", "price_cash": 1500, "location": "Regular CS Store" },
+      { "weapon": "Charge Buster", "price_cash": { "previous": 1880, "updated": 1600 }, "location": "Regular CS Store" },
+      { "weapon": "M68-III", "price_cash": 1600, "location": "Cyber Items" },
+      { "weapon": "M14-II", "price_cash": 1788, "upgrade_to_m14_iii_cost": 688, "location": "Regular CS Store" },
+      { "weapon": "Groza", "price_cash": 1700, "location": "Cyber Items" },
+      { "weapon": "Thompson", "price_cash": 1700, "location": "Cyber Items" }
+    ]
+  },
+  "round_rules_and_hud": {
+    "usp_drop_rule": "If USP is dropped at round start, it will not auto-issue in subsequent rounds",
+    "revive_vfx": "Special HP bar VFX when revived via Horizaline, Helper Bot, Dimitri, or Izanagi Revive"
+  }
+}
