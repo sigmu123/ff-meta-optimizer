@@ -1,0 +1,27 @@
+{
+  "clash_squad_layout_rebalances": {
+    "mill": [
+      "Moved yellow staircase to provide safer route to platform",
+      "Removed tire that enabled bouncing to the roof",
+      "Removed two cars on platform and replaced with a box cover",
+      "Added ground floor covers and changed carton layouts for alternate routes",
+      "Added cartons on hill route for safe retreats"
+    ],
+    "pochinok": [
+      "Added central cover objects in common final zone area",
+      "Closed structural gaps between buildings to allow safer rotation options"
+    ]
+  },
+  "structural_remodels": {
+    "guard_towers": {
+      "metal_panels": "Added indents; standing allows shooting/being shot, crouching blocks shots completely",
+      "height": "Reduced height to prevent fall damage",
+      "kiosk_position": "Relocated to corner for easier navigation"
+    }
+  },
+  "ranked_map_pool": {
+    "active_maps": ["Bermuda", "NeXTerra", "Alpine"],
+    "benched_maps": ["Purgatory"],
+    "map_protection": "First match on one non-Bermuda map every weekend does not deduct points"
+  }
+}
