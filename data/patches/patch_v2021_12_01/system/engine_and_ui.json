@@ -1,0 +1,39 @@
+{
+  "ranked_system": {
+    "new_rank_tier": "Master",
+    "position": "Placed directly above Heroic"
+  },
+  "gameplay_and_controls": [
+    {
+      "feature": "Assist Notifications",
+      "details": "HUD displays assist notifications when team members knock down wounded enemies"
+    },
+    {
+      "feature": "Pin Marker Rework",
+      "details": "Extended target marking; double tap to pin enemy locations"
+    },
+    {
+      "feature": "Free Look Setting",
+      "details": "Independent toggles for parachuting and driving"
+    },
+    {
+      "feature": "2-in-1 Sprint Option",
+      "details": "Combined drag and tap sprinting input methods"
+    }
+  ],
+  "optimizations_and_fixes": [
+    "Guild leaders/elders can set minimum Clash Squad rank for applicants",
+    "Radio command users blink on minimap",
+    "Auto-receive Gloo Walls in Training Grounds Combat Zone",
+    "Universal Fragments display optimized in level-up menu",
+    "Hardcore mode supported in custom rooms",
+    "Optimized melee weapon animations",
+    "Optimized Battle Tag special effects",
+    "Improved outside play zone graphics display for better visibility",
+    "Personal Airdrop cooldown display optimized",
+    "Location names displayed on ground during parachuting (BR)",
+    "Kill streak notification volume slider added in settings",
+    "Player alias feature added for friend list",
+    "Weapon/skin special effects disabled while in active combat"
+  ]
+}
