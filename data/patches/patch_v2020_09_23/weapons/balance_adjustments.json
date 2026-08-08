@@ -1,0 +1,46 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "Grenade",
+      "mechanics_update": "Added grenade cooking mechanism; optimized visual trajectory display to reflect actual flight distance"
+    },
+    {
+      "weapon_name": "P90",
+      "category": "SMG",
+      "adjustments": {
+        "rate_of_fire_percentage": 3,
+        "maximum_spread_reduction_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "M14",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "base_damage": { "previous": 58, "new": 59 },
+        "minimum_damage": { "previous": 30, "new": 25 }
+      }
+    },
+    {
+      "weapon_name": "M14 Rage Core",
+      "attachment": "Rage Core",
+      "adjustments": {
+        "rate_of_fire_percentage": -11
+      }
+    },
+    {
+      "weapon_name": "PLASMA",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "precise_shots_count": { "previous": 4, "new": 6 },
+        "moving_spread_reduction_percentage": 11
+      }
+    },
+    {
+      "weapon_name": "Kar98k Biometric Scope",
+      "attachment": "Biometric Scope",
+      "adjustments": {
+        "aim_assist_radius_reduction_percentage": 35
+      }
+    }
+  ]
+}
