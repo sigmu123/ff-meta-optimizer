@@ -1,0 +1,143 @@
+{
+  "character_reworks": [
+    {
+      "character": "Nikita",
+      "skill_name": "Firearms Expert",
+      "reload_speed_increase_percentage": 20,
+      "healing_deduction_per_hit_percentage": 30,
+      "healing_deduction_duration_seconds": 10,
+      "max_healing_deduction_percentage": 30
+    },
+    {
+      "character": "Joseph",
+      "skill_name": "Silver Spoon",
+      "immune_effects": ["Slowdown", "Marking", "Skill-silencing"],
+      "movement_speed_boost_percentage": 10,
+      "duration_seconds": 5,
+      "cooldown_seconds": 60
+    },
+    {
+      "character": "Jai",
+      "skill_name": "Raging Reload",
+      "active_skill_synergy": "Automatically reloads weapon magazine after using active skill",
+      "magazine_reload_percentages": {
+        "pistols": 100,
+        "smgs": 180,
+        "shotguns": 100,
+        "sniper_rifles": 100
+      }
+    }
+  ],
+  "character_balance_changes": [
+    {
+      "character": "Sonia",
+      "skill_name": "Nano Lifeshield",
+      "invulnerable_and_immobile_duration_seconds": 0.5,
+      "shield_hp": {
+        "previous": 150,
+        "current": 100
+      },
+      "shield_duration_seconds": 3,
+      "cooldown_seconds": 180
+    },
+    {
+      "character": "Nairi",
+      "skill_name": "Ice Iron",
+      "gloo_wall_durability_restore_per_second": {
+        "previous": 250,
+        "current": 150
+      },
+      "teammate_healing_rate_hp_per_sec": 20,
+      "teammate_healing_range_meters": 5,
+      "max_hp_per_teammate_per_gloo_wall": 40
+    },
+    {
+      "character": "Thiva",
+      "skill_name": "Vibrato",
+      "help_up_speed_increase_percentage": 70,
+      "cooldown_seconds": 60,
+      "helped_up_ally_hp_recovery": 60,
+      "helped_up_ally_hp_recovery_duration_seconds": 3
+    },
+    {
+      "character": "Dimitri",
+      "skill_name": "Healing Heartbeat",
+      "healing_radius_meters": 3.5,
+      "hp_recovery_per_second": 1,
+      "duration_seconds": 12,
+      "cooldown_seconds": {
+        "previous": 60,
+        "current": 90
+      }
+    },
+    {
+      "character": "Orion",
+      "skill_name": "Crimson Crush",
+      "ep_cost": 150,
+      "hp_absorption_per_second": {
+        "previous": 15,
+        "current": 10
+      },
+      "absorption_range_meters": 5,
+      "duration_seconds": 3,
+      "cooldown_seconds": 3,
+      "ignores_shield_points": true
+    },
+    {
+      "character": "A124",
+      "skill_name": "Thrill of Battle",
+      "wave_radius_meters": 8,
+      "damage": 25,
+      "duration_seconds": {
+        "previous": 30,
+        "current": 20
+      },
+      "cooldown_seconds": {
+        "previous": 75,
+        "current": 50
+      }
+    },
+    {
+      "character": "Homer",
+      "skill_name": "Senses Shockwave",
+      "drone_range_meters": 100,
+      "pulse_explosion_diameter_meters": {
+        "previous": 3,
+        "current": 4
+      },
+      "movement_speed_reduction_percentage": 60,
+      "firing_speed_reduction_percentage": 35,
+      "duration_seconds": 5,
+      "damage": 25,
+      "cooldown_seconds": 90
+    },
+    {
+      "character": "Wukong",
+      "skill_name": "Camouflage",
+      "movement_speed_reduction_percentage": {
+        "previous": 10,
+        "current": 5
+      },
+      "duration_seconds": 15,
+      "cooldown_seconds": 200
+    },
+    {
+      "character": "Iris",
+      "skill_name": "Wall Brawl",
+      "mark_range_meters": 7,
+      "max_gloo_walls_penetrated": {
+        "previous": 3,
+        "current": 5
+      },
+      "cooldown_seconds": 60
+    }
+  ],
+  "pet_updates": [
+    {
+      "pet": "Falco",
+      "skill_name": "Skyline Spree",
+      "rework_effect": "Disables enemy auto-aim while the owner is parachuting",
+      "global_system_change": "Base parachuting speed for all players unified to match former Falco speed"
+    }
+  ]
+}
