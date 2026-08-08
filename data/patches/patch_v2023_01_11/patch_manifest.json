@@ -1,0 +1,19 @@
+{
+  "patch_version": "v2023_01_11",
+  "release_date": "2023-01-11",
+  "global_metadata": {
+    "patch_name": "January 2023 Update",
+    "description": "Introduces Gloo Makers, Arsenals, Solo Revival, Weapon Balance, and Quality of Life Updates.",
+    "source_url": "https://ff.garena.com/en/article/968/"
+  },
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "pets",
+    "weapons",
+    "map_and_modes",
+    "system",
+    "craftland"
+  ]
+}
