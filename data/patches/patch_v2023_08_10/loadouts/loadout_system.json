@@ -1,0 +1,27 @@
+{
+  "clash_squad_loadouts": {
+    "armor_crate": {
+      "round_2": ["Lv. 1 Helmet", "Lv. 1 Vest"],
+      "round_3": ["Lv. 2 Vest"],
+      "round_4": ["Helmet Thickener"],
+      "round_5": ["HP Booster"],
+      "round_6": ["Vest Enlarger"],
+      "round_7": ["Vest Enlarger"]
+    }
+  },
+  "battle_royale_loadouts": {
+    "scan": {
+      "items_provided": [
+        "1x UAV",
+        "1x Jammer"
+      ]
+    },
+    "supply_crate": {
+      "post_revival_items": [
+        "Lv. 2 Helmet",
+        "Lv. 2 Vest",
+        "Bizon"
+      ]
+    }
+  }
+}
