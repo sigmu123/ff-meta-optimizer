@@ -1,0 +1,11 @@
+{
+  "melee_durability_system": {
+    "hp": 130,
+    "destruction_mechanic": "Melee weapons shatter and disappear after taking 130 damage from incoming bullets."
+  },
+  "finishing_moves": {
+    "eligible_weapons": ["Scythe", "Katana", "Machete", "Baton"],
+    "excluded_weapons": ["Pan"],
+    "mechanics": "Triggers within range of a knocked down enemy. Animation plays to execute elimination. Can be canceled mid-animation using the stop button; cancellation allows re-initiating execution later."
+  }
+}
