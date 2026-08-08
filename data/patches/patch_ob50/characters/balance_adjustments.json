@@ -1,0 +1,77 @@
+{
+  "character_balance_adjustments": [
+    {
+      "character_name": "Nairi",
+      "skill_name": "Ice Iron",
+      "skill_type": "Passive",
+      "gloo_wall_durability_duration_seconds": {
+        "old": 2.0,
+        "new": 1.5
+      },
+      "gloo_wall_durability_restore_per_second": 168,
+      "teammate_healing_per_second": {
+        "old": 10,
+        "new": 5
+      },
+      "healing_radius_meters": 5,
+      "healing_stackability": false
+    },
+    {
+      "character_name": "Kairos",
+      "skill_name": "Defense Breaker",
+      "skill_type": "Passive",
+      "defense_mode_ep_recovery_per_second": 2,
+      "breaker_mode_ep_consumption_per_second": {
+        "old": 18,
+        "new": 20
+      },
+      "shield_and_armor_extra_damage_percent": 120
+    },
+    {
+      "character_name": "Sonia",
+      "skill_name": "Nano Lifeshield",
+      "skill_type": "Passive",
+      "invulnerable_state_duration_seconds": 0.4,
+      "shield_hp": {
+        "old": 50,
+        "new": 1
+      },
+      "shield_duration_seconds": 2,
+      "cooldown_seconds": 180
+    },
+    {
+      "character_name": "Santino",
+      "skill_name": "Shape Splitter",
+      "skill_type": "Active",
+      "mannequin_hp": 200,
+      "mannequin_duration_seconds": 25,
+      "max_teleport_distance_meters": 90,
+      "teleport_cooldown_between_switches_seconds": 3,
+      "max_switches_per_cast": 2,
+      "destroyer_mark_duration_seconds": 5,
+      "cooldown_seconds": 60,
+      "height_restriction": "No teleportation allowed when mannequin is 18m or higher than the user"
+    },
+    {
+      "character_name": "Laura",
+      "skill_name": "Sharp Shooter",
+      "skill_type": "Passive",
+      "scoped_accuracy_increase_percent": {
+        "old": 50,
+        "new": 60
+      }
+    },
+    {
+      "character_name": "Alvaro",
+      "skill_name": "Splitz Blitz",
+      "skill_type": "Passive",
+      "explosive_weapon_damage_increase_percent": 20,
+      "explosive_range_increase_percent": 10,
+      "split_grenades_count": 3,
+      "mini_grenade_damage_percent_of_original": {
+        "old": 20,
+        "new": 25
+      }
+    }
+  ]
+}
