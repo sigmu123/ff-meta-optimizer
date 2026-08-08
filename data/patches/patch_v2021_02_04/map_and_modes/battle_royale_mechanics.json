@@ -1,0 +1,32 @@
+{
+  "battle_royale_updates": {
+    "new_items": [
+      {
+        "item_name": "UAV-Lite",
+        "availability": "Classic (Casual & Ranked) via Vending Machine",
+        "function": "Scans surroundings to locate nearby enemies"
+      },
+      {
+        "item_name": "War Chest",
+        "availability": "Classic (Casual & Ranked)",
+        "function": "Static loot chest spawning in open areas"
+      },
+      {
+        "item_name": "Revival Card",
+        "availability": "Classic (Casual Only) via Vending Machine",
+        "function": "Purchased by active player to redeploy eliminated squad members before final zones"
+      }
+    ],
+    "new_systems": [
+      {
+        "system_name": "Revival Point",
+        "availability": "Classic (Casual Only)",
+        "function": "Capturing/activating an open-area Revival Point revives the entire squad; signals nearby enemies when active"
+      }
+    ],
+    "vending_machine_adjustments": {
+      "token_spawn_rate": "Adjusted across maps",
+      "item_prices": "Adjusted"
+    }
+  }
+}
