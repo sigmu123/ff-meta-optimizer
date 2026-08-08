@@ -1,0 +1,50 @@
+{
+  "clash_squad_aurora_buffs": [
+    {
+      "color": "Green Aurora",
+      "buff": "Restore 2 EP/s"
+    },
+    {
+      "color": "Red Aurora",
+      "buff": "Armor penetration increased by 50%"
+    },
+    {
+      "color": "Blue Aurora",
+      "buff": "Receive 1 Gloo Wall at start of each round"
+    }
+  ],
+  "mushroom_rules": {
+    "purchase_limit": "Once EP reaches max, player can no longer purchase or request mushrooms"
+  },
+  "end_of_round_economy_ui": "Shows detailed CS Cash earnings from previous round during purchase phase",
+  "cs_store_price_changes": [
+    {
+      "item_name": "M590",
+      "status": "New Weapon",
+      "price_cs_cash": 1700
+    },
+    {
+      "item_name": "AC80",
+      "old_price_cs_cash": 2000,
+      "new_price_cs_cash": 1900
+    },
+    {
+      "item_name": "MAC10-II",
+      "type": "Cyber Item",
+      "old_price_cs_cash": 1780,
+      "new_price_cs_cash": 1600
+    },
+    {
+      "item_name": "AUG-II",
+      "type": "Cyber Item",
+      "old_price_cs_cash": 1700,
+      "new_price_cs_cash": 1680
+    },
+    {
+      "item_name": "Trogon",
+      "type": "Cyber Item",
+      "old_price_cs_cash": 2000,
+      "new_price_cs_cash": 1900
+    }
+  ]
+}
