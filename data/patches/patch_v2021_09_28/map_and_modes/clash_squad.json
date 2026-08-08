@@ -1,0 +1,25 @@
+{
+  "clash_squad_updates": {
+    "new_modes": [
+      {
+        "mode_name": "6v6 Clash Squad",
+        "availability": "Custom Rooms"
+      }
+    ],
+    "map_adjustments": [
+      {
+        "map": "Bermuda",
+        "zone": "Clock Tower",
+        "adjustment": "Spawn points adjusted for lower and upper areas to balance team engagement"
+      },
+      {
+        "map": "Bermuda",
+        "zone": "Mars Electric",
+        "adjustment": "Play zone adjusted to place warehouse directly in the center"
+      }
+    ],
+    "ui_and_hud": {
+      "scoreboard": "Heroic stars count displayed on in-game scoreboard and leaderboard"
+    }
+  }
+}
