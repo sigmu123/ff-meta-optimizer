@@ -1,57 +1,45 @@
-import re
-from typing import Dict, Any
+import os
+import json
+import google.generativeai as genai
 
 class PromptParser:
-    @staticmethod
-    def parse(prompt_text: str) -> Dict[str, Any]:
+    def __init__(self):
+        # Fetch API key from Environment Variables (GitHub Secrets)
+        self.api_key = os.getenv("GEMINI_API_KEY")
+        if self.api_key:
+            genai.configure(api_key=self.api_key)
+            self.model = genai.GenerativeModel('gemini-1.5-flash')
+        else:
+            self.model = None
+
+    def parse_roman_urdu_prompt(self, user_prompt):
+        if not self.model:
+            print("[-] API Key not found. Falling back to default 'rush' playstyle.")
+            return "rush"
+
+        sys_prompt = f"""
+        You are a Free Fire Meta Optimizer AI. 
+        Read the user's Roman Urdu prompt and output exactly ONE word describing their desired playstyle.
+        Valid outputs ONLY: "rush", "sniper", "support", "camper".
+        User Prompt: "{user_prompt}"
         """
-        Parses raw Roman Urdu or English user prompts into structured parameters.
-        Extracts patch version, game mode, playstyle, and primary stat intent.
-        """
-        text = prompt_text.lower().strip()
-
-        # 1. Extract Patch Version (e.g., ob34, ob54, patch_ob52)
-        patch_match = re.search(r'(ob\d+|patch_[a-z0-9_]+|v\d+)', text)
-        patch_version = patch_match.group(1) if patch_match else "patch_ob54"
-        if not patch_version.startswith("patch_") and patch_version.startswith("ob"):
-            patch_version = f"patch_{patch_version}"
-
-        # 2. Extract Game Mode (CS vs BR)
-        if any(term in text for term in ["cs", "clash squad", "round"]):
-            mode = "clash_squad"
-        elif any(term in text for term in ["br", "battle royale", "map", "zone"]):
-            mode = "battle_royale"
-        else:
-            mode = "clash_squad"
-
-        # 3. Extract Playstyle Intent
-        if any(term in text for term in ["rush", "fast", "speed", "close range"]):
-            playstyle = "rush"
-        elif any(term in text for term in ["defense", "hold", "camp", "shield", "cover"]):
-            playstyle = "defense"
-        elif any(term in text for term in ["sniper", "long range", "support"]):
-            playstyle = "support"
-        else:
-            playstyle = "balanced"
-
-        # 4. Extract Damage / Stat Preference
-        if any(term in text for term in ["high damage", "heavy dmg", "dps", "kill"]):
-            focus = "damage"
-        elif any(term in text for term in ["heal", "hp", "survival"]):
-            focus = "survival"
-        else:
-            focus = "balanced"
-
-        return {
-            "patch_version": patch_version,
-            "mode": mode,
-            "playstyle": playstyle,
-            "focus": focus,
-            "raw_prompt": prompt_text
-        }
-
+        try:
+            response = self.model.generate_content(sys_prompt)
+            playstyle = response.text.strip().lower()
+            if playstyle not in ["rush", "sniper", "support", "camper"]:
+                return "rush"
+            return playstyle
+        except Exception as e:
+            print(f"[-] API Parsing failed: {e}. Defaulting to rush.")
+            return "rush"
 
 if __name__ == "__main__":
-    test_prompt = "OB54 CS Ranked rush build with high damage"
-    parsed = PromptParser.parse(test_prompt)
-    print("[PARSER UNIT TEST]:", parsed)
+    parser = PromptParser()
+    raw_query = os.getenv("USER_QUERY", "mujhe rush game khelna ha")
+    extracted_playstyle = parser.parse_roman_urdu_prompt(raw_query)
+    
+    # Export for the next GitHub Actions step
+    with open(os.environ['GITHUB_ENV'], 'a') as f:
+        f.write(f"FF_PLAYSTYLE={extracted_playstyle}\n")
+    
+    print(f"[*] Parsed Playstyle: {extracted_playstyle.upper()}")
