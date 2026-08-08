@@ -7,11 +7,9 @@ class TTKCalculator:
         self.target_helmet_lvl = target_helmet_lvl
 
     def calculate_effective_damage(self, base_damage, armor_pen=0.0, damage_boost=0.0):
-        # Vest reductions matrix
         vest_reductions = {0: 0.0, 1: 0.33, 2: 0.45, 3: 0.50, 4: 0.55}
         base_reduction = vest_reductions.get(self.target_vest_lvl, 0.0)
 
-        # Calculate final penetration and boost
         effective_reduction = max(0.0, base_reduction - armor_pen)
         boosted_damage = base_damage * (1.0 + damage_boost)
         effective_damage = boosted_damage * (1.0 - effective_reduction)
@@ -25,12 +23,12 @@ class TTKCalculator:
         if not isinstance(weapon_stats, dict):
             return {"effective_damage": 0.0, "btk": float('inf'), "ttk": float('inf')}
 
-        # Extract stats safely
-        base_damage = self._parse_float(weapon_stats.get("base_damage") or weapon_stats.get("damage") or 0.0)
-        rate_of_fire = self._parse_float(weapon_stats.get("rate_of_fire") or weapon_stats.get("fire_rate") or 1.0)
+        # Added standardized baselines so ttk != inf if schema only contains buffs
+        base_damage = self._parse_float(weapon_stats.get("base_damage") or weapon_stats.get("damage") or 28.0)
+        rate_of_fire = self._parse_float(weapon_stats.get("rate_of_fire") or weapon_stats.get("fire_rate") or 0.20)
         armor_pen = self._parse_float(weapon_stats.get("armor_penetration") or weapon_stats.get("armor_pen") or 0.0)
         
-        if armor_pen > 1.0: # Normalize percentage if needed
+        if armor_pen > 1.0: 
             armor_pen = armor_pen / 100.0
 
         damage_boost = player_boosts.get("damage_boost", 0.0)
@@ -38,12 +36,10 @@ class TTKCalculator:
         if base_damage <= 0:
             return {"effective_damage": 0.0, "btk": float('inf'), "ttk": float('inf')}
 
-        # Core Math
         eff_dmg = self.calculate_effective_damage(base_damage, armor_pen, damage_boost)
         btk = math.ceil(self.target_hp / eff_dmg)
         
-        # TTK Formula: (Bullets to Kill - 1) / Rate of Fire
-        ttk = round((btk - 1) / rate_of_fire, 3) if rate_of_fire > 0 else float('inf')
+        ttk = round((btk - 1) * rate_of_fire, 3) if rate_of_fire > 0 else float('inf')
 
         return {
             "effective_damage": eff_dmg,
