@@ -1,0 +1,139 @@
+{
+  "loadout_adjustments": {
+    "super_leg_pockets": {
+      "additions": ["Hit List"]
+    },
+    "enhance_hammer": {
+      "enhancement_cost_ff_coins": {
+        "previous": 600,
+        "updated": 400
+      },
+      "airdrop_and_event_weapon_support": true
+    },
+    "team_booster": {
+      "first_upgrade_cost_ff_coins": {
+        "previous": 400,
+        "updated": 300
+      },
+      "second_upgrade_cost_ff_coins": {
+        "previous": 800,
+        "updated": 600
+      },
+      "out_of_combat_sprint_speed_buff_percentage": {
+        "previous": 7,
+        "updated": 4
+      },
+      "out_of_zone_movement_speed_buff_percentage": {
+        "previous": 7,
+        "updated": 12
+      },
+      "ep_conversion_rate_percentage": {
+        "previous": 200,
+        "updated": 100
+      }
+    },
+    "tactical_market": {
+      "gloo_uav_lite_price_ff_coins": {
+        "previous": 400,
+        "updated": 800
+      },
+      "clu_skill_card": {
+        "price_ff_coins": {
+          "previous": 1200,
+          "updated": 800
+        },
+        "purchase_limit": 5
+      },
+      "homer_skill_card": {
+        "price_ff_coins": {
+          "previous": 1200,
+          "updated": 800
+        },
+        "purchase_limit": 5
+      },
+      "monster_truck_drop_price_ff_coins": {
+        "previous": 1800,
+        "updated": 400
+      },
+      "launch_pad": {
+        "price_ff_coins": {
+          "previous": 1400,
+          "updated": 800
+        },
+        "purchase_limit": 5
+      },
+      "dinoculars_pet_skill_card_price_ff_coins": {
+        "previous": 380,
+        "updated": 200
+      },
+      "info_box": {
+        "price_ff_coins": {
+          "previous": 300,
+          "updated": 100
+        },
+        "individual_purchase_limit": 2
+      },
+      "hit_list": {
+        "price_ff_coins": {
+          "previous": 400,
+          "updated": 200
+        },
+        "purchase_limit": 5
+      },
+      "supply_box": {
+        "price_ff_coins": {
+          "previous": 600,
+          "updated": 300
+        },
+        "purchase_limit": 5
+      },
+      "ammo_all_types_price_ff_coins": {
+        "previous": 200,
+        "updated": 100
+      },
+      "smoke_vortex_duration_seconds": {
+        "previous": null,
+        "updated": 48
+      }
+    },
+    "gloo_maker": {
+      "level_progression": [
+        {
+          "level": 1,
+          "carry_limit": { "previous": 4, "updated": 5 },
+          "eliminator_gain": 1,
+          "looter_gain": 1,
+          "exp_to_upgrade": 0
+        },
+        {
+          "level": 2,
+          "carry_limit": { "previous": 5, "updated": 6 },
+          "eliminator_gain": 1,
+          "looter_gain": 1,
+          "exp_to_upgrade": { "previous": 500, "updated": 300 }
+        },
+        {
+          "level": 3,
+          "carry_limit": { "previous": 6, "updated": 7 },
+          "eliminator_gain": { "previous": 1, "updated": 2 },
+          "looter_gain": 1,
+          "exp_to_upgrade": { "previous": 1000, "updated": 700 }
+        },
+        {
+          "level": 4,
+          "carry_limit": { "previous": 7, "updated": 8 },
+          "eliminator_gain": { "previous": 1, "updated": 2 },
+          "looter_gain": { "previous": 1, "updated": 2 },
+          "exp_to_upgrade": { "previous": 1500, "updated": 1200 }
+        },
+        {
+          "level": 5,
+          "carry_limit": { "previous": 7, "updated": 9 },
+          "eliminator_gain": { "previous": 1, "updated": 2 },
+          "looter_gain": { "previous": 1, "updated": 2 },
+          "exp_to_upgrade": { "previous": 2500, "updated": 1700 }
+        }
+      ]
+    }
+  }
+}
