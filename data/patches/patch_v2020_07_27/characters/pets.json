@@ -1,0 +1,15 @@
+{
+  "new_pets": [
+    {
+      "pet_name": "Mr. Waggor",
+      "skill_name": "Smooth Gloo",
+      "skill_type": "Passive / Utility",
+      "mechanics": "Produces 1 Gloo Wall grenade when player has less than threshold count",
+      "skill_attributes_by_level": {
+        "level_1": { "gloo_wall_threshold": 1, "generation_cooldown_seconds": 120 },
+        "level_2": { "gloo_wall_threshold": 1, "generation_cooldown_seconds": 100 },
+        "level_3": { "gloo_wall_threshold": 2, "generation_cooldown_seconds": 100 }
+      }
+    }
+  ]
+}
