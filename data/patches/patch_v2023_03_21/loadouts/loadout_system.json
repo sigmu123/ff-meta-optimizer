@@ -1,0 +1,71 @@
+{
+  "bonfire": {
+    "max_uses_per_match": {
+      "old": 3,
+      "new": 2
+    },
+    "healing_effects": {
+      "old": "15 HP/s, 10 EP/s",
+      "new": "10 HP/s, 10 EP/s"
+    }
+  },
+  "clash_squad_loadouts": {
+    "scan": {
+      "effect": "Marks all enemies (user view only) when 1st Safe Zone shrinks; displays Clu skill visual effects on user"
+    },
+    "bounty_token": {
+      "effect": "Earn 100 extra CS Cash per enemy eliminated in selected round"
+    },
+    "armor_crate": {
+      "durability_restoration": "80% Helmet and Vest durability at round start",
+      "round_rewards": {
+        "round_2": ["Lv. 1 Helmet", "Lv. 1 Vest"],
+        "round_3": ["Lv. 2 Vest"],
+        "round_4": ["Vest HP Booster", "Helmet Hardener"],
+        "round_5": ["Vest HP Booster", "Helmet Hardener"],
+        "round_6": ["Vest Enlarger"],
+        "round_7": ["Vest Enlarger"]
+      }
+    },
+    "secret_clue": {
+      "team_ep_restore_cost_cs_cash": {
+        "old": 500,
+        "new": 300
+      },
+      "ep_to_hp_conversion": {
+        "rate": "4 HP/s",
+        "cost_cs_cash": 500
+      },
+      "team_item_grant": {
+        "items": "2 Inhalers per teammate",
+        "cost_cs_cash": 200
+      },
+      "team_movement_speed_boost_20pct": {
+        "cost_cs_cash": {
+          "old": 2000,
+          "new": 1500
+        }
+      }
+    }
+  },
+  "battle_royale_loadouts": {
+    "airdrop_aid": {
+      "cooldown_seconds": 600,
+      "cooldown_reduction": {
+        "per_elimination_seconds": 60,
+        "per_5_damage_dealt_seconds": 1
+      },
+      "airdrop_contents": "Guaranteed Level 3 Weapon"
+    },
+    "supply_crate": {
+      "spawn_mechanic": "Supply point appears on map after parachuting",
+      "first_point_loot": [
+        "3 Gloo Walls",
+        "1 Launch Pad",
+        "600 FF Coins",
+        "1 Treatment Gun"
+      ],
+      "secondary_effect": "Marks location of second supply point after looting first"
+    }
+  }
+}
