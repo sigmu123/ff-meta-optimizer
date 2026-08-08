@@ -1,0 +1,66 @@
+{
+  "defense_airdrop_system": {
+    "mechanism": "Capture and stay inside the area to accumulate defense progress across 3 stages",
+    "visibility": "Progress tracked on all players' minimaps",
+    "rewards": "Higher tier loot unlocked per completed stage"
+  },
+  "battle_royale_pacing_and_timings": {
+    "zone_timings_multiplayer_excluding_nexterra": [
+      { "zone": 1, "appearance_sec": { "prev": 110, "new": 50 }, "shrink_sec": { "prev": 200, "new": 130 }, "size_meters": { "prev": 550, "new": 600 } },
+      { "zone": 2, "appearance_sec": { "prev": 410, "new": 360 }, "shrink_sec": { "prev": 500, "new": 420 }, "size_meters": { "prev": 388, "new": 328 } },
+      { "zone": 3, "appearance_sec": { "prev": 620, "new": 520 }, "shrink_sec": { "prev": 695, "new": 580 } },
+      { "zone": 4, "appearance_sec": { "prev": 770, "new": 655 }, "shrink_sec": { "prev": 830, "new": 705 } },
+      { "zone": 5, "appearance_sec": { "prev": 890, "new": 765 }, "shrink_sec": { "prev": 935, "new": 800 } },
+      { "zone": 6, "appearance_sec": { "prev": 980, "new": 845 } }
+    ],
+    "zone_timings_solo": [
+      { "zone": 1, "appearance_sec": { "prev": 90, "new": 50 } }
+    ],
+    "system_event_timings": {
+      "first_airdrop_appearance_sec": { "prev": 220, "new": 120 },
+      "first_airdrop_vending_machine_sec": { "prev": 500, "new": 360 },
+      "revival_point_closing_sec": { "prev": 620, "new": 520 },
+      "revival_point_duration_required_sec": { "prev": 33, "new": 25 },
+      "revival_point_cooldown_sec": { "prev": 188, "new": 120 }
+    }
+  },
+  "ground_loot_adjustments": {
+    "drop_rate_changes": {
+      "m82b_drop_rate_percentage": 1.0,
+      "level_1_backpack_drop_rate_percentage": -40.0,
+      "level_2_backpack_drop_rate_percentage": 80.0,
+      "level_3_backpack_drop_rate_percentage": 2.0,
+      "level_3_helmet_and_vest_drop_rate_percentage": 1.0,
+      "machine_gun_ammo_vicinity_stack": { "prev": 1, "new": 2 },
+      "smg_ammo_vicinity_stack": { "prev": 1, "new": "1-2" }
+    },
+    "new_loot_additions": [
+      "Launch Pad",
+      "Trogon",
+      "M1014-I",
+      "M1014-III"
+    ]
+  },
+  "loadout_system_rework": {
+    "br_loadouts": {
+      "bonfire": "Get 3 Bonfires. Recovers 25 HP/s and 20 EP/s for 10s.",
+      "supply_crate": "Get 200 FF Coins, AK47, and 30 AR Ammo upon revival.",
+      "armor_crate": "Get Lv. 2 Vest, Lv. 2 Helmet, 2 Repair Kits, and 200 FF Coins at match start.",
+      "leg_pockets": "+180 backpack capacity.",
+      "scan": "Reveals nearby enemies when parachuting and scans for 10s after landing.",
+      "airdrop_aid": "Summon an airdrop.",
+      "secret_clue": "Displays resupply point during parachuting containing Grappling Hook Gun, Launch Pad, and 600 FF Coins.",
+      "bounty_token": "First elimination yields 480 FF Coins, random attachment, and Lv. 1 upgradable weapon."
+    },
+    "cs_loadouts": {
+      "bonfire": "Get 3 Bonfires at match start.",
+      "supply_crate": "Round 1: Katana; Round 2: Super Med; Round 3: Gloo Wall x2; Round 4: Upgradable chip; Round 5: Flash Freeze, Grenade, Gloo Wall; Round 6: Bonfire; Round 7: Vest Enlarger.",
+      "armor_crate": "Restores 60% Vest and Helmet durability at round start.",
+      "leg_pockets": "Carry/purchase 2 more Gloo Walls.",
+      "scan": "Marks all enemies for 3s when first safe zone shrinks.",
+      "airdrop_aid": "Get extra 300 Cash from airdrop.",
+      "bounty_token": "Gain 300 extra CS Cash per elimination during first 90s of selected round.",
+      "secret_clue": "Unlocks Secret Bazaar (500 Cash: Max EP, 600 Cash: 5 EP/s, 400 Cash: Med Kit, 2000 Cash: 20% team speed for 10s)."
+    }
+  }
+}
