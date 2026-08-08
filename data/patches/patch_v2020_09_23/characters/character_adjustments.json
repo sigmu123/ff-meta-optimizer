@@ -1,0 +1,24 @@
+{
+  "character_adjustments": [
+    {
+      "character_name": "Jai",
+      "skill_name": "Raging Reload",
+      "skill_type": "Passive",
+      "adjustments": {
+        "reload_capacity_percentage_by_level": {
+          "previous": [10, 13, 16, 19, 22, 25],
+          "new": [30, 33, 36, 39, 42, 45]
+        },
+        "supported_weapon_types": {
+          "previous": ["AR", "Pistol", "SMG"],
+          "new": ["AR", "Pistol", "SMG", "Shotgun (SG)"]
+        }
+      }
+    },
+    {
+      "character_name": "Clu",
+      "skill_name": "Tracing Steps",
+      "bug_fix": "Fixed bug where enemies could reveal Clu's location upon skill activation"
+    }
+  ]
+}
