@@ -1,0 +1,12 @@
+{
+  "character_name": "Santino Valentine",
+  "identity": "Fashion Designer / Founder of Angelic",
+  "skill": {
+    "name": "Shape Splitter",
+    "type": "Active",
+    "description": "Spawn a 200 HP mannequin that stands still for 12s, then use this skill again to teleport to the mannequin's position. The mannequin will be destroyed after use or after the 12 seconds is up.",
+    "mannequin_hp": 200,
+    "duration_seconds": 12,
+    "cooldown_seconds_per_level": [130, 120, 118, 100, 90, 80]
+  }
+}
