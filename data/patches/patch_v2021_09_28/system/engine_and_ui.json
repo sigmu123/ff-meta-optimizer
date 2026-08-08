@@ -1,0 +1,19 @@
+{
+  "system_features": [
+    {
+      "feature_name": "Replay System (Beta)",
+      "location": "Profile Page",
+      "availability": "Selected Devices",
+      "description": "Allows players to record and review match highlights"
+    },
+    {
+      "feature_name": "Guild System Rework",
+      "description": "Brand new UI design, reworked menu layout, and new shareable Guild Crates"
+    }
+  ],
+  "optimizations_and_bug_fixes": [
+    "Item splitting feature added when dropping/discarding inventory items",
+    "Added chat bubbles inside team formation menu",
+    "Optimized Decoy Grenade icon and visual display on mini-map"
+  ]
+}
