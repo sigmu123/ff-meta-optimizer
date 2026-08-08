@@ -1,0 +1,12 @@
+{
+  "training_grounds_updates": {
+    "player_capacity": { "previous": 20, "new": 25 },
+    "new_social_features": [
+      "1v1 Airship (accessible via portal near the fountain)",
+      "Bumper Cars on Race Track",
+      "Lap Timer on Race Track",
+      "Chat Emojis",
+      "Combat Zone Leaderboard"
+    ]
+  }
+}
