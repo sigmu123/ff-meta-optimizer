@@ -1,0 +1,14 @@
+{
+  "patch_version": "OB54",
+  "release_date": "2026-06-24",
+  "data_protocol_version": "1.0",
+  "gameplay_scope": "Permanent Core Gameplay, Weapon Mechanics, Character Balance, Map & System Updates",
+  "active_submodules": [
+    "characters/balance_adjustments.json",
+    "weapons/balance_adjustments.json",
+    "weapons/vending_and_loot_sources.json",
+    "map_and_modes/cs_store_and_economy.json",
+    "map_and_modes/map_adjustments.json",
+    "system/engine_and_ui.json"
+  ]
+}
