@@ -1,0 +1,15 @@
+{
+  "version": "v2022_01_19",
+  "patch_name": "ILLUMINATE",
+  "publish_date": "2022-01-19",
+  "active_submodules": [
+    "characters/character_balance.json",
+    "weapons/weapons_and_armor.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/clash_squad.json",
+    "map_and_modes/battle_royale.json",
+    "map_and_modes/training_grounds.json",
+    "map_and_modes/craftland.json",
+    "system/engine_and_ui.json"
+  ]
+}
