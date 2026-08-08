@@ -1,0 +1,30 @@
+{
+  "combat_mechanics_and_exploits": [
+    {
+      "feature": "Crouch-Uncrouch Headshot Exploit Fix",
+      "rule": "Headshot damage is reduced shortly after un-crouching (multiplier 0.855)"
+    },
+    {
+      "feature": "Global Health Regeneration Cap",
+      "rule": "Maximum healing hard cap set to 50 HP/s to prevent out-of-zone stalling"
+    },
+    {
+      "feature": "Thermal Scope Vision",
+      "rule": "Thermal Scope can now see through Smoke Grenade clouds"
+    }
+  ],
+  "system_and_guild_updates": [
+    {
+      "feature": "Acting Guild Leader System",
+      "rule": "If Guild Leader is inactive for 30+ days, members vote for Acting Guild Leader with full authority until original leader returns or acting leader is inactive for 7 days"
+    },
+    {
+      "feature": "Preparation Area Exploit Fix",
+      "rule": "Fixed bug where players could exit preparation areas before spawn freeze timer expired"
+    },
+    {
+      "feature": "HUD & Summary UI",
+      "rule": "Optimized weapon HUD display, parachuting animations, and new summary page for Clash Squad and Gun King"
+    }
+  ]
+}
