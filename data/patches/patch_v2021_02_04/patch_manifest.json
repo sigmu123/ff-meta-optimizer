@@ -1,0 +1,13 @@
+{
+  "version": "v2021_02_04",
+  "patch_name": "Project Cobra",
+  "publish_date": "2021-02-04",
+  "active_submodules": [
+    "weapons/new_weapons.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/cs_ranked_season5.json",
+    "map_and_modes/battle_royale_mechanics.json",
+    "map_and_modes/training_grounds.json",
+    "system/engine_and_ui.json"
+  ]
+}
