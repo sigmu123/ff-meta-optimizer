@@ -1,0 +1,18 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "AUG",
+      "category": "Assault Rifle (AR)",
+      "availability": [
+        "Classic Mode",
+        "Clash Squad (Ranked & Casual)"
+      ],
+      "base_stats": {
+        "damage_ratio": 31,
+        "magazine_capacity": 35,
+        "rate_of_fire": 0.147
+      },
+      "pre_attached_attachment": "2x Scope (interchangeable with other scopes)"
+    }
+  ]
+}
