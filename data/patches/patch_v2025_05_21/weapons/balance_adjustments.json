@@ -1,0 +1,148 @@
+{
+  "marksman_rifles": [
+    {
+      "weapon_name": "M14",
+      "variants": [
+        "M14",
+        "M14-I",
+        "M14-II",
+        "M14-III"
+      ],
+      "reclassification": "Reclassified from Assault Rifle to Marksman Rifle",
+      "stat_changes": {
+        "armor_penetration_percent": "+18%",
+        "damage_to_gloo_walls_percent": "+30%"
+      }
+    }
+  ],
+  "assault_rifles": [
+    {
+      "weapon_name": "SCAR",
+      "variants": ["SCAR", "SCAR-I", "SCAR-II", "SCAR-III"],
+      "stat_changes": {
+        "base_damage_percent": "+3%",
+        "damage_to_gloo_walls_percent": "+30%"
+      }
+    },
+    {
+      "weapon_name": "M4A1",
+      "variants": ["M4A1", "M4A1-I", "M4A1-II", "M4A1-III"],
+      "stat_changes": {
+        "base_damage_percent": "+5%",
+        "damage_to_gloo_walls_percent": "+30%"
+      }
+    },
+    {
+      "weapon_name": "Groza",
+      "variants": ["Groza", "Groza-X"],
+      "stat_changes": {
+        "damage_to_gloo_walls_percent": "+30%"
+      }
+    },
+    {
+      "weapon_name": "FAMAS",
+      "variants": ["FAMAS", "FAMAS-I", "FAMAS-II", "FAMAS-III"],
+      "stat_changes": {
+        "damage_to_gloo_walls_percent": "+20%"
+      }
+    },
+    {
+      "weapon_name": "AUG",
+      "variants": ["AUG", "AUG-I", "AUG-II", "AUG-III"],
+      "stat_changes": {
+        "damage_to_gloo_walls_percent": "+20%"
+      }
+    },
+    {
+      "weapon_name": "PLASMA",
+      "stat_changes": {
+        "damage_to_gloo_walls_percent": "+50%"
+      }
+    }
+  ],
+  "machine_guns": [
+    {
+      "weapon_name": "M60",
+      "variants": ["M60", "M60-I", "M60-II", "M60-III"],
+      "stat_changes": {
+        "magazine_capacity": {"old": 60, "new": 70},
+        "armor_penetration_percent": "+8%",
+        "movement_speed_while_shooting_percent": "+20%"
+      }
+    },
+    {
+      "weapon_name": "M249",
+      "variants": ["M249", "M249-X"],
+      "stat_changes": {
+        "armor_penetration_percent": "+8%",
+        "movement_speed_while_shooting_percent": "+20%"
+      }
+    },
+    {
+      "weapon_name": "Kord",
+      "rework": {
+        "standing_firing_mode": "Fires three low-power bullets at a rapid rate",
+        "crouching_firing_mode": "Fires one high-power bullet at a medium rate"
+      }
+    }
+  ],
+  "submachine_guns": [
+    {
+      "weapon_name": "VSS",
+      "rework": {
+        "bleeding_effect": "Removed",
+        "upgrade_levels": "Removed",
+        "firing_mechanism": "Full-automatic 3-round burst mechanism added",
+        "stat_boosts": "Significantly increased Rate of Fire, Accuracy, and Magazine Capacity"
+      }
+    }
+  ],
+  "pistols_and_support_weapons": [
+    {
+      "weapon_name": "Heal Pistol",
+      "stat_changes": {
+        "accuracy_percent": "+20%"
+      }
+    },
+    {
+      "weapon_name": "Heal Pistol-Y",
+      "mechanics": {
+        "alive_teammate_healing_hp": 25,
+        "downed_teammate_revival": "Direct shot revives downed teammate without trigger delay, unaffected by Thiva skill",
+        "revival_limit": "Unlimited"
+      }
+    }
+  ],
+  "shotguns_and_launchers": [
+    {
+      "weapon_name": "Trogon",
+      "fire_mode": "Grenade Launcher Mode",
+      "stat_changes": {
+        "damage_percent": "+15%",
+        "range_percent": "+10%"
+      }
+    }
+  ],
+  "armor_attachment_adjustments": [
+    {
+      "attachment_name": "Helmet Hardener",
+      "stat_changes": {
+        "headshot_damage_reduction_percent": {"old": 35, "new": 10},
+        "helmet_durability_percent": "+10%"
+      }
+    },
+    {
+      "attachment_name": "Vest HP Booster",
+      "stat_changes": {
+        "shield_points_and_max_sp_granted": {"old": 30, "new": 28}
+      }
+    },
+    {
+      "attachment_name": "Vest Enlarger",
+      "stat_changes": {
+        "limb_damage_reduction_percent": {"old": 25, "new": 10},
+        "shield_points_and_max_sp_granted": {"old": 30, "new": 28}
+      }
+    }
+  ]
+}
