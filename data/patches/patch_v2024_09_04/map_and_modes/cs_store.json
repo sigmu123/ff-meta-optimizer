@@ -1,0 +1,12 @@
+{
+  "clash_squad_mode_updates": {
+    "gloo_nova_cs_mechanics": {
+      "gloo_surge_event": "Players get +1 extra Gloo Wall at the start of rounds 2-7, max carry capacity increased by +1",
+      "gloo_airdrop_rounds": [1, 2, 6, 7],
+      "first_knockdown_reward": 180
+    },
+    "team_objective_guidance": {
+      "cyber_airdrop_supply_gadget_pinging": "Tap interaction button to show player number under icon and display guiding path (Gold II rank or below)"
+    }
+  }
+}
