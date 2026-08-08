@@ -2,16 +2,16 @@
   "battle_royale_updates": {
     "vending_machine": {
       "added_items": ["Ammo", "Armor Repair Kit"],
-      "purchase_limits": "Increased personal limits on selected consumables/valuable items",
-      "loot_optimization": "Ground loot spread optimized to eliminate overlap with Vending Machines"
+      "purchase_limits": "Added personal limits on consumables & valuable items to prevent end-game utility stacking",
+      "loot_optimization": "Ground loot spread optimized so it does not overlap with vending machines"
     },
     "revival_points": {
       "capture_time_seconds": { "previous": 14, "new": 33 },
-      "cooldown_seconds": { "previous": 150, "new": 180 },
+      "cooldown_seconds": { "previous": 150, "new": 180, "pdf_raw_typo_string": "1505->1805" },
       "points_per_match": { "previous": 9, "new": 8 }
     },
     "rank_points_system": {
-      "rank_points_output": "Increased match rank points output across all tiers"
+      "rank_points_output": "Significantly increased total rank points output per match across all ranks to lower overall rank-up difficulty caused by revival mechanics"
     }
   }
 }
