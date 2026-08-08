@@ -1,0 +1,68 @@
+{
+  "hud_and_ui_optimizations": {
+    "hud_share_system": "Players can generate and apply HUD share codes to copy custom layouts",
+    "hud_button_customization": {
+      "button_size_range_percent": "1% to 200%",
+      "min_transparency_percent": 1,
+      "newly_customizable_elements": [
+        "Enter Vehicle Button",
+        "Coin Amount Display",
+        "Elimination Counter (Top-Right)",
+        "Spectator Icon",
+        "Limited-Time Auto-Revive Button"
+      ]
+    },
+    "preset_system_split": "Character visual appearance and equipped active/passive skills can now be assigned independently",
+    "auto_smart_throw_weapon_switch": "Settings option added to auto-switch back to weapon after executing Smart Throw",
+    "in_match_tips": "Optimized font scaling and pop-up windows for in-game operational tips"
+  },
+  "combat_audio_visual_feedback": {
+    "off_screen_bullet_trails": "Enhanced visibility of off-screen bullet trails to locate elevated/concealed shooters",
+    "gloo_wall_penetration_fx": "Added distinct visual hit effects when wall-penetrating rounds (M82B, Iris) strike Gloo Walls",
+    "weapon_hit_sound_engine": {
+      "new_distinct_impact_sounds": [
+        "Gloo Wall",
+        "Armor",
+        "Body",
+        "Destructible Crates"
+      ],
+      "optimized_impact_sounds": [
+        "Vehicles"
+      ]
+    }
+  },
+  "camera_system_feature": {
+    "accessibility": "In-match and Lobby",
+    "functionality": [
+      "Hidden HUD toggle",
+      "Adjustable camera zoom",
+      "Photo/Video templates",
+      "Emote playback in frame",
+      "Enemy info masked during photo mode",
+      "Photo frames and sticker overlays upon sharing"
+    ]
+  },
+  "custom_room_system_overhaul": {
+    "free_custom_rooms": "Standard custom room creation with full parameter tweaks is now free for all players; traditional room cards removed",
+    "creation_cooldown_seconds": 180,
+    "sharing_methods": [
+      "Direct Links",
+      "QR Codes"
+    ],
+    "advanced_room_card": {
+      "price_diamonds": 100,
+      "features": [
+        "Priority top placement in public room list",
+        "Special room creator visual effects",
+        "Automated previous match result scoreboard",
+        "Cross-team match text chat room"
+      ]
+    }
+  },
+  "training_grounds_and_tactical_updates": {
+    "training_grounds_chest": "Combined weapons, items, and attachments into a unified purchase chest",
+    "training_grounds_gloo_wall_reward": "Grants 1 Gloo Wall for every 3 eliminations (resets upon elimination)",
+    "vehicle_map_marking": "Players can now mark map locations while actively driving",
+    "toxic_behavior_enforcement": "Automated system temporary bans players repeatedly committing toxic actions from BR and CS modes"
+  }
+}
