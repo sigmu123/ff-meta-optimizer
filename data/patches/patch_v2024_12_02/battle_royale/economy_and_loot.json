@@ -1,0 +1,101 @@
+{
+  "vending_machine_optimizations": {
+    "ui_redesign": "New layout and interface with sidebar navigation and top-right item descriptions",
+    "auto_discard": "Automatically discards low-priority items when purchasing if backpack is full"
+  },
+  "moving_safe_zone": {
+    "enabled": true,
+    "size_behavior": "Unchanged before and after move",
+    "maps": [
+      {
+        "map_name": "NeXTerra",
+        "moving_distance_meters": 90,
+        "moving_time_seconds": 90
+      },
+      {
+        "map_name": "Bermuda",
+        "moving_distance_meters": 60,
+        "moving_time_seconds": 80
+      },
+      {
+        "map_name": "Kalahari",
+        "moving_distance_meters": 60,
+        "moving_time_seconds": 80
+      },
+      {
+        "map_name": "Purgatory",
+        "moving_distance_meters": 60,
+        "moving_time_seconds": 80
+      },
+      {
+        "map_name": "Alpine",
+        "moving_distance_meters": 60,
+        "moving_time_seconds": 80
+      }
+    ]
+  },
+  "arsenal_adjustments": {
+    "wait_time_seconds": 260
+  },
+  "ground_loot_changes": {
+    "added_weapons": [
+      "PLASMA",
+      "M590"
+    ]
+  },
+  "airdrop_adjustments": {
+    "removed_weapons": [
+      "PLASMA",
+      "RGS-50"
+    ],
+    "added_weapons": [
+      "FGL-24"
+    ]
+  },
+  "war_chest_adjustments": {
+    "lv1_upgradable_weapon_drop_rate": "Reduced in Lv.2 and Lv.3 War Chests",
+    "lv2_upgradable_weapon_drop_rate": "Added to Lv.2 and Lv.3 War Chests"
+  },
+  "vending_machine_price_changes": [
+    {
+      "item_name": "Heal Pistol-Y",
+      "old_price_ff_coins": 500,
+      "new_price_ff_coins": 300,
+      "purchase_limit": 2
+    },
+    {
+      "item_name": "SG Ammo",
+      "old_price_ff_coins": 188,
+      "new_price_ff_coins": 200,
+      "purchase_limit": 2
+    },
+    {
+      "item_name": "Sniper Ammo",
+      "old_price_ff_coins": 188,
+      "new_price_ff_coins": 200,
+      "purchase_limit": null
+    },
+    {
+      "item_name": "MAC10-I",
+      "price_ff_coins": 300,
+      "purchase_limit": 5
+    },
+    {
+      "item_name": "AUG-I",
+      "price_ff_coins": 300,
+      "purchase_limit": 5
+    },
+    {
+      "item_name": "M590",
+      "price_ff_coins": 200,
+      "purchase_limit": null
+    }
+  ],
+  "parachuting_hud": {
+    "pin_minimap_cue": "Best jump timing cue provided after pinning location on minimap"
+  },
+  "out_of_zone_display": {
+    "damage_feedback_levels": true,
+    "safe_zone_edge_indicator": "Enhanced on Ultra and MAX graphics"
+  }
+}
