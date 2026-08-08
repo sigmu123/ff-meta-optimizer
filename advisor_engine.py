@@ -19,12 +19,13 @@ class AdvisorEngine:
     def run_isolated_advisor(self):
         start_time = time.time()
         
-        # Initialize Hybrid Engine
         engine = HybridMetaEngine(patch_name=self.active_patch_name)
         
-        # 3-Stage Execution Pipeline
         top_raw_squads = engine.run_ga_pipeline(generations=20, population_size=100)
-        final_meta = engine.apply_context_multipliers(top_raw_squads, playstyle="rush")
+        
+        # Fixed: Aligned context multiplier with global environment parameters
+        playstyle_env = os.getenv("FF_PLAYSTYLE", "rush").lower()
+        final_meta = engine.apply_context_multipliers(top_raw_squads, playstyle=playstyle_env)
         
         if not final_meta:
             print(f"[-] Error: No valid builds found for {self.active_patch_name}")
