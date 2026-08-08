@@ -1,0 +1,53 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "M24",
+      "category": "Sniper Rifle",
+      "attributes": {
+        "base_damage": 88,
+        "rate_of_fire": 0.8,
+        "magazine": 15
+      }
+    }
+  ],
+  "weapon_balance": [
+    { "weapon_name": "FAMAS", "adjustments": { "effective_range_percentage": -10 } },
+    {
+      "weapon_name": "M14",
+      "adjustments": {
+        "damage_percentage": -3,
+        "effective_range_percentage": -4
+      }
+    },
+    { "weapon_name": "M4A1-Z", "adjustments": { "rate_of_fire_percentage": -3 } },
+    { "weapon_name": "SCAR", "adjustments": { "armor_penetration_percentage": 8 } },
+    { "weapon_name": "GROZA", "adjustments": { "armor_penetration_percentage": -8 } },
+    { "weapon_name": "VSS", "adjustments": { "rate_of_fire_percentage": -10 } },
+    { "weapon_name": "UMP", "adjustments": { "minimum_damage_percentage": -15 } },
+    { "weapon_name": "Kar98k", "adjustments": { "rate_of_fire_percentage": -10 } },
+    {
+      "weapon_name": "Kar98k-I",
+      "adjustments": {
+        "gun_switch_time_seconds": {
+          "previous": 0.4,
+          "new": 0.6
+        }
+      }
+    },
+    {
+      "weapon_name": "Treatment Sniper",
+      "adjustments": {
+        "overheat_cooling_speed_percentage": 8,
+        "magazine_capacity_percentage": 50
+      }
+    },
+    { "weapon_name": "AC80", "adjustments": { "rate_of_fire_percentage": -10 } },
+    {
+      "weapon_name": "M79",
+      "adjustments": {
+        "damage_percentage": -15,
+        "explosion_range_percentage": -10
+      }
+    }
+  ]
+}
