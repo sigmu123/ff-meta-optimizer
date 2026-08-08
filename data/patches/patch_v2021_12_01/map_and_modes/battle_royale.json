@@ -1,0 +1,9 @@
+{
+  "battle_royale_updates": {
+    "economy_ff_coins": {
+      "minimum_stack_value": 100,
+      "visual_update": "Coin stack appearance dynamically scales based on quantity in stack",
+      "drop_rate": "Increased ground coin spawn frequency"
+    }
+  }
+}
