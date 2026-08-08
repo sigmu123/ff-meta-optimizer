@@ -1,0 +1,11 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Rin Yagami",
+      "lore_title": "Hayato's younger sister",
+      "skill_name": "Violet Strike",
+      "skill_type": "Active",
+      "mechanics": "Fires a precision projectile forward; damage increases dynamically based on target distance."
+    }
+  ]
+}
