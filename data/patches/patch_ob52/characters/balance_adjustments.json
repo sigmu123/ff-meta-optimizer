@@ -1,0 +1,48 @@
+{
+  "character_buffs_and_nerfs": [
+    {
+      "name": "Tatsuya",
+      "skill_name": "Rebel Rush",
+      "type": "Adjustment / Balance",
+      "cooldown_seconds": {
+        "previous": 128,
+        "updated": 98
+      },
+      "rush_duration_seconds": 0.3,
+      "skill_reset_condition": {
+        "type": "Knockdown target within specific timeframe",
+        "timeframe_seconds_after_release": 19
+      }
+    },
+    {
+      "name": "Wukong",
+      "skill_name": "Camouflage",
+      "type": "Adjustment / Balance",
+      "cooldown_seconds": {
+        "previous": 120,
+        "updated": 98
+      },
+      "transformation_duration_seconds": 10,
+      "movement_speed_reduction_percentage": 10,
+      "skill_reset_condition": {
+        "type": "Take down an enemy within timeframe",
+        "timeframe_seconds_after_release": 10
+      }
+    },
+    {
+      "name": "Xayne",
+      "skill_name": "Xtreme Encounter",
+      "type": "Buff",
+      "cooldown_seconds": 75,
+      "state_duration_seconds": {
+        "previous": 12,
+        "updated": 15
+      },
+      "temporary_shield_points": {
+        "previous": 58,
+        "updated": 78
+      },
+      "knockdown_effect": "Restores temporary Shield Points to 78 and resets state duration"
+    }
+  ]
+}
