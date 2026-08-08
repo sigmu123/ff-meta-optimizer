@@ -1,0 +1,34 @@
+{
+  "upgradable_weapons": [
+    {
+      "weapon_name": "MAC10",
+      "upgrade_method": "Damage accumulation (No Upgrade Chips allowed)",
+      "levels": [
+        {
+          "tier": "MAC10-I",
+          "required_damage": 200,
+          "stat_buffs": {
+            "rate_of_fire_percent": 2,
+            "limb_damage_percent": 15
+          }
+        },
+        {
+          "tier": "MAC10-II",
+          "required_damage": 400,
+          "stat_buffs": {
+            "rate_of_fire_percent": 4,
+            "limb_damage_percent": 20
+          }
+        },
+        {
+          "tier": "MAC10-III",
+          "required_damage": 800,
+          "stat_buffs": {
+            "rate_of_fire_percent": 6,
+            "limb_damage_percent": 25
+          }
+        }
+      ]
+    }
+  ]
+}
