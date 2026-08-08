@@ -1,0 +1,19 @@
+{
+  "character_name": "Lila",
+  "title": "Gloo Artist",
+  "skill_name": "Gloo Strike",
+  "skill_type": "Passive",
+  "mechanics": {
+    "rifle_hits": {
+      "debuff_targets": [
+        "Enemies",
+        "Vehicles"
+      ],
+      "effect": "Slows movement speed of target enemy or vehicle upon hitting with rifles"
+    },
+    "takedowns": {
+      "trigger": "Knocking down an enemy",
+      "effect": "Freezes knocked-down enemies and grants an extra Gloo Wall instantly"
+    }
+  }
+}
