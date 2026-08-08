@@ -1,0 +1,11 @@
+{
+  "new_weapons": [
+    {
+      "name": "PLASMA-X",
+      "category": "Airdrop Energy Weapon",
+      "overheat_mechanic": "Features energy blast heating system with faster cooldown speed",
+      "optimal_threshold": "Fire rate and damage output reach maximum potential at 50% heat level",
+      "idle_decay": "Heat energy gradually decays while idle or on cooldown"
+    }
+  ]
+}
