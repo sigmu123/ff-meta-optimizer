@@ -1,0 +1,30 @@
+{
+  "chaos_events_system": {
+    "voting_mechanism": "In-match voting triggers specific chaotic battlefield modifications",
+    "events": [
+      {"event_id": "runaway_plane", "effect": "Plane engine crash alters standard air flight trajectory"},
+      {"event_id": "cyber_mushroom", "effect": "Standard mushrooms replaced by super mushrooms with custom buffs"},
+      {"event_id": "unusual_arrival", "effect": "BR and CS Airdrops undergo item/mechanism changes"},
+      {"event_id": "power_surge", "effect": "Character active skill cooldowns significantly reduced"},
+      {"event_id": "arsenal_eruption", "effect": "All Arsenal doors automatically unlocked at match start"},
+      {"event_id": "new_in_stock", "effect": "Vending machines stocked with Active Skill Cards and Portal Gos"},
+      {"event_id": "safe_zone_disrupted", "effect": "First safe zone shrinks at non-standard map position"},
+      {"event_id": "mission_carnival", "effect": "Supply Run returns with simplified quest objectives"}
+    ]
+  },
+  "battlefield_loot_and_consumables": {
+    "energizer": {
+      "duration_seconds_previous": 10,
+      "duration_seconds_current": 30
+    },
+    "monster_truck_airdrop": {
+      "item_type": "Summonable Vehicle Item",
+      "summon_delay_seconds": 2,
+      "guaranteed_spawn": "Minimum 1 present within the blue circle"
+    },
+    "loot_box_optimization": {
+      "auto_stacking": true,
+      "description": "Nearby loot box items automatically merge into a single consolidated interface"
+    }
+  }
+}
