@@ -1,0 +1,10 @@
+{
+  "training_grounds_updates": {
+    "new_zones": [
+      {
+        "zone_name": "Grenade Range",
+        "description": "Dedicated practice area for basic mechanics with utility grenades"
+      }
+    ]
+  }
+}
