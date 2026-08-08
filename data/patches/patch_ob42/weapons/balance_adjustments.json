@@ -1,0 +1,48 @@
+{
+  "rifles": [
+    {
+      "weapon": "XM8",
+      "adjustment_type": "Buff",
+      "magazine_capacity_percentage": 20,
+      "accuracy_percentage": 20,
+      "damage_percentage": 10
+    }
+  ],
+  "pistols": [
+    {
+      "weapon": "Mini Uzi",
+      "adjustment_type": "Nerf",
+      "armor_penetration": {
+        "previous_percentage": 30,
+        "current_percentage": 10,
+        "reduction_percentage": -66
+      }
+    }
+  ],
+  "machine_guns": [
+    {
+      "weapon": "M249 / M249-X",
+      "adjustment_type": "Buff",
+      "crouch_damage_flat_increase": {
+        "previous": 5,
+        "current": 10,
+        "buff_percentage": 100
+      },
+      "crouch_minimum_damage_percentage": 20
+    }
+  ],
+  "shotguns": [
+    {
+      "weapon": "M1014-I / M1014-II / M1014-III",
+      "adjustment_type": "Nerf",
+      "minimum_damage_percentage": -15
+    }
+  ],
+  "others": [
+    {
+      "weapon": "RRG550",
+      "adjustment_type": "Nerf",
+      "damage_to_players_percentage": -25
+    }
+  ]
+}
