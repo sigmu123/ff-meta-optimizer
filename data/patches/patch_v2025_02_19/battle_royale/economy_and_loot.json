@@ -1,0 +1,152 @@
+{
+  "backpack_system_capacity_and_weights": {
+    "lv3_backpack_capacity": {
+      "old_capacity": 300,
+      "new_capacity": 360,
+      "percentage_increase": 20
+    },
+    "ammo_weight_adjustments": {
+      "shotgun_ammo": {
+        "old_weight": 2,
+        "new_weight": 3,
+        "weight_increase_percent": 50
+      },
+      "sniper_ammo": {
+        "old_weight": 2,
+        "new_weight": 3,
+        "weight_increase_percent": 50
+      }
+    },
+    "throwable_weight_adjustments": {
+      "grenades_and_throwables": {
+        "old_weight": 3,
+        "new_weight": 5,
+        "weight_increase_percent": 60
+      }
+    },
+    "grenade_inventory_limit": {
+      "max_carry_limit_per_player": 3
+    }
+  },
+  "device_category_system": {
+    "ui_and_visual_changes": "Device items receive distinct ground drop visual effects, rarity colors, and updated backpack/store icons. Single-slot limit applies.",
+    "usable_via_active_skill_hud": true,
+    "device_items_list": [
+      {
+        "item_name": "UAV-Lite",
+        "variants": [
+          {
+            "rarity": "Blue",
+            "type": "Single-use"
+          },
+          {
+            "rarity": "Purple",
+            "type": "Unlimited-use",
+            "cooldown_seconds": 120
+          }
+        ]
+      },
+      {
+        "item_name": "Heal UAV-Lite",
+        "variants": [
+          {
+            "rarity": "Blue",
+            "type": "Single-use"
+          },
+          {
+            "rarity": "Purple",
+            "type": "Unlimited-use",
+            "cooldown_seconds": 120
+          }
+        ]
+      },
+      {
+        "item_name": "Launch Pad",
+        "variants": [
+          {
+            "rarity": "Blue",
+            "type": "Single-use"
+          },
+          {
+            "rarity": "Orange",
+            "type": "Unlimited-use",
+            "cooldown_seconds": 300
+          }
+        ]
+      },
+      {
+        "item_name": "Active Skill Card",
+        "variants": [
+          {
+            "rarity": "Orange",
+            "type": "Unlimited-use",
+            "cooldown_seconds": "Longer cooldown applied based on specific skill"
+          }
+        ]
+      },
+      {
+        "item_name": "Mini Turret",
+        "variants": [
+          {
+            "rarity": "Blue",
+            "type": "Single-use"
+          },
+          {
+            "rarity": "Orange",
+            "type": "Unlimited-use",
+            "cooldown_seconds": 300
+          }
+        ]
+      },
+      {
+        "item_name": "Supply Box",
+        "variants": [
+          {
+            "rarity": "Blue",
+            "type": "Single-use",
+            "function": "Deploys a supply box providing ammunition and medical items for the team"
+          }
+        ]
+      }
+    ]
+  },
+  "ground_and_airdrop_loot_adjustments": {
+    "airdrop_loot_pool": {
+      "added_items": [
+        "Purple UAV-Lite",
+        "Purple Heal UAV-Lite"
+      ]
+    },
+    "defense_airdrop_loot_pool": {
+      "stage_2_additions": [
+        "Orange Launch Pad"
+      ]
+    },
+    "ground_loot_additions": [
+      "Blue UAV-Lite",
+      "Blue Heal UAV-Lite",
+      "Blue Mini Turret"
+    ]
+  },
+  "vending_machine_additions": [
+    {
+      "item_name": "Orange Active Skill Card",
+      "price_ff_coins": 1200,
+      "purchase_limit": 1
+    },
+    {
+      "item_name": "FAMAS-III",
+      "price_ff_coins": 600,
+      "purchase_limit": 2
+    }
+  ],
+  "respawn_loadout_change": {
+    "revival_weapon_replaced": {
+      "old_weapon": "Thompson",
+      "new_weapon": "P90"
+    }
+  },
+  "economy_visual_updates": {
+    "ff_coins": "Improved icons and ground models for clearer recognition"
+  }
+}
