@@ -1,0 +1,17 @@
+{
+  "new_characters": [
+    {
+      "name": "Sonia",
+      "role": "Nano Scientist",
+      "skill": {
+        "name": "Nano Lifeshield",
+        "type": "Passive",
+        "description": "After taking fatal damage, enter an invulnerable and immobile state for 0.5s. Then, gain a 150 HP shield that lasts for 3s. If the skill user knocks down an enemy while the shield is active, restore the same HP amount as the shield's; if not, the skill user will be eliminated.",
+        "invulnerable_duration_seconds": 0.5,
+        "shield_hp": 150,
+        "shield_duration_seconds": 3,
+        "cooldown_seconds": 180
+      }
+    }
+  ]
+}
