@@ -1,0 +1,75 @@
+{
+  "combat_sound_engine_optimization": {
+    "distinct_hit_sounds_added": [
+      "Gloo Wall",
+      "Armor",
+      "Body",
+      "Destructible crates"
+    ],
+    "optimized_hit_sounds": [
+      "Vehicles"
+    ]
+  },
+  "elimination_replay_system": {
+    "status": "Temporarily disabled in patch for further fixes",
+    "future_parameters": {
+      "minimap_display": "Hidden during replay to prevent location leaking",
+      "replay_time_window_seconds": {
+        "old": 5,
+        "new": 10
+      },
+      "detailed_elimination_info": [
+        "Wall-penetration damage (M82B, SVD-Y, Iris)",
+        "Bleed damage (VSS-III, Ryden)"
+      ]
+    }
+  },
+  "vehicle_destruction_mechanic": {
+    "instant_elimination": false,
+    "new_behavior": "Players are ejected upon vehicle explosion and sustain explosion damage instead of instant death"
+  },
+  "hud_and_settings_redesign": {
+    "settings_ui_overhaul": {
+      "new_in_match_tab": {
+        "sub_tabs": [
+          "Controls",
+          "Information",
+          "Sensitivity",
+          "Auto Pickup",
+          "Vibration"
+        ]
+      },
+      "visual_explanations": "Added graphical and textual guides for Controls and Sensitivity options",
+      "precise_slider_adjustment": "Added +/- 1 unit step buttons for Sensitivity and Sound sliders"
+    },
+    "sp_display_option": {
+      "setting_name": "SP number above HP",
+      "location": "Settings > Information tab",
+      "effect": "Shows Shield Points as numbers and collapses EP bar"
+    },
+    "charge_buster_audio_alert": "Enemies receive immediate audio/visual alert when an opposing Charge Buster is charging",
+    "homer_targeting_priority": "Prioritizes active/alive enemies over knocked down enemies"
+  },
+  "preset_and_character_ui": {
+    "character_page": "Added simplified vs detailed skill descriptions toggle with updated skill tags",
+    "recommended_preset_page": "Redesigned entrance, added preset options, and streamlined setup process"
+  },
+  "rank_and_matchmaking_qol": {
+    "rank_guidance_popups": "Displays progress towards ranking up, season end warnings, friend rank surpass alerts, and daily mission status",
+    "new_sub_ranks": [
+      "Platinum V",
+      "Diamond V"
+    ],
+    "spectator_endorsement": "Eliminated players can endorse teammates or enemies while spectating",
+    "voice_reconnection_indicator": "In-match HUD icon appears when attempting to reconnect to voice servers",
+    "team_recommendation_stats": "Prioritizes KDA, headshot rate, Booyah streak, and Weapon Glory rankings",
+    "penalty_indicator": "Displays misconduct/penalty icon on result screen for AFK or force quits"
+  },
+  "custom_room_features": {
+    "afk_auto_kick": "Automatically removes long-term offline players from custom rooms",
+    "war_chest_toggle": "Added option to enable/disable War Chests in BR custom rooms"
+  },
+  "account_security": {
+    "recovery_email": "Allows binding a private recovery email to switch social media logins via verification codes"
+  }
+}
