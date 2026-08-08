@@ -1,0 +1,118 @@
+{
+  "gloo_maker_system": {
+    "base_mechanics": {
+      "starting_gloo_walls": 1,
+      "revival_gloo_walls": 1,
+      "gloo_wall_pickup_enabled": false,
+      "gloo_wall_purchase_enabled": false,
+      "exp_gain_methods": {
+        "gloo_chip": "400 EXP",
+        "damage_dealt": "1 EXP per 2 DMG",
+        "time_elapsed": "1 EXP per 1 second"
+      }
+    },
+    "levels": {
+      "level_1": {
+        "max_capacity": 4,
+        "generation_cd_seconds": 100,
+        "exp_required_to_next": 300,
+        "loot_box_gloo_walls": 1,
+        "eliminator_gloo_walls": 1
+      },
+      "level_2": {
+        "max_capacity": 5,
+        "generation_cd_seconds": 85,
+        "exp_required_to_next": 400,
+        "loot_box_gloo_walls": 1,
+        "eliminator_gloo_walls": 1
+      },
+      "level_3": {
+        "max_capacity": 6,
+        "generation_cd_seconds": 70,
+        "exp_required_to_next": 400,
+        "loot_box_gloo_walls": 1,
+        "eliminator_gloo_walls": 1
+      },
+      "level_4": {
+        "max_capacity": 8,
+        "generation_cd_seconds": 65,
+        "exp_required_to_next": 400,
+        "loot_box_gloo_walls": 2,
+        "eliminator_gloo_walls": 1
+      },
+      "level_5": {
+        "max_capacity": 18,
+        "generation_cd_seconds": 50,
+        "exp_required_to_next": null,
+        "loot_box_gloo_walls": 2,
+        "eliminator_gloo_walls": 2
+      }
+    },
+    "gloo_chip_sources": [
+      "Vending Machine (408 FF Coins, limit: 1)",
+      "Airdrop",
+      "Arsenal",
+      "Blue Zone",
+      "War Chest"
+    ]
+  },
+  "super_revival_card": {
+    "revival_loadout": [
+      "UMP",
+      "Lv. 2 Helmet",
+      "Lv. 2 Vest",
+      "Med Kit",
+      "Heal Pistol"
+    ]
+  },
+  "vending_machine": {
+    "standard": {
+      "super_med_limit": 1,
+      "arsenal_key_price": 800,
+      "gloo_chip_price": 480,
+      "gloo_chip_limit": 1,
+      "free_items": [
+        {"item": "Heal Sniper", "limit": 1},
+        {"item": "Heal Laser", "limit": 1},
+        {"item": "Katana", "limit": 1},
+        {"item": "Lv. 2 Magazine", "limit": 1},
+        {"item": "Gloo Melter", "limit": 1}
+      ]
+    },
+    "in_match_quest_vending_machine": {
+      "airdrop_guns": {"price": 600, "limit": 2},
+      "m1887": {"price": 600, "limit": 2}
+    }
+  },
+  "war_chest": {
+    "cost_to_open_coins": 200,
+    "drop_buffs": [
+      "Slightly increased Horizaline drop rate in Lv. 2 and Lv. 3 War Chests",
+      "Chance to contain Gloo Chips"
+    ]
+  },
+  "loot_adjustments": {
+    "mushrooms": "Increased on map; Yellow mushrooms removed",
+    "lv1_upgradable_weapons": "Slightly reduced drop rate, more scattered",
+    "removed_from_map_ground_loot": [
+      "Heal Sniper",
+      "Heal Laser",
+      "Gloo Wall",
+      "Bipod attachment"
+    ],
+    "m24_drop_rate": "-25%",
+    "rgs50_drop_rate": "-16%",
+    "blue_zone": "Reduced FF Coins drop",
+    "arsenal_keys": "More random and scattered across the map",
+    "arsenal_loot": "Gloo Walls removed, replaced with 1 Gloo Chip"
+  },
+  "safe_zone_timing": {
+    "zone_2": {
+      "wait_time_before_shrink_seconds": {"old": 60, "new": 40},
+      "shrink_duration_seconds": {"old": 140, "new": 170}
+    },
+    "zone_3": {
+      "wait_time_before_shrink_seconds": {"old": 50, "new": 40}
+    }
+  }
+}
