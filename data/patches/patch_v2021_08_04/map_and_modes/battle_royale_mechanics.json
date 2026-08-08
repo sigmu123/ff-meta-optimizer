@@ -1,0 +1,10 @@
+{
+  "battle_royale_updates": {
+    "rank_points_adjustment": {
+      "total_rank_points_output": "Increased total rank points output to ease ranking up difficulty caused by the revival system"
+    },
+    "ff_tokens_hud": {
+      "backpack_menu_update": "Added FF Token count display inside the backpack menu HUD"
+    }
+  }
+}
