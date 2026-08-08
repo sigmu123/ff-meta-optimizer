@@ -1,0 +1,11 @@
+{
+  "clash_squad_season_3": {
+    "start_date": "2020-09-24 17:00 SGT",
+    "season_reward": "The Golden FAMAS (Gold III or above)",
+    "system_updates": [
+      "Added audio cues when purchasing Mushrooms and Horizaline",
+      "Rank protection/star loss waived if reconnected player wins after disconnecting",
+      "Rank Shield protection points yield reduced after reaching Platinum Rank"
+    ]
+  }
+}
