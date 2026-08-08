@@ -1,0 +1,36 @@
+{
+  "ranked_map_pool": {
+    "active_maps": [
+      "Bermuda",
+      "NeXTerra",
+      "Kalahari"
+    ],
+    "removed_maps": [
+      "Alpine"
+    ]
+  },
+  "bermuda_map_reworks": {
+    "rim_nam_village": {
+      "changes": "New layout, added more covers and clearer paths.",
+      "mode_expansion": "Added to Clash Squad Casual and Ranked modes."
+    },
+    "nurek_dam": {
+      "changes": "Added a container on top of slanted containers near spawn points on both sides to prevent rooftop camping."
+    },
+    "mars_electric": {
+      "changes": [
+        "Adjusted container positions to increase encounter frequency.",
+        "Adjusted spawn points on both sides for better balance.",
+        "Removed tires and house on north side (rooftop access removed).",
+        "Removed tires on east side (building top access removed)."
+      ]
+    },
+    "cape_town": {
+      "changes": [
+        "Spawn points adjusted.",
+        "Replaced a two-story building with a single-story building.",
+        "Removed rooftop access to prevent elevated shooting vantage points."
+      ]
+    }
+  }
+}
