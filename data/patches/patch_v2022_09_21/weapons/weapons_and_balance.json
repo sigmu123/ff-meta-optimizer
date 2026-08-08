@@ -1,0 +1,130 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Treatment Laser Gun",
+      "category": "Treatment",
+      "attributes": {
+        "heal_amount_per_shot": 18,
+        "rate_of_fire": 0.12,
+        "effective_range_meters": 20
+      }
+    }
+  ],
+  "new_throwables": [
+    {
+      "item_name": "Gloo Melter",
+      "category": "Grenade",
+      "mechanism": {
+        "gloo_wall_damage": 150,
+        "duration_seconds": 12,
+        "debuff": "Gloo Walls inside the range take 2x damage when attacked by weapons"
+      }
+    }
+  ],
+  "new_attachments": [
+    {
+      "attachment_name": "Shotgun Stock",
+      "base_equivalent": "Lv. 3 Stock",
+      "special_attributes": {
+        "reload_speed_reduction_seconds": 0.2,
+        "weapon_switching_speed_reduction_seconds": 0.1
+      }
+    },
+    {
+      "attachment_name": "Marksman Rifle Foregrip",
+      "base_equivalent": "Lv. 3 Foregrip",
+      "special_attributes": {
+        "rate_of_fire_increase_percentage": 7,
+        "scope_speed_increase_percentage": 10
+      }
+    },
+    {
+      "attachment_name": "Sniper Stock",
+      "base_equivalent": "Lv. 3 Stock",
+      "special_attributes": {
+        "rate_of_fire_increase_percentage": 7,
+        "scoped_movement_speed_increase_percentage": 10
+      }
+    }
+  ],
+  "weapon_balance": [
+    {
+      "weapon_category": "Shotgun",
+      "adjustments": [
+        {
+          "weapon_name": "MAG-7",
+          "muzzle_slot": "Closed",
+          "max_headshot_damage_distance_meters": { "previous": 7, "new": 5 }
+        },
+        {
+          "weapon_name": "SPAS12",
+          "muzzle_slot": "Closed",
+          "max_headshot_damage_distance_meters": { "previous": 8, "new": 5 },
+          "min_headshot_damage_distance_meters": { "previous": 13, "new": 12 }
+        },
+        {
+          "weapon_name": "M1887",
+          "foregrip_and_stock_slots": "Available",
+          "max_headshot_damage_distance_meters": { "previous": 7, "new": 5 }
+        },
+        {
+          "weapon_name": "M1014",
+          "max_headshot_damage_distance_meters": { "previous": 5, "new": 4 }
+        }
+      ]
+    },
+    {
+      "weapon_category": "SMG",
+      "exceptions": ["VSS"],
+      "adjustments": [
+        {
+          "max_headshot_damage_distance_meters": { "previous": 12, "new": 8 }
+        }
+      ]
+    },
+    {
+      "weapon_category": "Rifle",
+      "adjustments": [
+        {
+          "max_headshot_damage_distance_meters": { "previous": 30, "new": 25 }
+        }
+      ]
+    },
+    {
+      "weapon_category": "Marksman Rifle",
+      "adjustments": [
+        {
+          "max_headshot_damage_distance_meters": { "previous": 35, "new": 30 }
+        }
+      ]
+    },
+    {
+      "weapon_individual_adjustments": [
+        { "weapon_name": "PLASMA", "adjustments": { "rate_of_fire_percentage": 12 } },
+        { "weapon_name": "PARAFAL", "adjustments": { "rate_of_fire_percentage": 18 } },
+        { "weapon_name": "FAMAS-II / FAMAS-III", "adjustments": { "armor_penetration_percentage": 5 } },
+        { "weapon_name": "VSS-II / VSS-III", "adjustments": { "rate_of_fire_percentage": -5 } },
+        { "weapon_name": "M24", "adjustments": { "damage_percentage": 10 } },
+        { "weapon_name": "Anti-materiel Launcher", "adjustments": { "damage_to_gloo_walls": { "previous": 100, "new": 640 } } },
+        { "weapon_name": "Ice Gun", "adjustments": { "mechanism": "Rechargeable weapon" } },
+        {
+          "weapon_name": "SCAR",
+          "adjustments": {
+            "mechanism": "Upgradable weapon",
+            "tiers": {
+              "SCAR_to_SCAR-I": "Increased damage and rate of fire",
+              "SCAR-I_to_SCAR-II": "Increased damage and rate of fire",
+              "SCAR-II_to_SCAR-III": "Increased damage and accuracy"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "armor_adjustments": [
+        { "item_name": "Helmet Lv. 2", "adjustments": { "damage_reduction_percentage": 2 } },
+        { "item_name": "Helmet Lv. 3", "adjustments": { "damage_reduction_percentage": 1 } }
+      ]
+    }
+  ]
+}
