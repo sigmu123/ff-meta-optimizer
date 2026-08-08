@@ -1,0 +1,22 @@
+{
+  "cs_duo_active_skills_mode": {
+    "mechanics": {
+      "lobby_preset_kept": true,
+      "selectable_active_skills": "Can choose 1 additional active skill from all available character active skills",
+      "ranked_availability": "Gold I rank or above",
+      "ranked_protection": "No star deductions for first 2 match defeats under this mode"
+    }
+  },
+  "in_match_quest_color_cube_charge_up": {
+    "activation": "Interact with Color Prisms in BR matches.",
+    "character_spirit_buffs": {
+      "alok": "Creates an aura restoring high HP.",
+      "homer": "Releases drone toward nearest enemy, creating a speed-reducing pulse explosion.",
+      "clu": "Continuously scans nearby enemies."
+    }
+  },
+  "color_cube_gameplay": {
+    "location": "Floating Color Cube Island (BR Ranked & Casual).",
+    "revival_mechanic": "Eliminated players go to the island, dye surfaces, break mini-cubes, or eliminate enemies to fill progress bar and earn a free parachuting revival."
+  }
+}
