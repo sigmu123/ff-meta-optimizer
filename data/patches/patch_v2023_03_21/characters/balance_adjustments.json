@@ -1,0 +1,89 @@
+{
+  "reworked_characters": [
+    {
+      "character_name": "Xayne",
+      "skill_name": "Xtreme Encounter",
+      "rework_type": "Mechanism change & HP decay removed",
+      "description": "Get 50 temporary HP for 8s. During this time, HP-healing effects are enhanced by 75%.",
+      "temporary_hp_gained": 50,
+      "hp_decay_removed": true,
+      "healing_effect_boost_pct": 75,
+      "duration_seconds": 8,
+      "cooldown_seconds": 75
+    },
+    {
+      "character_name": "Otho",
+      "skill_name": "Memory Mist",
+      "rework_type": "Trigger condition expanded",
+      "description": "After knocking down an enemy, mark enemies within 20m of the knocked down enemy and slow down their movement speed by 25% for 4s. When knocked down yourself, mark and slow down nearby enemies.",
+      "radius_meters": 20,
+      "movement_slow_pct": 25,
+      "duration_seconds": 4,
+      "triggers": ["Knocking down an enemy", "Being knocked down"]
+    },
+    {
+      "character_name": "Dasha",
+      "skill_name": "Partying On",
+      "rework_type": "Full rework",
+      "description": "After eliminating an enemy, enter Highlight mode, boosting rate of fire by 18% and movement speed by 12% (decays quickly) for 6s. Consecutively knocking down enemies resets countdown and adds +4% RoF and +3% movement speed.",
+      "highlight_base_duration_seconds": 6,
+      "base_rate_of_fire_boost_pct": 18,
+      "base_movement_speed_boost_pct": 12,
+      "consecutive_down_bonus": {
+        "rate_of_fire_boost_pct": 4,
+        "movement_speed_boost_pct": 3,
+        "resets_countdown": true
+      }
+    },
+    {
+      "character_name": "Ford",
+      "skill_name": "Iron Will",
+      "rework_type": "Full rework",
+      "description": "When taking damage, gain 10 HP/s for 3 seconds. Active skill resets immediately after releasing it.",
+      "hp_recovery_per_second": 10,
+      "duration_seconds": 3,
+      "cooldown_seconds": 20,
+      "active_skill_reset_on_release": true
+    }
+  ],
+  "adjusted_characters": [
+    {
+      "character_name": "Kenta",
+      "skill_name": "Swordsman's Wrath",
+      "rework_type": "Buff",
+      "shield_width_meters": 5,
+      "frontal_damage_reduction": {
+        "old_pct": 50,
+        "new_pct": 60
+      },
+      "frontal_damage_reduction_when_firing": "10-20%",
+      "duration_seconds": 5,
+      "cooldown_seconds": 70
+    },
+    {
+      "character_name": "Alok",
+      "skill_name": "Drop the Beat",
+      "rework_type": "Nerf / Adjustment",
+      "aura_radius_meters": 5,
+      "movement_speed_boost_pct": 15,
+      "hp_recovery_per_second": {
+        "old": 5,
+        "new": 3
+      },
+      "duration_seconds": 10,
+      "cooldown_seconds": {
+        "old": 50,
+        "new": 45
+      }
+    },
+    {
+      "character_name": "Santino",
+      "skill_name": "Shape Splitter",
+      "rework_type": "Buff",
+      "mannequin_hp": 200,
+      "mannequin_behavior": "Moves forward automatically",
+      "duration_seconds": 12,
+      "cooldown_seconds": 80
+    }
+  ]
+}
