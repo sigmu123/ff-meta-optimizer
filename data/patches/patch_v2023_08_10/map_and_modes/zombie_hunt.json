@@ -1,0 +1,12 @@
+{
+  "zombie_hunt_double_evil": {
+    "mode_status": "Returned with new maps, enemies, and bosses",
+    "difficulties": ["Easy", "Normal", "Hard"],
+    "mechanics": {
+      "weekly_rotating_maps": "Map rotates weekly with unique environmental buffs.",
+      "double_evil_bosses": "Eliminate 2 bosses in Double Evil rotating map for victory.",
+      "talent_system": "Redesigned Talent system accessible via bottom-left entrance. Spend Talent Points to upgrade base stats.",
+      "revival_token": "New item to revive self or teammates instantly. Hard limit placed on standard revivals."
+    }
+  }
+}
