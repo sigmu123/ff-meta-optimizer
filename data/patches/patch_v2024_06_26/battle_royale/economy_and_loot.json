@@ -1,0 +1,49 @@
+{
+  "war_chests": {
+    "armor_drop_rate": "Reduced across all War Chest levels"
+  },
+  "mini_peak_event": {
+    "max_active_portals_at_start": 4,
+    "portal_team_capacity": 1,
+    "portal_shutdown_timer_seconds": 300,
+    "map_marking": "Locations and closing countdowns visible on minimap",
+    "mechanics": {
+      "entry": "Memory Portals on the ground",
+      "default_weapon": "Nostalgic M1887",
+      "currency": "Memory Points",
+      "elimination_rule": "Quick respawn on the floating island",
+      "exit_mechanism": "Hall of Honor glider portals"
+    }
+  },
+  "capturing_mechanics": {
+    "revival_points": {
+      "ui_behavior": "Functions similarly to Defense Arsenal",
+      "speed_scaling": "Increases with more participating team members"
+    },
+    "defense_airdrops": {
+      "ui_behavior": "Functions similarly to Defense Arsenal",
+      "speed_scaling": "Increases with more participating team members"
+    }
+  },
+  "parachute_alert_system": {
+    "trigger": "Revived enemies parachuting within a specific radius nearby",
+    "alert_type": "Directional warning UI alert"
+  },
+  "anniversary_gift_boxes": {
+    "spawn_type": "Random ground spawns",
+    "mechanic": "Destructible",
+    "rewards": "Random loot with low chance for 7th Anniversary Nostalgic Weapons"
+  },
+  "item_adjustments": {
+    "gloo_melter": {
+      "gloo_wall_damage_hp_per_sec": {
+        "old": 178,
+        "new": 230
+      },
+      "extra_damage_within_effect_range_percent": {
+        "old": 100,
+        "new": 120
+      }
+    }
+  }
+}
