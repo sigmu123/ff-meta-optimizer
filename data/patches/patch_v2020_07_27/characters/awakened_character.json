@@ -1,0 +1,19 @@
+{
+  "awakened_characters": [
+    {
+      "character_name": "Hayato 'Firebrand'",
+      "awakened_skill_name": "Art of Blades",
+      "skill_type": "Active",
+      "cooldown_seconds": 50,
+      "duration_seconds": 3,
+      "skill_mechanics": "Reduces frontal damage taken. Firing weapons immediately interrupts this ability.",
+      "frontal_damage_reduction_percentage": {
+        "level_1": 20,
+        "level_2": 25,
+        "level_3": 30,
+        "level_4": 35,
+        "level_5": 40
+      }
+    }
+  ]
+}
