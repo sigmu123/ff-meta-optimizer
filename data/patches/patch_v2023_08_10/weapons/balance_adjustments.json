@@ -1,0 +1,44 @@
+{
+  "rifles": {
+    "ak47": {
+      "damage_buff_percentage": 15,
+      "min_damage_buff_percentage": 30
+    },
+    "groza": {
+      "armor_penetration_buff_percentage": 8
+    },
+    "g36": {
+      "aim_assist": "Optimized"
+    },
+    "famas": {
+      "scope_speed_buff_percentage": 50,
+      "scoped_min_damage_buff_percentage": 10,
+      "armor_penetration_buff_percentage": 10
+    },
+    "m14": {
+      "firing_mode": "Converted to Fully Automatic Assault Rifle"
+    }
+  },
+  "marksman_rifles": {
+    "ac80": {
+      "rate_of_fire_nerf_percentage": -20,
+      "magazine_capacity_nerf_percentage": -20,
+      "min_damage_buff_percentage": 25
+    },
+    "sks": {
+      "usability_optimization": true
+    },
+    "woodpecker": {
+      "usability_optimization": true
+    }
+  },
+  "tactical_items": {
+    "gloo_melter": {
+      "corrosive_duration_seconds": "4.5 -> 5",
+      "damage_to_gloo_walls": "230 -> 178"
+    },
+    "uav_lite": {
+      "ground_loot_light_effect": "Changed to Purple"
+    }
+  }
+}
