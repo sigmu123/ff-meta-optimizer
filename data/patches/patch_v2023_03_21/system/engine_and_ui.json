@@ -1,0 +1,42 @@
+{
+  "networking_and_ping": {
+    "duo_network_connection": "Auto-switches between Wi-Fi and mobile data for optimal connection (SG region)",
+    "high_ping_optimizations": [
+      "Server-validated damage display toggle added in Settings",
+      "Increased ping indicator HUD refresh rate",
+      "Reduced occurrence of enemy model clipping through walls during lag"
+    ]
+  },
+  "aim_and_movement_physics": {
+    "knocked_down_auto_aim_priority": "Prioritizes standing enemies when crosshair is near knocked-down targets",
+    "gloo_wall_climbing_exploit_fix": {
+      "jumping_on_gloo_wall_top": "Disabled",
+      "hud_notification": "'Jumping is not enabled' prompt displays when attempting to jump on top of Gloo Wall"
+    },
+    "fall_damage_physics": "Reduced stagger animation probability when dropping from height"
+  },
+  "system_and_ui_updates": {
+    "weapon_glory_leaderboard": "Added sub-divisions and regional title designations",
+    "cs_protection_points": {
+      "cap_removed": true,
+      "excess_point_conversion": "Converts overflow points into extra CS Stars",
+      "bonus_sources": ["Teammate AFK/Toxic", "Winning streak", "Damage dealt", "Eliminations", "MVP"]
+    },
+    "cs_ranked_daily_challenges": "Provides Protection Points for 1st Booyah and Rank Tokens for daily missions",
+    "replay_system_v2": [
+      "Interactive progress bar broken down by round numbers",
+      "Video pause button added",
+      "Redirects to recording list upon exit",
+      "Match Achievements: 10 rating badges based on elimination difficulty",
+      "iOS Lobby Screen Recording (2.4 MB/s bit rate)"
+    ],
+    "hud_and_controls": [
+      "Group Voice Chat channel (isolates squad audio from public channel)",
+      "Auto-jump auto-faces map center instead of airplane trajectory",
+      "BR Scoreboard toggleable via team panel tap/hold",
+      "Cabin player counter visible while map is open on plane",
+      "Smooth map zoom logic",
+      "Visual pin sound cooldown to prevent audio spam"
+    ]
+  }
+}
