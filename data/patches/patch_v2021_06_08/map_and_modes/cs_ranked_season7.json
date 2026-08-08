@@ -5,9 +5,9 @@
     "new_ranks": {
       "rank_name": "Grandmaster",
       "tiers": [
-        { "tier": "Grandmaster I", "requirement": "Top 1 to 100 Players" },
+        { "tier": "Grandmaster I", "requirement": "Top 1 to 100 / 1-188 Players (OCR raw text)" },
         { "tier": "Grandmaster II", "requirement": "Top 101 to 300 Players" },
-        { "tier": "Grandmaster III", "requirement": "Top 301 to 1000 Players" }
+        { "tier": "Grandmaster III", "requirement": "Top 381 to 1888 Players" }
       ]
     }
   }
