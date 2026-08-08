@@ -1,0 +1,12 @@
+{
+  "version": "v2022_09_21",
+  "patch_name": "BOOYAH_DAY",
+  "publish_date": "2022-09-21",
+  "active_submodules": [
+    "characters/character_updates.json",
+    "map_and_modes/gameplay_and_modes.json",
+    "battle_royale/economy_and_loot.json",
+    "weapons/weapons_and_balance.json",
+    "system/engine_and_ui.json"
+  ]
+}
