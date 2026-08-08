@@ -1,0 +1,109 @@
+{
+  "awakened_characters": [
+    {
+      "name": "Alok",
+      "original_skill": {
+        "name": "Drop the Beat",
+        "type": "Active",
+        "aura_radius_meters": 5,
+        "movement_speed_boost_percent": 15,
+        "hp_recovery_per_second": 3,
+        "duration_seconds": 18,
+        "cooldown_seconds": 45
+      },
+      "awakening_skill": {
+        "name": "Party Remix",
+        "type": "Active Enhancement",
+        "description": "While the aura is active, music notes that last for 5s will be dropped 2m behind the skill user every 2s. Teammates who pick up the music note will receive 3 HP per second for 10s."
+      }
+    }
+  ],
+  "reworked_characters": [
+    {
+      "name": "Dimitri",
+      "skill_name": "Healing Heart",
+      "changes": {
+        "description": "Creates a 3.5m healing zone. Inside the zone, user and teammates recover 10 HP/s. Help up will be automatically triggered when needed within the zone. Zone lasts for 12s. Cooldown: 60s."
+      }
+    },
+    {
+      "name": "Thiva",
+      "skill_name": "Vital Vibes",
+      "changes": {
+        "description": "The speed of helping up teammates is increased by 70%. Cooldown: 60s. The helped up teammate recovers 180 HP in 3s."
+      }
+    },
+    {
+      "name": "Kapella",
+      "skill_name": "Healing Song",
+      "changes": {
+        "description": "While helping up a teammate, gives said teammate an 80 HP shield and 10% movement speed boost. Boost effects reduce 4s after successful help-up. Reduces bleeding speed of knocked down teammates by 35%."
+      }
+    },
+    {
+      "name": "Olivia",
+      "skill_name": "Healing Touch",
+      "changes": {
+        "description": "Spread 80% of your single-target healing effects to teammates within 10m."
+      }
+    }
+  ],
+  "character_balance_numeric_changes": {
+    "active_skills": {
+      "tatsuya": {
+        "dash_speed_duration_seconds": 0.3,
+        "charges": 3,
+        "cooldown_between_uses_seconds": {"old": 5, "new": 1},
+        "charge_replenish_time_seconds": {"old": 60, "new": 45}
+      },
+      "clu": {
+        "scan_range_meters": 65,
+        "duration_seconds": 18,
+        "cooldown_seconds": {"old": 50, "new": 45},
+        "qol_feature": "Scanned enemies get mini-map and center screen alert"
+      },
+      "homer": {
+        "pulse_explosion_radius_meters": {"old": 5, "new": 3},
+        "movement_speed_reduction_percent": 60,
+        "firing_speed_reduction_percent": 35,
+        "duration_seconds": 5,
+        "damage": 25,
+        "cooldown_seconds": 90,
+        "interaction": "Can now trigger Moco's Hacker's Eye skill"
+      },
+      "skyler": {
+        "range_meters": 100,
+        "gloo_wall_damage_radius_meters": {"old": 3.5, "new": 4},
+        "gloo_wall_damage_duration_seconds": {"old": 4, "new": 5},
+        "cooldown_seconds": {"old": 50, "new": 45}
+      },
+      "k": {
+        "max_ep_increase": {"old": 20, "new": 50},
+        "mode_switch_cooldown_seconds": {"old": 3, "new": 6}
+      },
+      "iris": {
+        "duration_seconds": 15,
+        "max_gloo_walls_penetrated": {"old": 5, "new": 3},
+        "cooldown_seconds": 60
+      }
+    },
+    "passive_skills": {
+      "hayato": {
+        "bushido_armor_pen_trigger": "Requires lower health threshold for maximum penetration scaling"
+      },
+      "andrew": {
+        "armor_durability_loss_reduction": {"old": "20%", "new": "25%"}
+      },
+      "andrew_awakened": {
+        "base_damage_reduction": {"old": "11%", "new": "20%"},
+        "teammate_shared_damage_reduction": {"old": "15%", "new": "10%"}
+      },
+      "rafael": {
+        "downed_bleed_speed_increase": {"old": "90%", "new": "85%"}
+      },
+      "alvaro_awakened": {
+        "split_grenade_damage_percent": {"old": "30%", "new": "20%"}
+      }
+    }
+  }
+}
