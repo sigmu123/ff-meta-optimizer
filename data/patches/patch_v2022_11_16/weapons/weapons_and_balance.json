@@ -1,0 +1,100 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Trogon",
+      "category": "Shotgun / Grenade Launcher Dual Mode",
+      "modes": {
+        "shotgun_mode": {
+          "fire_mode": "3-burst",
+          "damage": 26,
+          "range": 15
+        },
+        "grenade_launcher_mode": {
+          "fire_mode": "Single explosive",
+          "damage": 100,
+          "range": 20
+        }
+      }
+    }
+  ],
+  "new_items": [
+    {
+      "item_name": "Launch Pad",
+      "category": "Utility",
+      "duration_seconds": 120,
+      "max_uses": 4
+    }
+  ],
+  "weapon_upgrades": [
+    {
+      "weapon_name": "M1014",
+      "mechanism": "Upgradable via chip",
+      "tiers": {
+        "M1014-I": { "accuracy_increase_percentage": 15, "range_increase_percentage": 15 },
+        "M1014-II": { "accuracy_increase_percentage": 20, "range_increase_percentage": 15 },
+        "M1014-III": { "accuracy_increase_percentage": 30, "range_increase_percentage": 15 }
+      }
+    }
+  ],
+  "weapon_balance": [
+    {
+      "weapon_name": "AN94",
+      "category": "Rifle",
+      "adjustments": { "rate_of_fire_percentage": 5, "range_percentage": 6 }
+    },
+    {
+      "weapon_name": "VSS-I",
+      "category": "SMG",
+      "adjustments": { "continuous_damage": "Removed" }
+    },
+    {
+      "weapon_name": "VSS-II",
+      "category": "SMG",
+      "adjustments": { "continuous_damage": "Removed" }
+    },
+    {
+      "weapon_name": "M500",
+      "category": "Pistol",
+      "adjustments": { "headshot_effective_range_percentage": -20, "damage_percentage": 10 }
+    },
+    {
+      "weapon_name": "Desert Eagle",
+      "category": "Pistol",
+      "adjustments": { "headshot_effective_range_percentage": -20, "rate_of_fire_percentage": 5 }
+    },
+    {
+      "weapon_name": "Woodpecker",
+      "category": "Marksman Rifle",
+      "adjustments": { "damage_effective_range_percentage": 10 }
+    },
+    {
+      "weapon_name": "AC80",
+      "category": "Marksman Rifle",
+      "adjustments": { "damage_effective_range_percentage": -10 }
+    },
+    {
+      "weapon_name": "Kar98k-I",
+      "category": "Sniper",
+      "adjustments": { "biotech_scope": "Removed" }
+    },
+    {
+      "weapon_name": "Kar98k-II",
+      "category": "Sniper",
+      "adjustments": { "biotech_scope": "Removed" }
+    },
+    {
+      "weapon_name": "FF Knife",
+      "category": "Other",
+      "mode_restriction": "Lone Wolf",
+      "adjustments": { "damage": 999, "available_capacity": 10 }
+    }
+  ],
+  "mechanic_and_visual_updates": {
+    "katana": "New unique wielding animations",
+    "treatment_laser_gun": "Teammates behind barriers rendered with a surrounding halo",
+    "fall_damage": {
+      "minimum_fall_height_meters": { "prev": 4, "new": 6 },
+      "highest_fall_damage_cap": { "prev": 190, "new": 150 }
+    }
+  }
+}
