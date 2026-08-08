@@ -1,0 +1,44 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "AK",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "damage_ratio": { "previous": 37, "new": 38 },
+        "minimum_damage": { "previous": 12, "new": 14 },
+        "rate_of_fire_percentage": -3,
+        "precise_shots_count": { "previous": 1, "new": 2 }
+      }
+    },
+    {
+      "weapon_name": "FAMAS",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "shooting_movement_speed_increase_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "M249",
+      "category": "Light Machine Gun (Airdrop)",
+      "adjustments": {
+        "precise_shots_count": { "previous": 4, "new": 12 },
+        "minimum_damage": { "previous": 15, "new": 21 },
+        "maximum_recoil_reduction_percentage": 18
+      }
+    },
+    {
+      "weapon_name": "SPAS12",
+      "category": "Shotgun",
+      "adjustments": {
+        "minimum_damage": { "previous": 6, "new": 7 }
+      }
+    },
+    {
+      "weapon_name": "XM8",
+      "category": "Assault Rifle",
+      "adjustments": {
+        "precise_shots_count": { "previous": 4, "new": 3 }
+      }
+    }
+  ]
+}
