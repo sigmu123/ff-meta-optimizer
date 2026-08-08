@@ -1,0 +1,68 @@
+{
+  "attachment_attribute_rebalance": {
+    "magazine": "Provides Magazine + bonus only (Reload speed bonus removed)",
+    "stock": "Provides Accuracy + bonus only (Movement speed bonus removed)"
+  },
+  "mythic_attachments": [
+    {
+      "name": "Fast Mag",
+      "rarity": "Mythic",
+      "compatible_weapons": "All Gun Types",
+      "bonuses": [
+        "Magazine +",
+        "Reload Speed +"
+      ]
+    },
+    {
+      "name": "Light Foregrip",
+      "rarity": "Mythic",
+      "compatible_weapons": "All Gun Types",
+      "bonuses": [
+        "Accuracy +",
+        "Movement Speed while Firing +"
+      ]
+    },
+    {
+      "name": "Power Stock",
+      "rarity": "Mythic",
+      "compatible_weapons": "All Gun Types except Shotguns and SMGs",
+      "bonuses": [
+        "Accuracy +",
+        "Rate of Fire +"
+      ]
+    }
+  ],
+  "weapon_attachment_slot_changes": {
+    "assault_rifles": {
+      "M14": "Added Stock slot",
+      "SCAR": "Added Stock slot",
+      "AN94": "Added Muzzle slot",
+      "PLASMA": "Removed Foregrip slot",
+      "G36": "Added Foregrip slot"
+    },
+    "sniper_rifles": {
+      "M24": "Removed Foregrip slot"
+    },
+    "pistols": {
+      "USP": "Removed Muzzle and Magazine slots",
+      "Desert Eagle": "Removed Muzzle slot",
+      "G18": "Removed Magazine slot",
+      "M500": "Removed Muzzle slot",
+      "WSP": "Removed Muzzle and Magazine slots"
+    },
+    "shotguns": {
+      "M1014": "Added Foregrip slot",
+      "SPAS12": "Removed Magazine slot, Added Foregrip slot"
+    },
+    "smgs": {
+      "P90": "Added Foregrip slot",
+      "Thompson": "Added Magazine slot",
+      "Vector": "Removed Stock slot",
+      "MAC10": "Added Stock slot",
+      "VSS": "Added Foregrip slot"
+    }
+  },
+  "loot_drop_restrictions": {
+    "br_mode": "Lv.1 attachments and weapon-exclusive attachments (e.g., Marksman Grip, AR Magazine) no longer drop on map"
+  }
+}
