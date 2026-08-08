@@ -1,0 +1,106 @@
+{
+  "max_hp_and_shield_point_conversion_engine": {
+    "vest_hp_booster": {
+      "old": "30 HP",
+      "new": "30 Shield Points"
+    },
+    "vest_enlarger": {
+      "old": "30 HP",
+      "new": "30 Shield Points"
+    },
+    "shield_points_recovery_speed": {
+      "old_points_per_sec": 10,
+      "new_points_per_sec": 5,
+      "applicable_to": [
+        "Antonio",
+        "Luqueta",
+        "Shield Booster",
+        "Vest Enlarger"
+      ]
+    }
+  },
+  "character_reworks": [
+    {
+      "character_name": "Andrew \"the Fierce\"",
+      "skill_name": "Wolf Pack",
+      "awakening_changes": {
+        "base_armor_damage_reduction_percent": 4,
+        "additional_reduction_per_teammate_percent": 1,
+        "max_teammate_proximity_radius_meters": 15
+      }
+    },
+    {
+      "character_name": "Xayne",
+      "skill_name": "Xtreme Encounter",
+      "changes": {
+        "temporary_hp_converted_to_shield_points": true,
+        "instant_shield_points": 60,
+        "duration_seconds": 12,
+        "cooldown_seconds": 75,
+        "knockdown_passive": "Knocking down an enemy restores temporary Shield Points back to 60 and resets duration"
+      }
+    },
+    {
+      "character_name": "Luqueta",
+      "skill_name": "Hat Trick",
+      "changes": {
+        "hp_boost_converted_to_shield_points": true
+      }
+    }
+  ],
+  "character_balance_adjustments": [
+    {
+      "character_name": "K",
+      "skill_name": "Master of All",
+      "changes": {
+        "max_ep_increase": 50,
+        "jiu_jitsu_mode_ep_conversion_range_meters": {
+          "old": 6,
+          "new": 15
+        },
+        "jiu_jitsu_mode_ep_conversion_rate_percent": 600,
+        "psychology_mode_ep_recovery": "3 EP every 1s, up to 250 EP",
+        "mode_switch_cooldown_seconds": 6
+      }
+    },
+    {
+      "character_name": "Orion",
+      "skill_name": "Crimson Crush",
+      "changes": {
+        "crimson_energy_max": 300,
+        "activation_cost": 200,
+        "hp_absorb_per_sec": 18,
+        "absorb_ignores_enemy_shield_points": true,
+        "absorb_radius_meters": 5,
+        "duration_seconds": 3,
+        "movement_speed_reduction_percent": {
+          "old": 20,
+          "new": 10
+        },
+        "cooldown_seconds": 3
+      }
+    },
+    {
+      "character_name": "Maro",
+      "skill_name": "Falcon Fervor",
+      "changes": {
+        "max_distance_damage_boost_percent": 25,
+        "damage_to_marked_enemies_boost_percent": {
+          "old": 3.5,
+          "new": 5.0
+        }
+      }
+    },
+    {
+      "character_name": "D-bee",
+      "skill_name": "Bullet Beats",
+      "changes": {
+        "firing_while_moving_speed_boost_percent": {
+          "old": 30,
+          "new": 50
+        },
+        "accuracy_boost_percent": 60
+      }
+    }
+  ]
+}
