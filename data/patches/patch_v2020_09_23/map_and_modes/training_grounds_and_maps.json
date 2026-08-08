@@ -1,0 +1,28 @@
+{
+  "map_and_utility_updates": [
+    {
+      "feature": "Spawn Island Rework",
+      "new_map_name": "The Arena (FFCS 2020 Special)"
+    },
+    {
+      "feature": "Glider Mechanics",
+      "adjustments": {
+        "maximum_flight_altitude_meters": { "previous": 38, "new": 14 }
+      }
+    },
+    {
+      "feature": "Scan Utility",
+      "mechanics": "Scan now reveals enemy-occupied and empty vehicles on the map"
+    },
+    {
+      "feature": "Training Grounds Updates",
+      "additions": [
+        "Players spawn closer together in Social Zone",
+        "Vehicle controls updated: Position reset & Honking added",
+        "Amphibious Motorcycle gains Nitro Boost & Jumping abilities",
+        "Added Target Arcade minigame",
+        "Added Private Movie Theatre feature"
+      ]
+    }
+  ]
+}
