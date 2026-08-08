@@ -1,0 +1,75 @@
+{
+  "arsenals": {
+    "count_per_map": {
+      "min": 5,
+      "max": 6
+    },
+    "minimap_visibility": true,
+    "loot_tier": ["level_3_firearms", "airdrop_exclusive_weapons"],
+    "key_requirements": {
+      "keys_per_major_area": {
+        "min": 1,
+        "max": 2
+      },
+      "vending_machine_purchase": {
+        "cost_ff_coins": 600,
+        "global_stock_limit": 3
+      },
+      "airdrop_vending_machine_purchase": {
+        "cost_ff_coins": 400,
+        "stock_per_machine": 1
+      }
+    }
+  },
+  "vending_machine_updates": {
+    "added_items": [
+      {
+        "item_name": "M82B",
+        "cost_ff_coins": 600,
+        "global_stock_limit": 2
+      }
+    ],
+    "removed_items": ["Flashbang"]
+  },
+  "revival_points": {
+    "duration_seconds": {
+      "nexterra": 25,
+      "other_maps": 33
+    }
+  },
+  "defense_airdrop": {
+    "phase_durations_seconds": {
+      "phase_1": 65,
+      "phase_2": 125,
+      "phase_3": 24
+    }
+  },
+  "treasure_map": {
+    "removed_items": ["Grappling Hook Gun"],
+    "replacement_firearms": ["MAC10", "XM8", "AK47"]
+  },
+  "upgrade_chips": {
+    "drop_rate_change": "-30%"
+  },
+  "removed_map_objects": ["Oil Barrel", "Airship"],
+  "parachuting_scan": {
+    "enabled_for_all": true,
+    "effect": "Reveals nearby players during parachuting."
+  },
+  "playzone_timestamps": {
+    "duo_and_squad": {
+      "zone_4": {
+        "spawn_second": 740,
+        "shrink_second": 785
+      },
+      "zone_5": {
+        "spawn_second": 860,
+        "shrink_second": 890
+      },
+      "zone_6": {
+        "spawn_second": 950,
+        "shrink_second": 980
+      }
+    }
+  }
+}
