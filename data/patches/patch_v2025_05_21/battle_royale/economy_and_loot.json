@@ -1,0 +1,119 @@
+{
+  "zone_timing_and_shrink_adjustments": {
+    "nexterra_solo": [
+      {
+        "zone_number": 1,
+        "out_of_zone_start_time_seconds": {"old": 50, "new": 70},
+        "safe_zone_size_meters": {"old": 400, "new": 450},
+        "shrink_countdown_seconds": {"old": 95, "new": 140},
+        "shrink_duration_seconds": {"old": 85, "new": 115}
+      },
+      {
+        "zone_number": 2,
+        "safe_zone_size_meters": {"old": 200, "new": 225},
+        "shrink_countdown_seconds": {"old": 70, "new": 40},
+        "shrink_duration_seconds": {"old": 85, "new": 115}
+      },
+      {
+        "zone_number": 3,
+        "safe_zone_size_meters": {"old": 100, "new": 115},
+        "shrink_countdown_seconds": {"old": 55, "new": 40},
+        "shrink_duration_seconds": {"old": 80, "new": 110}
+      }
+    ],
+    "nexterra_squad": [
+      {
+        "zone_number": 1,
+        "out_of_zone_start_time_seconds": {"old": 50, "new": 70},
+        "safe_zone_size_meters": {"old": 400, "new": 450},
+        "shrink_countdown_seconds": {"old": 120, "new": 140},
+        "shrink_duration_seconds": {"old": 210, "new": 200}
+      },
+      {
+        "zone_number": 2,
+        "safe_zone_size_meters": {"old": 200, "new": 225},
+        "shrink_countdown_seconds": {"old": 60, "new": 40},
+        "shrink_duration_seconds": {"old": 120, "new": 150}
+      },
+      {
+        "zone_number": 3,
+        "safe_zone_size_meters": {"old": 100, "new": 115},
+        "shrink_countdown_seconds": {"old": 50, "new": 40},
+        "shrink_duration_seconds": {"old": 100, "new": 110}
+      }
+    ],
+    "bermuda_kalahari_purgatory_alpine_solo": [
+      {"zone_number": 1, "shrink_countdown_seconds": {"old": 88, "new": 140}},
+      {"zone_number": 2, "shrink_countdown_seconds": {"old": 75, "new": 55}},
+      {"zone_number": 3, "shrink_countdown_seconds": {"old": 60, "new": 40}},
+      {"zone_number": 4, "shrink_countdown_seconds": {"old": 50, "new": 40}}
+    ],
+    "bermuda_kalahari_purgatory_alpine_squad": [
+      {"zone_number": 1, "shrink_countdown_seconds": {"old": 120, "new": 140}}
+    ]
+  },
+  "loot_economy_and_vending_machine": {
+    "coin_machines": "Adjusted overall number and placement across maps",
+    "high_tier_loot_zones": "Increased spawn probability near map edges with improved loot quality",
+    "overall_ground_loot_density": "Slightly reduced across all maps",
+    "solo_br_airdrop_changes": "Removed all healing weapons from solo airdrops",
+    "super_revival_card": {
+      "purchase_limit": 15
+    },
+    "coin_retention_on_revival": {
+      "retained_percent": 40,
+      "max_retained_ff_coins": 480
+    },
+    "airdrop_m249_ammo": {
+      "old_ammo_count": 60,
+      "new_ammo_count": 128
+    },
+    "vending_machine_adjustments": {
+      "available_weapons": [
+        "Trogon",
+        "VSS",
+        "M60-III"
+      ],
+      "arsenal_key_price": {
+        "old_price_ff_coins": 808,
+        "new_price_ff_coins": 1888
+      },
+      "active_skill_cards_available": [
+        "Kenta",
+        "Skyler"
+      ],
+      "hook_gun": {
+        "purchase_limit": "Removed (Kalahari map only)"
+      }
+    }
+  },
+  "unlimited_device_and_skill_card_cooldown_buffs": {
+    "category_minus_20_percent_cooldown": [
+      "A124 Active Skill Card",
+      "Clu Active Skill Card"
+    ],
+    "category_minus_30_percent_cooldown": [
+      "Alok Active Skill Card",
+      "Steffie Active Skill Card",
+      "Skyler Active Skill Card",
+      "Iris Active Skill Card",
+      "Tatsuya Active Skill Card",
+      "Unlimited UAV-Lite",
+      "Unlimited Heal UAV-Lite"
+    ],
+    "category_minus_40_percent_cooldown": [
+      "Dimitri Active Skill Card",
+      "Kenta Active Skill Card",
+      "Unlimited Mini Turret"
+    ],
+    "category_plus_30_percent_cooldown": [
+      "Ignis Active Skill Card"
+    ]
+  },
+  "out_of_zone_healing_debuff": {
+    "maximum_stack_limit": {
+      "old_stacks": 8,
+      "new_stacks": 10
+    }
+  }
+}
