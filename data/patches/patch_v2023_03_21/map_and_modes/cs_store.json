@@ -1,0 +1,13 @@
+{
+  "weapon_cost_adjustments": [
+    { "weapon": "SVD", "old_cost": 2400, "new_cost": 2400 },
+    { "weapon": "MAC10", "old_cost": 1500, "new_cost": 1600 },
+    { "weapon": "AK", "old_cost": 1800, "new_cost": 1400 },
+    { "weapon": "UMP", "old_cost": 1600, "new_cost": 1500 },
+    { "weapon": "P90", "old_cost": 1300, "new_cost": 1700 },
+    { "weapon": "MAG-7", "old_cost": 1700, "new_cost": 1600 },
+    { "weapon": "AC80", "old_cost": 1900, "new_cost": 2000 },
+    { "weapon": "Woodpecker", "old_cost": 1900, "new_cost": 2000 },
+    { "weapon": "XM8", "old_cost": 1600, "new_cost": 1500 }
+  ]
+}
