@@ -1,0 +1,62 @@
+{
+  "loadout_adjustments": {
+    "bounty_token": {
+      "item_added": "Orange Ignis Active Skill Card"
+    },
+    "leg_pockets": {
+      "additional_backpack_capacity": {
+        "old_capacity": 300,
+        "new_capacity": 240
+      },
+      "revival_gloo_wall_count": {
+        "old_count": 1,
+        "new_count": 2
+      }
+    },
+    "supply_crate": {
+      "revival_weapon": {
+        "old_weapon": "Bizon",
+        "new_weapon": "P90"
+      }
+    },
+    "pocket_market": {
+      "removed_items": [
+        "Revival Card",
+        "Vest Attachments"
+      ],
+      "added_items": [
+        "Inhaler",
+        "Lv. 3 Helmet",
+        "Lv. 3 Vest",
+        "Dimitri Active Skill Card",
+        "Oscar Active Skill Card"
+      ],
+      "price_adjustments": {
+        "info_box": {
+          "old_price_ff_coins": 888,
+          "new_price_ff_coins": 688
+        },
+        "super_med": {
+          "old_price_ff_coins": 100,
+          "new_price_ff_coins": 200
+        },
+        "4x_scope": {
+          "old_price_ff_coins": 200,
+          "new_price_ff_coins": 100
+        }
+      },
+      "ammo_purchase_limit": "Removed"
+    },
+    "secret_clue": {
+      "mechanics_change": "Removed all standard items and replaced with 680 to 2000 FF Coins upon interaction. Subsequent interaction provides the next secret clue location, with a small probability of granting a Lv. 3 Helmet and Lv. 4 Vest."
+    },
+    "airdrop_aid": {
+      "adjusted_weapon_pool": [
+        "AWM",
+        "SVD",
+        "M249",
+        "Groza"
+      ]
+    }
+  }
+}
