@@ -1,0 +1,9 @@
+{
+  "cs_store_armor_upgrades": {
+    "armor_upgrade_system": {
+      "lv2_to_lv3_upgrade_cost": 600,
+      "currency": "CS Cash",
+      "helmet_upgrade": "Lv. 3 Helmet added to CS Store"
+    }
+  }
+}
