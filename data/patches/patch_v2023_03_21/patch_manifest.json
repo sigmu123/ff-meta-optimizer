@@ -1,0 +1,17 @@
+{
+  "patch_version": "v2023_03_21",
+  "release_date": "2023-03-21",
+  "global_metadata": {
+    "patch_name": "March 2023 Update",
+    "description": "Introduces Character System Rework, Orion, Awakened Alvaro, In-Match Quests, Super Revival, Weapon Balance, and System Optimizations.",
+    "source_url": "https://ff.garena.com/en/article/1120/"
+  },
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system"
+  ]
+}
