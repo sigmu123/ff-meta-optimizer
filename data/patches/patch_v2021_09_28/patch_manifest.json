@@ -1,0 +1,13 @@
+{
+  "version": "v2021_09_28",
+  "patch_name": "BOOYAH DAY",
+  "publish_date": "2021-09-28",
+  "active_submodules": [
+    "characters_and_items/character_balance_and_items.json",
+    "weapons/weapons_and_armor.json",
+    "map_and_modes/clash_squad.json",
+    "map_and_modes/battle_royale.json",
+    "map_and_modes/training_grounds.json",
+    "system/engine_and_ui.json"
+  ]
+}
