@@ -1,0 +1,13 @@
+{
+  "patch_version": "patch_v2024_12_02",
+  "patch_name": "Winterlands: Aurora",
+  "release_date": "2024-12-02",
+  "active_sub_modules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system"
+  ]
+}
