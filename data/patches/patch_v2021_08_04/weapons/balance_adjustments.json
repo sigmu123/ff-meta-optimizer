@@ -1,0 +1,72 @@
+{
+  "weapon_balance": [
+    {
+      "weapon_name": "UZI",
+      "category": "Pistol / Secondary",
+      "adjustments": {
+        "minimum_damage_percentage": 8,
+        "magazine_capacity_flat": 2,
+        "effective_range_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "XM8",
+      "category": "AR",
+      "adjustments": {
+        "rate_of_fire_percentage": 10,
+        "recoil_percentage": 5
+      }
+    },
+    {
+      "weapon_name": "SPAS12",
+      "category": "Shotgun",
+      "adjustments": {
+        "added_attachment_slots": ["Muzzle", "Scope"],
+        "range_percentage": 15
+      }
+    },
+    {
+      "weapon_name": "Vector",
+      "category": "SMG",
+      "adjustments": {
+        "range_percentage": 5,
+        "movement_speed_percentage": 10
+      }
+    },
+    {
+      "weapon_name": "M1887",
+      "category": "Shotgun",
+      "adjustments": {
+        "armor_penetration_percentage": -6,
+        "range_percentage": -8,
+        "rate_of_fire_percentage": -5
+      }
+    },
+    {
+      "weapon_category": "SMGs with Muzzle Attachment Slots",
+      "affected_weapons": ["MP40", "P90", "Thompson", "Vector", "MP5"],
+      "adjustments": {
+        "base_effective_range_increase": "Increased effective range without attachments to improve early game reliability"
+      }
+    },
+    {
+      "attachment_name": "Muzzle Attachment",
+      "adjustments": {
+        "effective_range": "Reduced effective range provided by Muzzles on SGs and SMGs"
+      }
+    },
+    {
+      "attachment_name": "Double Magazine",
+      "adjustments": {
+        "magazine_size_bonus_percentage": {
+          "previous": 60,
+          "new": 40
+        }
+      }
+    },
+    {
+      "item_name": "Decoy Grenade",
+      "rework_details": "Generates noise and reveals its position on the minimap after being deployed"
+    }
+  ]
+}
