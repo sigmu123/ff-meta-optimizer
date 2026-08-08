@@ -1,0 +1,74 @@
+{
+  "weapon_balance_adjustments": [
+    {
+      "weapon": "AC80",
+      "adjustment_type": "First & second shot damage rebalanced for stability"
+    },
+    {
+      "weapon": "Woodpecker",
+      "stat_changes": {
+        "damage_percent": -5
+      }
+    },
+    {
+      "weapon": "AK47",
+      "stat_changes": {
+        "accuracy_percent": 5,
+        "armor_penetration_percent": 10,
+        "headshot_damage_percent": 10
+      }
+    },
+    {
+      "weapon": "XM8",
+      "stat_changes": {
+        "damage_percent": -5
+      }
+    },
+    {
+      "weapon": "M4A1",
+      "stat_changes": {
+        "damage_percent": 6,
+        "consecutive_shots_damage_bonus_percent": -8
+      }
+    },
+    {
+      "weapon": "M249",
+      "stat_changes": {
+        "extra_damage_to_gloo_walls_percent": 10
+      }
+    },
+    {
+      "weapon": "Charge Buster",
+      "stat_changes": {
+        "charge_speed_percent": 12,
+        "damage_percent": 5
+      }
+    },
+    {
+      "weapon": "Trogon",
+      "stat_changes": {
+        "grenade_launcher_mode_magazine_size": 2
+      }
+    },
+    {
+      "weapon": "Double Vector / Vector",
+      "stat_changes": {
+        "reload_speed_percent": 15
+      }
+    },
+    {
+      "weapon": "SVD-Y",
+      "stat_changes": {
+        "extra_damage_to_gloo_walls": "Removed",
+        "gloo_wall_penetration_damage_percent": 5
+      }
+    },
+    {
+      "weapon": "M24",
+      "stat_changes": {
+        "extra_damage_to_gloo_walls": "Removed",
+        "gloo_wall_penetration_damage_percent": 20
+      }
+    }
+  ]
+}
