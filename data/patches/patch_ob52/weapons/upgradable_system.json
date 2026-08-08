@@ -1,0 +1,24 @@
+{
+  "upgradable_system_adjustments": {
+    "removed_upgrade_mechanisms": [
+      {
+        "weapon": "Kar98k",
+        "status": "Upgrade mechanism removed. Base attributes set equal to Kar98k-III. Available in Arsenals and ground loot."
+      },
+      {
+        "weapon": "FAMAS",
+        "status": "Upgrade mechanism removed. Base attributes set equal to FAMAS-III. Available in Arsenals, ground loot, and CS Store (1800 Cash)."
+      }
+    ],
+    "retained_and_rebalanced_upgradable_lines": [
+      {
+        "weapon_family": "MAC18 / MAC10",
+        "variants": ["MAC18", "MAC18-I", "MAC10-II", "MAC18-III"],
+        "adjustments": {
+          "damage_percentage": 8,
+          "accuracy_percentage": 15
+        }
+      }
+    ]
+  }
+}
