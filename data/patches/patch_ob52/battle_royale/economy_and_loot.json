@@ -1,0 +1,126 @@
+{
+  "breakable_arsenal": {
+    "entry_mechanism": "Shatter reinforced glass directly via high damage/explosives",
+    "security_trigger": "Triggers UAV revealing entering player/squad position to all enemies",
+    "unlock_and_upgrade_cost_ff_coins": {
+      "previous": 1500,
+      "updated": 1200
+    },
+    "loot_table": {
+      "standard_arsenal": {
+        "weapons": [
+          { "name": "Groza", "ammo": "infinite" },
+          { "name": "AWM", "ammo": "infinite" },
+          { "name": "Thompson", "ammo": "infinite" },
+          { "name": "MAC18-II" },
+          { "name": "M1814-II" },
+          { "name": "M14-II" }
+        ],
+        "backpacks": "4x Level 3 Backpacks"
+      },
+      "upgraded_arsenal": {
+        "middle_racks": [
+          { "name": "Groza", "ammo": "infinite" },
+          { "name": "AWM", "ammo": "infinite" },
+          { "name": "Thompson", "ammo": "infinite" },
+          "FAMAS",
+          "Charge Buster",
+          "M79"
+        ],
+        "side_racks": [
+          "Kar98k",
+          "FAMAS",
+          "M68-III",
+          "Winchester-III",
+          "M4A1-III",
+          "SCAR-III",
+          "MP5-III"
+        ]
+      }
+    }
+  },
+  "ultra_airdrop": {
+    "spawn_time_seconds": 400,
+    "quantity_per_match": 1,
+    "mechanic": "Capture-based device in late game; reveals location on minimap during capture; crystal pillars spawn around beacon and destroying them speeds up capture",
+    "rewards": {
+      "team_effect": "Instantly revives teammates upon capture completion",
+      "armor": {
+        "ultra_helmet": "Stronger than Lv. 4, durability threshold minimum 25%",
+        "ultra_vest": "Stronger than Lv. 4, durability threshold minimum 25%"
+      }
+    }
+  },
+  "revival_system": {
+    "solo_mode": {
+      "revival_point_availability_seconds": 610,
+      "early_revival_protection": true,
+      "revival_card_capture": {
+        "capture_duration_seconds": 25,
+        "usage": "Auto-used on elimination"
+      },
+      "time_based_starter_gear": [
+        {
+          "time_range_seconds": "0-200",
+          "items": ["UZI", "6x Med Kit", "2x Inhaler", "Lv. 1 Helmet", "Lv. 1 Vest", "Lv. 2 Backpack"]
+        },
+        {
+          "time_range_seconds": "200-400",
+          "items": ["MAC18-I", "6x Med Kit", "2x Inhaler", "Lv. 2 Helmet", "Lv. 2 Vest", "Lv. 2 Backpack"]
+        },
+        {
+          "time_range_seconds": "400+",
+          "items": ["MAC10-II", "6x Med Kit", "2x Inhaler", "Lv. 2 Helmet", "Lv. 2 Vest", "Lv. 2 Backpack"]
+        }
+      ]
+    },
+    "duo_squad_mode": {
+      "activation_condition": "Must land near teammates",
+      "early_revive_countdown": {
+        "trigger_window_seconds": 180,
+        "duration_seconds": 60,
+        "uses_per_team": 1,
+        "effect": "Revives all previously eliminated teammates upon completion"
+      },
+      "revival_point_and_card_provided_loot": ["M1917", "6x Med Kit", "2x Inhaler", "Lv. 1 Backpack"],
+      "advanced_revival_point_and_super_card_provided_loot": ["MAC18-I", "6x Med Kit", "2x Inhaler", "Lv. 2 Backpack"],
+      "spectator_assist": {
+        "feature": "Revive assist bubble",
+        "effect": "Grants discount on Revive Card purchase and special buffs upon successful purchase"
+      }
+    }
+  },
+  "ground_loot_and_spawns": {
+    "starting_backpack": "Lv. 2 Backpack",
+    "airdrop_aid": "Removed from ground loot",
+    "vest_drop_rate_adjustments": {
+      "lv_1_vest": "Decreased",
+      "lv_2_vest": "Increased"
+    },
+    "fixed_high_tier_armor_additions": {
+      "lv_3_helmets": 12,
+      "lv_3_vests": 12
+    },
+    "ground_weapon_rack_pool": ["VSS", "Woodpecker", "XM8", "PARAFAL", "AK47"],
+    "charge_buster": "Available in ground loot"
+  },
+  "safe_zone_shrink_adjustments": {
+    "maps_standard": ["Bermuda", "Kalahari", "Purgatory", "Alpine"],
+    "standard_zone_timings": [
+      { "zone": 2, "shrink_countdown_seconds": { "previous": 35, "updated": 50 }, "shrink_duration_seconds": 85 },
+      { "zone": 3, "shrink_countdown_seconds": { "previous": 35, "updated": 50 }, "shrink_duration_seconds": { "previous": 65, "updated": 75 } },
+      { "zone": 4, "shrink_countdown_seconds": 30, "shrink_duration_seconds": { "previous": 40, "updated": 70 } },
+      { "zone": 5, "shrink_countdown_seconds": { "previous": 30, "updated": 20 }, "shrink_duration_seconds": { "previous": 60, "updated": 40 } },
+      { "zone": 6, "shrink_countdown_seconds": { "previous": 20, "updated": 10 }, "shrink_duration_seconds": 60 },
+      { "zone": 7, "shrink_countdown_seconds": { "previous": 20, "updated": 10 }, "shrink_duration_seconds": 90 }
+    ],
+    "nexterra_zone_timings": [
+      { "zone": 1, "time_before_zone_appears": { "previous": 70, "updated": 50 }, "shrink_countdown": { "previous": 140, "updated": 90 }, "shrink_duration": 180 },
+      { "zone": 2, "shrink_countdown": 40, "shrink_duration": { "previous": 115, "updated": 85 } },
+      { "zone": 3, "shrink_countdown": { "previous": 40, "updated": 30 }, "shrink_duration": { "previous": 110, "updated": 75 } },
+      { "zone": 4, "shrink_countdown": { "previous": 45, "updated": 30 }, "shrink_duration": { "previous": 65, "updated": 70 } },
+      { "zone": 5, "shrink_countdown": 30, "shrink_duration": 90 },
+      { "zone": 6, "shrink_countdown": 30, "shrink_duration": 120 }
+    ]
+  }
+}
