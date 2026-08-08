@@ -1,0 +1,43 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Orion",
+      "identity": "A man struggling with internal demons and Crimson Energy",
+      "skill": {
+        "name": "Crimson Crush",
+        "type": "Active",
+        "description": "Replaces EP with 300 Crimson Energy. Consumes 150 Crimson Energy to activate protection, becoming immune to damage and absorbing HP from enemies within 5m.",
+        "ep_replacement_max_crimson_energy": 300,
+        "activation_cost_crimson_energy": 150,
+        "effects": {
+          "invincibility": true,
+          "cannot_attack": true,
+          "hp_drain_amount": 15,
+          "hp_drain_radius_meters": 5
+        },
+        "duration_seconds": 3,
+        "cooldown_seconds": 3
+      }
+    }
+  ],
+  "awakened_characters": [
+    {
+      "character_name": "Alvaro",
+      "awakened_title": "Alvaro 'Rageblast'",
+      "original_skill": {
+        "name": "Art of Demolition",
+        "type": "Passive",
+        "explosive_damage_increase_pct": 20,
+        "explosive_range_increase_pct": 10
+      },
+      "awakening_skill": {
+        "name": "Split Blitz",
+        "type": "Passive",
+        "description": "1s before detonating, grenade produces 3 extra grenades, which deal 30% damage of the original grenade.",
+        "split_delay_seconds_before_detonation": 1,
+        "extra_grenades_spawned": 3,
+        "extra_grenade_damage_pct_of_original": 30
+      }
+    }
+  ]
+}
