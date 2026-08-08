@@ -1,0 +1,86 @@
+{
+  "battle_royale_loot_sources": {
+    "vending_machines": [
+      {
+        "weapon_name": "AUG-II",
+        "price_ff_coins": 600,
+        "purchase_limit_per_match": 2
+      },
+      {
+        "weapon_name": "MP40",
+        "price_ff_coins": 400,
+        "purchase_limit_per_match": 5
+      },
+      {
+        "weapon_name": "MAG-7",
+        "price_ff_coins": 200,
+        "purchase_limit_per_match": 5
+      }
+    ],
+    "basic_arsenals": {
+      "armor_drops": [
+        "2 sets of Lv. 2 Vests and Helmets",
+        "2 sets of Lv. 3 Vests and Helmets"
+      ],
+      "removed_weapons": [
+        "Thompson",
+        "Groza",
+        "AWM",
+        "FAMAS",
+        "Charge Buster",
+        "Kar98k"
+      ],
+      "added_weapons": [
+        "PARAFAL",
+        "MP40",
+        "M590",
+        "M82B"
+      ]
+    },
+    "high_tier_loot_zones": {
+      "increased_drop_rate_weapons": [
+        "MP48",
+        "PARAFAL",
+        "M82B",
+        "M590"
+      ]
+    },
+    "war_chest_loot": {
+      "level_1": {
+        "high_probability": [
+          "Lv. 0 Upgradable Weapons",
+          "White-tier Weapons",
+          "Lv. 2 Vest & Helmet"
+        ],
+        "low_probability": [
+          "Lv. 1 Upgradable Weapons"
+        ]
+      },
+      "level_2": {
+        "high_probability": [
+          "Lv. 1 Upgradable Weapons",
+          "White-tier Weapons",
+          "Lv. 2 Vest & Helmet"
+        ],
+        "low_probability": [
+          "Lv. 2 Upgradable Weapons",
+          "Gold-tier Weapons",
+          "Lv. 3 Vest & Helmet"
+        ]
+      },
+      "level_3": {
+        "high_probability": [
+          "Lv. 2 Upgradable Weapons",
+          "Gold-tier Weapons",
+          "Lv. 2 Vest & Helmet"
+        ],
+        "low_probability": [
+          "Lv. 3 Upgradable Weapons",
+          "Airdrop Weapons",
+          "Lv. 3 Vest & Helmet",
+          "Lv. 4 Vest & Helmet"
+        ]
+      }
+    }
+  }
+}
