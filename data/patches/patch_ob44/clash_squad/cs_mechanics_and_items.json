@@ -1,0 +1,31 @@
+{
+  "dragon_airdrop_event": {
+    "mechanic": "Mechadrake flies through the CS sky carrying a special Dragon Airdrop. Shooting and depleting its HP drops the payload.",
+    "exclusive_items": [
+      {
+        "name": "Dragon Freeze",
+        "type": "Throwable",
+        "description": "Upgraded Flash Freeze that detonates three consecutive times upon impact"
+      },
+      {
+        "name": "EMP Grenade",
+        "type": "Throwable Tactical",
+        "description": "Emits electromagnetic pulses on explosion, disabling enemy minimaps and preventing item usage within range"
+      },
+      {
+        "name": "Dragon Sprinters",
+        "type": "Footwear Equipment",
+        "description": "Special jump shoes enabling mid-air sprinting during a double jump"
+      },
+      {
+        "name": "Dragonling",
+        "type": "Companion Drone",
+        "description": "Follows player continuously. Every 10s, successful hits reduce target's movement/attack speed or inflict continuous bleed damage"
+      }
+    ]
+  },
+  "cs_rules_adjustments": {
+    "airdrop_persistence": "Airdrops no longer despawn or disappear when a round ends",
+    "purchase_phase_restrictions": "Active skills cannot be activated during the CS purchase phase"
+  }
+}
