@@ -1,0 +1,84 @@
+{
+  "explosive_weapons": [
+    {
+      "weapon": "FGL24",
+      "type": "Nerf",
+      "magazine_capacity": { "previous": 3, "updated": 2 }
+    },
+    {
+      "weapon": "RG550",
+      "type": "Nerf",
+      "magazine_capacity": { "previous": 3, "updated": 2 }
+    },
+    {
+      "weapon": "M590",
+      "type": "Adjustment",
+      "damage_percentage": 10,
+      "range_percentage": -10,
+      "splash_effect": "Removed"
+    }
+  ],
+  "airdrop_weapons": [
+    {
+      "weapon": "Groza / Groza-X",
+      "type": "Buff",
+      "damage_percentage": 3,
+      "armor_penetration_percentage": 10,
+      "range_percentage": 8
+    },
+    {
+      "weapon": "SVD / SVD-Y",
+      "type": "Buff",
+      "accuracy_percentage": 20
+    },
+    {
+      "weapon": "M249 / M249-X",
+      "type": "Buff",
+      "rate_of_fire_percentage": 5,
+      "armor_penetration_percentage": 5
+    },
+    {
+      "weapon": "Thompson / Thompson-X",
+      "type": "Buff",
+      "rate_of_fire_percentage": 5
+    }
+  ],
+  "other_weapons": [
+    {
+      "weapon": "VSS",
+      "type": "Buff",
+      "armor_penetration_percentage": 18,
+      "accuracy_percentage": 5
+    },
+    {
+      "weapon": "Heal Pistol",
+      "type": "Adjustment",
+      "auto_targeting": "Auto-targets teammates",
+      "rate_of_fire_percentage": 30,
+      "healing_percentage": -58,
+      "healing_energy_recovery_speed_percentage": 50,
+      "healing_energy_cost_percentage": -50
+    },
+    {
+      "weapon": "Heal Pistol-Y",
+      "type": "Adjustment",
+      "auto_targeting": "Auto-targets up to 2 teammates simultaneously",
+      "rate_of_fire_percentage": 30,
+      "healing_percentage": -58,
+      "healing_energy_recovery_speed_percentage": 50,
+      "healing_energy_cost_percentage": -50
+    }
+  ],
+  "downed_player_hp_decay": {
+    "hp_loss_speed_by_weapon_category": {
+      "categories": ["Marksman Rifles", "Machine Guns", "Assault Rifles", "Sniper Rifles"],
+      "hp_loss_rate_change": {
+        "previous": 145,
+        "updated": 335
+      }
+    }
+  },
+  "weapon_controls_and_hud": {
+    "akimbo_button": "Merged into the firing mode switch button"
+  }
+}
