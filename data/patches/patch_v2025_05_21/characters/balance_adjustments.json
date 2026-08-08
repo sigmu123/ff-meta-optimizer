@@ -1,0 +1,87 @@
+{
+  "character_reworks": [
+    {
+      "character_name": "Paloma",
+      "skill_name": "Shatterburst",
+      "skill_type": "Passive",
+      "effect": "Weapon accuracy increases for 18 seconds immediately after destroying an enemy Gloo Wall."
+    }
+  ],
+  "character_balance_adjustments": [
+    {
+      "character_name": "Ignis",
+      "skill_name": "Flame Mirage",
+      "skill_type": "Active",
+      "flaming_screen_width_meters": 10,
+      "duration_seconds": 10,
+      "forward_movement_speed_mps": 6,
+      "max_movement_duration_seconds": 5,
+      "manual_stop_feature": "Re-activate skill during movement to halt screen in position",
+      "enemy_touch_damage": {
+        "instant_damage": 25,
+        "burn_damage_per_second": 5,
+        "burn_duration_seconds": 2
+      },
+      "gloo_wall_touch_damage": {
+        "instant_damage": 480,
+        "burn_damage_per_second_range": "108-150",
+        "burn_duration_seconds": 2
+      },
+      "cooldown_seconds": 60,
+      "max_stored_skill_charges": 2,
+      "cooldown_between_charges_seconds": 8.5
+    },
+    {
+      "character_name": "Lila",
+      "skill_name": "Gloo Strike",
+      "skill_type": "Passive",
+      "compatible_weapon_types": [
+        "Assault Rifles",
+        "Marksman Rifles"
+      ],
+      "enemy_movement_speed_reduction_percent": 10,
+      "vehicle_acceleration_reduction_percent": 80,
+      "deceleration_duration_seconds": 3,
+      "takedown_freeze_duration_seconds": 3,
+      "extra_gloo_walls_granted_on_takedown": 2
+    },
+    {
+      "character_name": "Luqueta",
+      "skill_name": "Hat Trick",
+      "skill_type": "Passive",
+      "max_sp_boost_per_elimination": {
+        "old": 25,
+        "new": 15
+      },
+      "maximum_sp_boost_cap": {
+        "old": 50,
+        "new": 45
+      },
+      "reset_condition": "Clears all stacked Shield Points upon player elimination or round reset"
+    },
+    {
+      "character_name": "Moco",
+      "skill_name": "Enigma's Eye",
+      "skill_type": "Passive",
+      "base_tag_duration_seconds": {
+        "old": 5,
+        "new": 4.5
+      },
+      "moving_target_max_tag_duration_seconds": {
+        "old": 6.5,
+        "new": 5.5
+      }
+    },
+    {
+      "character_name": "Luna",
+      "skill_name": "Fight-or-Flight",
+      "skill_type": "Passive",
+      "firing_rate_increase_percent": 8,
+      "max_firing_rate_to_movement_speed_conversion_percent": {
+        "old": 15,
+        "new": 10
+      },
+      "conversion_reset_condition": "Resets upon surviving active combat"
+    }
+  ]
+}
