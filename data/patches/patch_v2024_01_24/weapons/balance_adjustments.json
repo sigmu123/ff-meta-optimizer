@@ -1,0 +1,35 @@
+{
+  "weapon_adjustments": [
+    {
+      "weapon_name": "Kingfisher",
+      "damage_multiplier_change": "+7%",
+      "effective_range_multiplier_change": "-10%"
+    },
+    {
+      "weapon_name": "G36",
+      "firing_mode": "Range Mode",
+      "damage_multiplier_change": "+3%",
+      "accuracy_multiplier_change": "+5%"
+    },
+    {
+      "weapon_name": "M500",
+      "headshot_damage_multiplier_change": "+5%"
+    },
+    {
+      "weapon_name": "M60",
+      "variants": ["M60-I", "M60-II", "M60-III"],
+      "adjustment": "Reduced maximum damage scaling bonus from continuous sustained firing."
+    },
+    {
+      "weapon_name": "Trogon",
+      "damage_multiplier_change": "-7%",
+      "magazine_capacity_previous": 12,
+      "magazine_capacity_current": 9
+    },
+    {
+      "weapon_name": "VSS",
+      "variants": ["VSS", "VSS-I", "VSS-II"],
+      "rate_of_fire_multiplier_change": "+10%"
+    }
+  ]
+}
