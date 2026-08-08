@@ -1,0 +1,109 @@
+{
+  "new_characters": [
+    {
+      "character_name": "Kenta",
+      "skill_name": "Swordsman's Wrath",
+      "skill_type": "Active",
+      "description": "Forms a frontal shield of 5m width that reduces weapon damage coming from the front. Resets after firing a shot.",
+      "stats": {
+        "frontal_damage_reduction_percentage": 50,
+        "shield_width_meters": 5,
+        "duration_seconds_by_level": [2, 3, 3.5, 4, 4.5, 5],
+        "cooldown_seconds_by_level": [210, 200, 190, 180, 170, 160]
+      }
+    }
+  ],
+  "character_reworks": [
+    {
+      "character_name": "A124",
+      "skill_name": "Thrill of Battle",
+      "skill_type": "Active",
+      "description": "Unleashes an 8m electromagnetic wave that disables enemy skill activation and interrupts interaction countdowns.",
+      "stats": {
+        "wave_radius_meters": 8,
+        "duration_seconds_by_level": [20, 22, 24, 26, 28, 30],
+        "cooldown_seconds_by_level": [100, 90, 80, 70, 60, 50]
+      }
+    },
+    {
+      "character_name": "Nikita",
+      "skill_name": "Firearms Expert",
+      "skill_type": "Passive",
+      "description": "Increases reload speed. SMGs deal extra damage on the final 6 rounds of the clip.",
+      "stats": {
+        "reload_speed_increase_percentage_by_level": [14, 16, 18, 20, 22, 24],
+        "smg_final_6_rounds_damage_increase_percentage_by_level": [10, 12, 14, 16, 18, 20]
+      }
+    },
+    {
+      "character_name": "Steffie",
+      "skill_name": "Painted Refuge",
+      "skill_type": "Active",
+      "description": "Creates a 4m area that blocks throwables, restores armor durability to allies, and reduces ammo damage taken from enemies. Effects do not stack.",
+      "stats": {
+        "area_radius_meters": 4,
+        "throwable_blocking": true,
+        "armor_durability_restoration_per_second_percentage": 18,
+        "ammo_damage_reduction_percentage_by_level": [10, 12, 14, 16, 18, 20],
+        "duration_seconds_by_level": [10, 11, 12, 13, 14, 15],
+        "cooldown_seconds_by_level": [115, 110, 105, 100, 95, 90]
+      }
+    }
+  ],
+  "character_balancing": [
+    {
+      "character_name": "Caroline",
+      "skill_name": "Agility",
+      "skill_type": "Passive",
+      "adjustments": {
+        "shotgun_movement_speed_percentage_by_level": {
+          "previous": [3, 4, 5, 6, 7, 8],
+          "new": [6, 7, 8, 9, 11, 13]
+        }
+      }
+    },
+    {
+      "character_name": "Otho",
+      "skill_name": "Memory Mist",
+      "skill_type": "Passive",
+      "adjustments": {
+        "enemy_reveal_radius_meters_by_level": {
+          "previous": [25, 30, 35, 40, 45, 50],
+          "new": [25, 35, 45, 55, 65, 75]
+        },
+        "info_share_duration_seconds": {
+          "previous": 4,
+          "new": 6
+        }
+      }
+    },
+    {
+      "character_name": "Rafael",
+      "skill_name": "Dead Silent",
+      "skill_type": "Passive",
+      "adjustments": {
+        "weapon_restriction": "Snipers and Marksman Rifles only",
+        "bleeding_speed_increase_percentage_by_level": {
+          "previous": [20, 23, 27, 32, 38, 45],
+          "new": [40, 50, 60, 70, 80, 90]
+        }
+      }
+    },
+    {
+      "character_name": "Thiva",
+      "skill_name": "Vital Vibes",
+      "skill_type": "Passive",
+      "adjustments": {
+        "rescue_speed_increase_percentage_by_level": {
+          "previous": [10, 13, 16, 19, 22, 25],
+          "new": [15, 18, 21, 24, 27, 30]
+        },
+        "hp_recovery_upon_rescue_by_level": {
+          "previous": [15, 20, 25, 30, 35, 40],
+          "new": [25, 30, 35, 40, 45, 50]
+        },
+        "hp_recovery_duration_seconds": 5
+      }
+    }
+  ]
+}
