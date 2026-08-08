@@ -1,0 +1,13 @@
+{
+  "price_adjustments": {
+    "mp40": {"old": 2000, "new": 1900},
+    "groza": {"old": 1900, "new": 1800},
+    "p90": {"old": 1700, "new": 1600}
+  },
+  "new_weapon_prices": {
+    "g36": 1280
+  },
+  "custom_room_cs_mode": {
+    "9999_cash_round_supported": true
+  }
+}
