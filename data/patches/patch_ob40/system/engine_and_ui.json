@@ -1,0 +1,40 @@
+{
+  "ui_hud_optimizations": {
+    "backpack_management": {
+      "stack_button": "Merges same item types (healing, ammo, throwables).",
+      "sliding_discard_bar": "Smooth quantity selection for dropping stacked items.",
+      "drop_useless_button": "One-tap discard of irrelevant items."
+    },
+    "looting_system": {
+      "stacked_looting_list": "Same item types stacked in loot boxes.",
+      "auto_loot_attachments": [
+        "Silencer",
+        "SMG Muzzle",
+        "AR Magazine",
+        "Marksman Grip",
+        "Shotgun Stock",
+        "Sniper Stock"
+      ]
+    },
+    "med_kit_wheel": "Auto-switches to Super Med at 75 HP instead of 58 HP.",
+    "auto_aim_adjustments": "Prioritizes aiming at standing enemies over downed enemies in proximity.",
+    "quick_messages": {
+      "options_count": 50,
+      "voice_options": ["Male", "Female"]
+    }
+  },
+  "physics_and_environment": {
+    "shallow_water": {
+      "movement_speed_debuff": "Removed (players no longer slowed down).",
+      "downed_elimination_fix": "Fixed instant elimination bug when knocked down in shallow water."
+    },
+    "danger_zone_rules": "If player is eliminated by Danger Zone within 8s of taking damage, kill credit goes to the last damage dealer."
+  },
+  "network_and_performance": {
+    "duo_network_connection": "Auto-switches between best cellular and Wi-Fi networks in real-time.",
+    "loading_time": "BR pre-parachuting loading streamlined from 2 stages into 1 stage."
+  },
+  "anti_cheat_compensation": {
+    "solo_ranked_compensation": "Rank points restored via in-game mail if eliminated by a cheater after cheater is banned."
+  }
+}
