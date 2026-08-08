@@ -1,0 +1,24 @@
+{
+  "character_name": "Kassie",
+  "role": "Healing Expert",
+  "skill_name": "Electro Therapy",
+  "skill_type": "Active",
+  "mechanics": {
+    "basic_therapy": {
+      "cooldown_seconds": 0,
+      "activation": "Single tap",
+      "target": "Teammate",
+      "effect": "Creates healing bond restoring 3 HP/s for self and target",
+      "stackable": false,
+      "max_bonding_range_meters": 20,
+      "break_condition": "Exceeding 20m range or manual cancellation"
+    },
+    "focused_therapy": {
+      "cooldown_seconds": 60,
+      "activation": "Double tap / second use",
+      "manual_restore_hp": 100,
+      "auto_release_condition": "Target HP falls below 58",
+      "auto_release_healing_percentage": 58
+    }
+  }
+}
