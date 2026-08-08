@@ -1,0 +1,18 @@
+{
+  "version": "OB42",
+  "release_date": "2023-10-31",
+  "patch_title": "FF Coin Updates and Winterland Snow-Covered Bermuda",
+  "global_metadata": {
+    "season_br": "BR S36",
+    "season_cs_special": "2023-12-01",
+    "guild_wars_season": "2023-11-11 to 2024-01-20"
+  },
+  "active_submodules": [
+    "loadouts",
+    "battle_royale",
+    "characters",
+    "weapons",
+    "map_and_modes",
+    "system"
+  ]
+}
