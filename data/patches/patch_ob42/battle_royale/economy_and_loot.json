@@ -1,0 +1,164 @@
+{
+  "ff_coin_economy": {
+    "sources": [
+      {
+        "source": "Coin Machine",
+        "mechanic": "Fixed locations on map, marked on minimap. Grants 200 FF Coins automatically to every team member upon interaction.",
+        "reusability": {
+          "same_team": false,
+          "other_teams": true
+        }
+      },
+      {
+        "source": "Enemy Elimination",
+        "amount": 180
+      }
+    ],
+    "elimination_loss_and_retention": {
+      "dropped_on_elimination_percentage": 0.40,
+      "retained_on_revival_percentage": 0.30,
+      "max_retained_coins_on_revival": 300
+    },
+    "arsenal_coins_status": "Removed"
+  },
+  "in_match_items": {
+    "devices": {
+      "rules": "Can only equip one device at a time. Auto-discards current device upon picking up a new one.",
+      "items": [
+        {
+          "name": "Active Skill Card",
+          "category": "Device",
+          "usage_limit": "1 time per card",
+          "equip_limit": 1,
+          "available_characters": ["Clu", "Chrono", "Homer", "Alok", "Kenta", "Steffie", "A124", "Skyler"],
+          "restriction": "Cannot pick up card if user already has the same active skill equipped."
+        },
+        {
+          "name": "Portal Go",
+          "category": "Device",
+          "teleport_cooldown_seconds": 3,
+          "usability": "Teammates and enemies",
+          "visual_indicator": "Light effect at start and end points",
+          "destructible": false,
+          "max_height_limit_meters": 20
+        }
+      ]
+    },
+    "consumables": [
+      {
+        "name": "Energizer",
+        "effects": {
+          "ep_restoration": 200,
+          "hp_restoration": 30,
+          "movement_speed_boost_percentage": 10
+        },
+        "usable_while_sprinting": true
+      }
+    ],
+    "deployables": [
+      {
+        "name": "Mini Turret",
+        "max_usable": 2,
+        "damage": 20,
+        "rate_of_fire_seconds": 0.5,
+        "attack_range_meters": 30,
+        "hp": 208,
+        "duration_seconds": 120,
+        "inactivity_trigger_distance_meters": 30,
+        "inactivity_deactivation_delay_seconds": 5,
+        "auto_destruction_delay_after_inactive_seconds": 5,
+        "special_effect": "Marks enemies when attacking"
+      },
+      {
+        "name": "Heal UAV-Lite",
+        "healing_rate_hp_per_sec": 20,
+        "duration_seconds": 12,
+        "flight_distance_meters": 10,
+        "healing_radius_meters": 5,
+        "hp": 100,
+        "flight_pattern": "Flies continuously in the direction faced upon deployment",
+        "target": "Self and teammates"
+      }
+    ],
+    "gloo_maker_attachments": [
+      {
+        "name": "Tough Gloo",
+        "effect": "Increases Gloo Wall durability by 200"
+      },
+      {
+        "name": "Gloo Box",
+        "effect": "Increases maximum Gloo Wall carry capacity by 4"
+      },
+      {
+        "name": "Gloo Catalyst",
+        "effect": "Gloo Wall generation speed +30%"
+      }
+    ]
+  },
+  "shifting_safe_zone": {
+    "mode_availability": "Squad mode in BR Casual, Ranked, and Custom rooms",
+    "mechanic": "When Safe Zone shrinks to 4th stage, it shifts a certain distance before shrinking to 5th stage (3rd stage for NeXTerra)"
+  },
+  "out_of_zone_debuff": {
+    "interval_seconds": 10,
+    "debuff_effect": "Reduces healing effect by 5% per layer",
+    "max_stack_layers": 6,
+    "max_healing_reduction_percentage": 30,
+    "removal_condition": "5 seconds after entering Safe Zone"
+  },
+  "loot_and_vending_machine_adjustments": {
+    "ground_loot_changes": {
+      "lv3_helmet_and_vest_drop_rate_reduction_outside_blue_zone": 0.20,
+      "arsenal_key_drop_rate_reduction": 0.50,
+      "lv1_backpack": "Removed from ground; players spawn with Lv. 1 Backpack",
+      "removed_ground_items": ["Info Boxes", "Armor Upgrade Crates"]
+    },
+    "blue_zone_loot": {
+      "active_skill_cards_drops": 2,
+      "40mmSR_drop_rate_reduction": 0.50,
+      "500_ff_coin_stacks": "Increased",
+      "energizer_drop": "Higher"
+    },
+    "vending_machine_updates": {
+      "active_skill_cards": "2 available (Clu: 308 FF Coins, Chrono: 500 FF Coins for first 2 weeks)",
+      "portal_go": "800 FF Coins, purchase limit 2 per match (Week 1)",
+      "super_meds": "100 FF Coins (Replaced Inhalers)",
+      "lv3_vest_price": 400,
+      "lv3_helmet_price": 300,
+      "free_inhalers": "1 per player limit (Replaced free Super Meds)",
+      "info_box": "600 FF Coins, available for limited time 600s, purchase limit 1",
+      "revival_card_purchase_time_limit_seconds": 420,
+      "super_revival_card_price": 400,
+      "launch_pads": "600 FF Coins, purchase limit 1",
+      "m249_x_upgrade": "600 FF Coins",
+      "free_active_skill_card": "Chrono (Week 1, limit 1)",
+      "free_weapons": ["SKS", "MP5-II"],
+      "removed_free_items": ["Heal Snipers", "Heal Lasers", "Pans"]
+    },
+    "airdrop_adjustments": {
+      "regular_airdrops": {
+        "drop_time": "100s earlier",
+        "drop_amount_increase": 1,
+        "removed_items": ["Jammers", "UAV-Lites"],
+        "added_items": ["500 FF Coin stacks"]
+      },
+      "airdrop_vending_machines": {
+        "drop_time": "60s earlier in Squad mode",
+        "drop_amount_increase": 1
+      },
+      "defense_airdrops": {
+        "stage_2": { "removed": ["Upgrade Chips"], "added": ["Gloo Chips"] },
+        "stage_3": { "removed": ["Horizalines", "Upgrade Chips"], "added": ["Portal Gos"] }
+      },
+      "war_chests": {
+        "removed": ["FF Coins"],
+        "added_special_drops": ["Active Skill Cards", "Device Items", "Launch Pads"]
+      }
+    }
+  },
+  "other_br_mechanics": {
+    "team_wipeout_notification": true,
+    "solo_revival_respawn_point": "Random area within 100m radius centered on elimination spot",
+    "in_match_quest_vending_machine_sale_event_probability": "Significantly reduced"
+  }
+}
