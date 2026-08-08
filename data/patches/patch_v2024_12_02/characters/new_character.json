@@ -1,0 +1,17 @@
+{
+  "character_name": "Koda",
+  "release_date": "2024-12-13",
+  "skill_name": "Aurora Vision",
+  "skill_type": "Active",
+  "duration_seconds": 18,
+  "cooldown_seconds": 60,
+  "effects": {
+    "movement_speed_boost_percent": 10,
+    "detection_range_meters": 50,
+    "detection_interval_seconds": 1,
+    "detection_conditions": "Discovers enemies behind cover; unable to detect crouching or prone enemies"
+  },
+  "passive_bonus": {
+    "parachuting_effect": "Highlights enemy locations within field of view (not shared with teammates)"
+  }
+}
