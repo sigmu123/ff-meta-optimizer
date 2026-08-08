@@ -14,12 +14,12 @@ class HybridMetaEngine:
         self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir)
         self.ttk_calc = TTKCalculator()
         
-        # Datasets
+        # Datasets (Now prioritizing Dynamic JSON over hardcoded limits)
         self.actives = list(self.loader.active_skills.keys()) if self.loader.active_skills else ["alok", "chrono", "tatsuya", "wukong"]
         self.passives = list(self.loader.passive_skills.keys()) if self.loader.passive_skills else ["kelly", "hayato", "moco", "maxim", "shirou", "jota"]
         self.weapons = self.loader.weapons if self.loader.weapons else {"mp40": {"damage": 32, "rate_of_fire": 12}, "groza": {"damage": 38, "rate_of_fire": 10}}
-        self.pets = ["Rockie", "Mr. Waggor", "Beaston", "Falco"]
-        self.loadouts = ["Pocket Market", "Leg Pockets", "Bounty Token", "Bonfire"]
+        self.pets = self.loader.pets if self.loader.pets else ["Rockie", "Mr. Waggor", "Beaston", "Falco"]
+        self.loadouts = self.loader.loadouts if self.loader.loadouts else ["Pocket Market", "Leg Pockets", "Bounty Token", "Bonfire"]
 
     # ==========================================
     # STAGE 1: CONSTRAINT PROGRAMMING (CSP)
@@ -38,7 +38,7 @@ class HybridMetaEngine:
             if self._is_valid_chromosome(act, p1, p2, p3):
                 return {
                     "active": act, 
-                    "passives": [p1, p2, p3], 
+                    "passives": sorted([p1, p2, p3]), # Sort for easy deduplication
                     "pet": random.choice(self.pets),
                     "loadout": random.choice(self.loadouts)
                 }
@@ -50,12 +50,12 @@ class HybridMetaEngine:
         """Scoring logic based on synergy and CD overlaps"""
         score = 50.0 # Base win rate
         
-        # Example Synergy Logic (Can be expanded using JSON data)
+        # Synergy Logic
         act_name = squad["active"]
         passives = squad["passives"]
         
         if act_name == "tatsuya" and "kelly" in passives: score += 15.0  # Rush Synergy
-        if act_name == "chrono" and "Rockie" == squad["pet"]: score += 10.0 # Cooldown Synergy
+        if act_name == "chrono" and str(squad["pet"]).lower() == "rockie": score += 10.0 # Cooldown Synergy
         if "hayato" in passives: score += 8.0 # Meta standard
         
         return min(99.9, score)
@@ -76,6 +76,7 @@ class HybridMetaEngine:
         if not self._is_valid_chromosome(child["active"], *child["passives"]):
             return parent1 # Keep parent if mutation is illegal
             
+        child["passives"] = sorted(child["passives"])
         return child
 
     def run_ga_pipeline(self, generations=10, population_size=50):
@@ -98,9 +99,25 @@ class HybridMetaEngine:
                 
             population = next_gen
             
+        # Final Evaluation and Deduplication Phase
         final_scored = [(squad, self._fitness_function(squad)) for squad in population]
         final_scored.sort(key=lambda x: x[1], reverse=True)
-        return final_scored[:5] # Return Top 5
+        
+        unique_squads = []
+        seen_signatures = set()
+        
+        for squad, score in final_scored:
+            # Create a unique hashable signature for each build
+            signature = (squad["active"], tuple(squad["passives"]), squad["pet"], squad["loadout"])
+            
+            if signature not in seen_signatures:
+                seen_signatures.add(signature)
+                unique_squads.append((squad, score))
+                
+            if len(unique_squads) == 5: # Limit to top 5 unique
+                break
+                
+        return unique_squads
 
     # ==========================================
     # STAGE 3: DYNAMIC CONTEXT MULTIPLIERS
@@ -111,7 +128,7 @@ class HybridMetaEngine:
             final_score = base_score
             
             # Playstyle Multipliers
-            if playstyle == "rush" and squad["loadout"] == "Leg Pockets": final_score += 2.5
+            if playstyle == "rush" and str(squad["loadout"]).lower() == "leg pockets": final_score += 2.5
             if playstyle == "sniper" and "moco" in squad["passives"]: final_score += 5.0
             
             # Get Best Weapon Combos via TTK Math
@@ -131,7 +148,7 @@ class HybridMetaEngine:
             stats = self.ttk_calc.calculate_weapon_ttk(w_data)
             if stats["ttk"] < 10: # Filter invalid
                 score = (stats["effective_damage"] * 2) - (stats["ttk"] * 100)
-                w_scores.append({"name": w_id.upper(), "ttk": stats["ttk"], "score": score})
+                w_scores.append({"name": str(w_id).upper(), "ttk": stats["ttk"], "score": score})
         
         w_scores.sort(key=lambda x: x["score"], reverse=True)
         return {
@@ -155,7 +172,7 @@ if __name__ == "__main__":
         b = setup["build"]
         w = setup["weapons"]
         print(f"\n[ RANK #{rank} ] - Win Probability: {setup['win_rate']}%")
-        print(f" ┣ Active  : {b['active'].title()}")
-        print(f" ┣ Passive : {', '.join([p.title() for p in b['passives']])}")
-        print(f" ┣ Utility : {b['pet']} + {b['loadout']}")
+        print(f" ┣ Active  : {str(b['active']).title()}")
+        print(f" ┣ Passive : {', '.join([str(p).title() for p in b['passives']])}")
+        print(f" ┣ Utility : {str(b['pet']).title()} + {str(b['loadout']).title()}")
         print(f" ┗ Weapons : {w['primary']['name']} (TTK: {w['primary']['ttk']}s) & {w['secondary']['name']}")
