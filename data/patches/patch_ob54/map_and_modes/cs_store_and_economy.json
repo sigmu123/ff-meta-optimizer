@@ -1,0 +1,48 @@
+{
+  "clash_squad_economy": {
+    "store_price_adjustments": [
+      {
+        "item_name": "PARAFAL",
+        "old_price_cs_cash": 1500,
+        "new_price_cs_cash": 1600
+      },
+      {
+        "item_name": "M590",
+        "old_price_cs_cash": 1500,
+        "new_price_cs_cash": 1600
+      },
+      {
+        "item_name": "Charge Buster",
+        "old_price_cs_cash": 1600,
+        "new_price_cs_cash": 1500
+      },
+      {
+        "item_name": "M1887",
+        "old_price_cs_cash": 1900,
+        "new_price_cs_cash": 1800
+      },
+      {
+        "item_name": "Woodpecker",
+        "old_price_cs_cash": 2000,
+        "new_price_cs_cash": 1900
+      }
+    ],
+    "weapon_availability_changes": [
+      {
+        "removed_weapon": "M24-III",
+        "added_weapon": "M24-II",
+        "price_cs_cash": 1600,
+        "upgrade_cost_cs_cash": 600
+      },
+      {
+        "weapon_name": "M82B",
+        "source": "Supply Gadgets"
+      }
+    ],
+    "system_features": {
+      "ep_refund_overflow": "Extra CS Cash refunded when purchasing Team EP based on number of Mushrooms teammates purchased in current round.",
+      "fast_purchase": "Double-tap purchase slot to buy item directly.",
+      "super_bonfire": "Covers entire spawn area with new range outline effect."
+    }
+  }
+}
