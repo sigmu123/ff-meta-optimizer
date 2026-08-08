@@ -1,0 +1,35 @@
+{
+  "character_balance_adjustments": [
+    {
+      "character_name": "Ford",
+      "skill_name": "Iron Will",
+      "skill_type": "Passive",
+      "healing_rate_hp_per_second": 18,
+      "healing_duration_seconds": {
+        "old": 4,
+        "new": 3
+      },
+      "active_skill_reset_trigger": true,
+      "cooldown_seconds": 20
+    },
+    {
+      "character_name": "Kairos",
+      "skill_name": "Defense Breaker",
+      "skill_type": "Passive",
+      "defense_mode_ep_recovery_per_second": 2,
+      "breaker_mode_ep_consumption_per_second": 20,
+      "shield_and_armor_extra_damage_percent": {
+        "old": 120,
+        "new": 98
+      }
+    },
+    {
+      "character_name": "Rin",
+      "skill_name": "Gale of Kunai",
+      "skill_type": "Passive",
+      "kunai_launch_speed": "Increased",
+      "max_damage": 12,
+      "mid_short_range_damage": "Increased"
+    }
+  ]
+}
