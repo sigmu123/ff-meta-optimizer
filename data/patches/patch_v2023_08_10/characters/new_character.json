@@ -1,0 +1,7 @@
+{
+  "character_name": "Suzy",
+  "title": "Bounty Assassin",
+  "skill_name": "Money Mark",
+  "skill_type": "Passive",
+  "description": "Enemy markings have a bounty value. Anyone on the ally team who eliminates a marked enemy earns 100 in-match currency. Suzy earns an extra 100 in-match currency for eliminating an enemy."
+}
