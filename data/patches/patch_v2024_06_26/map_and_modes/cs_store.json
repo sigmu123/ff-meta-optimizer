@@ -1,0 +1,11 @@
+{
+  "mode": "Clash Squad",
+  "store_adjustments": {
+    "added_weapons": [
+      {
+        "weapon": "Trogon",
+        "firing_mode": "Shotgun mode only (Grenade Launcher disabled)"
+      }
+    ]
+  }
+}
