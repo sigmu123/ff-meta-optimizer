@@ -1,0 +1,29 @@
+{
+  "cyber_airdrop_system": {
+    "rounds_active": [3, 4, 5],
+    "materialization_mechanic": "Starts transparent (bullets pass through). Materializes as captured to act as solid cover.",
+    "capture_duration_seconds": {
+      "rounds_3_and_4": 18,
+      "round_5": 12
+    },
+    "cyber_points_reward": {
+      "rounds_3_and_4": 1,
+      "round_5": 2
+    },
+    "capture_contest_rule": "Enemies in capture zone trigger a contest. Must knock down enemies to claim ownership.",
+    "cyber_store_unlocks": {
+      "point_unlocks": "Unlocks specialized Cyber Items as points accumulate.",
+      "3_points_reward": "Unlocks purchase rights for M1887-X shotgun in CS Store."
+    }
+  },
+  "cs_store_updates": {
+    "sks": {"price_cs_cash": 1800},
+    "mac10": {"price_discount_cs_cash": 100},
+    "ui_optimizations": [
+      "Top-left corner displays teammates' equipped weapons during preparation stage.",
+      "CS cash amount displayed in upper right corner.",
+      "Added countdown timer for store closing.",
+      "Automatic notification when teammates discard weapons in non-match-point preparation rounds."
+    ]
+  }
+}
