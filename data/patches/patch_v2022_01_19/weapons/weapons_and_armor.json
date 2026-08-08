@@ -1,0 +1,50 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Charge Buster",
+      "category": "Shotgun",
+      "base_stats": {
+        "base_damage": 15,
+        "rate_of_fire": 0.3,
+        "magazine_capacity": 3
+      },
+      "special_ability": "Charging increases range and damage while reducing spread"
+    }
+  ],
+  "airdrop_advanced_weapons": [
+    {
+      "weapon_name": "Groza-X",
+      "category": "AR",
+      "stat_boosts": {
+        "damage_percentage": 18
+      }
+    },
+    {
+      "weapon_name": "M249-X",
+      "category": "LMG",
+      "stat_boosts": {
+        "damage_percentage": 5,
+        "rate_of_fire_percentage": 12
+      }
+    },
+    {
+      "weapon_name": "SVD-Y",
+      "category": "Marksman Rifle",
+      "special_mechanic": "Penetrates Gloo Walls with reduced damage output"
+    }
+  ],
+  "vest_explosive_protection": [
+    {
+      "equipment": "Level 1 Vest",
+      "explosive_protection_percentage": 10
+    },
+    {
+      "equipment": "Level 2 Vest",
+      "explosive_protection_percentage": 15
+    },
+    {
+      "equipment": "Level 3 Vest",
+      "explosive_protection_percentage": 20
+    }
+  ]
+}
