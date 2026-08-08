@@ -1,0 +1,19 @@
+{
+  "battle_royale_updates": {
+    "play_zone_mechanics": {
+      "base_damage_increase_percentage": 10,
+      "damage_scaling_increase_percentage": 3
+    },
+    "airdrop_vending_machine": {
+      "availability": ["Classic", "Ranked"],
+      "mechanic": "Airdrop Vending Machines land via parachute across the map allowing players to spend FF coins"
+    },
+    "revival_points_hud_optimizations": [
+      "Added countdown for when revival points close for the match",
+      "Added revival point cooldown countdown on the map",
+      "Real-time visual capture status of Revival Points on map",
+      "Revival points no longer disappear midway if player is actively capturing them",
+      "Optimized HUD display when spectating players who are capturing revival points"
+    ]
+  }
+}
