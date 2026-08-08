@@ -1,0 +1,7 @@
+{
+  "training_grounds_updates": {
+    "shooting_practice": {
+      "feature": "Enemy-shaped targets replacing square targets with body-area-specific damage feedback"
+    }
+  }
+}
