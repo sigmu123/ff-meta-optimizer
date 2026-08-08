@@ -1,0 +1,10 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "M590",
+      "weapon_class": "Shotgun",
+      "effective_range": "Mid-to-close range",
+      "special_mechanics": "Explosive rounds dealing Area of Effect (AoE) splash damage"
+    }
+  ]
+}
