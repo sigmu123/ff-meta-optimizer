@@ -1,0 +1,98 @@
+{
+  "character_reworks": [
+    {
+      "character_name": "Sonia",
+      "skill_name": "Nano Lifeshield",
+      "mechanic_changes": "Revival state completely removed. Enters invulnerable and immobile state before gaining temporary shield.",
+      "invulnerable_immobile_duration_seconds": 0.4,
+      "shield_hp": 50,
+      "shield_duration_seconds_previous": 3,
+      "shield_duration_seconds_current": 2,
+      "cooldown_seconds": 180,
+      "elimination_condition": "User eliminated if shield expires without knocking down an enemy; knocking down an enemy restores HP equal to shield HP."
+    },
+    {
+      "character_name": "Santino",
+      "skill_name": "Shape Splitter",
+      "mannequin_hp": 200,
+      "mannequin_duration_seconds": 12,
+      "teleport_max_distance_meters": 60,
+      "switch_cooldown_seconds": 3,
+      "max_switches_per_cast": 2,
+      "enemy_destroyer_mark_duration_seconds": 5,
+      "cooldown_seconds": 60
+    },
+    {
+      "character_name": "Orion",
+      "skill_name": "Crimson Crush",
+      "ep_conversion": "Replaces EP with 388 Crimson Energy",
+      "activation_cost": 200,
+      "invulnerability_duration_seconds": 3,
+      "hp_absorption": 10,
+      "absorption_radius_meters": 5,
+      "movement_speed_debuff_percentage": -20,
+      "cooldown_seconds": 3
+    }
+  ],
+  "character_balance_adjustments": [
+    {
+      "character_name": "Ignis",
+      "skill_name": "Flame Mirage",
+      "screen_width_meters_previous": 10,
+      "screen_width_meters_current": 12,
+      "duration_seconds_previous": 8,
+      "duration_seconds_current": 10,
+      "max_deployment_distance_meters": 15,
+      "instant_damage": 30,
+      "damage_per_second": 10,
+      "armor_durability_loss_per_second_previous": "18%",
+      "armor_durability_loss_per_second_current": "28%",
+      "burning_duration_seconds": 2,
+      "gloo_wall_instant_damage": 200,
+      "gloo_wall_damage_per_second": 200,
+      "cooldown_seconds_previous": 78,
+      "cooldown_seconds_current": 68
+    },
+    {
+      "character_name": "Homer",
+      "skill_name": "Senses Shockwave",
+      "drone_range_meters": 100,
+      "explosion_pulse_diameter_meters": "4-5",
+      "movement_speed_reduction_previous": "68%",
+      "movement_speed_reduction_current": "48%",
+      "firing_speed_reduction_previous": "35%",
+      "firing_speed_reduction_current": "48%",
+      "debuff_duration_seconds": 5,
+      "damage": 25,
+      "cooldown_seconds_previous": 90,
+      "cooldown_seconds_current": 60
+    },
+    {
+      "character_name": "Tatsuya",
+      "skill_name": "Rebel Rush",
+      "adjustment_summary": "Reduced maximum dash stack capacity to limit repetitive rapid offensive sprints."
+    },
+    {
+      "character_name": "Antonio",
+      "skill_name": "Gangster's Spirit",
+      "starting_shield_points_previous": 48,
+      "starting_shield_points_current": 38
+    },
+    {
+      "character_name": "Chrono",
+      "skill_name": "Time Turner",
+      "shield_hp": 800,
+      "duration_seconds": 6,
+      "cooldown_seconds_previous": 110,
+      "cooldown_seconds_current": 75
+    },
+    {
+      "character_name": "Wukong",
+      "skill_name": "Camouflage",
+      "movement_speed_debuff": "Removed (0% speed reduction during active bush transformation)",
+      "duration_seconds": 15,
+      "cooldown_seconds": 200,
+      "cooldown_reset_condition": "Downing an enemy resets cooldown immediately"
+    }
+  ]
+}
