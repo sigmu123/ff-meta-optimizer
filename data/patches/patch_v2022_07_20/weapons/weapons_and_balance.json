@@ -1,0 +1,43 @@
+{
+  "new_weapons": [
+    {
+      "weapon_name": "Bizon",
+      "category": "SMG",
+      "attributes": {
+        "base_damage": 29,
+        "rate_of_fire": 0.098,
+        "magazine": 30
+      }
+    }
+  ],
+  "weapon_balance": [
+    { "weapon_name": "FAMAS-III", "adjustments": { "armor_penetration_percentage": 5 } },
+    { "weapon_name": "M14-III", "adjustments": { "rate_of_fire_percentage": -6 } },
+    { "weapon_name": "SCAR", "adjustments": { "damage_percentage": 6 } },
+    {
+      "weapon_name": "G36",
+      "adjustments": {
+        "assault_mode_rate_of_fire_percentage": 8,
+        "range_mode_accuracy_percentage": 12
+      }
+    },
+    { "weapon_name": "UMP", "adjustments": { "armor_penetration_percentage": -10 } },
+    { "weapon_name": "M24", "adjustments": { "damage_percentage": 8 } },
+    {
+      "weapon_name": "M1887",
+      "adjustments": {
+        "rate_of_fire_percentage": 5,
+        "effective_range_percentage": 5,
+        "damage_percentage": -5
+      }
+    },
+    {
+      "weapon_name": "Grappling Hook Gun",
+      "adjustments": {
+        "weapon_switching_while_moving": true,
+        "hold_to_aim": true,
+        "landing_recovery_time_reduction": true
+      }
+    }
+  ]
+}
