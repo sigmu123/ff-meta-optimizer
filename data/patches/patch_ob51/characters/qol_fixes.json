@@ -1,0 +1,15 @@
+{
+  "character_qol_fixes": [
+    {
+      "character_name": "Tatsuya",
+      "fix_detail": "Prevents getting stuck midway when rushing down slopes"
+    },
+    {
+      "character_name": "Thiva",
+      "fix_detail": "Skill no longer triggers cooldown when used after CS round ends and before next round starts"
+    },
+    {
+      "system_wide": "Added visual cooldown display timer for all character skills and devices"
+    }
+  ]
+}
