@@ -1,0 +1,33 @@
+{
+  "loadout_adjustments": {
+    "armor_crate": {
+      "replaced_item": "200 FF Coins",
+      "new_item": "Shield Booster"
+    }
+  },
+  "pocket_market": {
+    "revival_card": {
+      "purchase_time_limit_seconds": 410,
+      "price_ff_coins": 1888
+    },
+    "portal_go": {
+      "status": "Removed from market"
+    },
+    "launch_pad": {
+      "status": "Added to market",
+      "price_ff_coins": 1200,
+      "purchase_limit_per_player": 1,
+      "purchase_time_limit_seconds": 600
+    },
+    "active_skill_cards": {
+      "skyler_skill_card": {
+        "price_ff_coins": 300,
+        "purchase_limit_per_player": 1
+      },
+      "tatsuya_skill_card": {
+        "price_ff_coins": 408,
+        "purchase_limit_per_player": 1
+      }
+    }
+  }
+}
