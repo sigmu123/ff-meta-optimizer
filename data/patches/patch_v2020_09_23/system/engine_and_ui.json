@@ -1,0 +1,31 @@
+{
+  "gameplay_mechanics": [
+    {
+      "feature": "Team Boost (Vaulting)",
+      "availability": ["Battle Royale", "Clash Squad Classic"],
+      "rule": "Players can jump off a crouched stationary teammate to reach elevated locations"
+    },
+    {
+      "feature": "Backpack Management",
+      "rule": "Added manual sorting option within the in-game inventory UI"
+    }
+  ],
+  "system_and_settings": [
+    {
+      "feature": "Cloud Sync Settings",
+      "rule": "Allows players to Upload, Download, and Overwrite HUD configuration and settings to/from cloud storage"
+    },
+    {
+      "feature": "Armory UI Overhaul",
+      "rule": "Added separate Lobby Armory page, improved sorting, 360-degree weapon preview, and social sharing"
+    }
+  ],
+  "bug_fixes_and_optimizations": [
+    "Gloo Wall deployment no longer displaces player character models",
+    "Mushrooms can now be pinged/marked for teammates",
+    "Settings menu can now be opened while dead or spectating",
+    "Optimized Jeep vehicle model",
+    "Optimized in-game active skill status icons",
+    "Optimized MVP summary screen for close-combat modes"
+  ]
+}
