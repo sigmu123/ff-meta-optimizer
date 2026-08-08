@@ -1,0 +1,22 @@
+{
+  "hud_and_gameplay_features": [
+    {
+      "feature_name": "Weapon Tags",
+      "description": "Displays weapon traits and specialties inside Backpack for quick reference"
+    }
+  ],
+  "optimizations_and_fixes": [
+    "Optimizations to gameplay experience and smoothness on Alpine map",
+    "Auto-equip all items obtained from weapon chests in Training Grounds",
+    "Enhanced explosion visual effects in Bomb Squad mode",
+    "Updated ammo icons for Shotguns and Pistols",
+    "Added 'Like' button for First Blood, Triple Kill, and Quadra Kill announcements",
+    "Customizable pick-up priority settings for Auto Pickup",
+    "Audio muting options in-match: Mute all messages or mute voice only",
+    "Collections tab moved inside Vault menu",
+    "Added Fitting Room with up to 2 preset loadouts for costume outfits",
+    "Replay function auto-saves up to 18 most recent matches",
+    "Both kills and assists qualify for Daily First-Win mission in BR Ranked",
+    "Backpack skin becomes translucent when crosshairs overlap to maintain vision"
+  ]
+}
