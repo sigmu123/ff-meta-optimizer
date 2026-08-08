@@ -1,0 +1,36 @@
+{
+  "vehicle_stat_adjustments": [
+    {
+      "vehicle_type": "Pickup Truck",
+      "passenger_capacity": 4,
+      "hp_buff": true,
+      "collision_damage_buff": true
+    },
+    {
+      "vehicle_type": "Jeep",
+      "top_speed_buff": true,
+      "collision_damage_buff": true,
+      "hp_buff": true
+    },
+    {
+      "vehicle_type": "Tuk Tuk",
+      "acceleration_buff": true,
+      "top_speed_buff": true,
+      "hp_buff": true,
+      "gloo_wall_penetration_damage_buff": true
+    },
+    {
+      "vehicle_type": "Sports Car",
+      "hp_buff": true,
+      "collision_damage_buff": true
+    },
+    {
+      "vehicle_type": "Motorbike",
+      "collision_damage_nerf": true
+    }
+  ],
+  "vehicle_hud_and_minimap": {
+    "minimap_display": "Nearby vehicles and teammate driver colors displayed in real-time",
+    "low_hp_ui": "Enhanced low-durability visual warnings"
+  }
+}
