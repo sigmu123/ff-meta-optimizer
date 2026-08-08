@@ -1,0 +1,26 @@
+{
+  "map_and_vehicle_updates": [
+    {
+      "feature": "Spawn Island Rework",
+      "new_map_name": "The Runway"
+    },
+    {
+      "feature": "Custom Rooms",
+      "addition": "Kalahari map added to custom room choices"
+    },
+    {
+      "feature": "Glider Flight Dynamics",
+      "rule": "Players descend faster when above 38m in altitude to prevent infinite stalling"
+    },
+    {
+      "feature": "Vehicle Speed Adjustments",
+      "vehicles": [
+        { "name": "Motorbike", "previous_max_speed_kmh": 128, "new_max_speed_kmh": 138 },
+        { "name": "Jeep", "previous_max_speed_kmh": 100, "new_max_speed_kmh": 118 },
+        { "name": "TuTu (Auto Rickshaw)", "previous_max_speed_kmh": 90, "new_max_speed_kmh": 100 },
+        { "name": "SUV", "previous_max_speed_kmh": 130, "new_max_speed_kmh": 120 }
+      ],
+      "camera_mechanic": "Camera zooms out slightly upon reaching max vehicle speed for wider FOV"
+    }
+  ]
+}
