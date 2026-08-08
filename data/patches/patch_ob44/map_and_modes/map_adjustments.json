@@ -1,0 +1,14 @@
+{
+  "map_updates": [
+    {
+      "map": "Hangar",
+      "mode": "Clash Squad",
+      "adjustments": "Structural and layout adjustments to mitigate multi-directional crossfire angles"
+    },
+    {
+      "map": "NeXTerra",
+      "zone": "Zipway",
+      "adjustments": "Relocated Vending Machine position and integrated new Coin Machines"
+    }
+  ]
+}
