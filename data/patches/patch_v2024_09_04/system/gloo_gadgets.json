@@ -1,0 +1,35 @@
+{
+  "gloo_gadgets_system": {
+    "supported_modes": [
+      "Battle Royale",
+      "Clash Squad"
+    ],
+    "max_equipped_per_player": 1,
+    "gadget_variants": [
+      {
+        "gadget_name": "Lavish Gadget",
+        "unlock_type": "Default",
+        "cooldown_seconds": 105,
+        "effect": "Deploying Gloo Wall grants EP, in-match currency, or consumables. Low chance to drop Active Skill Cards or Horizalines."
+      },
+      {
+        "gadget_name": "Wrecking Gadget",
+        "unlock_type": "Event Unlock",
+        "cooldown_seconds": 20,
+        "effect": "Deals +50% extra DMG to enemy Gloo Walls. Destroying a Gloo Wall triggers an explosion dealing 38 DMG to enemies within range."
+      },
+      {
+        "gadget_name": "Scanner Gadget",
+        "unlock_type": "Event Unlock",
+        "cooldown_seconds": 25,
+        "effect": "Scans enemies within 35m for 6 seconds upon Gloo Wall deployment. Marks enemies within 10m for 2 seconds."
+      },
+      {
+        "gadget_name": "Defender Gadget",
+        "unlock_type": "Event Unlock",
+        "cooldown_seconds": 25,
+        "effect": "Gloo Wall gains +250 extra durability. If player is knocked down, automatically deploys a Gloo Wall with 150 durability towards the incoming shot after an 8.6s delay (Disabled in Solo Mode)."
+      }
+    ]
+  }
+}
