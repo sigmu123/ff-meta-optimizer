@@ -3,11 +3,13 @@
   "patch_name": "Winterlands: Aurora",
   "release_date": "2024-12-02",
   "active_sub_modules": [
-    "loadouts",
-    "battle_royale",
-    "characters",
-    "weapons",
-    "map_and_modes",
-    "system"
+    "battle_royale/economy_and_loot.json",
+    "characters/new_character.json",
+    "characters/balance_adjustments.json",
+    "weapons/new_weapons.json",
+    "weapons/upgradable_system.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/cs_store.json",
+    "system/engine_and_ui.json"
   ]
 }
