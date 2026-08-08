@@ -1,0 +1,16 @@
+{
+  "patch_version": "patch_v2025_02_19",
+  "patch_name": "MyZone & Ramadan Update",
+  "release_date": "2025-02-19",
+  "active_sub_modules": [
+    "battle_royale/economy_and_loot.json",
+    "characters/new_character.json",
+    "characters/balance_adjustments.json",
+    "characters/qol_fixes.json",
+    "weapons/special_boosts.json",
+    "weapons/balance_adjustments.json",
+    "map_and_modes/map_adjustments.json",
+    "map_and_modes/cs_store.json",
+    "system/engine_and_ui.json"
+  ]
+}
