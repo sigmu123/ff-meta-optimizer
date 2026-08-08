@@ -1,0 +1,19 @@
+{
+  "control_optimizations": [
+    "A124 and Skyler skills can be canceled while aiming",
+    "Tatsuya skill can be used while crouching",
+    "Active skills can be used while jumping"
+  ],
+  "visual_effect_adjustments": [
+    "Brighter red for enemy Orion skill effect",
+    "Red color for enemy Tatsuya skill effect",
+    "Red color for enemy Homer skill effect",
+    "Ally Olivia skill visual effect optimized for enhanced healing clarity",
+    "New distinct visual effects added for all marking skills"
+  ],
+  "description_updates": [
+    "Paloma",
+    "Orion",
+    "Otho"
+  ]
+}
