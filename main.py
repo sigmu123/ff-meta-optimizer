@@ -5,6 +5,7 @@ import itertools
 from core.ttk_calculator import TTKCalculator
 from patch_loader import PatchLoader
 from interface.prompt_parser import parse_full_prompt
+from engine.combinatorial_tester import PermutationTester   # <-- درآمد کریں
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
@@ -13,7 +14,8 @@ if current_dir not in sys.path:
 class HybridMetaEngine:
     def __init__(self, patch_name="patch_ob54", objective="max_damage", playstyle="rush", engagement_range="mid"):
         self.patch_name = patch_name
-        self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir)
+        # cumulative=True کے ساتھ PatchLoader بنائیں تاکہ تمام پیچز کا تازہ ترین ڈیٹا ملے
+        self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir, cumulative=True)
         self.ttk_calc = TTKCalculator()
 
         # Build data from patches (dynamic)
@@ -39,11 +41,11 @@ class HybridMetaEngine:
         self.passives = {}
         # Merge loader's active and passive skills into dictionaries
         for key, val in self.loader.active_skills.items():
-            # key format: patch_ns_charactername
-            char_name = key.split('_', 1)[-1] if '_' in key else key
+            # key format: patch_ns_charactername (اب یہ پریفکس نہیں ہے، کیونکہ ہم نے صرف نام کو کلید بنایا)
+            char_name = key  # چونکہ ہم نے _parse_and_store میں پریفکس ہٹا دیا ہے
             self.actives[char_name] = val
         for key, val in self.loader.passive_skills.items():
-            char_name = key.split('_', 1)[-1] if '_' in key else key
+            char_name = key
             self.passives[char_name] = val
 
         # If no skills loaded, fallback to base
@@ -74,8 +76,7 @@ class HybridMetaEngine:
         # Weapons: load from loader's weapons dict
         self.weapons = {}
         for key, stats in self.loader.weapons.items():
-            # key format: patch_ns_weaponname
-            wep_name = key.split('_', 1)[-1] if '_' in key else key
+            wep_name = key  # پریفکس ہٹا دیا گیا ہے
             # Ensure required fields
             if "damage" not in stats:
                 stats["damage"] = 28.0
@@ -106,12 +107,7 @@ class HybridMetaEngine:
 
     def _apply_patch_adjustments(self):
         # This now applies additional adjustments if any (but we already loaded stats)
-        # We can still apply character/weapon adjustments from loader if needed
-        # But since we loaded directly, we may skip this or just keep for compatibility
         pass
-
-    # The rest of the methods remain similar, but we need to adjust _get_optimal_weapons
-    # to consider sniper playstyle and sort by effective damage instead of DPS.
 
     def _get_optimal_weapons(self, squad_context=None):
         w_scores = []
@@ -121,7 +117,7 @@ class HybridMetaEngine:
             # Calculate TTK and effective damage
             stats = self.ttk_calc.calculate_weapon_ttk(w_data)
             if stats and stats["ttk"] < float('inf'):
-                clean_name = str(w_id).split("_")[-1].upper()
+                clean_name = str(w_id).upper()
                 # For sniper, use effective damage as primary score
                 if self.playstyle == "sniper" and self.engagement_range == "long":
                     score = stats["effective_damage"]
@@ -137,13 +133,53 @@ class HybridMetaEngine:
             return {"primary": w_scores[0] if w_scores else {"name": "MP40", "ttk": 0.28},
                     "secondary": w_scores[0] if w_scores else {"name": "GROZA", "ttk": 0.32}}
 
-    # Other methods like _fitness_function, run_exhaustive_search, etc. remain similar
-    # but they use self.weapons which is now dynamic.
+    # =============================================
+    # نیا طریقہ کار – مسئلہ نمبر ۱ کا حل
+    # =============================================
+    def run_exhaustive_search(self, output_limit=10, max_combinations=500000):
+        """
+        PermutationTester کو استعمال کرتے ہوئے بہترین بلڈ تلاش کریں اور
+        نتیجہ کو advisor_engine کے متوقع فارمیٹ میں واپس کریں۔
+        """
+        tester = PermutationTester(self)   # self کو پاس کریں تاکہ ڈیٹا تک رسائی ہو
+        result = tester.run_matrix_search(
+            mode="clash_squad",          # موڈ کو مناسب رکھیں (مستقبل میں parser سے لے سکتے ہیں)
+            playstyle=self.playstyle,
+            top_k=output_limit
+        )
 
-    # Note: The rest of the class (fitness, GA, exhaustive search) should be unchanged
-    # except they now use the dynamic self.weapons. We'll keep them as is.
+        if not result or "top_build" not in result:
+            return []   # کوئی بلڈ نہیں ملا
 
-    # For completeness, include the remaining methods from original main.py,
-    # but replace _build_base_data with _build_data_from_patches and adjust references.
+        top = result["top_build"]
+        # advisor_engine کو درکار فارمیٹ میں تبدیل کریں
+        build = {
+            "active": top["character_loadout"]["active_skill"],
+            "passives": top["character_loadout"]["passives"],
+            "pet": top["pet"],
+            "loadout": top["item_loadout"]
+        }
+        weapons = {
+            "primary": {
+                "name": top["weapons"]["short_range"]["name"],
+                "ttk": top["weapons"]["short_range"]["ttk"],
+                "effective_damage": top["weapons"]["short_range"]["effective_dmg"]
+            },
+            "secondary": {
+                "name": top["weapons"]["mid_range"]["name"],
+                "ttk": top["weapons"]["mid_range"]["ttk"],
+                "effective_damage": top["weapons"]["mid_range"]["effective_dmg"]
+            }
+        }
+        # ایک فرضی اسکور (مثال کے طور پر)
+        win_rate = top["summary"]["win_probability_pct"]
+        raw_score = win_rate * 10   # صرف ایک مثال
 
-    # I'll paste the full class with all methods in the final answer.
+        # ایک ہی نتیجہ کی لسٹ واپس کریں (مزید کے لیے آپ GA یا مکمل سرچ لا سکتے ہیں)
+        return [{
+            "build": build,
+            "weapons": weapons,
+            "win_rate": win_rate,
+            "raw_score": raw_score
+        }]
+    # =============================================
