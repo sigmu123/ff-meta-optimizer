@@ -55,26 +55,47 @@ class PatchLoader:
                     self._ingest_pets_loadouts(data)
 
     def _ingest_skills(self, data):
-        # Safely route active skills
+        # Safely route predefined active/passive skills
         actives = data.get("active_skills", [])
         if "character_balance_numeric_changes" in data:
             actives = data["character_balance_numeric_changes"].get("active_skills", actives)
         self._parse_and_store(actives, self.active_skills)
 
-        # Safely route passive skills
         passives = data.get("passive_skills", [])
         if "character_balance_numeric_changes" in data:
             passives = data["character_balance_numeric_changes"].get("passive_skills", passives)
         self._parse_and_store(passives, self.passive_skills)
 
-        # Handle flat reworks to prevent active/passive corruption
-        reworks = data.get("reworked_characters", data.get("character_reworks", data.get("character_balance_changes", [])))
-        self._parse_and_store(reworks, self.passive_skills) # Defaulting reworks to passives to prevent active override
+        # Fix for Active & Passive Corruption (Problem 3)
+        mixed_skills = []
+        for key in ["reworked_characters", "character_reworks", "character_balance_changes", "new_characters", "awakened_characters"]:
+            if key in data:
+                if isinstance(data[key], list):
+                    mixed_skills.extend(data[key])
+                elif isinstance(data[key], dict):
+                    mixed_skills.extend(data[key].values())
+        
+        # Fallback dictionary for known active characters
+        known_actives = ["alok", "chrono", "k", "skyler", "wukong", "dimitri", "homer", "tatsuya", "a124", "steffie", "kenta", "clu", "iris", "orion", "ignis", "ryden", "santino"]
+        
+        for item in mixed_skills:
+            if isinstance(item, dict):
+                skill_info = item.get("skill") or item.get("original_skill") or item
+                skill_type = str(skill_info.get("type", "")).lower()
+                char_name = str(item.get("name") or item.get("character") or item.get("character_name") or "").lower()
+                
+                # Check explicit type or known name
+                if "active" in skill_type or char_name in known_actives:
+                    self._parse_and_store([item], self.active_skills)
+                else:
+                    self._parse_and_store([item], self.passive_skills)
 
     def _ingest_weapons(self, data):
-        # Enable recursive extraction for nested categories like 'assault_rifles'
-        weapons_data = data.get("weapons", data.get("weapon_balances", data.get("weapon_adjustments", {})))
-        self._parse_and_store(weapons_data, self.weapons, recursive=True)
+        # Universal Schema Normalizer for List & Dict formats (Problem 1)
+        weapon_keys = ["weapons", "weapon_balances", "weapon_adjustments", "rifles", "smg", "shotguns", "pistols", "machine_guns", "others"]
+        for key in weapon_keys:
+            if key in data:
+                self._parse_and_store(data[key], self.weapons, recursive=True)
         
     def _ingest_pets_loadouts(self, data):
         for key in ["pets", "pet_updates"]:
@@ -103,14 +124,15 @@ class PatchLoader:
         if isinstance(items, list):
             for item in items:
                 if isinstance(item, dict):
-                    key = item.get("character_id") or item.get("weapon_id") or item.get("name") or item.get("character") or item.get("weapon")
+                    # Check multiple possible ID schemas
+                    key = item.get("character_id") or item.get("weapon_id") or item.get("name") or item.get("character") or item.get("weapon") or item.get("character_name")
                     if key:
                         target_dict[str(key).lower()] = item
                         
         elif isinstance(items, dict):
             for k, v in items.items():
                 if isinstance(v, dict):
-                    # Recursive check for nested categories like {"smg": {"mp40": {...}}}
+                    # Recursive check for nested categories (e.g., {"smg": {"mp40": {...}}})
                     if recursive and any(isinstance(sub_v, dict) for sub_v in v.values()):
                         for sub_k, sub_v in v.items():
                             if isinstance(sub_v, dict):
