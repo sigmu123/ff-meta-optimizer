@@ -28,7 +28,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install google-genai
+          pip install google-generativeai   # FIX: correct package name
 
       - name: Parse Playstyle Prompt
         id: parse_prompt
