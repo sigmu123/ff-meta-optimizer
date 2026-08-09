@@ -32,6 +32,7 @@ class HybridMetaEngine:
             "tatsuya": {"skill_name": "Rebel Rush", "type": "active", "cooldown": 98, "duration": 0.3, "charges": 2},
             "steffie": {"skill_name": "Painted Refuge", "type": "active", "cooldown": 45, "duration": 10, "bullet_damage_reduction": 5, "explosive_damage_reduction": 15},
             "kenta": {"skill_name": "Swordsman's Wrath", "type": "active", "cooldown": 70, "duration": 5, "frontal_damage_reduction": 60},
+            "dimitri": {"skill_name": "Healing Heartbeat", "type": "active", "cooldown": 60, "duration": 12, "heal": 10},
         }
         self.base_passives = {
             "kelly": {"skill_name": "Dash", "type": "passive", "speed_boost": 6},
@@ -42,6 +43,7 @@ class HybridMetaEngine:
             "antonio": {"skill_name": "Gangster's Spirit", "type": "passive", "extra_hp": 35},
             "kapella": {"skill_name": "Healing Song", "type": "passive", "heal_increase": 20, "revive_shield": 80},
             "olivia": {"skill_name": "Healing Touch", "type": "passive", "heal_spread": 80},
+            "maxim": {"skill_name": "Gluttony", "type": "passive", "heal_increase": 25},
         }
         self.base_weapons = {
             "mp40": {"damage": 30, "rate_of_fire": 0.08, "armor_pen": 0.0, "range": 30},
@@ -197,7 +199,7 @@ class HybridMetaEngine:
             if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
                 score *= 1.05
             return score
-        else:  # survival
+        else:  # survival / max_healing / balanced / squad objectives – we treat as survival with playstyle modifiers
             def_score = 0.0
             active_name = squad['active']
             active_skill = self.actives.get(active_name, {})
@@ -206,6 +208,9 @@ class HybridMetaEngine:
             explosive_dr = active_skill.get("explosive_damage_reduction", 0)
             frontal_dr = active_skill.get("frontal_damage_reduction", 0)
             heal = active_skill.get("heal", 0)
+
+            # Healing weight – boost if playstyle is healer or objective is max_healing
+            heal_weight = 2.0 if (self.playstyle == "healer" or self.objective == "max_healing") else 1.0
 
             for p in squad['passives']:
                 pskill = self.passives.get(p, {})
@@ -219,7 +224,8 @@ class HybridMetaEngine:
                 def_score += extra_hp
                 total_dr = (armor_reduction + bullet_dr + explosive_dr + frontal_dr) / 100.0
                 total_dr = min(total_dr, 0.8)
-                def_score += heal + hp_on_hit + heal_increase * 0.5
+                # Apply healing weight to all healing-related stats
+                def_score += (heal + hp_on_hit + heal_increase * 0.5 + revive_shield * 0.2 + heal_spread * 0.1) * heal_weight
                 def_score += shield_hp * 0.1
 
             loadout = squad.get('loadout', '').lower()
@@ -229,9 +235,13 @@ class HybridMetaEngine:
                 def_score += 10
             elif loadout == "leg pockets":
                 def_score += 5
+            if loadout == "bonfire":
+                def_score += 15 * heal_weight
             pet = squad.get('pet', '').lower()
             if pet == "ottero":
-                def_score += 10
+                def_score += 10 * heal_weight
+            elif pet == "mr. waggor":
+                def_score += 5
 
             def_score = max(1.0, def_score)
             return def_score
@@ -380,7 +390,7 @@ class HybridMetaEngine:
             if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
                 score *= 1.05
             return score
-        else:  # survival
+        else:
             def_score = self._fitness_function(squad)
             total_ttk = prim_stats["ttk"] + sec_stats["ttk"]
             ttk_score = 100.0 / (total_ttk + 0.01)
@@ -418,6 +428,8 @@ class HybridMetaEngine:
                 final_score *= 1.05
             if playstyle == "sniper":
                 final_score *= 1.08
+            if playstyle == "healer" and str(squad["loadout"]).lower() == "bonfire":
+                final_score *= 1.10
             best_weapons = self._get_optimal_weapons(squad)
             scaled_win_rate = (final_score / 120.0) * 100
             results.append({
