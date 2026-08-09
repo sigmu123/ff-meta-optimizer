@@ -6,17 +6,11 @@ import re
 
 class PatchLoader:
     def __init__(self, patch_name="all", base_dir=None, cumulative=True):
-        """
-        اگر cumulative=True ہو تو تمام پیچز کو ترتیب وار لوڈ کرے گا اور
-        بعد والے پیچز پہلے والوں کو اوور رائڈ کریں گے۔
-        اگر cumulative=False ہو تو صرف مخصوص patch_name لوڈ ہوگا (پرانے طرز پر)۔
-        """
         self.patch_name = patch_name
         self.cumulative = cumulative
         base_dir = base_dir or os.path.dirname(os.path.abspath(__file__))
         self.patches_base_dir = os.path.join(base_dir, "data", "patches")
 
-        # ڈیٹا اسٹور کرنے کے لیے ڈکشنریز
         self.active_skills = {}
         self.passive_skills = {}
         self.weapons = {}
@@ -29,6 +23,26 @@ class PatchLoader:
         logging.basicConfig(level=logging.WARNING)
         self._load_all_data()
 
+        # ڈیبگ پرنٹس
+        print(f"[DEBUG] Total weapons loaded: {len(self.weapons)}")
+        print(f"[DEBUG] Total active skills loaded: {len(self.active_skills)}")
+        print(f"[DEBUG] Total passive skills loaded: {len(self.passive_skills)}")
+        print(f"[DEBUG] Pets: {self.pets}")
+        print(f"[DEBUG] Loadouts: {self.loadouts}")
+
+        # اگر کوئی ڈیٹا نہ ملا تو صرف patch_ob54 لوڈ کر کے دیکھیں
+        if len(self.weapons) == 0 and len(self.active_skills) == 0:
+            print("[WARNING] No data loaded. Trying fallback to patch_ob54 only.")
+            self.cumulative = False
+            self.patch_name = "patch_ob54"
+            self.active_skills = {}
+            self.passive_skills = {}
+            self.weapons = {}
+            self.pets = []
+            self.loadouts = []
+            self._load_all_data()
+            print(f"[DEBUG] Fallback: weapons={len(self.weapons)}, actives={len(self.active_skills)}")
+
     def _load_json_safe(self, path):
         if os.path.exists(path):
             try:
@@ -39,35 +53,31 @@ class PatchLoader:
         return {}
 
     def _get_sorted_patches(self):
-        """تمام patch فولڈرز کو تاریخ/نام کے حساب سے ترتیب دیں۔"""
         if not os.path.exists(self.patches_base_dir):
             return []
         folders = [f for f in os.listdir(self.patches_base_dir)
                    if os.path.isdir(os.path.join(self.patches_base_dir, f)) and f.startswith("patch_")]
-        # منطقی ترتیب: پہلے v سے شروع ہونے والے (پرانے)، پھر ob والے (نئے)
         def sort_key(f):
-            # ob والوں کو عددی ترتیب دیں
             if "ob" in f:
                 num = int(re.search(r'ob(\d+)', f).group(1)) if re.search(r'ob(\d+)', f) else 0
-                return (2, num)  # ob کو بعد میں لائیں
+                return (2, num)
             else:
-                # v والوں کو عام ترتیب
                 return (1, f)
         return sorted(folders, key=sort_key)
 
     def _load_all_data(self):
         if self.cumulative:
-            # تمام پیچز کو ترتیب سے لوڈ کریں
             patch_folders = self._get_sorted_patches()
+            print(f"[DEBUG] Cumulative patches to load: {patch_folders}")
             for patch_folder in patch_folders:
                 self._load_patch(patch_folder)
         else:
-            # صرف ایک مخصوص پیچ لوڈ کریں (پرانے طرز پر)
             if self.patch_name == "all":
                 patch_folders = self._get_sorted_patches()
                 for patch_folder in patch_folders:
                     self._load_patch(patch_folder)
             else:
+                print(f"[DEBUG] Loading single patch: {self.patch_name}")
                 self._load_patch(self.patch_name)
 
     def _load_patch(self, patch_folder):
@@ -84,7 +94,6 @@ class PatchLoader:
                 self._parse_generic_data(data, patch_folder)
 
     def _parse_generic_data(self, data, patch_ns):
-        """پہلے والے کوڈ کی طرح، لیکن ڈیٹا کو ڈکشنری میں اوور رائڈ کرے گا۔"""
         # ---- Characters & Skills ----
         char_lists = [
             "character_adjustments",
@@ -193,7 +202,7 @@ class PatchLoader:
         skill_entry = {k: v for k, v in skill_entry.items() if v is not None}
 
         target = self.active_skills if is_active else self.passive_skills
-        key = char_name.lower()  # پریفکس کے بغیر، تاکہ اوور رائڈ ہو سکے
+        key = char_name.lower()
 
         if override:
             target[key] = skill_entry
