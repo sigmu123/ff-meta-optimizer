@@ -1,9 +1,7 @@
 import os
 import sys
 import time
-import importlib.util
 
-# Safe dynamic path resolution (Issue 18 Fix)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
     sys.path.insert(0, current_dir)
@@ -16,7 +14,6 @@ class AdvisorEngine:
         self.data_dir = os.path.join(current_dir, "data")
         self.router = PatchRouter(data_dir=self.data_dir)
         
-        # Dynamic fallback instead of hardcoded string (Issue 10 Fix)
         fetched_patch = self.router.get_latest_patch_version()
         self.active_patch_name = fetched_patch if fetched_patch else self._get_fallback_patch()
 
@@ -33,7 +30,6 @@ class AdvisorEngine:
         engine = HybridMetaEngine(patch_name=self.active_patch_name)
         top_raw_squads = engine.run_ga_pipeline(generations=20, population_size=100)
         
-        # Safe Environment Variable Parsing
         playstyle_env = os.getenv("FF_PLAYSTYLE", "rush").strip().lower()
         if not playstyle_env.isalpha():
             playstyle_env = "rush"
@@ -51,7 +47,8 @@ class AdvisorEngine:
 
         output_file_path = os.path.join(current_dir, "advisor_result.txt")
         
-        # Formatted string variable (Issue 2 Fix: Removed redundant read lock)
+        passives_formatted = "".join([f"   • Passive {idx}        : {str(p).title()}\n" for idx, p in enumerate(b['passives'], 1)])
+        
         report_content = (
             f"{'=' * 70}\n"
             f"    ISOLATED ADVISOR ENGINE - HYBRID PIPELINE V2\n"
@@ -60,8 +57,8 @@ class AdvisorEngine:
             f"[*] Active Patch  : {self.active_patch_name.upper()}\n"
             f"{'-' * 70}\n\n"
             f"1. 100% Accurate Dynamic Setup:\n"
-            f"   • Active Character : {b['active'].title()}\n"
-            + "".join([f"   • Passive {idx}        : {p.title()}\n" for idx, p in enumerate(b['passives'], 1)]) +
+            f"   • Active Character : {str(b['active']).title()}\n"
+            f"{passives_formatted}"
             f"   • Pet Choice       : {b['pet']}\n"
             f"   • Loadout          : {b['loadout']}\n\n"
             f"2. Weapon Analysis (TTK Calculated):\n"
@@ -79,7 +76,7 @@ class AdvisorEngine:
             
             print(f"[+] Success! Optimal meta build generated.")
             print(f"[+] Result has been saved to: {output_file_path}\n")
-            print(report_content) # Directly print from memory buffer
+            print(report_content)
         except IOError as e:
             print(f"[-] File write error: {e}")
 
