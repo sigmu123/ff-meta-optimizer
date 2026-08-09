@@ -28,7 +28,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install google-generativeai   # FIX: correct package name
+          pip install google-generativeai
 
       - name: Parse Playstyle Prompt
         id: parse_prompt
@@ -42,6 +42,9 @@ jobs:
 
       - name: Run Hybrid Meta Engine
         env:
+          # Pass the original prompt so the engine can re-parse if needed
+          USER_PROMPT: ${{ github.event.inputs.playstyle_prompt || 'rush' }}
+          # Optionally also pass the extracted playstyle for direct use
           FF_PLAYSTYLE: ${{ steps.parse_prompt.outputs.playstyle }}
         run: |
           python advisor_engine.py
