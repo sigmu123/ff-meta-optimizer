@@ -47,7 +47,6 @@ class HybridMetaEngine:
         return {"active": self.actives[0], "passives": sorted(self.passives[:3]), "pet": self.pets[0], "loadout": self.loadouts[0]}
 
     def _fitness_function(self, squad):
-        # Fully dynamic evaluation based on loaded weapon TTK metrics and stats
         score = 60.0
         best_weapons = self._get_optimal_weapons(squad)
         if best_weapons["primary"]["ttk"] < 0.35:
@@ -137,13 +136,14 @@ class HybridMetaEngine:
                 continue
                 
             stats = self.ttk_calc.calculate_weapon_ttk(w_data)
-            if 0 < stats["ttk"] < 10: 
-                dps = stats["effective_damage"] * (1 / max(0.01, stats.get("rate_of_fire", 0.2)))
+            # Fixed check to securely handle valid calculated TTK and avoid inf/0 issues
+            if stats and "ttk" in stats and 0 < stats["ttk"] < float('inf'): 
+                dps = stats["effective_damage"] * (1.0 / max(0.01, stats.get("rate_of_fire", 0.2)))
                 clean_name = str(w_id).split("_")[-1].upper()
                 w_scores.append({"name": clean_name, "ttk": stats["ttk"], "score": dps})
         
         w_scores.sort(key=lambda x: x["score"], reverse=True)
         return {
-            "primary": w_scores[0] if w_scores else {"name": "MP40", "ttk": 0.28},
-            "secondary": w_scores[1] if len(w_scores) > 1 else {"name": "GROZA", "ttk": 0.32}
+            "primary": w_scores[0] if len(w_scores) > 0 else {"name": "MP40", "ttk": 0.28},
+            "secondary": w_scores[1] if len(w_scores) > 1 else (w_scores[0] if len(w_scores) > 0 else {"name": "GROZA", "ttk": 0.32})
         }
