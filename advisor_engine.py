@@ -28,14 +28,12 @@ class AdvisorEngine:
     def run_isolated_advisor(self):
         start_time = time.time()
 
-        # پرامپٹ کو پڑھیں (ورک فلو سے FF_PLAYSTYLE یا USER_PROMPT)
         user_prompt = os.getenv("USER_PROMPT", "rush")
         if not user_prompt:
             user_prompt = "rush"
         parsed = parse_full_prompt(user_prompt)
         print(f"[*] Parsed prompt: {parsed}")
 
-        # انجن بنائیں
         engine = HybridMetaEngine(
             patch_name=self.active_patch_name,
             objective=parsed.get("objective", "max_damage"),
@@ -43,10 +41,7 @@ class AdvisorEngine:
             engagement_range=parsed.get("engagement_range", "mid")
         )
 
-        # Exhaustive search چلائیں
-        # اگر تعداد بہت زیادہ ہو تو max_combinations = 500000 (پانچ لاکھ) رکھیں
-        # آپ اسے بڑھا بھی سکتے ہیں
-        max_combinations = 500000  # یا None اگر تمام چاہیں
+        max_combinations = 500000
         results = engine.run_exhaustive_search(output_limit=10, max_combinations=max_combinations)
 
         if not results:
@@ -59,37 +54,60 @@ class AdvisorEngine:
         w = best_build["weapons"]
 
         output_file_path = os.path.join(current_dir, "advisor_result.txt")
-        passives_formatted = "".join([f"   • Passive {idx}        : {str(p).title()}\n" for idx, p in enumerate(b['passives'], 1)])
+        response_type = parsed.get("response_type", "full_build")
 
-        report_content = (
-            f"{'=' * 70}\n"
-            f"    ISOLATED ADVISOR ENGINE - EXHAUSTIVE SEARCH V2\n"
-            f"{'=' * 70}\n"
-            f"[*] Engine Latency: {exec_time}ms | Search Strategy: Global Cross-Match Permutations\n"
-            f"[*] Active Patch  : {self.active_patch_name.upper()}\n"
-            f"[*] Objective     : {engine.objective}\n"
-            f"[*] Playstyle     : {engine.playstyle}\n"
-            f"{'-' * 70}\n\n"
-            f"1. Optimal Dynamic Setup:\n"
-            f"   • Active Character : {str(b['active']).title()}\n"
-            f"{passives_formatted}"
-            f"   • Pet Choice       : {b['pet']}\n"
-            f"   • Loadout          : {b['loadout']}\n\n"
-            f"2. Weapon Analysis (TTK Calculated):\n"
-            f"   • Primary (Close)  : {w['primary']['name']} | Optimal TTK: {w['primary']['ttk']}s\n"
-            f"   • Secondary (Mid)  : {w['secondary']['name']} | Optimal TTK: {w['secondary']['ttk']}s\n\n"
-            f"3. Hybrid System Output:\n"
-            f"   • Projected Win Rate : {best_build['win_rate']}%\n"
-            f"   • Raw Score          : {best_build['raw_score']:.2f}\n"
-            f"   • Status             : Verified by Exhaustive Permutation Testing\n"
-            f"{'=' * 70}\n"
-        )
+        if response_type == "weapon_only":
+            # Weapon-only output
+            report_content = (
+                f"{'=' * 70}\n"
+                f"    BEST WEAPON(S) FOR YOUR QUERY\n"
+                f"{'=' * 70}\n"
+                f"[*] Active Patch  : {self.active_patch_name.upper()}\n"
+                f"[*] Playstyle     : {engine.playstyle}\n"
+                f"[*] Engagement    : {engine.engagement_range}\n"
+                f"{'-' * 70}\n\n"
+                f"🏆 Top Primary Weapon:\n"
+                f"   • Name         : {w['primary']['name']}\n"
+                f"   • TTK          : {w['primary']['ttk']}s\n"
+                f"   • Effective DMG: {w['primary'].get('effective_damage', 'N/A')}\n"
+                f"\n🏆 Top Secondary Weapon:\n"
+                f"   • Name         : {w['secondary']['name']}\n"
+                f"   • TTK          : {w['secondary']['ttk']}s\n"
+                f"   • Effective DMG: {w['secondary'].get('effective_damage', 'N/A')}\n"
+                f"\n💡 Recommendation: For long range, use {w['primary']['name']} as primary.\n"
+                f"{'=' * 70}\n"
+            )
+        else:
+            # Full build report
+            passives_formatted = "".join([f"   • Passive {idx}        : {str(p).title()}\n" for idx, p in enumerate(b['passives'], 1)])
+            report_content = (
+                f"{'=' * 70}\n"
+                f"    ISOLATED ADVISOR ENGINE - EXHAUSTIVE SEARCH V2\n"
+                f"{'=' * 70}\n"
+                f"[*] Engine Latency: {exec_time}ms\n"
+                f"[*] Active Patch  : {self.active_patch_name.upper()}\n"
+                f"[*] Objective     : {engine.objective}\n"
+                f"[*] Playstyle     : {engine.playstyle}\n"
+                f"{'-' * 70}\n\n"
+                f"1. Optimal Dynamic Setup:\n"
+                f"   • Active Character : {str(b['active']).title()}\n"
+                f"{passives_formatted}"
+                f"   • Pet Choice       : {b['pet']}\n"
+                f"   • Loadout          : {b['loadout']}\n\n"
+                f"2. Weapon Analysis:\n"
+                f"   • Primary  : {w['primary']['name']} | TTK: {w['primary']['ttk']}s\n"
+                f"   • Secondary: {w['secondary']['name']} | TTK: {w['secondary']['ttk']}s\n\n"
+                f"3. Score:\n"
+                f"   • Win Rate : {best_build['win_rate']}%\n"
+                f"   • Raw Score: {best_build['raw_score']:.2f}\n"
+                f"{'=' * 70}\n"
+            )
 
         try:
             with open(output_file_path, "w", encoding="utf-8") as f:
                 f.write(report_content)
-            print("[+] Success! Optimal meta build generated.")
-            print(f"[+] Result saved to: {output_file_path}\n")
+            print("[+] Success! Result generated.")
+            print(f"[+] Saved to: {output_file_path}\n")
             print(report_content)
         except IOError as e:
             print(f"[-] File write error: {e}")
