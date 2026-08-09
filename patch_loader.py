@@ -2,23 +2,29 @@ import os
 import json
 import logging
 from collections import defaultdict
+import re
 
 class PatchLoader:
-    def __init__(self, patch_name="all", base_dir=None):
+    def __init__(self, patch_name="all", base_dir=None, cumulative=True):
+        """
+        اگر cumulative=True ہو تو تمام پیچز کو ترتیب وار لوڈ کرے گا اور
+        بعد والے پیچز پہلے والوں کو اوور رائڈ کریں گے۔
+        اگر cumulative=False ہو تو صرف مخصوص patch_name لوڈ ہوگا (پرانے طرز پر)۔
+        """
         self.patch_name = patch_name
+        self.cumulative = cumulative
         base_dir = base_dir or os.path.dirname(os.path.abspath(__file__))
         self.patches_base_dir = os.path.join(base_dir, "data", "patches")
 
-        # Stores parsed data per category
-        self.active_skills = {}          # character_name -> skill dict
-        self.passive_skills = {}         # character_name -> skill dict
-        self.weapons = {}                # weapon_name -> stat dict
-        self.pets = []                   # list of pet names
-        self.loadouts = []               # list of loadout names
+        # ڈیٹا اسٹور کرنے کے لیے ڈکشنریز
+        self.active_skills = {}
+        self.passive_skills = {}
+        self.weapons = {}
+        self.pets = []
+        self.loadouts = []
 
-        # Additional storage for adjustments
-        self.character_adjustments = {}  # character_name -> list of adjustments
-        self.weapon_adjustments = {}     # weapon_name -> list of adjustments
+        self.character_adjustments = {}
+        self.weapon_adjustments = {}
 
         logging.basicConfig(level=logging.WARNING)
         self._load_all_data()
@@ -32,36 +38,54 @@ class PatchLoader:
                 logging.error(f"JSON Parse Error in {path}: {str(e)}")
         return {}
 
-    def _load_all_data(self):
+    def _get_sorted_patches(self):
+        """تمام patch فولڈرز کو تاریخ/نام کے حساب سے ترتیب دیں۔"""
         if not os.path.exists(self.patches_base_dir):
+            return []
+        folders = [f for f in os.listdir(self.patches_base_dir)
+                   if os.path.isdir(os.path.join(self.patches_base_dir, f)) and f.startswith("patch_")]
+        # منطقی ترتیب: پہلے v سے شروع ہونے والے (پرانے)، پھر ob والے (نئے)
+        def sort_key(f):
+            # ob والوں کو عددی ترتیب دیں
+            if "ob" in f:
+                num = int(re.search(r'ob(\d+)', f).group(1)) if re.search(r'ob(\d+)', f) else 0
+                return (2, num)  # ob کو بعد میں لائیں
+            else:
+                # v والوں کو عام ترتیب
+                return (1, f)
+        return sorted(folders, key=sort_key)
+
+    def _load_all_data(self):
+        if self.cumulative:
+            # تمام پیچز کو ترتیب سے لوڈ کریں
+            patch_folders = self._get_sorted_patches()
+            for patch_folder in patch_folders:
+                self._load_patch(patch_folder)
+        else:
+            # صرف ایک مخصوص پیچ لوڈ کریں (پرانے طرز پر)
+            if self.patch_name == "all":
+                patch_folders = self._get_sorted_patches()
+                for patch_folder in patch_folders:
+                    self._load_patch(patch_folder)
+            else:
+                self._load_patch(self.patch_name)
+
+    def _load_patch(self, patch_folder):
+        patch_dir = os.path.join(self.patches_base_dir, patch_folder)
+        if not os.path.isdir(patch_dir):
             return
-
-        patch_folders = sorted(os.listdir(self.patches_base_dir))
-        if self.patch_name != "all" and self.patch_name in patch_folders:
-            patch_folders = [self.patch_name]
-
-        for patch_folder in patch_folders:
-            patch_dir = os.path.join(self.patches_base_dir, patch_folder)
-            if not os.path.isdir(patch_dir):
-                continue
-
-            for root, _, files in os.walk(patch_dir):
-                for file_name in files:
-                    if not file_name.endswith(".json") or file_name == "patch_manifest.json":
-                        continue
-
-                    data = self._load_json_safe(os.path.join(root, file_name))
-                    if not data:
-                        continue
-
-                    self._parse_generic_data(data, patch_folder)
+        for root, _, files in os.walk(patch_dir):
+            for file_name in files:
+                if not file_name.endswith(".json") or file_name == "patch_manifest.json":
+                    continue
+                data = self._load_json_safe(os.path.join(root, file_name))
+                if not data:
+                    continue
+                self._parse_generic_data(data, patch_folder)
 
     def _parse_generic_data(self, data, patch_ns):
-        """
-        Intelligently extract skills, weapons, pets, loadouts from various JSON structures.
-        """
+        """پہلے والے کوڈ کی طرح، لیکن ڈیٹا کو ڈکشنری میں اوور رائڈ کرے گا۔"""
         # ---- Characters & Skills ----
-        # Look for known lists
         char_lists = [
             "character_adjustments",
             "character_balance_changes",
@@ -77,13 +101,12 @@ class PatchLoader:
             if isinstance(items, list):
                 for item in items:
                     if isinstance(item, dict):
-                        self._extract_character_skill(item, patch_ns)
+                        self._extract_character_skill(item, patch_ns, override=True)
 
-        # Also check for direct "active_skills" or "passive_skills" keys
         if "active_skills" in data:
-            self._parse_and_store(data["active_skills"], self.active_skills, patch_ns, key_field="name")
+            self._parse_and_store(data["active_skills"], self.active_skills, patch_ns, key_field="name", override=True)
         if "passive_skills" in data:
-            self._parse_and_store(data["passive_skills"], self.passive_skills, patch_ns, key_field="name")
+            self._parse_and_store(data["passive_skills"], self.passive_skills, patch_ns, key_field="name", override=True)
 
         # ---- Weapons ----
         weapon_lists = [
@@ -102,12 +125,11 @@ class PatchLoader:
             if isinstance(items, list):
                 for item in items:
                     if isinstance(item, dict):
-                        self._extract_weapon(item, patch_ns)
+                        self._extract_weapon(item, patch_ns, override=True)
             elif isinstance(items, dict):
-                # Some patches have nested dicts
                 for k, v in items.items():
                     if isinstance(v, dict):
-                        self._extract_weapon(v, patch_ns, weapon_id=k)
+                        self._extract_weapon(v, patch_ns, weapon_id=k, override=True)
 
         # ---- Pets ----
         pets_data = data.get("pets", []) or data.get("pet_updates", []) or data.get("new_pets", [])
@@ -137,8 +159,7 @@ class PatchLoader:
                     if k not in self.loadouts:
                         self.loadouts.append(k)
 
-    def _extract_character_skill(self, item, patch_ns):
-        """Extract active/passive skill info from a character adjustment item."""
+    def _extract_character_skill(self, item, patch_ns, override=True):
         char_name = item.get("character_name") or item.get("name") or item.get("character")
         if not char_name:
             return
@@ -146,7 +167,6 @@ class PatchLoader:
         skill_name = item.get("skill_name") or item.get("skill") or ""
         skill_type = item.get("type") or item.get("skill_type") or ""
 
-        # Determine if active or passive
         is_active = False
         if skill_type:
             if "active" in skill_type.lower():
@@ -154,13 +174,11 @@ class PatchLoader:
             elif "passive" in skill_type.lower():
                 is_active = False
             else:
-                # heuristic: presence of cooldown/duration often means active
                 if "cooldown_seconds" in item or "duration_seconds" in item:
                     is_active = True
                 else:
                     is_active = False
 
-        # Create a skill entry
         skill_entry = {
             "character_name": char_name,
             "skill_name": skill_name,
@@ -172,27 +190,26 @@ class PatchLoader:
             "heal": item.get("heal"),
             "adjustments": {k: v for k, v in item.items() if k not in ["character_name", "skill_name", "type", "skill_type"]}
         }
-        # Clean up None values
         skill_entry = {k: v for k, v in skill_entry.items() if v is not None}
 
-        # Store in appropriate dictionary
         target = self.active_skills if is_active else self.passive_skills
-        # Use character_name as key (with patch prefix to avoid collisions)
-        key = f"{patch_ns}_{char_name.lower()}"
-        target[key] = skill_entry
+        key = char_name.lower()  # پریفکس کے بغیر، تاکہ اوور رائڈ ہو سکے
 
-        # Also store adjustment separately for later use
+        if override:
+            target[key] = skill_entry
+        else:
+            if key not in target:
+                target[key] = skill_entry
+
         if char_name not in self.character_adjustments:
             self.character_adjustments[char_name] = []
         self.character_adjustments[char_name].append(item)
 
-    def _extract_weapon(self, item, patch_ns, weapon_id=None):
-        """Extract weapon stats from a weapon adjustment item."""
+    def _extract_weapon(self, item, patch_ns, weapon_id=None, override=True):
         wep_name = item.get("weapon_name") or item.get("name") or weapon_id
         if not wep_name:
             return
 
-        # Build a stats dict
         stats = {
             "damage": item.get("damage") or item.get("base_damage"),
             "rate_of_fire": item.get("rate_of_fire") or item.get("fire_rate"),
@@ -201,27 +218,37 @@ class PatchLoader:
             "magazine": item.get("magazine_capacity") or item.get("clip_size"),
             "adjustments": {k: v for k, v in item.items() if k not in ["weapon_name", "name", "damage", "rate_of_fire", "armor_penetration", "range", "magazine_capacity"]}
         }
-        # Clean
         stats = {k: v for k, v in stats.items() if v is not None}
 
-        # Store
-        key = f"{patch_ns}_{wep_name.lower()}"
-        self.weapons[key] = stats
+        key = wep_name.lower()
+        if override:
+            self.weapons[key] = stats
+        else:
+            if key not in self.weapons:
+                self.weapons[key] = stats
 
-        # Also store adjustment separately
         if wep_name not in self.weapon_adjustments:
             self.weapon_adjustments[wep_name] = []
         self.weapon_adjustments[wep_name].append(item)
 
-    def _parse_and_store(self, items, target_dict, patch_ns, key_field="name"):
-        """Generic parser for simple list of dicts."""
+    def _parse_and_store(self, items, target_dict, patch_ns, key_field="name", override=True):
         if isinstance(items, list):
             for item in items:
                 if isinstance(item, dict):
                     key = item.get(key_field) or item.get("character_id") or item.get("weapon_id")
                     if key:
-                        target_dict[f"{patch_ns}_{str(key).lower()}"] = item
+                        key = key.lower()
+                        if override:
+                            target_dict[key] = item
+                        else:
+                            if key not in target_dict:
+                                target_dict[key] = item
         elif isinstance(items, dict):
             for k, v in items.items():
                 if isinstance(v, dict):
-                    target_dict[f"{patch_ns}_{str(k).lower()}"] = v
+                    key = k.lower()
+                    if override:
+                        target_dict[key] = v
+                    else:
+                        if key not in target_dict:
+                            target_dict[key] = v
