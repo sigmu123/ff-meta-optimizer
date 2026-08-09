@@ -8,11 +8,14 @@ class PromptParser:
         self.api_key = os.getenv("GEMINI_API_KEY", "")
         if self.api_key:
             genai.configure(api_key=self.api_key)
-            # Use a valid model name (gemini-2.0-flash is current, fallback to 1.5-pro if needed)
+            # Use the latest Flash model; fallback to 2.0 or 1.5 if not available
             try:
-                self.model = genai.GenerativeModel("gemini-2.0-flash")
+                self.model = genai.GenerativeModel("gemini-3.6-flash")
             except Exception:
-                self.model = genai.GenerativeModel("gemini-1.5-pro")
+                try:
+                    self.model = genai.GenerativeModel("gemini-2.0-flash")
+                except Exception:
+                    self.model = genai.GenerativeModel("gemini-1.5-pro")
         else:
             self.model = None
 
@@ -36,6 +39,7 @@ class PromptParser:
             parsed["playstyle"] = "sniper"
         if "ttk" in query_lower or "time to kill" in query_lower:
             parsed["objective"] = "min_ttk"
+        # Only set max_damage if "damage" is present but not "block"
         if "damage" in query_lower and "block" not in query_lower:
             parsed["objective"] = "max_damage"
 
@@ -45,7 +49,7 @@ class PromptParser:
             parsed["objective"] = "survival"
             parsed["playstyle"] = "tank"
 
-        # Override with Gemini if available
+        # Override with Gemini if available (and not rate-limited)
         if self.model and len(user_query.strip()) > 5:
             try:
                 prompt = f"""
@@ -72,6 +76,7 @@ Return ONLY the JSON object, no extra text.
                             if key in parsed:
                                 parsed[key] = data[key]
             except Exception as e:
+                # Print error but continue with rule-based result
                 print(f"Gemini parsing failed: {e}", file=sys.stderr)
         return parsed
 
