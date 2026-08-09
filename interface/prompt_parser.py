@@ -1,45 +1,46 @@
 import os
-import json
-import google.generativeai as genai
+from google import genai
 
-class PromptParser:
-    def __init__(self):
-        # Fetch API key from Environment Variables (GitHub Secrets)
-        self.api_key = os.getenv("GEMINI_API_KEY")
-        if self.api_key:
-            genai.configure(api_key=self.api_key)
-            self.model = genai.GenerativeModel('gemini-1.5-flash')
-        else:
-            self.model = None
+def parse_user_prompt(prompt_text):
+    """
+    Parses user prompt using the latest Google GenAI SDK.
+    Returns one of the valid playstyles: 'rush', 'survival', or 'sniper'.
+    """
+    if not prompt_text or not isinstance(prompt_text, str):
+        return "rush"
 
-    def parse_roman_urdu_prompt(self, user_prompt):
-        if not self.model:
-            print("[-] API Key not found. Falling back to default 'rush' playstyle.")
-            return "rush"
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("[-] GEMINI_API_KEY environment variable missing. Defaulting to rush.")
+        return "rush"
 
-        sys_prompt = f"""
-        You are a Free Fire Meta Optimizer AI. 
-        Read the user's Roman Urdu prompt and output exactly ONE word describing their desired playstyle.
-        Valid outputs ONLY: "rush", "sniper", "support", "camper".
-        User Prompt: "{user_prompt}"
-        """
-        try:
-            response = self.model.generate_content(sys_prompt)
+    try:
+        # Initialize modern Google GenAI Client
+        client = genai.Client(api_key=api_key)
+        
+        # Call latest Gemini 2.5 Flash model
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=(
+                "Analyze this Free Fire playstyle query and return ONLY one word "
+                "('rush', 'survival', or 'sniper'): " + str(prompt_text)
+            ),
+        )
+        
+        if response and hasattr(response, 'text') and response.text:
             playstyle = response.text.strip().lower()
-            if playstyle not in ["rush", "sniper", "support", "camper"]:
-                return "rush"
-            return playstyle
-        except Exception as e:
-            print(f"[-] API Parsing failed: {e}. Defaulting to rush.")
-            return "rush"
+            if playstyle in ["rush", "survival", "sniper"]:
+                return playstyle
+
+        return "rush"
+
+    except Exception as e:
+        print(f"[-] API Parsing failed: {e}. Defaulting to rush.")
+        return "rush"
+
 
 if __name__ == "__main__":
-    parser = PromptParser()
-    raw_query = os.getenv("USER_QUERY", "mujhe rush game khelna ha")
-    extracted_playstyle = parser.parse_roman_urdu_prompt(raw_query)
-    
-    # Export for the next GitHub Actions step
-    with open(os.environ['GITHUB_ENV'], 'a') as f:
-        f.write(f"FF_PLAYSTYLE={extracted_playstyle}\n")
-    
-    print(f"[*] Parsed Playstyle: {extracted_playstyle.upper()}")
+    # Quick standalone testing handler
+    test_prompt = os.getenv("TEST_PROMPT", "I want an aggressive rusher loadout")
+    result = parse_user_prompt(test_prompt)
+    print(f"[+] Parsed Playstyle: {result}")
