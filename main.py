@@ -14,7 +14,6 @@ class HybridMetaEngine:
         self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir)
         self.ttk_calc = TTKCalculator()
         
-        # Dynamic Fallbacks with schema normalization
         self.actives = list(self.loader.active_skills.keys()) if self.loader.active_skills else ["alok", "chrono", "k", "orion", "tatsuya"]
         self.passives = list(self.loader.passive_skills.keys()) if self.loader.passive_skills else ["kelly", "hayato", "moco", "jota", "andrew"]
         self.weapons = self.loader.weapons if self.loader.weapons else {"mp40": {"damage": 30, "rate_of_fire": 0.08}, "groza": {"damage": 38, "rate_of_fire": 0.12}}
@@ -48,17 +47,13 @@ class HybridMetaEngine:
         return {"active": self.actives[0], "passives": sorted(self.passives[:3]), "pet": self.pets[0], "loadout": self.loadouts[0]}
 
     def _fitness_function(self, squad):
-        score = 50.0 
-        act_name = str(squad["active"]).lower()
-        passives = [str(p).lower() for p in squad["passives"]]
-        
-        if "tatsuya" in act_name and any("kelly" in p for p in passives): 
-            score *= 1.15  
-        if "chrono" in act_name and "rockie" in str(squad["pet"]).lower(): 
-            score *= 1.10 
-        if any("hayato" in p for p in passives): 
-            score *= 1.08 
-        
+        # Fully dynamic evaluation based on loaded weapon TTK metrics and stats
+        score = 60.0
+        best_weapons = self._get_optimal_weapons(squad)
+        if best_weapons["primary"]["ttk"] < 0.35:
+            score += 15.0
+        if best_weapons["secondary"]["ttk"] < 0.40:
+            score += 10.0
         return min(99.9, score)
 
     def _crossover_and_mutate(self, parent1, parent2):
@@ -121,8 +116,8 @@ class HybridMetaEngine:
             
             if playstyle == "rush" and str(squad["loadout"]).lower() == "leg pockets": 
                 final_score *= 1.05
-            if playstyle == "sniper" and any("moco" in str(p).lower() for p in squad["passives"]): 
-                final_score *= 1.10
+            if playstyle == "sniper": 
+                final_score *= 1.08
             
             best_weapons = self._get_optimal_weapons(squad)
             scaled_win_rate = (final_score / 120.0) * 100 
@@ -152,24 +147,3 @@ class HybridMetaEngine:
             "primary": w_scores[0] if w_scores else {"name": "MP40", "ttk": 0.28},
             "secondary": w_scores[1] if len(w_scores) > 1 else {"name": "GROZA", "ttk": 0.32}
         }
-
-if __name__ == "__main__":
-    print("[+] Initializing Hybrid Meta Engine Direct Execution...")
-    engine = HybridMetaEngine(patch_name="patch_ob54")
-    raw_squads = engine.run_ga_pipeline(generations=15, population_size=50)
-    playstyle = os.getenv("FF_PLAYSTYLE", "rush")
-    results = engine.apply_context_multipliers(raw_squads, playstyle=playstyle)
-    
-    if results:
-        top = results[0]
-        print("\n" + "=" * 50)
-        print(f" OPTIMAL META BUILD GENERATED ({playstyle.upper()})")
-        print("=" * 50)
-        print(f"Active Skill : {top['build']['active']}")
-        print(f"Passives     : {', '.join(top['build']['passives'])}")
-        print(f"Pet          : {top['build']['pet']}")
-        print(f"Loadout      : {top['build']['loadout']}")
-        print(f"Primary Gun  : {top['weapons']['primary']['name']} (TTK: {top['weapons']['primary']['ttk']}s)")
-        print(f"Secondary    : {top['weapons']['secondary']['name']} (TTK: {top['weapons']['secondary']['ttk']}s)")
-        print(f"Win Rate     : {top['win_rate']}%")
-        print("=" * 50 + "\n")
