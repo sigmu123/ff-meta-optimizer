@@ -1,41 +1,54 @@
-name: Hybrid Meta Engine Execution Pipeline
+name: FF Meta Engine CI/CD Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
   workflow_dispatch:
     inputs:
-      user_query:
-        description: 'Apni query Roman Urdu me likhein (e.g., Mujhe sniper aur moco ka setup chahiye)'
-        required: true
-        default: 'mujhe fast rush game khelna ha'
+      playstyle_prompt:
+        description: 'Playstyle Prompt (e.g. rush, sniper, survival)'
+        required: false
+        default: 'rush'
 
 jobs:
-  run-meta-engine:
+  build-and-run:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python Environment
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install google-generativeai
+          pip install google-genai
 
-      - name: Parse Roman Urdu Prompt via Gemini API
+      - name: Parse Playstyle Prompt
+        id: parse_prompt
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          USER_QUERY: ${{ github.event.inputs.user_query }}
-        run: python interface/prompt_parser.py
+          USER_PROMPT: ${{ github.event.inputs.playstyle_prompt || 'rush' }}
+        run: |
+          PLAYSTYLE=$(python -c "from interface.prompt_parser import parse_user_prompt; import os; print(parse_user_prompt(os.getenv('USER_PROMPT')))")
+          echo "playstyle=$PLAYSTYLE" >> $GITHUB_OUTPUT
+          echo "Parsed Playstyle Target: $PLAYSTYLE"
 
       - name: Run Hybrid Meta Engine
         env:
-          # FF_PLAYSTYLE is automatically injected by the prompt_parser step
-          FF_PLAYSTYLE: ${{ env.FF_PLAYSTYLE }}
-        run: python main.py
+          FF_PLAYSTYLE: ${{ steps.parse_prompt.outputs.playstyle }}
+        run: |
+          python advisor_engine.py
+
+      - name: Upload Advisory Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: meta-advisory-report
+          path: advisor_result.txt
