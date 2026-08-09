@@ -8,22 +8,19 @@ class PromptParser:
         self.api_key = os.getenv("GEMINI_API_KEY", "")
         if self.api_key:
             genai.configure(api_key=self.api_key)
-            # موجودہ تازہ ترین Flash ماڈل استعمال کریں
-            self.model = genai.GenerativeModel("gemini-3.0-flash")
+            # Use a valid model name (gemini-2.0-flash is current, fallback to 1.5-pro if needed)
+            try:
+                self.model = genai.GenerativeModel("gemini-2.0-flash")
+            except Exception:
+                self.model = genai.GenerativeModel("gemini-1.5-pro")
         else:
             self.model = None
 
     def parse_intent(self, user_query: str) -> dict:
         """
-        Gemini یا rule-based طریقے سے پرامپٹ کو مندرجہ ذیل کلیدوں والی dict میں بدلتا ہے:
-            - mode: "br" یا "cs"
-            - objective: "max_damage", "min_ttk", "survival"
-            - playstyle: "rush", "sniper", "passive"
-            - engagement_range: "close", "mid", "long" (اختیاری)
-            - patch: جیسے "patch_ob54"
+        Parse user query into structured parameters.
         """
         query_lower = user_query.lower()
-        # ڈیفالٹ
         parsed = {
             "mode": "br",
             "objective": "max_damage",
@@ -32,28 +29,32 @@ class PromptParser:
             "patch": "patch_ob54"
         }
 
-        # بنیادی rule-based detection (Gemini ناکام ہونے کی صورت میں)
+        # --- Rule-based detection (always runs) ---
         if "cs" in query_lower or "clash squad" in query_lower:
             parsed["mode"] = "cs"
         if "sniper" in query_lower:
             parsed["playstyle"] = "sniper"
-        if "survive" in query_lower or "passive" in query_lower:
-            parsed["playstyle"] = "survival"
         if "ttk" in query_lower or "time to kill" in query_lower:
             parsed["objective"] = "min_ttk"
-        if "damage" in query_lower:
+        if "damage" in query_lower and "block" not in query_lower:
             parsed["objective"] = "max_damage"
 
-        # اگر Gemini دستیاب ہو تو مزید تفصیلی تجزیہ
+        # --- NEW: detect survival/tank/block keywords ---
+        survival_keywords = ["block", "tank", "defend", "protect", "survive", "survival", "damage ko block"]
+        if any(kw in query_lower for kw in survival_keywords):
+            parsed["objective"] = "survival"
+            parsed["playstyle"] = "tank"
+
+        # Override with Gemini if available
         if self.model and len(user_query.strip()) > 5:
             try:
                 prompt = f"""
 You are a Free Fire meta analyst. Parse the following user query and return a JSON object with exactly these keys:
 - "mode": "br" or "cs"
 - "objective": "max_damage", "min_ttk", or "survival"
-- "playstyle": "rush", "sniper", "passive", or "balanced"
+- "playstyle": "rush", "sniper", "passive", "tank", or "balanced"
 - "engagement_range": "close", "mid", or "long"
-- "patch": a patch folder name like "patch_ob54" (infer from query if mentioned, else "patch_ob54")
+- "patch": a patch folder name like "patch_ob54" (infer if mentioned, else "patch_ob54")
 
 Query: {user_query}
 
@@ -67,28 +68,18 @@ Return ONLY the JSON object, no extra text.
                     if start != -1 and end > start:
                         json_str = text[start:end]
                         data = json.loads(json_str)
-                        # صرف موجودہ کلیدوں کو اوور رائڈ کریں
                         for key in data:
                             if key in parsed:
                                 parsed[key] = data[key]
             except Exception as e:
-                # خرابی کو stderr پر بھیجیں تاکہ stdout صاف رہے
                 print(f"Gemini parsing failed: {e}", file=sys.stderr)
         return parsed
 
-
-# ---- workflow کے لیے ٹاپ‑لیول فنکشن ----
 def parse_user_prompt(user_query: str) -> str:
-    """
-    GitHub Actions workflow سے براہ راست کال ہوتی ہے۔
-    صرف playstyle لوٹاتی ہے تاکہ پچھلی مطابقت برقرار رہے۔
-    """
     parser = PromptParser()
     parsed = parser.parse_intent(user_query)
     return parsed.get("playstyle", "rush")
 
-
-# نیا فنکشن: مکمل پیرامیٹرز حاصل کرنے کے لیے
 def parse_full_prompt(user_query: str) -> dict:
     parser = PromptParser()
     return parser.parse_intent(user_query)
