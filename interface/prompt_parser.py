@@ -25,8 +25,8 @@ class PromptParser:
         query_lower = user_query.lower()
         parsed = {
             "mode": "br",
-            "objective": "max_damage",   # default
-            "playstyle": "rush",         # default
+            "objective": "max_damage",
+            "playstyle": "rush",
             "engagement_range": "mid",
             "patch": "patch_ob54"
         }
@@ -70,11 +70,10 @@ Query: {user_query}
                     if start != -1 and end > start:
                         json_str = text[start:end]
                         data = json.loads(json_str)
-                        # Override parsed with Gemini's output
                         for key in data:
                             if key in parsed:
                                 parsed[key] = data[key]
-                        # If Gemini returned an invalid value, fallback to default
+                        # Validate values
                         if parsed["objective"] not in ["max_damage", "min_ttk", "survival", "max_healing", "balanced", "max_squad_damage", "max_squad_survival", "custom"]:
                             parsed["objective"] = "max_damage"
                         if parsed["playstyle"] not in ["rush", "sniper", "tank", "healer", "support", "aggressive", "defensive", "balanced", "stealth", "versatile"]:
@@ -89,36 +88,35 @@ Query: {user_query}
             parsed["mode"] = "cs"
 
         # Objective
-        if "heal" in query_lower or "healing" in query_lower or "medkit" in query_lower or "recover" in query_lower:
+        if any(kw in query_lower for kw in ["heal", "healing", "medkit", "recover", "support"]):
             parsed["objective"] = "max_healing"
         elif "ttk" in query_lower or "time to kill" in query_lower:
             parsed["objective"] = "min_ttk"
-        elif "survive" in query_lower or "tank" in query_lower or "defend" in query_lower or "shield" in query_lower:
+        elif any(kw in query_lower for kw in ["survive", "tank", "defend", "shield"]):
             parsed["objective"] = "survival"
         elif "squad" in query_lower or "team" in query_lower:
-            # Check if damage or survival
             if "damage" in query_lower:
                 parsed["objective"] = "max_squad_damage"
             elif "survive" in query_lower or "defend" in query_lower:
                 parsed["objective"] = "max_squad_survival"
             else:
-                parsed["objective"] = "balanced"   # default for squad queries
+                parsed["objective"] = "balanced"
         elif "damage" in query_lower:
             parsed["objective"] = "max_damage"
         else:
-            parsed["objective"] = "max_damage"   # default
+            parsed["objective"] = "max_damage"
 
         # Playstyle
         if "sniper" in query_lower:
             parsed["playstyle"] = "sniper"
-        elif "heal" in query_lower or "support" in query_lower:
+        elif any(kw in query_lower for kw in ["heal", "support"]):
             parsed["playstyle"] = "healer"
-        elif "tank" in query_lower or "defend" in query_lower:
+        elif any(kw in query_lower for kw in ["tank", "defend"]):
             parsed["playstyle"] = "tank"
         elif "rush" in query_lower or "aggressive" in query_lower:
             parsed["playstyle"] = "rush"
         else:
-            parsed["playstyle"] = "rush"   # default
+            parsed["playstyle"] = "rush"
 
         # Engagement range
         if "close" in query_lower or "short" in query_lower:
@@ -128,7 +126,7 @@ Query: {user_query}
         else:
             parsed["engagement_range"] = "mid"
 
-        # Patch: try to extract number like "ob54", "ob53", "v2024" etc.
+        # Patch
         import re
         patch_match = re.search(r'(ob\d{2}|v\d{4}_\d{2}_\d{2}|patch_\w+)', query_lower)
         if patch_match:
