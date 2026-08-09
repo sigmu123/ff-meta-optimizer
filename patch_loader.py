@@ -23,14 +23,12 @@ class PatchLoader:
         logging.basicConfig(level=logging.WARNING)
         self._load_all_data()
 
-        # ڈیبگ پرنٹس
         print(f"[DEBUG] Total weapons loaded: {len(self.weapons)}")
         print(f"[DEBUG] Total active skills loaded: {len(self.active_skills)}")
         print(f"[DEBUG] Total passive skills loaded: {len(self.passive_skills)}")
         print(f"[DEBUG] Pets: {self.pets}")
         print(f"[DEBUG] Loadouts: {self.loadouts}")
 
-        # اگر کوئی ڈیٹا نہ ملا تو صرف patch_ob54 لوڈ کر کے دیکھیں
         if len(self.weapons) == 0 and len(self.active_skills) == 0:
             print("[WARNING] No data loaded. Trying fallback to patch_ob54 only.")
             self.cumulative = False
@@ -154,19 +152,40 @@ class PatchLoader:
                     if k not in self.pets:
                         self.pets.append(k)
 
-        # ---- Loadouts ----
-        loadouts_data = data.get("loadouts", [])
-        if loadouts_data:
-            if isinstance(loadouts_data, list):
-                for ld in loadouts_data:
-                    if isinstance(ld, dict):
-                        name = ld.get("name") or ld.get("loadout_name")
-                        if name and name not in self.loadouts:
-                            self.loadouts.append(name)
-            elif isinstance(loadouts_data, dict):
-                for k in loadouts_data.keys():
-                    if k not in self.loadouts:
-                        self.loadouts.append(k)
+        # ---- Loadouts (NEW: recursive extraction) ----
+        self._extract_loadouts_recursive(data)
+
+    # -------------------- NEW RECURSIVE LOADOUT EXTRACTOR --------------------
+    def _extract_loadouts_recursive(self, data):
+        """گہرائی میں جا کر تمام 'loadouts' کلیدوں کو ڈھونڈتا ہے۔"""
+        if isinstance(data, dict):
+            for key, value in data.items():
+                if key == "loadouts":
+                    self._process_loadouts_data(value)
+                elif isinstance(value, dict):
+                    self._extract_loadouts_recursive(value)
+                elif isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, dict):
+                            self._extract_loadouts_recursive(item)
+        elif isinstance(data, list):
+            for item in data:
+                if isinstance(item, dict):
+                    self._extract_loadouts_recursive(item)
+
+    def _process_loadouts_data(self, loadouts_data):
+        """لوڈ آؤٹ ڈیٹا (لسٹ یا ڈکشنری) کو پروسیس کر کے ناموں کو self.loadouts میں شامل کرتا ہے۔"""
+        if isinstance(loadouts_data, list):
+            for item in loadouts_data:
+                if isinstance(item, dict):
+                    name = item.get("name") or item.get("loadout_name")
+                    if name and name not in self.loadouts:
+                        self.loadouts.append(name)
+        elif isinstance(loadouts_data, dict):
+            for key in loadouts_data.keys():
+                if key not in self.loadouts:
+                    self.loadouts.append(key)
+    # -----------------------------------------------------------------------
 
     def _extract_character_skill(self, item, patch_ns, override=True):
         char_name = item.get("character_name") or item.get("name") or item.get("character")
