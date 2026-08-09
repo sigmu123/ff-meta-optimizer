@@ -9,26 +9,29 @@ if current_dir not in sys.path:
     sys.path.insert(0, current_dir)
 
 class HybridMetaEngine:
-    def __init__(self, patch_name="all"):
+    def __init__(self, patch_name="patch_ob54"):
+        self.patch_name = patch_name
         self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir)
         self.ttk_calc = TTKCalculator()
         
-        # Dynamic Fallbacks
-        self.actives = list(self.loader.active_skills.keys()) if self.loader.active_skills else ["alok", "chrono", "k", "orion"]
-        self.passives = list(self.loader.passive_skills.keys()) if self.loader.passive_skills else ["kelly", "hayato", "moco", "jota"]
-        self.weapons = self.loader.weapons if self.loader.weapons else {"mp40": {}, "groza": {}}
-        self.pets = self.loader.pets if self.loader.pets else ["Rockie", "Mr. Waggor"]
-        self.loadouts = self.loader.loadouts if self.loader.loadouts else ["Bonfire", "Leg Pockets"]
+        # Dynamic Fallbacks with schema normalization
+        self.actives = list(self.loader.active_skills.keys()) if self.loader.active_skills else ["alok", "chrono", "k", "orion", "tatsuya"]
+        self.passives = list(self.loader.passive_skills.keys()) if self.loader.passive_skills else ["kelly", "hayato", "moco", "jota", "andrew"]
+        self.weapons = self.loader.weapons if self.loader.weapons else {"mp40": {"damage": 30, "rate_of_fire": 0.08}, "groza": {"damage": 38, "rate_of_fire": 0.12}}
+        self.pets = self.loader.pets if self.loader.pets else ["Rockie", "Mr. Waggor", "Falco"]
+        self.loadouts = self.loader.loadouts if self.loader.loadouts else ["Bonfire", "Leg Pockets", "Bounty Token"]
 
     def _is_valid_chromosome(self, active, p1, p2, p3):
         passive_set = {p1, p2, p3}
-        if len(passive_set) != 3: return False
-        if active in passive_set: return False
+        if len(passive_set) != 3: 
+            return False
+        if active in passive_set: 
+            return False
         return True
 
     def _generate_random_valid_squad(self):
         if len(self.passives) < 3:
-            return {"active": self.actives[0], "passives": self.passives * 3, "pet": self.pets[0], "loadout": self.loadouts[0]}
+            return {"active": self.actives[0], "passives": (self.passives * 3)[:3], "pet": self.pets[0], "loadout": self.loadouts[0]}
             
         attempts = 0
         while attempts < 100:
@@ -42,16 +45,19 @@ class HybridMetaEngine:
                     "loadout": random.choice(self.loadouts)
                 }
             attempts += 1
-        return {"active": self.actives[0], "passives": self.passives[:3], "pet": self.pets[0], "loadout": self.loadouts[0]}
+        return {"active": self.actives[0], "passives": sorted(self.passives[:3]), "pet": self.pets[0], "loadout": self.loadouts[0]}
 
     def _fitness_function(self, squad):
         score = 50.0 
         act_name = str(squad["active"]).lower()
         passives = [str(p).lower() for p in squad["passives"]]
         
-        if "tatsuya" in act_name and any("kelly" in p for p in passives): score *= 1.15  
-        if "chrono" in act_name and "rockie" in str(squad["pet"]).lower(): score *= 1.10 
-        if any("hayato" in p for p in passives): score *= 1.08 
+        if "tatsuya" in act_name and any("kelly" in p for p in passives): 
+            score *= 1.15  
+        if "chrono" in act_name and "rockie" in str(squad["pet"]).lower(): 
+            score *= 1.10 
+        if any("hayato" in p for p in passives): 
+            score *= 1.08 
         
         return min(99.9, score)
 
@@ -85,7 +91,7 @@ class HybridMetaEngine:
             scored_pop = [(squad, self._fitness_function(squad)) for squad in population]
             scored_pop.sort(key=lambda x: x[1], reverse=True)
             
-            survivors = [x[0] for x in scored_pop[:population_size//2]]
+            survivors = [x[0] for x in scored_pop[:max(2, population_size // 2)]]
             next_gen = survivors.copy()
             while len(next_gen) < population_size:
                 p1, p2 = random.sample(survivors, 2)
@@ -113,8 +119,10 @@ class HybridMetaEngine:
         for squad, base_score in top_squads:
             final_score = base_score
             
-            if playstyle == "rush" and str(squad["loadout"]).lower() == "leg pockets": final_score *= 1.05
-            if playstyle == "sniper" and any("moco" in str(p).lower() for p in squad["passives"]): final_score *= 1.10
+            if playstyle == "rush" and str(squad["loadout"]).lower() == "leg pockets": 
+                final_score *= 1.05
+            if playstyle == "sniper" and any("moco" in str(p).lower() for p in squad["passives"]): 
+                final_score *= 1.10
             
             best_weapons = self._get_optimal_weapons(squad)
             scaled_win_rate = (final_score / 120.0) * 100 
@@ -130,17 +138,19 @@ class HybridMetaEngine:
     def _get_optimal_weapons(self, squad_context=None):
         w_scores = []
         for w_id, w_data in self.weapons.items():
-            if not isinstance(w_data, dict): continue
+            if not isinstance(w_data, dict): 
+                continue
                 
             stats = self.ttk_calc.calculate_weapon_ttk(w_data)
-            if stats["ttk"] > 0 and stats["ttk"] < 10: 
-                dps = (stats["effective_damage"] * (1 / max(0.01, stats.get("rate_of_fire", 0.2))))
-                w_scores.append({"name": str(w_id).split("_")[-1].upper(), "ttk": stats["ttk"], "score": dps})
+            if 0 < stats["ttk"] < 10: 
+                dps = stats["effective_damage"] * (1 / max(0.01, stats.get("rate_of_fire", 0.2)))
+                clean_name = str(w_id).split("_")[-1].upper()
+                w_scores.append({"name": clean_name, "ttk": stats["ttk"], "score": dps})
         
         w_scores.sort(key=lambda x: x["score"], reverse=True)
         return {
             "primary": w_scores[0] if w_scores else {"name": "MP40", "ttk": 0.28},
-            "secondary": w_scores[1] if len(w_scores)>1 else {"name": "GROZA", "ttk": 0.32}
+            "secondary": w_scores[1] if len(w_scores) > 1 else {"name": "GROZA", "ttk": 0.32}
         }
 
 if __name__ == "__main__":
