@@ -19,12 +19,11 @@ class HybridMetaEngine:
         self._build_base_data()
         self._apply_patch_adjustments()
 
-        self.objective = objective          # "max_damage", "min_ttk", or "survival"
+        self.objective = objective
         self.playstyle = playstyle
         self.engagement_range = engagement_range
 
     def _build_base_data(self):
-        # Same as before, but we now include more defensive attributes in base sets
         self.base_actives = {
             "alok": {"skill_name": "Drop the Beat", "type": "active", "cooldown": 45, "duration": 10, "heal": 5, "speed_boost": 15},
             "chrono": {"skill_name": "Time Turner", "type": "active", "cooldown": 60, "duration": 6, "shield_hp": 800},
@@ -63,23 +62,124 @@ class HybridMetaEngine:
         self.pets = list(self.base_pets)
         self.loadouts = list(self.base_loadouts)
 
-    # ----------------------------------------------------------------------
-    # (The rest of the methods: _apply_patch_adjustments, _apply_character_adjustment,
-    #  _apply_weapon_adjustment, _is_valid_chromosome, _generate_random_valid_squad,
-    #  _weapon_dps, _crossover_and_mutate, run_ga_pipeline remain exactly as before)
-    # ----------------------------------------------------------------------
+    def _apply_patch_adjustments(self):
+        for char_name, adjustments in self.loader.character_adjustments.items():
+            for adj in adjustments:
+                skill_name = adj.get("skill_name") or ""
+                is_active = "active" in str(adj.get("type", "")).lower() or ("cooldown" in adj or "duration" in adj)
+                if is_active:
+                    if char_name.lower() in self.actives:
+                        self._apply_character_adjustment(self.actives[char_name.lower()], adj)
+                    else:
+                        new_skill = {"skill_name": skill_name, "type": "active"}
+                        self._apply_character_adjustment(new_skill, adj)
+                        self.actives[char_name.lower()] = new_skill
+                else:
+                    if char_name.lower() in self.passives:
+                        self._apply_character_adjustment(self.passives[char_name.lower()], adj)
+                    else:
+                        new_skill = {"skill_name": skill_name, "type": "passive"}
+                        self._apply_character_adjustment(new_skill, adj)
+                        self.passives[char_name.lower()] = new_skill
 
-    # We only change _fitness_function, _fitness_for_weapons, and run_exhaustive_search.
+        for wep_name, adjustments in self.loader.weapon_adjustments.items():
+            if wep_name.lower() in self.weapons:
+                for adj in adjustments:
+                    self._apply_weapon_adjustment(self.weapons[wep_name.lower()], adj)
+            else:
+                new_wep = {}
+                for adj in adjustments:
+                    self._apply_weapon_adjustment(new_wep, adj)
+                if new_wep:
+                    self.weapons[wep_name.lower()] = new_wep
+
+        if self.loader.pets:
+            for pet in self.loader.pets:
+                if pet not in self.pets:
+                    self.pets.append(pet)
+        if self.loader.loadouts:
+            for ld in self.loader.loadouts:
+                if ld not in self.loadouts:
+                    self.loadouts.append(ld)
+
+    def _apply_character_adjustment(self, skill, adj):
+        mapping = {
+            "cooldown_seconds": "cooldown",
+            "duration_seconds": "duration",
+            "shield_hp": "shield_hp",
+            "damage": "damage",
+            "heal": "heal",
+            "hp_recovery_per_second": "heal",
+            "movement_speed_boost_percent": "speed_boost",
+            "armor_penetration": "armor_pen",
+            "bullet_damage_reduction": "bullet_damage_reduction",
+            "explosive_damage_reduction": "explosive_damage_reduction",
+            "frontal_damage_reduction": "frontal_damage_reduction",
+            "armor_reduction": "armor_reduction",
+            "extra_hp": "extra_hp",
+            "hp_on_hit": "hp_on_hit",
+            "heal_increase": "heal_increase",
+            "revive_shield": "revive_shield",
+            "heal_spread": "heal_spread",
+        }
+        for adj_key, skill_key in mapping.items():
+            if adj_key in adj:
+                skill[skill_key] = adj[adj_key]
+        if "new_value" in adj:
+            for k, v in adj.items():
+                if k not in ["character_name", "skill_name", "type", "adjustment_type"]:
+                    if isinstance(v, dict) and "new_value" in v:
+                        skill[k] = v["new_value"]
+
+    def _apply_weapon_adjustment(self, weapon, adj):
+        mapping = {
+            "damage_percentage_change": "damage",
+            "rate_of_fire_percentage_change": "rate_of_fire",
+            "armor_penetration_percentage_change": "armor_pen",
+            "range_percentage_change": "range",
+            "magazine_capacity": "magazine",
+        }
+        for adj_key, stat_key in mapping.items():
+            if adj_key in adj:
+                val = adj[adj_key]
+                if isinstance(val, (int, float)):
+                    if stat_key in weapon:
+                        if "percentage" in adj_key or "%" in str(adj_key):
+                            weapon[stat_key] *= (1 + val / 100.0)
+                        else:
+                            weapon[stat_key] += val
+                    else:
+                        weapon[stat_key] = val
+        if "base_damage_percentage_change" in adj:
+            if "damage" in weapon:
+                weapon["damage"] *= (1 + adj["base_damage_percentage_change"] / 100.0)
+        if "armor_penetration" in adj:
+            weapon["armor_pen"] = adj["armor_penetration"]
+
+    def _is_valid_chromosome(self, active, p1, p2, p3):
+        passive_set = {p1, p2, p3}
+        return len(passive_set) == 3 and active not in passive_set
+
+    def _generate_random_valid_squad(self):
+        active_list = list(self.actives.keys())
+        passive_list = list(self.passives.keys())
+        if len(passive_list) < 3:
+            return {"active": active_list[0], "passives": (passive_list * 3)[:3], "pet": self.pets[0], "loadout": self.loadouts[0]}
+        attempts = 0
+        while attempts < 100:
+            act = random.choice(active_list)
+            p1, p2, p3 = random.sample(passive_list, 3)
+            if self._is_valid_chromosome(act, p1, p2, p3):
+                return {
+                    "active": act,
+                    "passives": sorted([p1, p2, p3]),
+                    "pet": random.choice(self.pets),
+                    "loadout": random.choice(self.loadouts)
+                }
+            attempts += 1
+        return {"active": active_list[0], "passives": sorted(passive_list[:3]), "pet": self.pets[0], "loadout": self.loadouts[0]}
 
     def _fitness_function(self, squad):
-        """
-        Compute fitness based on objective.
-        For 'survival', compute a defensive score based on:
-          - Effective HP (base HP + shield HP)
-          - Damage reduction from passives (armor_reduction, frontal_damage_reduction)
-          - Healing potential (hp_on_hit, heal, heal_increase)
-          - Loadout bonuses (Armor Crate, etc.)
-        """
         best_weapons = self._get_optimal_weapons(squad)
         if best_weapons["primary"]["ttk"] == float('inf'):
             return 0.0
@@ -91,117 +191,103 @@ class HybridMetaEngine:
             if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
                 score *= 1.05
             return score
-
         elif self.objective == "min_ttk":
             total_ttk = best_weapons["primary"]["ttk"] + best_weapons["secondary"]["ttk"]
             score = 100.0 / (total_ttk + 0.01)
             if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
                 score *= 1.05
             return score
-
         else:  # survival
-            # Gather defensive attributes from active, passives, loadout
             def_score = 0.0
             active_name = squad['active']
             active_skill = self.actives.get(active_name, {})
-            # Shield HP (e.g., Chrono)
             shield_hp = active_skill.get("shield_hp", 0)
-            # Duration of shield (for uptime)
-            shield_duration = active_skill.get("duration", 0)
-            # Damage reduction (Steffie, Kenta)
             bullet_dr = active_skill.get("bullet_damage_reduction", 0)
             explosive_dr = active_skill.get("explosive_damage_reduction", 0)
             frontal_dr = active_skill.get("frontal_damage_reduction", 0)
-            # Healing from active (Alok)
             heal = active_skill.get("heal", 0)
 
-            # Passives
             for p in squad['passives']:
                 pskill = self.passives.get(p, {})
-                # Armor reduction (Andrew)
                 armor_reduction = pskill.get("armor_reduction", 0)
-                # Extra HP (Antonio)
                 extra_hp = pskill.get("extra_hp", 0)
-                # HP on hit (Jota)
                 hp_on_hit = pskill.get("hp_on_hit", 0)
-                # Healing increase (Kapella)
                 heal_increase = pskill.get("heal_increase", 0)
-                # Revive shield (Kapella)
                 revive_shield = pskill.get("revive_shield", 0)
-                # Heal spread (Olivia)
                 heal_spread = pskill.get("heal_spread", 0)
 
-                # Accumulate defensive values
-                # Effective HP: base (200) + extra_hp + shield_hp (if any)
                 def_score += extra_hp
-                # Damage reduction: armor_reduction reduces incoming damage (e.g., 25% reduction)
-                # We'll treat it as a percentage reduction to effective damage taken
-                # We'll sum reductions (capped at 80% to avoid absurd)
                 total_dr = (armor_reduction + bullet_dr + explosive_dr + frontal_dr) / 100.0
                 total_dr = min(total_dr, 0.8)
-                # Healing potential: heal + hp_on_hit + heal_increase
-                def_score += heal + hp_on_hit + heal_increase * 0.5  # weight
-                # Shield HP from active adds to effective HP
-                def_score += shield_hp * 0.1  # weight for shield HP (since it's temporary)
-                # Loadout bonuses
-                loadout = squad.get('loadout', '').lower()
-                if loadout == "armor crate":
-                    def_score += 20  # armor repair value
-                elif loadout == "secret clue":
-                    def_score += 10  # EP conversion for healing
-                elif loadout == "leg pockets":
-                    def_score += 5   # extra gloo walls for cover
-                # Pet bonuses (if any defensive)
-                pet = squad.get('pet', '').lower()
-                if pet == "ottero":
-                    def_score += 10  # EP restore on heal
+                def_score += heal + hp_on_hit + heal_increase * 0.5
+                def_score += shield_hp * 0.1
 
-            # Normalize score (higher is better)
-            # Scale to similar range as damage scores (around 100-200)
+            loadout = squad.get('loadout', '').lower()
+            if loadout == "armor crate":
+                def_score += 20
+            elif loadout == "secret clue":
+                def_score += 10
+            elif loadout == "leg pockets":
+                def_score += 5
+            pet = squad.get('pet', '').lower()
+            if pet == "ottero":
+                def_score += 10
+
             def_score = max(1.0, def_score)
-            # Also consider weapon's defensive capabilities? Not directly.
-            # For now, return def_score (larger is better)
             return def_score
 
-    def _fitness_for_weapons(self, squad, primary_key, secondary_key):
-        """Compute fitness for given weapons, respecting objective."""
-        prim_stats = self.ttk_calc.calculate_weapon_ttk(self.weapons[primary_key])
-        sec_stats = self.ttk_calc.calculate_weapon_ttk(self.weapons[secondary_key])
-        if prim_stats["ttk"] == float('inf') or sec_stats["ttk"] == float('inf'):
-            return 0.0
+    def _weapon_dps(self, weapon_info):
+        w_name = weapon_info["name"].lower()
+        for w_id, w_data in self.weapons.items():
+            if w_id.endswith(w_name) or w_id.split("_")[-1] == w_name:
+                stats = self.ttk_calc.calculate_weapon_ttk(w_data)
+                if stats and stats["ttk"] < float('inf'):
+                    dps = stats["effective_damage"] * (1.0 / max(0.01, stats.get("rate_of_fire", 0.2)))
+                    return dps
+        return 0.0
 
-        if self.objective == "max_damage":
-            prim_dps = prim_stats["effective_damage"] * (1.0 / max(0.01, prim_stats.get("rate_of_fire", 0.2)))
-            sec_dps = sec_stats["effective_damage"] * (1.0 / max(0.01, sec_stats.get("rate_of_fire", 0.2)))
-            score = prim_dps + sec_dps
-            if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
-                score *= 1.05
-            return score
-        elif self.objective == "min_ttk":
-            total_ttk = prim_stats["ttk"] + sec_stats["ttk"]
-            score = 100.0 / (total_ttk + 0.01)
-            if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
-                score *= 1.05
-            return score
-        else:  # survival
-            # For survival, we still want reasonable TTK but prioritize defensive build
-            # We'll combine defensive score (from squad) and TTK penalty
-            def_score = self._fitness_function(squad)  # already computed
-            # Penalize bad TTK (higher TTK lowers score)
-            total_ttk = prim_stats["ttk"] + sec_stats["ttk"]
-            ttk_score = 100.0 / (total_ttk + 0.01)
-            # Blend: defensive score (70%) + TTK (30%)
-            # Scale def_score to similar range
-            def_score_scaled = min(100, def_score * 0.5)
-            combined = 0.7 * def_score_scaled + 0.3 * ttk_score
-            return combined
+    def _crossover_and_mutate(self, parent1, parent2):
+        child = {
+            "active": parent1["active"] if random.random() > 0.5 else parent2["active"],
+            "pet": parent1["pet"] if random.random() > 0.5 else parent2["pet"],
+            "loadout": parent2["loadout"]
+        }
+        combined_passives = list(set(parent1["passives"] + parent2["passives"]))
+        available_pool = [p for p in combined_passives if p != child["active"]]
+        if len(available_pool) >= 3:
+            child["passives"] = sorted(random.sample(available_pool, 3))
+        else:
+            child["passives"] = parent1["passives"]
+        if random.random() < 0.1:
+            child["active"] = random.choice(list(self.actives.keys()))
+        if not self._is_valid_chromosome(child["active"], *child["passives"]):
+            return self._generate_random_valid_squad()
+        return child
 
-    def _weapon_info(self, weapon_key):
-        stats = self.ttk_calc.calculate_weapon_ttk(self.weapons[weapon_key])
-        clean_name = str(weapon_key).split("_")[-1].upper()
-        return {"name": clean_name, "ttk": stats["ttk"]}
+    def run_ga_pipeline(self, generations=25, population_size=200, output_limit=10):
+        population = [self._generate_random_valid_squad() for _ in range(population_size)]
+        for _ in range(generations):
+            scored_pop = [(squad, self._fitness_function(squad)) for squad in population]
+            scored_pop.sort(key=lambda x: x[1], reverse=True)
+            survivors = [x[0] for x in scored_pop[:max(2, population_size // 2)]]
+            next_gen = survivors.copy()
+            while len(next_gen) < population_size:
+                p1, p2 = random.sample(survivors, 2)
+                next_gen.append(self._crossover_and_mutate(p1, p2))
+            population = next_gen
+        final_scored = [(squad, self._fitness_function(squad)) for squad in population]
+        final_scored.sort(key=lambda x: x[1], reverse=True)
+        unique_squads = []
+        seen = set()
+        for squad, score in final_scored:
+            sig = (squad["active"], tuple(squad["passives"]), squad["pet"], squad["loadout"])
+            if sig not in seen:
+                seen.add(sig)
+                unique_squads.append((squad, score))
+            if len(unique_squads) == output_limit:
+                break
+        return unique_squads
 
-    # ---- Exhaustive Search (UPDATED to avoid duplicate weapons) ----
     def run_exhaustive_search(self, output_limit=10, max_combinations=None):
         active_list = list(self.actives.keys())
         passive_list = list(self.passives.keys())
@@ -213,20 +299,15 @@ class HybridMetaEngine:
             raise ValueError("Not enough passives to choose 3.")
 
         passive_combos = list(itertools.combinations(passive_list, 3))
-
-        # Build combinations ensuring primary != secondary
         combos = []
-        if max_combinations is not None:
-            sample_size = max_combinations
-            # random sampling
-            for _ in range(sample_size):
+        if max_combinations is not None and len(active_list)*len(passive_combos)*len(pet_list)*len(loadout_list)*len(weapon_keys)*len(weapon_keys) > max_combinations:
+            for _ in range(max_combinations):
                 act = random.choice(active_list)
                 p_combo = random.choice(passive_combos)
                 while act in p_combo:
                     act = random.choice(active_list)
                 pet = random.choice(pet_list)
                 loadout = random.choice(loadout_list)
-                # Pick two different weapons
                 primary = random.choice(weapon_keys)
                 secondary = random.choice([w for w in weapon_keys if w != primary])
                 combos.append((act, p_combo, pet, loadout, primary, secondary))
@@ -254,7 +335,6 @@ class HybridMetaEngine:
             scored.append((squad, score, primary, secondary))
 
         scored.sort(key=lambda x: x[1], reverse=True)
-
         unique = []
         seen = set()
         for squad, score, prim, sec in scored:
@@ -269,7 +349,6 @@ class HybridMetaEngine:
         for squad, score, prim, sec in unique:
             primary_info = self._weapon_info(prim)
             secondary_info = self._weapon_info(sec)
-            # Winrate estimation: just a rough mapping
             win_rate = min(99.99, (score / 200.0) * 100)
             result.append({
                 "build": squad,
@@ -282,7 +361,38 @@ class HybridMetaEngine:
             })
         return result
 
-    # ---- Existing methods (unchanged except for above) ----
+    def _fitness_for_weapons(self, squad, primary_key, secondary_key):
+        prim_stats = self.ttk_calc.calculate_weapon_ttk(self.weapons[primary_key])
+        sec_stats = self.ttk_calc.calculate_weapon_ttk(self.weapons[secondary_key])
+        if prim_stats["ttk"] == float('inf') or sec_stats["ttk"] == float('inf'):
+            return 0.0
+
+        if self.objective == "max_damage":
+            prim_dps = prim_stats["effective_damage"] * (1.0 / max(0.01, prim_stats.get("rate_of_fire", 0.2)))
+            sec_dps = sec_stats["effective_damage"] * (1.0 / max(0.01, sec_stats.get("rate_of_fire", 0.2)))
+            score = prim_dps + sec_dps
+            if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
+                score *= 1.05
+            return score
+        elif self.objective == "min_ttk":
+            total_ttk = prim_stats["ttk"] + sec_stats["ttk"]
+            score = 100.0 / (total_ttk + 0.01)
+            if self.playstyle == "rush" and squad.get("loadout", "").lower() == "leg pockets":
+                score *= 1.05
+            return score
+        else:  # survival
+            def_score = self._fitness_function(squad)
+            total_ttk = prim_stats["ttk"] + sec_stats["ttk"]
+            ttk_score = 100.0 / (total_ttk + 0.01)
+            def_score_scaled = min(100, def_score * 0.5)
+            combined = 0.7 * def_score_scaled + 0.3 * ttk_score
+            return combined
+
+    def _weapon_info(self, weapon_key):
+        stats = self.ttk_calc.calculate_weapon_ttk(self.weapons[weapon_key])
+        clean_name = str(weapon_key).split("_")[-1].upper()
+        return {"name": clean_name, "ttk": stats["ttk"]}
+
     def _get_optimal_weapons(self, squad_context=None):
         w_scores = []
         for w_id, w_data in self.weapons.items():
@@ -294,7 +404,6 @@ class HybridMetaEngine:
                 clean_name = str(w_id).split("_")[-1].upper()
                 w_scores.append({"name": clean_name, "ttk": stats["ttk"], "score": dps})
         w_scores.sort(key=lambda x: x["score"], reverse=True)
-        # Ensure primary and secondary are different if possible
         if len(w_scores) >= 2:
             return {"primary": w_scores[0], "secondary": w_scores[1]}
         else:
@@ -317,8 +426,3 @@ class HybridMetaEngine:
                 "weapons": best_weapons
             })
         return sorted(results, key=lambda x: x["win_rate"], reverse=True)
-
-    # (The rest of the methods: _apply_patch_adjustments, _apply_character_adjustment, _apply_weapon_adjustment,
-    #  _is_valid_chromosome, _generate_random_valid_squad, _weapon_dps, _crossover_and_mutate, run_ga_pipeline
-    #  remain exactly as in the original file, so we don't duplicate them here for brevity,
-    #  but they must be included in the final file.)
