@@ -97,7 +97,9 @@ class PatchLoader:
         if "loadouts" in data:
             ld = data["loadouts"]
             if isinstance(ld, dict): 
-                self.loadouts.extend(list(ld.keys()))
+                for l_key in ld.keys():
+                    if l_key not in self.loadouts:
+                        self.loadouts.append(l_key)
             elif isinstance(ld, list): 
                 self._extract_list_names(ld, self.loadouts, key="name")
 
