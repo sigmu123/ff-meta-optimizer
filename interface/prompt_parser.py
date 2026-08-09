@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 import google.generativeai as genai
 
 class PromptParser:
@@ -7,7 +8,8 @@ class PromptParser:
         self.api_key = os.getenv("GEMINI_API_KEY", "")
         if self.api_key:
             genai.configure(api_key=self.api_key)
-            self.model = genai.GenerativeModel("gemini-1.5-flash")
+            # موجودہ تازہ ترین Flash ماڈل استعمال کریں
+            self.model = genai.GenerativeModel("gemini-3.0-flash")
         else:
             self.model = None
 
@@ -70,7 +72,8 @@ Return ONLY the JSON object, no extra text.
                             if key in parsed:
                                 parsed[key] = data[key]
             except Exception as e:
-                print(f"Gemini parsing failed: {e}")
+                # خرابی کو stderr پر بھیجیں تاکہ stdout صاف رہے
+                print(f"Gemini parsing failed: {e}", file=sys.stderr)
         return parsed
 
 
