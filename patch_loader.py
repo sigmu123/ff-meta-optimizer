@@ -1,12 +1,11 @@
 import os
 import json
+import logging
 
 class PatchLoader:
     def __init__(self, patch_name="all", base_dir=None):
         self.patch_name = patch_name
-        if base_dir is None:
-            base_dir = os.path.dirname(os.path.abspath(__file__))
-            
+        base_dir = base_dir or os.path.dirname(os.path.abspath(__file__))
         self.patches_base_dir = os.path.join(base_dir, "data", "patches")
         
         self.active_skills = {}
@@ -15,6 +14,7 @@ class PatchLoader:
         self.pets = []
         self.loadouts = []
         
+        logging.basicConfig(level=logging.WARNING)
         self._load_all_data()
 
     def _load_json_safe(self, path):
@@ -23,90 +23,83 @@ class PatchLoader:
                 with open(path, "r", encoding="utf-8") as f:
                     return json.load(f)
             except Exception as e:
-                print(f"[!] Error reading JSON: {path} - {e}")
+                # Proper Error Logging (Issue 23 Fix)
+                logging.error(f"JSON Parse Error in {path}: {str(e)}")
         return {}
 
     def _load_all_data(self):
-        if not os.path.exists(self.patches_base_dir):
-            return
+        if not os.path.exists(self.patches_base_dir): return
 
         patch_folders = sorted(os.listdir(self.patches_base_dir))
-        
         if self.patch_name != "all" and self.patch_name in patch_folders:
             patch_folders = [self.patch_name]
 
         for patch_folder in patch_folders:
             patch_dir = os.path.join(self.patches_base_dir, patch_folder)
-            if not os.path.isdir(patch_dir):
-                continue
+            if not os.path.isdir(patch_dir): continue
                 
             for root, _, files in os.walk(patch_dir):
                 for file_name in files:
                     if not file_name.endswith(".json") or file_name == "patch_manifest.json":
                         continue
                     
-                    file_path = os.path.join(root, file_name)
-                    data = self._load_json_safe(file_path)
-                    if not data:
-                        continue
+                    data = self._load_json_safe(os.path.join(root, file_name))
+                    if not data: continue
 
-                    self._ingest_skills(data)
-                    self._ingest_weapons(data)
+                    # Passed patch_folder as namespace to avoid overwriting (Issue 6 Fix)
+                    self._ingest_skills(data, patch_folder)
+                    self._ingest_weapons(data, patch_folder)
                     self._ingest_pets_loadouts(data)
 
-    def _ingest_skills(self, data):
-        # Safely route predefined active/passive skills
+    def _ingest_skills(self, data, patch_ns):
         actives = data.get("active_skills", [])
         if "character_balance_numeric_changes" in data:
             actives = data["character_balance_numeric_changes"].get("active_skills", actives)
-        self._parse_and_store(actives, self.active_skills)
+        self._parse_and_store(actives, self.active_skills, patch_ns)
 
         passives = data.get("passive_skills", [])
         if "character_balance_numeric_changes" in data:
             passives = data["character_balance_numeric_changes"].get("passive_skills", passives)
-        self._parse_and_store(passives, self.passive_skills)
+        self._parse_and_store(passives, self.passive_skills, patch_ns)
 
-        # Fix for Active & Passive Corruption (Problem 3)
         mixed_skills = []
         for key in ["reworked_characters", "character_reworks", "character_balance_changes", "new_characters", "awakened_characters"]:
-            if key in data:
-                if isinstance(data[key], list):
-                    mixed_skills.extend(data[key])
-                elif isinstance(data[key], dict):
-                    mixed_skills.extend(data[key].values())
-        
-        # Fallback dictionary for known active characters
-        known_actives = ["alok", "chrono", "k", "skyler", "wukong", "dimitri", "homer", "tatsuya", "a124", "steffie", "kenta", "clu", "iris", "orion", "ignis", "ryden", "santino"]
+            # Safety checks for recursive dictionary loops (Issue 3 Fix)
+            val = data.get(key, {})
+            if isinstance(val, list):
+                mixed_skills.extend(val)
+            elif isinstance(val, dict):
+                mixed_skills.extend(val.values())
         
         for item in mixed_skills:
             if isinstance(item, dict):
-                skill_info = item.get("skill") or item.get("original_skill") or item
+                # Fallback schema search for skills (Issue 14 Fix)
+                skill_info = item.get("skill") or item.get("original_skill") or item.get("changes") or item
                 skill_type = str(skill_info.get("type", "")).lower()
-                char_name = str(item.get("name") or item.get("character") or item.get("character_name") or "").lower()
+                desc = str(skill_info.get("description", "")).lower()
                 
-                # Check explicit type or known name
-                if "active" in skill_type or char_name in known_actives:
-                    self._parse_and_store([item], self.active_skills)
+                # Dynamic Active classification (Issue 17 Fix)
+                is_active = "active" in skill_type or "duration" in skill_info or "cooldown" in skill_info
+                
+                if is_active:
+                    self._parse_and_store([item], self.active_skills, patch_ns)
                 else:
-                    self._parse_and_store([item], self.passive_skills)
+                    self._parse_and_store([item], self.passive_skills, patch_ns)
 
-    def _ingest_weapons(self, data):
-        # Universal Schema Normalizer for List & Dict formats (Problem 1)
+    def _ingest_weapons(self, data, patch_ns):
         weapon_keys = ["weapons", "weapon_balances", "weapon_adjustments", "rifles", "smg", "shotguns", "pistols", "machine_guns", "others"]
         for key in weapon_keys:
             if key in data:
-                self._parse_and_store(data[key], self.weapons, recursive=True)
+                self._parse_and_store(data[key], self.weapons, patch_ns, recursive=True)
         
     def _ingest_pets_loadouts(self, data):
         for key in ["pets", "pet_updates"]:
-            if key in data:
-                self._extract_list_names(data[key], self.pets, key="pet")
+            if key in data: self._extract_list_names(data.get(key, []), self.pets, key="pet")
         
         if "loadouts" in data:
-            if isinstance(data["loadouts"], dict):
-                self.loadouts.extend(list(data["loadouts"].keys()))
-            elif isinstance(data["loadouts"], list):
-                self._extract_list_names(data["loadouts"], self.loadouts, key="name")
+            ld = data["loadouts"]
+            if isinstance(ld, dict): self.loadouts.extend(list(ld.keys()))
+            elif isinstance(ld, list): self._extract_list_names(ld, self.loadouts, key="name")
 
     def _extract_list_names(self, items, target_list, key="name"):
         if isinstance(items, list):
@@ -117,25 +110,21 @@ class PatchLoader:
                         target_list.append(str(val))
         elif isinstance(items, dict):
             for k in items.keys():
-                if str(k).lower() not in [x.lower() for x in target_list]:
-                    target_list.append(str(k))
+                if str(k).lower() not in [x.lower() for x in target_list]: target_list.append(str(k))
 
-    def _parse_and_store(self, items, target_dict, recursive=False):
+    def _parse_and_store(self, items, target_dict, patch_ns, recursive=False):
         if isinstance(items, list):
             for item in items:
                 if isinstance(item, dict):
-                    # Check multiple possible ID schemas
-                    key = item.get("character_id") or item.get("weapon_id") or item.get("name") or item.get("character") or item.get("weapon") or item.get("character_name")
-                    if key:
-                        target_dict[str(key).lower()] = item
+                    k = item.get("character_id") or item.get("weapon_id") or item.get("name") or item.get("character")
+                    # Append Namespace to prevent collisions (Issue 6 Fix)
+                    if k: target_dict[f"{patch_ns}_{str(k).lower()}"] = item
                         
         elif isinstance(items, dict):
             for k, v in items.items():
                 if isinstance(v, dict):
-                    # Recursive check for nested categories (e.g., {"smg": {"mp40": {...}}})
                     if recursive and any(isinstance(sub_v, dict) for sub_v in v.values()):
                         for sub_k, sub_v in v.items():
-                            if isinstance(sub_v, dict):
-                                target_dict[str(sub_k).lower()] = sub_v
+                            if isinstance(sub_v, dict): target_dict[f"{patch_ns}_{str(sub_k).lower()}"] = sub_v
                     else:
-                        target_dict[str(k).lower()] = v
+                        target_dict[f"{patch_ns}_{str(k).lower()}"] = v
