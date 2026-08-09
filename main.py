@@ -58,7 +58,6 @@ class HybridMetaEngine:
             "loadout": parent2["loadout"]
         }
         
-        # Fixed the duplication array slicing logic by utilizing sets
         combined_passives = list(set(parent1["passives"] + parent2["passives"]))
         available_pool = [p for p in combined_passives if p != child["active"]]
         
@@ -130,12 +129,19 @@ class HybridMetaEngine:
     def _get_optimal_weapons(self, squad_context=None):
         w_scores = []
         for w_id, w_data in self.weapons.items():
+            # Fix 4: Safeguard against bad schema causing float('inf') crashes
+            if not isinstance(w_data, dict):
+                continue
+                
             stats = self.ttk_calc.calculate_weapon_ttk(w_data)
-            if stats["ttk"] < 10: 
+            
+            if stats["ttk"] < 10 and stats["ttk"] != float('inf'): 
                 score = (stats["effective_damage"] * 2) - (stats["ttk"] * 100)
                 w_scores.append({"name": str(w_id).upper(), "ttk": stats["ttk"], "score": score})
         
         w_scores.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Safe defaults if no viable weapon parsed
         return {
             "primary": w_scores[0] if w_scores else {"name": "MP40", "ttk": 0.28},
             "secondary": w_scores[1] if len(w_scores)>1 else {"name": "GROZA", "ttk": 0.32}
