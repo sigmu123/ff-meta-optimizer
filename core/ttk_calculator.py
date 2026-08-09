@@ -16,6 +16,19 @@ class TTKCalculator:
         
         return max(1.0, round(effective_damage, 2))
 
+    def _parse_float_advanced(self, val):
+        """Returns a tuple: (parsed_value, is_percentage_modifier)"""
+        if isinstance(val, (int, float)):
+            return float(val), False
+        if isinstance(val, str):
+            try:
+                is_pct = "%" in val
+                cleaned = val.replace("%", "").replace("+", "").strip()
+                return float(cleaned), is_pct
+            except ValueError:
+                return 0.0, False
+        return 0.0, False
+
     def calculate_weapon_ttk(self, weapon_stats, player_boosts=None):
         if player_boosts is None:
             player_boosts = {}
@@ -23,14 +36,27 @@ class TTKCalculator:
         if not isinstance(weapon_stats, dict):
             return {"effective_damage": 0.0, "btk": float('inf'), "ttk": float('inf')}
 
-        # Added standardized baselines so ttk != inf if schema only contains buffs
-        base_damage = self._parse_float(weapon_stats.get("base_damage") or weapon_stats.get("damage") or 28.0)
-        rate_of_fire = self._parse_float(weapon_stats.get("rate_of_fire") or weapon_stats.get("fire_rate") or 0.20)
-        armor_pen = self._parse_float(weapon_stats.get("armor_penetration") or weapon_stats.get("armor_pen") or 0.0)
+        # --- Fix 2: Parsing Relative Strings vs Base Stats ---
+        raw_damage = weapon_stats.get("base_damage") or weapon_stats.get("damage") or weapon_stats.get("damage_percentage") or 28.0
+        parsed_dmg, dmg_is_pct = self._parse_float_advanced(raw_damage)
         
-        if armor_pen > 1.0: 
-            armor_pen = armor_pen / 100.0
+        if dmg_is_pct:
+            base_damage = 28.0 * (1.0 + (parsed_dmg / 100.0))
+        else:
+            base_damage = parsed_dmg if parsed_dmg > 0 else 28.0
 
+        raw_rof = weapon_stats.get("rate_of_fire") or weapon_stats.get("fire_rate") or 0.20
+        parsed_rof, rof_is_pct = self._parse_float_advanced(raw_rof)
+        
+        if rof_is_pct:
+            rate_of_fire = 0.20 * (1.0 - (parsed_rof / 100.0))
+        else:
+            rate_of_fire = parsed_rof if parsed_rof > 0 else 0.20
+
+        raw_ap = weapon_stats.get("armor_penetration") or weapon_stats.get("armor_pen") or 0.0
+        parsed_ap, ap_is_pct = self._parse_float_advanced(raw_ap)
+        
+        armor_pen = parsed_ap / 100.0 if parsed_ap > 1.0 or ap_is_pct else parsed_ap
         damage_boost = player_boosts.get("damage_boost", 0.0)
 
         if base_damage <= 0:
@@ -46,15 +72,5 @@ class TTKCalculator:
             "btk": btk,
             "ttk": ttk
         }
-
-    def _parse_float(self, val):
-        if isinstance(val, (int, float)):
-            return float(val)
-        if isinstance(val, str):
-            try:
-                return float(val.replace("%", "").replace("+", "").strip())
-            except ValueError:
-                return 0.0
-        return 0.0
 
 MechanicsEngine = TTKCalculator
