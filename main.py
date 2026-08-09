@@ -5,7 +5,7 @@ import itertools
 from core.ttk_calculator import TTKCalculator
 from patch_loader import PatchLoader
 from interface.prompt_parser import parse_full_prompt
-from engine.combinatorial_tester import PermutationTester   # <-- درآمد کریں
+from engine.combinatorial_tester import PermutationTester
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 if current_dir not in sys.path:
@@ -14,43 +14,35 @@ if current_dir not in sys.path:
 class HybridMetaEngine:
     def __init__(self, patch_name="patch_ob54", objective="max_damage", playstyle="rush", engagement_range="mid"):
         self.patch_name = patch_name
-        # cumulative=True کے ساتھ PatchLoader بنائیں تاکہ تمام پیچز کا تازہ ترین ڈیٹا ملے
         self.loader = PatchLoader(patch_name=patch_name, base_dir=current_dir, cumulative=True)
         self.ttk_calc = TTKCalculator()
 
-        # Build data from patches (dynamic)
         self._build_data_from_patches()
-        # Apply additional adjustments (if any)
         self._apply_patch_adjustments()
 
         self.objective = objective
         self.playstyle = playstyle
         self.engagement_range = engagement_range
-        # Set TTK calculator engagement distance based on range
         if engagement_range == "close":
             self.ttk_calc.engagement_distance = 10
         elif engagement_range == "long":
             self.ttk_calc.engagement_distance = 50
-        else:  # mid
+        else:
             self.ttk_calc.engagement_distance = 25
 
     def _build_data_from_patches(self):
-        """Load weapons and character skills directly from patch loader."""
         # Characters
-        self.actives = {}
-        self.passives = {}
-        # Merge loader's active and passive skills into dictionaries
+        self.active_skills = {}
+        self.passive_skills = {}
         for key, val in self.loader.active_skills.items():
-            # key format: patch_ns_charactername (اب یہ پریفکس نہیں ہے، کیونکہ ہم نے صرف نام کو کلید بنایا)
-            char_name = key  # چونکہ ہم نے _parse_and_store میں پریفکس ہٹا دیا ہے
-            self.actives[char_name] = val
+            char_name = key
+            self.active_skills[char_name] = val
         for key, val in self.loader.passive_skills.items():
             char_name = key
-            self.passives[char_name] = val
+            self.passive_skills[char_name] = val
 
-        # If no skills loaded, fallback to base
-        if not self.actives:
-            self.actives = {
+        if not self.active_skills:
+            self.active_skills = {
                 "alok": {"skill_name": "Drop the Beat", "type": "active", "cooldown": 45, "duration": 10, "heal": 5, "speed_boost": 15},
                 "chrono": {"skill_name": "Time Turner", "type": "active", "cooldown": 60, "duration": 6, "shield_hp": 800},
                 "k": {"skill_name": "Master of All", "type": "active", "cooldown": 3, "duration": 0, "ep_recovery": 3},
@@ -60,8 +52,8 @@ class HybridMetaEngine:
                 "kenta": {"skill_name": "Swordsman's Wrath", "type": "active", "cooldown": 70, "duration": 5, "frontal_damage_reduction": 60},
                 "dimitri": {"skill_name": "Healing Heartbeat", "type": "active", "cooldown": 60, "duration": 12, "heal": 10},
             }
-        if not self.passives:
-            self.passives = {
+        if not self.passive_skills:
+            self.passive_skills = {
                 "kelly": {"skill_name": "Dash", "type": "passive", "speed_boost": 6},
                 "hayato": {"skill_name": "Art of Blades", "type": "passive", "armor_pen": 5},
                 "moco": {"skill_name": "Hacker's Eye", "type": "passive", "mark_duration": 4},
@@ -73,11 +65,10 @@ class HybridMetaEngine:
                 "maxim": {"skill_name": "Gluttony", "type": "passive", "heal_increase": 25},
             }
 
-        # Weapons: load from loader's weapons dict
+        # Weapons
         self.weapons = {}
         for key, stats in self.loader.weapons.items():
-            wep_name = key  # پریفکس ہٹا دیا گیا ہے
-            # Ensure required fields
+            wep_name = key
             if "damage" not in stats:
                 stats["damage"] = 28.0
             if "rate_of_fire" not in stats:
@@ -88,7 +79,6 @@ class HybridMetaEngine:
                 stats["range"] = 30
             self.weapons[wep_name] = stats
 
-        # If no weapons loaded, fallback to base
         if not self.weapons:
             self.weapons = {
                 "mp40": {"damage": 30, "rate_of_fire": 0.08, "armor_penetration": 0.0, "range": 30},
@@ -101,12 +91,10 @@ class HybridMetaEngine:
                 "ak47": {"damage": 38, "rate_of_fire": 0.11, "armor_penetration": 0.0, "range": 45},
             }
 
-        # Pets and Loadouts from loader
         self.pets = list(self.loader.pets) if self.loader.pets else ["Rockie", "Mr. Waggor", "Falco", "Ottero", "Dr. Beanie"]
         self.loadouts = list(self.loader.loadouts) if self.loader.loadouts else ["Bonfire", "Leg Pockets", "Bounty Token", "Secret Clue", "Armor Crate"]
 
     def _apply_patch_adjustments(self):
-        # This now applies additional adjustments if any (but we already loaded stats)
         pass
 
     def _get_optimal_weapons(self, squad_context=None):
@@ -114,15 +102,12 @@ class HybridMetaEngine:
         for w_id, w_data in self.weapons.items():
             if not isinstance(w_data, dict):
                 continue
-            # Calculate TTK and effective damage
             stats = self.ttk_calc.calculate_weapon_ttk(w_data)
             if stats and stats["ttk"] < float('inf'):
                 clean_name = str(w_id).upper()
-                # For sniper, use effective damage as primary score
                 if self.playstyle == "sniper" and self.engagement_range == "long":
                     score = stats["effective_damage"]
                 else:
-                    # DPS for other playstyles
                     dps = stats["effective_damage"] * (1.0 / max(0.01, stats.get("rate_of_fire", 0.2)))
                     score = dps
                 w_scores.append({"name": clean_name, "ttk": stats["ttk"], "score": score, "effective_damage": stats["effective_damage"]})
@@ -133,26 +118,18 @@ class HybridMetaEngine:
             return {"primary": w_scores[0] if w_scores else {"name": "MP40", "ttk": 0.28},
                     "secondary": w_scores[0] if w_scores else {"name": "GROZA", "ttk": 0.32}}
 
-    # =============================================
-    # نیا طریقہ کار – مسئلہ نمبر ۱ کا حل
-    # =============================================
     def run_exhaustive_search(self, output_limit=10, max_combinations=500000):
-        """
-        PermutationTester کو استعمال کرتے ہوئے بہترین بلڈ تلاش کریں اور
-        نتیجہ کو advisor_engine کے متوقع فارمیٹ میں واپس کریں۔
-        """
-        tester = PermutationTester(self)   # self کو پاس کریں تاکہ ڈیٹا تک رسائی ہو
+        tester = PermutationTester(self)
         result = tester.run_matrix_search(
-            mode="clash_squad",          # موڈ کو مناسب رکھیں (مستقبل میں parser سے لے سکتے ہیں)
+            mode="clash_squad",
             playstyle=self.playstyle,
             top_k=output_limit
         )
 
         if not result or "top_build" not in result:
-            return []   # کوئی بلڈ نہیں ملا
+            return []
 
         top = result["top_build"]
-        # advisor_engine کو درکار فارمیٹ میں تبدیل کریں
         build = {
             "active": top["character_loadout"]["active_skill"],
             "passives": top["character_loadout"]["passives"],
@@ -171,15 +148,12 @@ class HybridMetaEngine:
                 "effective_damage": top["weapons"]["mid_range"]["effective_dmg"]
             }
         }
-        # ایک فرضی اسکور (مثال کے طور پر)
         win_rate = top["summary"]["win_probability_pct"]
-        raw_score = win_rate * 10   # صرف ایک مثال
+        raw_score = win_rate * 10
 
-        # ایک ہی نتیجہ کی لسٹ واپس کریں (مزید کے لیے آپ GA یا مکمل سرچ لا سکتے ہیں)
         return [{
             "build": build,
             "weapons": weapons,
             "win_rate": win_rate,
             "raw_score": raw_score
         }]
-    # =============================================
