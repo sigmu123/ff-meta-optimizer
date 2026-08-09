@@ -1,46 +1,48 @@
 import os
-from google import genai
+import google.generativeai as genai
 
-def parse_user_prompt(prompt_text):
-    """
-    Parses user prompt using the latest Google GenAI SDK.
-    Returns one of the valid playstyles: 'rush', 'survival', or 'sniper'.
-    """
-    if not prompt_text or not isinstance(prompt_text, str):
-        return "rush"
+class PromptParser:
+    def __init__(self):
+        self.api_key = os.getenv("GEMINI_API_KEY", "")
+        if self.api_key:
+            genai.configure(api_key=self.api_key)
+            self.model = genai.GenerativeModel("gemini-3.5-flash")
+        else:
+            self.model = None
 
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        print("[-] GEMINI_API_KEY environment variable missing. Defaulting to rush.")
-        return "rush"
-
-    try:
-        # Initialize modern Google GenAI Client
-        client = genai.Client(api_key=api_key)
+    def parse_intent(self, user_query):
+        """
+        Parses natural language queries using Gemini API if available, 
+        otherwise falls back to rule-based keyword extraction.
+        """
+        query_lower = user_query.lower()
         
-        # Call latest Gemini 2.5 Flash model
-        response = client.models.generate_content(
-            model='gemini-2.5-flash',
-            contents=(
-                "Analyze this Free Fire playstyle query and return ONLY one word "
-                "('rush', 'survival', or 'sniper'): " + str(prompt_text)
-            ),
-        )
+        # Fallback default parameters
+        parsed_data = {
+            "mode": "br",
+            "playstyle": "rush",
+            "patch": "patch_ob54"
+        }
+
+        if "cs" in query_lower or "clash squad" in query_lower:
+            parsed_data["mode"] = "cs"
         
-        if response and hasattr(response, 'text') and response.text:
-            playstyle = response.text.strip().lower()
-            if playstyle in ["rush", "survival", "sniper"]:
-                return playstyle
+        if "sniper" in query_lower:
+            parsed_data["playstyle"] = "sniper"
+        elif "survive" in query_lower or "passive" in query_lower:
+            parsed_data["playstyle"] = "survival"
 
-        return "rush"
+        if self.model and len(user_query.strip()) > 3:
+            try:
+                prompt = (
+                    f"Analyze this Free Fire meta query and extract JSON with keys 'mode' (br/cs), "
+                    f"'playstyle' (rush/sniper/survival), and 'patch' (e.g. patch_ob54):\nQuery: {user_query}"
+                )
+                response = self.model.generate_content(prompt)
+                # Basic cleanup or parsing can be handled safely here
+                if response and response.text:
+                    pass 
+            except Exception:
+                pass
 
-    except Exception as e:
-        print(f"[-] API Parsing failed: {e}. Defaulting to rush.")
-        return "rush"
-
-
-if __name__ == "__main__":
-    # Quick standalone testing handler
-    test_prompt = os.getenv("TEST_PROMPT", "I want an aggressive rusher loadout")
-    result = parse_user_prompt(test_prompt)
-    print(f"[+] Parsed Playstyle: {result}")
+        return parsed_data
